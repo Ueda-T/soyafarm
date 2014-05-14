@@ -1,0 +1,282 @@
+@charset "utf-8";
+/*----------------------------*/
+#wrapHead,#wrapFoot1,#wrapFoot2{
+clear:both;
+width:100%;
+margin:0 auto;
+text-align:center;
+}
+/*----------------------------*/
+#wrapHead{
+height:195px;
+background:#ffffff url(../img/rohto/back_head.jpg) repeat-x;
+}
+#wrapHeadEle{
+position:relative;
+margin:0 auto;
+width:960px;
+}
+#wrapHead img{
+display:block;
+}
+#wrapHead p.logo{
+position:relative;
+padding:15px 0 0 0;
+width:400px;
+}
+#wrapHead p.acnelogy{
+position:relative;
+padding:17px 0 0 0;
+}
+#wrapHead p.logo span{
+position:absolute;
+display:block;
+font-size:10px;
+top:15px;
+left:45px;
+}
+.gNavS{
+margin:3px 0 0 0;
+position:relative;
+height:49px;
+}
+.gNavS div.sagasu{
+margin:20px 0 0 0;
+padding:0 0 0 30px;
+font-size:0.8em;
+background:url(../img/rohto/gnav_icon.gif) no-repeat 2px 0;
+}
+.gNavS div.sagasu input,
+.gNavS div.sagasu a.submitBtn img {
+vertical-align:middle;
+margin:0 10px 0 0;
+}
+.gNavS div.sagasu a.submitBtn img {
+display:inline !important;
+}
+.gNavS div.sagasu input.search{
+padding:1px;
+border:none;
+width:150px;
+}
+.gNavS div.sagasu select{
+vertical-align:middle;
+padding:0;
+border:none;
+width:160px;
+margin:0 10px 0 0;
+}
+dl.gNav{
+position:absolute;
+top:83px;
+left:643px;
+}
+dl.gNav dt{
+float:left;
+}
+/**/
+.gNavKW{
+position:absolute;
+width:700px;
+top:145px;
+left:0;
+}
+.gNavKW dt{
+float:left;
+padding:0 10px 0 0;
+}
+.gNavKW dd{
+float:left;
+padding:0 5px;
+font-size:12px;
+}
+.gNavKW dt,.gNavKW a{
+color:#3e3e3e;
+}
+.gNavKW dt,.gNavKW a:hover{
+color:#d53b00;
+}
+/**/
+#wrapHead .hLink1{
+position:absolute;
+top:17px;
+right:0;
+}
+#wrapHead .hLink1 li{
+float:left;
+margin:0 20px 0 0;
+}
+#wrapHead .hLink1 li.dyn{
+margin:0 0 0 0;
+}
+#wrapHead .hLink2{
+position:absolute;
+top:47px;
+right:0;
+background:url(../img/rohto/hlink_back.jpg) no-repeat;
+width:555px;
+height:25px;
+}
+#wrapHead .hLink2 li{
+float:left;
+margin:3px 20px 0 0;
+}
+#wrapHead .hLink2 li.dyn{
+margin:3px 0 0 0;
+}
+/*----------------------------*/
+.pankuzu{
+font-size:0.75em;
+margin:0 0 20px 0;
+}
+/*----------------------------*/
+#wrapFoot1{
+clear:both;
+padding:0;
+}
+#wrapFoot1 .wrapFoot1ele{
+clear:both;
+background:url(../img/rohto/foot_kazari.gif) no-repeat 50% 0;
+margin:0 auto;
+padding:70px 0 0 0;
+width:960px;
+}
+#wrapFoot1 #shortcutItem{
+clear:both;
+position:relative;
+margin:0 auto;
+width:910px;
+}
+#wrapFoot1 #shortcutItem a{
+color:#606060;
+text-decoration:none;
+}
+#wrapFoot1 #shortcutItem a:hover{
+text-decoration:underline;
+}
+#wrapFoot1 #shortcutItem table{
+width:100%;
+}
+#wrapFoot1 #shortcutItem th{
+padding:0 20px 0 0;
+}
+#wrapFoot1 #shortcutItem th.dyn{
+padding:0 0 0 0;
+}
+#wrapFoot1 #shortcutItem th p{
+font-weight:normal;
+padding:0 0 10px 0;
+font-size:13px;
+line-height:140%;
+background:url(../img/rohto/flink_line.gif) repeat-x 0 100%;
+}
+#wrapFoot1 #shortcutItem th a{
+background:url(../img/rohto/linkicon1.gif) no-repeat 0 50%;
+padding:0 0 0 15px;
+}
+#wrapFoot1 #shortcutItem th span.off{
+background:url(../img/rohto/linkicon_off.gif) no-repeat 0 50%;
+padding:0 0 0 15px;
+}
+#wrapFoot1 #shortcutItem td{
+padding:15px 10px 0 0;
+}
+#wrapFoot1 #shortcutItem td.dyn{
+padding:15px 0 0 0;
+}
+#wrapFoot1 #shortcutItem td ul{
+margin:0;
+padding:0;
+}
+#wrapFoot1 #shortcutItem td li{
+margin:0 10px 10px 0;
+padding:0;
+font-size:12px;
+line-height:130%;
+}
+#wrapFoot1 #shortcutItem td.dyn li{
+margin:0 0 10px 0;
+}
+#wrapFoot1 #shortcutItem td li span{
+font-size:90%;
+margin:0;
+padding:0 0 0 10px;
+color:#9c9c9c;
+}
+#wrapFoot1 #shortcutItem td a{
+background:url(../img/rohto/linkicon2.gif) no-repeat 0 5px;
+padding:0 0 0 10px;
+}
+#wrapFoot1 #shortcutItem td p{
+margin:0 10px 5px 0;
+font-size:12px;
+line-height:130%;
+}
+#wrapFoot1 #shortcutItem th ul{
+margin:0;
+padding:0;
+}
+#wrapFoot1 #shortcutItem th li{
+margin:0 10px 10px 0;
+padding:0;
+font-size:12px;
+line-height:130%;
+}
+#wrapFoot1 #shortcutItem td ul.sub{
+	margin:0 0 15px 10px;
+}
+#wrapFoot1 #shortcutItem td ul.sub li{
+margin:0 10px 3px 10px;
+font-size:12px;
+}
+/**/
+#wrapFoot2{
+margin:20px 0 0 0;
+background:#606060 url(../img/rohto/foot_back.gif) repeat-x;
+}
+#wrapFoot2 #wrapFoot2ele{
+position:relative;
+background:#606060;
+margin:0 auto;
+width:960px;
+height:220px;
+}
+#wrapFoot2 img{
+display:block;
+}
+#wrapFoot2 .fLink1{
+clear:both;
+height:32px;
+background:url(../img/rohto/flink1_back.gif) no-repeat;
+}
+#wrapFoot2 .fLink1 li{
+float:left;
+margin:9px 30px 0 0;
+}
+#wrapFoot2 .fLink2{
+clear:both;
+background:url(../img/rohto/flink2_back.gif) no-repeat;
+}
+#wrapFoot2 .fLink2 li{
+float:left;
+margin:19px 36px 20px 0;
+}
+#wrapFoot2 .fLink2 li.dyn{
+margin:19px 64px 20px 0;
+}
+#wrapFoot2 .fLink2 li.dyn2{
+margin:19px 24px 20px 0;
+}
+#wrapFoot2 .fLink2 li.dyn3{
+margin:19px 0 20px 0;
+}
+/**/
+#wrapFoot2 .namae{
+clear:both;
+padding:16px 0 0 0;
+}
+#wrapFoot2 .copyright{
+padding:12px 0 0 0;
+}
+/*----------------------------*/
+/*end*/

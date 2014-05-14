@@ -1,0 +1,302 @@
+@charset "utf-8";
+/*----------------------------*/
+#sub{
+float:right;
+width:210px;
+margin:0;
+padding:0 0 30px 0;
+font-size:110%;
+}
+/*----------------------------*/
+#sub .listBrand{
+margin:0 0 15px 0;
+background:#ffffff url(../img/rohto/sub_brand_back.gif) repeat-y;
+}
+#sub .listBrand img{
+display:block;
+}
+#sub .listBrand dt{
+margin:0 4px;
+}
+#sub .listBrand dd{
+font-size:0.75em;
+padding:0 0 1px 0;
+background:url(../img/rohto/sub_brand_line.gif) no-repeat 0 100%;
+}
+#sub .listBrand dd span.dyn{
+font-size:75%;
+padding:0 0 0 10px;
+color:#999999;
+}
+#sub .listBrand dd a,#sub .listBrand dd span.koko{
+display:block;
+color:#3e3e3e;
+text-decoration:none;
+padding:4px 10px 4px 23px;
+text-decoration:none;
+}
+#sub .listBrand dl.gentei dd a{
+background:url(../img/rohto/sub_brand_gentei_back.gif) no-repeat 0 50%;
+}
+#sub .listBrand dl.gentei span.koko{
+color:#d53b00;
+background:url(../img/rohto/sub_brand_gentei_back_ov.gif) no-repeat 0 50%;
+}
+#sub .listBrand dl.gentei dd a:hover{
+background:#efefef url(../img/rohto/sub_brand_gentei_back_ov.gif) no-repeat 0 50%;
+}
+#sub .listBrand dl.gentei dd.btm{
+padding:0 0 3px 0;
+background:url(../img/rohto/sub_brand_gentei_btm.gif) no-repeat 50% 100%;
+}
+#sub .listBrand dl.nb{
+padding:4px 0 0 0;
+background:url(../img/rohto/sub_brand_nb_head.gif) no-repeat;
+}
+#sub .listBrand dl.nb dd a{
+background:url(../img/rohto/sub_brand_nb_back.gif) no-repeat 0 50%;
+}
+#sub .listBrand dl.nb span.koko{
+color:#d53b00;
+background:url(../img/rohto/sub_brand_nb_back_ov.gif) no-repeat 0 50%;
+}
+#sub .listBrand dl.nb dd a:hover{
+background:#f7f7f7 url(../img/rohto/sub_brand_nb_back_ov.gif) no-repeat 0 50%;
+}
+#sub .listBrand dl.nb dd.btm{
+padding:0 0 4px 0;
+background:url(../img/rohto/sub_brand_btm.gif) no-repeat 50% 100%;
+}
+/*----------------------------*/
+.merit{
+background:#f6f5eb;
+margin:0 0 5px 0;
+padding:0 0 0 0;
+}
+.merit img,#sub .merit a{
+display:block;
+}
+.merit dt{
+margin:0 0 7px 0;
+}
+.merit dd{
+margin:0 5px 10px 7px;
+padding:0 0 7px 38px;
+font-size:12px;
+line-height:200%;
+min-height:2em;
+}
+.merit dd.m1{
+background:url(../img/rohto/sub_merit01_thum.gif) no-repeat;
+}
+.merit dd.m2{
+background:url(../img/rohto/sub_merit02_thum.gif) no-repeat;
+}
+.merit dd.m3{
+background:url(../img/rohto/sub_merit03_thum.gif) no-repeat;
+line-height:130%;
+}
+.merit dd.m3 span{
+	display:block;
+	font-size:85%;
+	margin:0;
+	line-height:100%;
+}
+/*----------------------------*/
+/*.goikenbako{
+margin:10px 0;
+background:none;
+}
+.goikenbako img{
+display:block;
+}
+.goikenbako dt{
+margin:0;
+}
+.goikenbako dd{
+padding:3px 15px 10px 15px;
+font-size:0.7em;
+line-height:130%;
+border:1px solid #d9d9d9;
+border-top:none;
+}*/
+/*----------------------------*/
+.ktai{
+position:relative;
+background:#eff5f6 url(../img/rohto/sub_mobile_back.gif) repeat-y;
+width:210px;
+margin:15px 0;
+padding:0;
+}
+.ktai dt{
+padding:0;
+}
+.ktai dd.qr{
+position:absolute;
+top:10px;
+left:120px;
+}
+.ktai dd.url1{
+margin:0 0 0 10px;
+width:110px;
+}
+.ktai dd.url1 a{
+padding:0 0 0 15px;
+display:block;
+font-size:0.75em;
+line-height:130%;
+background:url(../img/rohto/sub_mobile_icon.gif) no-repeat 0 3px;
+}
+.ktai dd.url2{
+padding:10px 0 10px 25px;
+font-size:0.8em;
+line-height:140%;
+word-break:break-all;
+background:none;
+background:url(../img/rohto/sub_mobile_btm.gif) no-repeat 0 100%;
+}
+/*----------------------------*/
+.rottaInfo{
+background:url(../img/rohto/sub_rotta_btm.gif) no-repeat 0 100%;
+margin:0 0 15px 0;
+padding:0 0 10px 0;
+}
+.rottaInfo img{
+display:block;
+}
+.rottaInfoEle{
+padding:0;
+width:210px;
+padding:5px 0;
+background:url(../img/rohto/sub_rotta_back.gif) repeat-y;
+}
+.rottaInfo dl{
+margin:0 14px;
+border:1px solid #d4d4d4;
+border-bottom:none;
+background:#ffffff;
+}
+.rottaInfo dl dt{
+padding:10px;
+font-size:0.75em;
+line-height:130%;
+}
+.rottaInfo dl dt span{
+color:#de5900;
+}
+.rottaInfo dl dt span.dyn{
+color:#ff0033;
+}
+.rottaInfo dl dd{
+padding:0 10px 10px 10px;
+font-size:1.3em;
+}
+.rottaInfo dl dd span{
+display:block;
+text-align:right;
+min-height:25px;
+padding:0 42px 0 15px;
+vertical-align:bottom;
+background:url(../img/rohto/sub_rotta_icon1.gif) no-repeat 50% 100%;
+color:#de5900;
+font-weight:bold;
+}
+.rottaInfo dl dd.dyn span{
+background:url(../img/rohto/sub_rotta_icon2.gif) no-repeat 50% 100%;
+}
+.rottaInfo p{
+font-size:0.75em;
+line-height:120%;
+margin:0 15px;
+padding:5px;
+background:#ffffff;
+color:#ff0033;
+}
+/*----------------------------*/
+/*----マイページ用サブナビ----*/
+#subCustomer{
+float:right;
+width:210px;
+margin:0;
+padding:0 0 30px 0;
+font-size:100%;
+}
+#subCustomer .rottaInfo{
+	margin:5px 0;
+}
+#subCustomer .wrapPersonal{
+	margin:0 0 5px 0;
+	background:#f2f2f2;
+	border:1px solid #dedede;
+}
+#subCustomer .wrapPersonal p{
+	padding:10px;
+	font-size:0.75em;
+	line-height:130%;
+}
+#subCustomer .wrapPersonal dl.stage{
+	border:1px solid #ffffff;
+	padding:10px;
+	background:url(../img/rohto/sub_personaltop_head.jpg) no-repeat;
+}
+#subCustomer .wrapPersonal dt{
+	font-size:0.7em;
+	margin:0 0 10px 0;
+	vertical-align:bottom;
+}
+#subCustomer .wrapPersonal dt strong{
+	font-weight:bold;
+	font-size:130%;
+	vertical-align:bottom;
+}
+#subCustomer .wrapPersonal dd{
+	font-size:0.75em;
+	line-height:130%;
+}
+#subCustomer dl.myPageMenu{
+	background:#e4e4e4;
+	margin:5px 0;
+}
+#subCustomer dl.myPageMenu dt{
+	background:#ffffff url(../img/rohto/line3.gif) repeat-x;
+	font-size:0.75em;
+	line-height:130%;
+}
+#subCustomer dl.myPageMenu dt.top{
+	background:#ffffff;
+}
+#subCustomer dl.myPageMenu dt a{
+  display:block;
+  padding:9px 10px 8px 19px;
+  color:#5d5d5d;
+  text-decoration:none;
+  background:url(../img/rohto/linkicon2.gif) no-repeat 10px 50%;
+}
+#subCustomer dl.myPageMenu dt a:hover{
+  text-decoration:underline;
+}
+#subCustomer dl.myPageMenu dt span.koko{
+  display:block;
+  background:#e4e4e4 url(../img/rohto/linkicon_act.gif) no-repeat 10px 50%;
+  color:#de5900;
+  text-decoration:none;
+  padding:9px 10px 8px 19px;
+}
+#subCustomer p.sakujyo{
+	font-size:0.7em;
+	margin:15px 0 0 0;
+	padding:15px 0 0 0;
+	background:#ffffff url(../img/rohto/line3.gif) repeat-x;
+}
+#subCustomer p.sakujyo a{
+  color:#5d5d5d;
+  display:block;
+  padding:7px 10px 7px 24px;
+  text-decoration:none;
+  background:#e4e4e4 url(../img/rohto/linkicon2.gif) no-repeat 15px 50%;
+}
+#subCustomer p.sakujyo a:hover{
+  text-decoration:underline;
+}
+/*----------------------------*/
+/*end*/

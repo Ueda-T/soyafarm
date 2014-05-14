@@ -1,0 +1,47 @@
+@charset "shift_jis";
+
+#about{
+	background:url(../shun_img/common/line2.gif) repeat-x top;
+	padding:20px 0 0 0;
+	line-height:180%;
+}
+#about h1{
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+	margin-bottom:25px;
+}
+#about #concept p{
+	margin:0 0 25px 0;
+}
+#about #concept p img{
+	margin:10px;
+}
+#about h2{
+	padding:20px 0 0 0;
+	margin-bottom:5px;
+}
+#about #promise{
+	background:url(../shun_img/common/line2.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+}
+#about #promise h3{
+	padding:20px 0 0 0;
+	margin-bottom:10px;
+}
+#about #promise p{
+	padding:0 0 20px 40px;
+}
+#about #promise ul{
+	margin-top:-15px;
+	padding:0 0 20px 40px;
+}
+#about #promise li{
+	margin-left:20px;
+	list-style-image:url(../shun_img/common/icon_list01.gif);
+}
+#about #example{
+	padding:20px 0 20px 0;
+}
+#about #example p{
+	margin:20px 0 20px 0;
+}

@@ -1,0 +1,210 @@
+@charset "shift_jis";
+
+/* catch */
+.top_catch{
+	margin-bottom:10px;
+	padding-bottom:10px;
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+}
+.top_catch h1,
+.top_catch p{
+	margin-bottom:10px;
+}
+
+/**/
+.attention{
+	background:url(../shun_img/top/attention_back.gif) no-repeat left center;
+	padding:15px 15px 15px 63px;
+	border:3px solid #af3114;
+	margin-bottom:25px;
+	color:#af3114;
+}
+
+/* item */
+.top_item{
+	margin:0 -22px 0 0;
+	padding:10px 0 0 0;
+	width:674px;
+}
+.top_item p{
+	float:left;
+	margin-right:15px;
+	text-align:center;
+	width:96px;
+	margin-bottom:15px;
+}
+.top_item p a{
+	color:#514e4c;
+	text-decoration:none;
+}
+.top_item p strong{
+	text-decoration:underline;
+	color:#271a17;
+	font-weight:lighter;
+}
+.top_item p img{
+	margin-bottom:5px;
+	padding:5px;
+}
+.top_item p a{
+	display:block;
+	width:96px;
+}
+.top_item p a:hover img{
+	padding:0;
+	border:5px solid #d7ca7d;
+}
+
+/* info */
+.top_info{
+	width:620px;
+}
+.top_info h2{
+	margin-bottom:10px;
+}
+.top_info p{
+	margin-bottom:5px
+}
+.top_info .block{
+	border:1px solid #bfbab2;
+	padding:15px;
+	height:250px;
+	width:620px;
+	overflow:auto;
+	margin-bottom:15px;
+}
+.top_info dt{
+	float:left;
+	width:100px;
+	color:#af3114;
+	margin-bottom:25px;
+}
+.top_info dd{
+	margin-left:100px;
+	margin-bottom:10px;
+}
+
+/* special */
+.top_special{
+	width:620px;
+	background-color:#fffbf5 !important;
+	padding:15px;
+	margin-bottom:15px;
+	margin-top:8px;
+}
+.top_special h3{
+	padding:0;
+	margin:0;
+}
+
+.top_special p.column{
+	width:176px;
+	line-height:150%;
+	margin:0;
+	padding-right:40px !important;
+	padding-top:10px;
+	float:left;	
+}
+
+.top_special p.columnRight{
+	width:176px;
+	line-height:150%;
+	margin:0;
+	padding-top:10px;
+	float:right;	
+}
+
+.top_special p.column img,
+.top_special p.columnRight img{
+	margin-right:11px;
+}
+
+
+/* blog */
+.top_blog{
+	float:left;
+	width:310px;
+}
+.top_blog h2{
+	margin-bottom:10px;
+}
+.top_blog p{
+	margin-bottom:5px
+}
+.top_blog .block{
+	border:1px solid #bfbab2;
+	padding:15px;
+	height:150px;
+	width:278px;
+	overflow:auto;
+	margin-bottom:15px;
+}
+.top_blog dt{
+	float:left;
+	width:100px;
+	color:#af3114;
+	margin-bottom:5px;
+}
+.top_blog dd{
+	margin-left:100px;
+	margin-bottom:5px;
+}
+
+/* review */
+.top_review{
+/*	float:right;
+	width:310px;*/
+}
+.top_review h2{
+	margin-bottom:10px;
+}
+.top_review p{
+	margin-bottom:5px
+}
+.top_review .block{
+	border:1px solid #bfbab2;
+	padding:15px;
+	height:150px;
+	overflow:auto;
+	margin-bottom:15px;
+}
+.top_review ul{
+	list-style:none;
+}
+.top_review li{
+	margin-bottom:5px;
+}
+
+
+/* campaign */
+.top_campaign2{
+	width:650px;
+	padding-bottom:3px;
+	margin: 25px 0 15px 0;
+}
+.top_campaign2 h3{
+	background:none;
+	padding:0;
+	margin:0;
+}
+p.txt{
+	width:644px;
+	padding: 10px 0 10px 0px;
+	text-align: center;
+	color:#514e4c;
+	border-bottom:3px solid #af3114;
+	border-right:3px solid #af3114;
+	border-left:3px solid #af3114;
+}
+
+/* alcohol attention */
+.alcohol{
+	font-size:100%;
+	color:#b83314;
+	line-height:1.4em;
+	text-align:center;
+	padding:6px;
+	margin: 25px 0 15px 0;
+	border:2px solid #b83314;
+}
+

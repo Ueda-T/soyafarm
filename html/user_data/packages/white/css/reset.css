@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	 タグの初期化
+
+///////////////////////////////////////////////////////////*/
+
+html {
+	overflow-y: scroll;
+}
+body { 
+	margin: 0;
+	padding: 0;
+	background: url(../images/common/header/header_back.gif) repeat-x 0 80px ;
+	font-family: 'ＭＳ Ｐゴシック', MS-PGothic, HiraKakuPro-W3, HiraKakuProN-W3, sans-serif;
+	font-style: normal;
+	color: #333;
+	line-height: 1.6;
+	text-align: left;
+}
+
+/* フォントサイズ切り替え用（デフォルト）
+----------------------------------------------------------------------------------*/
+dl#fontsize dd.fs-s_ac    { display: none;}
+dl#fontsize dd.fs-s   			 { display: block;}
+dl#fontsize dd.fs-m_ac    { display: block;}
+dl#fontsize dd.fs-m   			 { display: none;}
+dl#fontsize dd.fs-l_ac    { display: none;}
+dl#fontsize dd.fs-l   			 { display: bloack;}
+
+/* 見出し・リスト
+----------------------------------------------------------------------------------*/
+h1,h2,h3,h4,h5,h6,p,ul,dl,dt,dd,li,blockquote {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-indent: 0;
+	font-size: 100%;
+}
+
+/* リスト
+----------------------------------------------------------------------------------*/
+li li { margin-left: 20px; }
+
+ol {
+	margin: 5px 0;
+	padding-left: 36px;
+}
+* html ol {
+	margin: 5px 0 5px 36px;
+	padding-left: 0;
+}
+ol li { list-style: decimal; }
+ol ul li { list-style: none; }
+
+/* 行
+----------------------------------------------------------------------------------*/
+p {
+	font-size: 93%;
+}
+
+/* リンク
+----------------------------------------------------------------------------------*/
+a {
+	color: #0082A3;
+	text-decoration: underline;
+}
+a:hover {
+	color: #00C0F0;
+	text-decoration: none;
+}
+a:visited { color: #9518c9; }
+a img { border: none; }
+
+/* 画像
+----------------------------------------------------------------------------------*/
+img { vertical-align: bottom; }
+
+/* 水平線
+----------------------------------------------------------------------------------*/
+hr {
+	height: 5px;
+	margin: 10px auto;
+	padding: 0px;
+	border: none;
+	color: white;
+	background: transparent url(../images/common/line_dot.gif) repeat-x 0 50%;
+	outline: none;
+}
+* html hr { border-bottom: 1px dotted #ccc; color: white; }
+*:first-child+html hr { border-bottom: 1px dotted #ccc; color: white; }
+
+/* テーブル
+----------------------------------------------------------------------------------*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* フォーム
+----------------------------------------------------------------------------------*/
+form {
+	margin: 0;
+	padding: 0;
+}
+
+

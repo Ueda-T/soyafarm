@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Slides>
+<bnrNode>
+<title>セノビック　BIGリニューアル</title>
+<link>../../shop/event/event.aspx?event=senobic&key=fb</link>
+<image>../../image/top/bnr_image/bnr64.jpg</image>
+<icon>../../image/top/bnr_image/num1.png</icon>
+</bnrNode>
+<bnrNode>
+<title>母の日特集</title>
+<link>../../shop/event/event.aspx?event=mother&key=fb</link>
+<image>../../image/top/bnr_image/bnr66.jpg</image>
+<icon>../../image/top/bnr_image/num2.png</icon>
+</bnrNode>
+<bnrNode>
+<title>ポリフェノールの含有量、ダントツです。 聖樹のチカラ</title>
+<link>http://www.shop.rohto.co.jp/seiju/003.html?key=fb</link>
+<image>../../image/top/bnr_image/bnr62.jpg</image>
+<icon>../../image/top/bnr_image/num3.png</icon>
+</bnrNode>
+</Slides>

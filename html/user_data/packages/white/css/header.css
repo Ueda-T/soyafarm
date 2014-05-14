@@ -1,0 +1,40 @@
+@charset "utf-8";
+/*///////////////////////////////////////////////////////////
+
+	ヘッダー
+
+///////////////////////////////////////////////////////////*/
+
+/*============================================
+ 	ヘッダー
+============================================*/
+#header #logo_hd {
+	padding: 5px 0 0;
+	height: 72px;
+	float: left;
+}
+#header #freecall {
+	float: left;
+	margin: 20px 0 0 300px;
+	display: inline;
+}
+#header #fontsize {
+	float: right;
+	width: 97px;
+	height: 64px;
+	padding: 0 0 0 9px;
+	margin: 0 20px 0 0;
+ background: url(../img/header/bg_fontsize.gif) no-repeat 0 0;
+	display: inline;
+	font-size: 0;
+	line-height: 0;
+}
+#header #fontsize dt {
+	text-align: center;
+	margin: 0 9px 7px 0;
+	padding: 8px 0 0;
+}
+#header #fontsize dd {
+	float: left;
+	margin: 0 2px 0 0;
+}

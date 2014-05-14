@@ -1,0 +1,85 @@
+ErrorDocument 404 /user_data/notfound.php
+
+# Set enviroment value by user-agent
+SetEnvIf User-Agent "DoCoMo" UA=mobile
+SetEnvIf User-Agent "UP\.Brower" UA=mobile
+SetEnvIf User-Agent "KDDI-" UA=mobile
+SetEnvIf User-Agent "J-PHONE" UA=mobile
+SetEnvIf User-Agent "Vodafone" UA=mobile
+SetEnvIf User-Agent "SoftBank" UA=mobile
+SetEnvIf User-Agent "emobile" UA=mobile
+SetEnvIf User-Agent "WILLCOM" UA=mobile
+SetEnvIf User-Agent "DDIPOCKET" UA=mobile
+SetEnvIf User-Agent "iPhone" UA=sp
+SetEnvIf User-Agent "iPod" UA=sp
+SetEnvIf User-Agent "Android" UA=sp
+SetEnvIf User-Agent "BlackBerry" UA=sp
+SetEnvIf User-Agent "Windows.Phone" UA=sp
+SetEnvIf User-Agent "iPad" UA=pc
+
+RewriteEngine on
+
+##
+##iqueve
+#RewriteCond %{REMOTE_ADDR} !^118\.243\.55\.73$
+##iqueve watchdog
+#RewriteCond %{REMOTE_ADDR} !^153\.122\.21\.79$
+##iqueve office
+#RewriteCond %{REMOTE_ADDR} !^192\.168\.24\..*$
+##
+
+RewriteBase /
+
+# http -> https
+RewriteCond %{REQUEST_URI} .*/contact/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/mypage/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/entry/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/cart/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/shopping/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/forgot/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/renewal/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/manage/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/dialog/.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/login_check.php$ [OR]
+RewriteCond %{REQUEST_URI} .*/ajax/input.*$ [OR]
+RewriteCond %{REQUEST_URI} .*/install_sbivt3g.php$
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+# https -> http
+RewriteCond %{REQUEST_URI} !(.*/contact/.*$)
+RewriteCond %{REQUEST_URI} !(.*/mypage/.*$)
+RewriteCond %{REQUEST_URI} !(.*/entry/.*$)
+RewriteCond %{REQUEST_URI} !(.*/cart/.*$)
+RewriteCond %{REQUEST_URI} !(.*/shopping/.*$)
+RewriteCond %{REQUEST_URI} !(.*/forgot/.*$)
+RewriteCond %{REQUEST_URI} !(.*/renewal/.*$)
+RewriteCond %{REQUEST_URI} !(.*/manage/.*$)
+RewriteCond %{REQUEST_URI} !(.*/dialog/.*$)
+RewriteCond %{REQUEST_URI} !(.*/login_check.php$)
+RewriteCond %{REQUEST_URI} !(.*/ajax/input.*$)
+RewriteCond %{REQUEST_URI} !(.*/install_sbivt3g.php$)
+RewriteCond %{REQUEST_URI} /$ [OR]
+RewriteCond %{REQUEST_URI} .php$
+RewriteCond %{HTTPS} on
+RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+#AuthUserFile /home/rohto/.htpasswd
+#AuthGroupFile /dev/null
+#AuthName "Secret Area"
+#AuthType Basic
+#require valid-user
+#<Files ~ "^.(htpasswd|htaccess)$">
+#    deny from all
+#</Files>
+
+php_value mbstring.language Japanese 
+php_flag mbstring.encoding_translation off 
+php_value output_handler NULL 
+php_flag magic_quotes_gpc off 
+php_flag session.auto_start 0 
+php_value mbstring.internal_encoding UTF-8 
+php_value upload_max_filesize 32M 
+php_value post_max_size 32M 
+php_flag register_globals off 
+php_value memory_limit 1024M

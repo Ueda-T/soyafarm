@@ -1,0 +1,1121 @@
+@charset "utf-8";
+
+/************************************************
+ 各ページコンテンツ用
+************************************************ */
+/* ==============================================
+▼TOP
+=============================================== */
+/* メインイメージ
+----------------------------------------------- */
+#wrapContent.topCol {
+	background: url(../img/rohto/bg_mainvisual.gif) no-repeat 50% 0;
+}
+
+/* ==============================================
+▼下層
+=============================================== */
+/* ==============================================
+▼ガイド
+=============================================== */
+/* ◎◎について
+----------------------------------------------- */
+div#undercolumn_aboutus {
+}
+
+/* 特定商取引法
+----------------------------------------------- */
+div#undercolumn_order {
+}
+
+/* お問い合わせ
+----------------------------------------------- */
+div#undercolumn_contact {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.zipimg img {
+    vertical-align: middle;
+}
+
+
+/* ==============================================
+▼MYページ
+=============================================== */
+/* 共通設定
+----------------------------------------------- */
+div#mypagecolumn {
+    width: 100%;
+}
+
+div#mynavi_area {
+    width: 100%;
+}
+
+div#mycontents_area {
+    width: 100%;
+}
+div#mynavi_area .mynavi_list {
+    margin-bottom: 20px;
+    width: 100%;
+}
+div#mynavi_area .mynavi_list li {
+    margin:0 15px 5px 0;
+    padding-left: 15px;
+    float: left;
+    background: url('../img/icon/ico_arrow_01.gif') no-repeat left ;
+    font-size: 120%;
+}
+
+div#mynavi_area div.point_announce {
+    margin-bottom: 30px;
+    padding: 10px;
+    border: solid 1px #ffcc62;
+    background-color: #fffaf0;
+}
+div#mynavi_area div.point_announce p {
+    padding-left: 20px;
+    background: url('../img/icon/ico_point.gif') no-repeat left ;
+}
+
+div#mycontents_area p.inforamtion {
+    margin-bottom: 20px;
+}
+
+div#mypagecolumn h4 {
+    margin: 10px auto;
+    border-bottom: 1px solid #999;
+    text-align: left;
+    font-size: 120%;
+}
+
+
+/* 購入履歴一覧/詳細
+----------------------------------------------- */
+div#mycontents_area div.mycondition_area {
+    margin: 0 auto 20px 0;
+    padding: 10px;
+    border: solid 1px #ccc;
+    width: 97%;
+    background: #f9f9f9;
+
+}
+div#mycontents_area div.mycondition_area p {
+    float: left;
+}
+div#mycontents_area div.mycondition_area .btn {
+    width: 160px;
+    margin-top: 15px;
+    float: right;
+}
+.add_address {
+    margin-bottom: 20px;
+}
+
+/* 会員登録内容変更/退会
+----------------------------------------------- */
+div#mycontents_area .message_area {
+    margin: 30px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+div#mycontents_area .message_area p {
+    margin-bottom: 20px;
+}
+
+/* 定期購入
+----------------------------------------------- */
+#change_dialog .cartList,
+#add_dialog .cartList {
+	width:auto;
+	margin:0;
+}
+
+table#product_change_list th.img,
+table#product_list th.img {
+	width:64px;
+}
+table#product_change_list th.btn,
+table#product_list th.btn {
+	width:40px;
+}
+table#product_change_list th.num,
+table#product_list th.num {
+	width:40px;
+}
+
+/* 定期購入商品追加ボタン */
+.regularItemAddBtn {
+	margin-bottom:10px;
+}
+
+/* ==============================================
+▼会員登録
+=============================================== */
+div#undercolumn_entry {
+    width: 100%;
+}
+
+div#undercolumn_entry .kiyaku_text {
+    margin: 20px auto;
+    padding: 10px;
+    border: solid 1px #ccc;
+    width: 94%;
+    background: #fff;
+}
+
+
+/* ==============================================
+▼ログイン
+=============================================== */
+div#undercolumn_login {
+    margin: 0 auto;
+    width: 100%;
+}
+
+div#undercolumn_login .login_area {
+    margin-bottom: 30px;
+}
+
+div#undercolumn_login .login_area .inputbox {
+    margin: 15px auto 15px auto;
+    padding: 15px 20px 10px 20px;
+    background: #f0f0f0;
+}
+
+div#undercolumn_login .login_area .inputbox .btn_area {
+    margin-top: 0;
+}
+
+
+/* ==============================================
+▼エラー
+=============================================== */
+div#undercolumn_error .message_area {
+    width:80%;
+	margin: 30px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+div#undercolumn_error .message_area .error {
+    padding: 120px 10px;
+}
+
+
+/* ==============================================
+▼商品一覧
+=============================================== */
+/* ページ送り
+----------------------------------------------- */
+.pagecond_area {
+    margin: 20px 0;
+    padding: 10px;
+	font-size: 0.75em;
+}
+.pagecond_area {
+    border: 1px solid #ccc;
+}
+.pagenumber_area .navi {
+    width: 100%;
+    text-align: left;
+}
+.pagenumber_area .navi li {
+    display: inline;
+}
+.pagenumber_area .change {
+    float: right;
+    text-align: right;
+    white-space: nowrap;
+}
+.pagenumber_area {
+	margin: 20px 0;
+	padding: 10px 15px;
+	background: url(../img/rohto/back_ptn2.gif);
+	font-size: 0.75em;
+	line-height: 120%;
+}
+.pagenumber_area .navi li strong {
+	background: #ffffff;
+	padding: 2px 8px;
+	border: 1px solid #ffffff;
+	vertical-align: middle;
+	font-weight:bold;
+}
+.pagenumber_area .navi a {
+	background: #9e9e9e;
+	padding: 2px 8px;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	vertical-align: middle;
+	text-decoration:none;
+}
+.pagenumber_area .navi a:hover {
+	background:#005aac;
+	color:#FFF;
+}
+
+/* レイアウト
+----------------------------------------------- */
+div.list_area {
+    padding: 0 0 30px 0;
+    width: 100%;
+    overflow: auto;
+}
+
+div.listphoto {
+    float: left;
+}
+
+/* メインカラム用 1カラム時*/
+#one_maincolumn div.listrightbloc {
+    float: right;
+    width: 74%;
+}
+
+/* メインカラム用 2カラム時*/
+#two_maincolumn_right div.listrightbloc ,
+#two_maincolumn_left div.listrightbloc {
+    float: right;
+    width: 80%;
+}
+
+/* メインカラム用 3カラム時*/
+#three_maincolumn div.listrightbloc {
+    float: right;
+    width: 74%;
+}
+
+
+/* 商品情報 各種設定
+----------------------------------------------- */
+/* 商品ステータス */
+div.listrightbloc ul.status_icon {
+    margin-bottom: 10px;
+    width: 100%;
+}
+div.listrightbloc ul.status_icon li {
+    margin-right: 5px;
+    float: left;
+}
+
+/* 商品名 */
+div.listrightbloc h3 {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+/* コメント */
+div.listrightbloc .listcomment {
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+/* 商品詳細を見る */
+div.listrightbloc .detail_btn {
+    margin-bottom: 20px;
+}
+
+/* 価格 */
+div.listrightbloc .pricebox {
+    margin: 0 0 10px 0;
+}
+
+/* 買い物かご */
+div.listrightbloc .cart_area {
+    padding: 10px;
+    border: 1px solid #C6D3E0;
+    background-color: #EEF0F9;
+    width: 94%;
+}
+
+/* 規格 */
+div.listrightbloc .classlist {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    background: url("../img/background/line_dot_02.gif") repeat-x bottom ;
+}
+div.listrightbloc dl {
+    width: 100%;
+}
+div.listrightbloc dt {
+    display: inline-block;
+    vertical-align: top;
+}
+div.listrightbloc dd {
+    padding-bottom: 10px;
+    display: inline-block;
+}
+div.listrightbloc dd p.attention {
+    margin-top: 5px;
+}
+/* 規格（商品一覧のみ） */
+div.itemStP .classlist {
+	margin-bottom:10px;
+}
+
+/* カゴに入れる */
+div.listrightbloc .cartin {
+    margin: 0;
+    float :right;
+}
+div.listrightbloc .cartin .quantity {
+    padding: 3px 10px 0 0;
+    width: 150px;
+    float :left;
+    text-align: right;
+}
+div.listrightbloc .cartin .quantity .box {
+    width: 70px;
+}
+div.listrightbloc .cartin_btn {
+    width: 160px;
+    float :left;
+}
+/* カゴに入れる（商品一覧のみ） */
+div.itemStP div.quantityBox {
+	float:left;
+	width:80px;
+}
+div.itemStP div.quantityBox input {
+	margin:0;
+	padding:0;
+}
+div.itemStP div.cartBtnList {
+	float:right;
+	width:120px;
+}
+div.itemStP div.cartBtnList p.teikiBtn {
+	margin-bottom:10px;
+}
+
+/* ==============================================
+▼商品詳細
+=============================================== */
+/* レイアウト
+
+    tplファイルのマークアップが同じ項目
+    *1カラム時 [one_maincolumn]
+    *2カラム時 [two_maincolumn_left]
+               [two_maincolumn_right]
+    *3カラム時 [three_maincolumn]
+
+----------------------------------------------- */
+#detailarea ,
+.sub_area {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* レイアウト
+----------------------------------------------- */
+/* 1カラム用 */
+#one_maincolumn div#detailphotobloc {
+    width: 37%;
+    float: left;
+}
+#one_maincolumn div#detailrightbloc {
+    width: 63%;
+    float: right;
+}
+#one_maincolumn div.subtext {
+    margin-bottom: 20px;
+    float: left;
+    width: 69%;
+}
+#one_maincolumn div.subphotoimg {
+    float: right;
+    width: 25%;
+    text-align: right;
+}
+#one_maincolumn p.subtext {
+    margin-bottom: 20px;
+}
+
+/* 2カラム用 */
+#two_maincolumn_left div#detailphotobloc ,
+#two_maincolumn_right div#detailphotobloc {
+    float: left;
+    width: 37%;
+}
+#two_maincolumn_left div#detailrightbloc ,
+#two_maincolumn_right div#detailrightbloc {
+    float: right;
+    width: 63%;
+}
+#two_maincolumn_left div.subtext,
+#two_maincolumn_right div.subtext {
+    margin-bottom: 20px;
+    float: left;
+    width: 73%;
+}
+#two_maincolumn_left p.subtext,
+#two_maincolumn_right p.subtext {
+    margin-bottom: 20px;
+}
+#two_maincolumn_left div.subphotoimg ,
+#two_maincolumn_right div.subphotoimg {
+    float: right;
+    width: 25%;
+    text-align: right;
+}
+
+/* 3カラム用 */
+#three_maincolumn div#detailphotobloc {
+    float: left;
+    width: 49%;
+}
+#three_maincolumn div#detailrightbloc {
+    float: right;
+    width: 50%;
+}
+#three_maincolumn div.subtext {
+    margin-bottom: 20px;
+    float: left;
+    width: 63%;
+}
+#three_maincolumn p.subtext {
+    margin-bottom: 20px;
+}
+#three_maincolumn div.subphotoimg {
+    float: right;
+    width: 35%;
+    text-align: right;
+}
+
+/* 商品情報 各種設定
+----------------------------------------------- */
+div#detailrightbloc h2 {
+    margin: 0 0 10px 0;
+    padding: 0 0 15px 0;
+    color: #666;
+    background: url("../img/background/line_dot_01.gif") repeat-x bottom ;
+    font-weight: bold;
+    font-size: 160%;
+}
+div#detailrightbloc .point ,
+div#detailrightbloc .relative_cat {
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+    background: url("../img/background/line_dot_01.gif") repeat-x bottom ;
+}
+div#detailrightbloc .main_comment {
+    margin-bottom: 20px;
+}
+div.cart_area {
+    padding: 10px;
+    border: 1px solid #C6D3E0;
+    background-color: #EEF0F9;
+}
+
+/* 商品コード */
+div#detailrightbloc .product_code dt,
+div#detailrightbloc .product_code dd {
+    display: inline;
+}
+
+/* 商品ステータス */
+div#detailrightbloc ul.status_icon {
+    margin-bottom: 10px;
+    width: 100%;
+}
+div#detailrightbloc ul.status_icon li {
+    margin-right: 5px;
+    margin-bottom: 3px;
+    float: left;
+}
+
+/* 通常価格 */
+div#detailrightbloc .normal_price dt,
+div#detailrightbloc .normal_price dd {
+    display: inline;
+}
+
+/* 販売価格 */
+div#detailrightbloc .sale_price dt,
+div#detailrightbloc .sale_price dd {
+    display: inline;
+}
+
+/* ポイント */
+div#detailrightbloc .point dt,
+div#detailrightbloc .point dd {
+    display: inline;
+}
+
+/* 規格 */
+div#detailrightbloc div.classlist {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background: url("../img/background/line_dot_02.gif") repeat-x bottom ;
+}
+div#detailrightbloc .classlist {
+    margin-bottom: 5px;
+}
+div#detailrightbloc ul {
+    margin-bottom: 10px;
+    width: 100%;
+}
+div#detailrightbloc ul li {
+    vertical-align: top;
+    float: left;
+}
+
+/* 買い物かご */
+div#detailrightbloc .cartin {
+    text-align: center;
+}
+div#detailrightbloc .cartin_btn {
+    text-align: center;
+}
+div#detailrightbloc .favorite_btn {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* お客様の声
+----------------------------------------------- */
+div#customervoice_area {
+    clear: both;
+    padding: 35px 0 0 0;
+}
+
+div#customervoice_area h2 {
+    margin-bottom: 20px;
+    padding: 6px 0 8px 10px;
+    border: solid 1px #D6D6D6;
+    border-width: 1px 1px 0 1px;
+    background: url('../img/background/bg_tit_sub_01.jpg') repeat-x left bottom;
+}
+
+div#customervoice_area .review_bloc {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f3f4fa;
+}
+
+div#customervoice_area .review_bloc p {
+    padding-top: 3px;
+    margin-right: 10px;
+    float: left;
+}
+
+div#customervoice_area review_bloc .review_btn {
+    float: right;
+    width: 160px;
+}
+
+div#customervoice_area ul li{
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    background: url("../img/background/line_dot_01.gif") repeat-x bottom ;
+}
+
+div#customervoice_area .voicetitle {
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+div#customervoice_area .voicedate {
+    margin-bottom: 10px;
+}
+
+
+/* 関連商品（商品部分はbloc.cssのおすすめ商品と共通）
+----------------------------------------------- */
+div#whobought_area {
+    clear: both;
+    padding: 35px 0 0 0;
+}
+/*
+div#whobought_area h2 {
+    border: solid 1px #D6D6D6;
+    border-width: 1px 1px 0 1px;
+    background: url('../img/background/bg_tit_sub_01.jpg') repeat-x left bottom;
+    padding: 5px 0 8px 10px;
+    font-size: 14px;
+}
+*/
+
+/* ***********************************************
+▼カートの中
+/*********************************************** */
+/* 現在のカゴの中
+----------------------------------------------- */
+div#undercolumn_cart .point_announce {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: solid 1px #ffcc62;
+    background: #fffaf0;
+    font-size: 120%;
+/*    text-align: center;*/
+    line-height: 140%;
+}
+div#undercolumn_cart .totalmoney_area {
+    margin-bottom: 20px;
+}
+
+ul#quantity_level li {
+    padding: 3px;
+    display: inline;
+}
+
+div#undercolumn .empty {
+    text-align: left;
+}
+
+div.form_area {
+    margin-bottom: 30px;
+}
+
+/* 単回・定期購入テーブル共通 */
+.midashi01 {
+	margin-bottom:1px;
+}
+table.cartListTankaiTbl,
+table.cartListTeikiTbl {
+	margin-bottom:20px;
+}
+
+table.cartListTankaiTbl th.num,
+table.cartListTeikiTbl th.num,
+table.regularItemList th.num {
+	width:52px;
+	text-align:center;
+}
+
+table.cartListTankaiTbl th.price,
+table.cartListTeikiTbl th.price,
+table.regularItemList th.price {
+	width:100px;
+	text-align:center;
+}
+
+table.cartListTankaiTbl th.deleteBtn,
+table.cartListTeikiTbl th.deleteBtn,
+table.regularItemList th.deleteBtn {
+	width:50px;
+	text-align:center;
+}
+
+/* 単回購入テーブル */
+table.cartListTankaiTbl,
+table.cartListTankaiTbl th,
+table.cartListTankaiTbl td {
+	border:1px solid #C7B068;
+}
+
+table.cartListTankaiTbl th {
+	background-color:#FFF8E0;
+}
+
+/* 定期購入テーブル */
+table.cartListTeikiTbl,
+table.cartListTeikiTbl th,
+table.cartListTeikiTbl td {
+	border:1px solid #88C442;
+}
+
+table.cartListTeikiTbl th {
+	background-color:#F9FFEB;
+}
+div.teikiAttentionBox {
+	margin-bottom:20px;
+}
+div.teikiAttentionBox div.left {
+	float:left;
+	width:135px;
+}
+
+div.teikiAttentionBox div.right {
+	float:right;
+	width:680px;
+}
+
+div.teikiAttentionBox div.right p {
+	margin-top:0.3em;
+	font-size:0.75em;
+}
+table.cartListTankaiTbl td.promImg,
+table.cartListTeikiTbl td.promImg {
+	padding-left:97px;
+	background-repeat:no-repeat;
+}
+table.cartListTankaiTbl td.promImg img,
+table.cartListTeikiTbl td.promImg img {
+	max-height:300px;
+}
+table.cartListTankaiTbl td.promImg {
+	background-image:url(../img/rohto/bg_prm_tankai.gif);
+}
+table.cartListTeikiTbl td.promImg {
+	background-image:url(../img/rohto/bg_prm_teiki.gif);
+}
+
+/* 小計・送料・キャンペーンコード */
+div.cartTotalBox {
+	border:2px solid #FAEEC7;
+	font-size:0.8em;
+}
+
+div.cartTotalBox div.inner {
+	padding:20px;
+}
+
+div.cartTotalBox p,
+div.cartTotalBox ul.ptInput {
+	text-align:right;
+}
+
+div.cartTotalBox p.subtotal {
+	border-bottom:1px solid #FAEEC7;
+	padding-bottom:10px;
+}
+
+div.cartTotalBox ul.ptInput {
+	margin-top:20px;
+}
+
+div.cartTotalBox ul.ptInput li {
+	display:inline;
+	border-right:1px solid #D9C687;
+	padding:0 1em;
+}
+
+div.cartTotalBox ul.ptInput li.last {
+	border:none;
+	padding-right:0;
+}
+
+div.cartTotalBox ul.ptInput li input {
+	border:1px solid #E77506;
+}
+
+div.cartTotalBox div.campaignCode {
+	background-color:#FAEEC7;
+}
+
+div.cartTotalBox strong {
+	font-size:230%;
+	font-weight:bold;
+	color: #e77506;
+	line-height:130%;
+	vertical-align:middle;
+}
+
+div.campaignCode p img {
+	vertical-align:middle;
+}
+
+div.campaignCode p.codeApp {
+	color:#F00;
+}
+
+/* お客様情報入力
+----------------------------------------------- */
+div#undercolumn_customer {
+}
+
+.flow_area {
+    margin: 0 0 20px 0;
+}
+
+div#undercolumn_customer th em {
+    color: #000;
+    font-weight: bold;
+}
+
+/* お届け先の複数指定
+----------------------------------------------- */
+div#undercolumn_shopping .right_control {
+    width: 100%;
+    text-align: right;
+}
+
+/* お支払い方法・お届け時間等の指定
+----------------------------------------------- */
+div#undercolumn_shopping .pay_area {
+    margin: 0 auto 30px;
+    width: 100%;
+}
+div#undercolumn_shopping .pay_area02 {
+    margin: 40px auto 30px auto;
+}
+div#undercolumn_shopping .pay_area02 .txtarea {
+    margin: 5px 0 0 0;
+    padding: 2px;
+    border: 1px solid #ccc;
+    width: 99%;
+    height: 150px;
+}
+div#undercolumn_shopping .pay_area02 .select-msg {
+    margin-bottom: 10px;
+}
+
+div#undercolumn_shopping .point_area {
+    margin: 40px auto 0 auto;
+}
+
+div#undercolumn_shopping .point_area .point_announce {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+div#undercolumn_shopping .point_area p {
+    margin-bottom: 20px;
+}
+
+div#undercolumn_shopping .point_area .point_announce li {
+    margin-bottom: 5px;
+}
+
+
+/* お届け先の指定
+----------------------------------------------- */
+#address_area {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#address_area .information {
+    width: 65%;
+    float: left;
+}
+
+#undercolumn_shopping .information {
+    margin-bottom: 15px;
+}
+
+#address_area .add_multiple {
+    padding: 15px 10px;
+    border: 1px solid #ffcc62;
+    float: right;
+    width: 30%;
+    color: #555;
+    background: #fffaf0;
+    text-align: center;
+    font-weight: bold;
+}
+
+#address_area .add_multiple p {
+    margin-bottom: 10px;
+}
+
+#address_area p.addbtn {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+/* お届け先追加ボタン
+----------------------------------------------- */
+
+.addbtn {
+	margin-top:10px;
+}
+
+/* ==============================================
+▼検索結果
+=============================================== */
+p.condition_area {
+    margin: 0 auto;
+    padding: 5px;
+    border: solid 1px #333;
+    width: 566px;
+}
+
+/* カートページ注意書き
+----------------------------------------------- */
+
+.attentionBox01 {
+	border:1px dotted #CCC;
+	background:#FFF;
+	padding:0 6px 5px 6px;
+}
+
+.attentionTit01 {
+	background:url(../img/icon/icon_attention.png) no-repeat left center;
+	padding:6px 5px 4px 28px;
+	height:20px;
+	border-bottom:1px dotted #CCC;
+	font-weight:bold;
+}
+
+.attentionBoxTxt01 {
+	font-size:10px;
+}
+
+.attentionBoxTxt01 strong {
+	border-bottom:1px solid #F00;
+	font-weight:normal;
+}
+
+.gNavCartBtn {
+	position:relative;
+}
+
+.cartCnt {
+	display:block;
+	position:absolute;
+	top:11px;
+	left:10px;
+	background:#EA2E4B;
+	padding:1px 4px;
+	text-align:center;
+	font-size:10px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+a .cartCnt {
+	text-decoration:none;
+	font-family:"arial","MS PGothic","sans-serif";
+	font-weight:bold;
+	color:#FFF;
+}
+
+/* pschecker
+----------------------------------------------- */
+
+.strength-indicator
+{
+/*	width: 200px;
+	height: 120px;
+	position: absolute;
+	left: 300px;
+	top: 2px;
+	border-left: solid 2px gray;*/
+	padding: 8px 8px 10px 16px;
+	margin-left:4px;	
+}
+.strength-indicator
+{
+	line-height: 18px;
+}
+#passwordSection .meter
+{
+	float:left;
+	display: block;
+	width: 151px;
+	height: 18px;
+	background-image:url(../img/rohto/img_password_indicator.gif);
+}
+#passwordSection .strong
+{
+	background-position:0 -54px !important;
+}
+#passwordSection .medium
+{
+	background-position:0 -36px !important;
+}
+#passwordSection .week
+{
+	background-position:0 -18px !important;
+}
+#passwordSection .no-match
+{
+	color: #FF7B78 !important;
+}
+/*
+.password-container
+{
+	width: 480px;
+	height: 130px;
+	padding: 4px;
+	position: relative;
+}
+*/
+.password-container p
+{
+	margin: 0;
+	padding: 0;
+	margin-top: 8px;
+}
+.password-container p label
+{
+	text-align: right;
+	display: inline-block;
+	width: 130px;
+	color: #6E6E6E;
+	font-size:14px;
+}
+.password-container p input[type=password]
+{
+	width: 250px;
+	height: 42px;
+	background-color: #232A34;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: none;
+	color: #fff;
+	font-size: 24px;
+}
+.password-container .info
+{
+	display: block;
+	color: Gray;
+	margin-left: 134px;
+}
+
+#passwordSection .error
+{
+	display: block;
+	font-size:0.75em;
+}
+#passwordSection .submit-button
+{
+	width: 74px;
+	height: 20px;
+	display: block;
+	margin-left: 312px;
+}
+#passwordSection a.submit-button
+{
+	text-decoration: none;
+	color: #282834;
+	font-size: 18px;
+}
+#passwordSection .locked
+{
+	background-image: url(../img/picture/locked.jpg);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+#passwordSection .unlocked
+{
+	background-image: url(../img/picture/unlocked.jpg);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+.chkIndicatorBox {
+	margin:6px 0 0 14px;
+	background:#ffece5;
+	text-align:center;
+}
+
+.chkIndicatorBox p.tit {
+	padding-top:1em;
+	font-weight:bold;
+	text-align:center;
+	color:#ea673b;
+}
+
+.password-container .labelBox {
+	float:left;
+	width:38px;
+}
+
+/* 住所簡易入力ボタン */
+img#easy {
+	vertical-align:middle;
+	margin-bottom:4px;
+}

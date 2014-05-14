@@ -1,0 +1,157 @@
+@charset "utf-8";
+
+#wrapMainVisual {
+	width: 100%;
+	height: 420px;
+	margin: 0 0 30px 0;
+	padding: 0;
+/*	background: url(../img/rohto/bg_mainvisual.gif) center top no-repeat;*/
+}
+#wrapMainVisual #mainVisual {
+	width: 960px;
+	height: 420px;
+	margin: 0 auto;
+/*	padding: 18px 0 0;*/
+}
+/* For modern browsers */
+#wrapMainVisual #mainVisual:before,
+#wrapMainVisual #mainVisual:after,
+#wrapMainVisual #mainVisual ul#mainVisualThumb:before,
+#wrapMainVisual #mainVisual ul#mainVisualThumb:after {
+    content:"";
+    display:table;
+}
+ 
+#wrapMainVisual #mainVisual:after, 
+#wrapMainVisual #mainVisual ul#mainVisualThumb:after {
+    clear:both;
+}
+ 
+/* For IE 6/7 (trigger hasLayout) */
+#wrapMainVisual #mainVisual, 
+#wrapMainVisual #mainVisual ul#mainVisualThumb {
+    zoom:1;
+}
+
+
+#wrapMainVisual #mainVisual #mainVisualImages {
+	width: 700px;
+	margin: 0;
+	padding: 5px 0 0 0;
+	float: left;
+}
+#wrapMainVisual #mainVisual ul#mainVisualMain {
+	position: relative;
+	width: 700px;
+	height: 290px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+#wrapMainVisual #mainVisual ul#mainVisualMain li {
+	position: absolute;
+	width: 700px;
+	height: 290px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: none;
+}
+#wrapMainVisual #mainVisual ul#mainVisualMain li.active {
+	display: block;
+}
+
+#wrapMainVisual #mainVisual ul#mainVisualThumb {
+	margin: 0;
+	padding: 0;
+}
+#wrapMainVisual #mainVisual ul#mainVisualThumb li {
+	float: left;
+	width: 140px;
+	height: 90px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style: none;
+	cursor: pointer;
+}
+#wrapMainVisual #mainVisual ul#mainVisualThumb li.active img{
+	margin: -90px 0 0 0;
+}
+
+#wrapMainVisual #mainVisual #mainVisualSlider {
+	position: relative;
+	width: 100px;
+	height: 1px;
+	background: url(../img/rohto/slider.gif) left top no-repeat;
+}
+
+#wrapMainVisual #mainVisual #mainVisualPromise {
+	float: right;
+	width: 242px;
+	margin: 4px 0 0 0;
+	padding: 0;
+}
+#mainVisualPromise img{
+	display:block;
+}
+#mainVisualPromiseButton:hover img.alp {
+filter:alpha(opacity=70);
+-moz-opacity:.70;
+opacity:.70;
+}
+
+
+
+
+
+#cboxClose {
+	background:url(../img/rohto/close.gif) no-repeat 0 0;
+	text-indent:-9999px; 
+	width:30px; 
+	height:30px; 
+	position:absolute; 
+	top:0;
+	right: -30px; 
+	z-index: 9999;
+}
+
+#cboxLoadingGraphic{
+	 background:url(../img/rohto/loading.gif) no-repeat center center;
+}
+
+
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;width: 30px;}
+#cboxMiddleRight, #cboxBottomRight{width: 30px;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:#000;}
+#colorbox{}
+    #cboxContent{margin-top:32px; overflow:visible;}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{background:#fff; padding:10px;}
+       
+        #cboxLoadingOverlay{background:#fff;}
+        #cboxTitle{position:absolute; top:-22px; left:0; color:#000;}
+        #cboxCurrent{position:absolute; top:-22px; right:205px; text-indent:-9999px;}
+
+/*end*/
+

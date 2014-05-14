@@ -1,0 +1,93 @@
+@charset "utf-8";
+/*///////////////////////////////////////////////////////////
+
+	フッター
+
+///////////////////////////////////////////////////////////*/
+
+/*============================================
+ 	フッター枠
+============================================*/
+#footer {
+	background: #FFFFFF;
+	margin: 0;
+}
+#footer #footer_inr {
+	width: 910px;
+	margin: 0 auto;
+	padding: 15px 0 0;
+	text-align:left;
+	background: #FFFFFF;
+}
+#footer #global_ft,
+#footer #sub_ft,
+#footer #remote_ft {
+	padding: 0 15px 0 10px;
+	margin: 0 0 10px;
+}
+#footer #remote_ft {
+	padding-bottom: 20px;
+	background: url(../img/common/img_line.gif) no-repeat bottom center;
+}
+#footer #global_ft li,
+#footer #sub_ft li,
+#footer #remote_ft li {
+	float: left;
+	padding: 0 8px 0 0;
+	font-size: 85%;
+	line-height: 1;
+	border-left: 1px solid #999999;
+}
+#footer #global_ft li a,
+#footer #sub_ft li a,
+#footer #remote_ft li a {
+	padding: 0 0 0 15px;
+	background: url(../img/icon/icon_link_ft.gif) no-repeat 6px 0.25em;
+	line-height: 1.4;
+}
+#footer li.edge	{
+	border-right: 1px solid #999999;
+}
+
+
+#footer #logo_ft {
+	clear: both;
+	float: left;
+	padding: 0 10px 12px;
+}
+
+#footer #address {
+	line-height: 1.3;
+	overflow: hidden;
+	zoom: 1;
+}
+#footer #address dt {
+	float: left;
+}
+#footer #address dd {
+	float: left;
+	display: block;
+	width: 650px;
+}
+
+/*============================================
+ 	コピーライト
+============================================*/
+#footer_btm {
+	width: 910px;
+	margin: 0 auto;
+	padding: 7px 0;
+	font-size: 0;
+	position: relative;
+}
+
+
+#footer_btm #copyright	{
+ float: left;
+}
+
+#footer_btm #gototop	{
+	float: right;
+	position: relative;
+	top: -22px;
+}

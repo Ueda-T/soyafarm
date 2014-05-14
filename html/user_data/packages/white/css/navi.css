@@ -1,0 +1,92 @@
+@charset "utf-8";
+/*///////////////////////////////////////////////////////////
+
+	サイドナビ
+
+///////////////////////////////////////////////////////////*/
+
+/*============================================
+ 	サイドナビ枠
+============================================*/
+#navi {
+	float: right;
+	width: 205px;
+	font-size: 0;
+	line-height:0;
+	background: url(../img/navi/bg_mypage_top.gif ) no-repeat right 0;
+	/*background: url(../img/navi/bg_mypage_top.gif ) no-repeat right -50px;メンテ版*/
+}
+
+/*============================================
+	 買い物かご／マイページ　ボックス
+============================================*/
+#mypage-box {
+	margin-left: 5px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	background: url(../img/navi/bg_mypage_btm.gif ) no-repeat right bottom;
+	/*border-top: 1px solid #5DC5E0;メンテ版*/
+}
+#mypage-box button {
+	width: 180px;
+	padding: 0;
+}
+
+#mypage-box p {
+	padding-right: 5px;
+	text-align: center;
+	font-size: 12px;
+}
+#mypage-box p#bt_mypage { margin-top: 12px; }
+
+/*============================================
+	 グローバルナビ
+============================================*/
+
+#navi #global-box {
+	margin: 0 0 5px;
+}
+#navi #global-box li {
+	margin: 0 0 1px;
+	text-align: right;
+}
+
+#navi #sub-box {
+	margin: 0 0 10px;
+}
+#navi #sub-box li {
+	margin: 0;
+	text-align: right;
+}
+
+
+/*============================================
+	 バナー
+============================================*/
+
+#navi #banner-box {
+	margin: 0 0 20px;
+}
+#navi #banner-box li {
+	margin: 0 0 10px;
+	text-align: right;
+}
+
+/*============================================
+	 ベリサイン
+============================================*/
+#navi #verisign {
+	display: block;
+	width: 130px;
+	padding-left: 40px;
+	margin-top: -15px;
+}
+
+
+
+
+
+
+
+

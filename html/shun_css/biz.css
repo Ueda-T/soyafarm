@@ -1,0 +1,24 @@
+@charset "shift_jis";
+
+#biz{
+	background:url(../shun_img/common/line2.gif) repeat-x top;
+	padding:20px 0 0 0;
+}
+#biz h1{
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+	margin-bottom:5px;
+}
+#biz p{
+	margin-bottom:20px;
+}
+
+#biz #contact{
+	background:url(../shun_img/common/line2.gif) repeat-x top;
+	padding:20px 0;
+	margin:20px 0 0 0;
+}
+#biz #contact ul li{
+	float:left;
+	padding:0 0 0 35px;
+}

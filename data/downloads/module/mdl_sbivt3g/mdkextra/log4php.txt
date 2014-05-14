@@ -1,0 +1,18 @@
+# \u30ED\u30B0\u51FA\u529B\u8A2D\u5B9A\uFF08\u30C6\u30AD\u30B9\u30C8\u30D5\u30A1\u30A4\u30EB\u3001\u30ED\u30B0\u30EC\u30D9\u30EB\u306FDEBUG\uFF09
+log4php.rootLogger=DEBUG, R1
+
+# \u30B5\u30A4\u30BA\u30D9\u30FC\u30B9\u306E\u30C6\u30AD\u30B9\u30C8\u30ED\u30B0\u30ED\u30FC\u30C6\u30FC\u30C8
+log4php.appender.R1=LoggerAppenderRollingFile
+log4php.appender.R1.File=/logfile_dir_change_here/mdk.log
+log4php.appender.R1.Append=true
+log4php.appender.R1.MaxBackupIndex=3
+log4php.appender.R1.MaxFileSize=8000000
+log4php.appender.R1.layout=LoggerPatternLayout
+log4php.appender.R1.layout.ConversionPattern="%d %5p [%x] - %m%n"
+
+# \u6A19\u6E96\u51FA\u529B\uFF08PHP ECHO\u3092\u4F7F\u7528\u3059\u308B\uFF09
+log4php.appender.R2=LoggerAppenderEcho
+log4php.appender.R2.layout=LoggerPatternLayout
+log4php.appender.R2.layout.ConversionPattern="%d %5p [%x] - %m%n"
+
+

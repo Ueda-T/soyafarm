@@ -1,0 +1,134 @@
+@charset "shift_jis";
+
+body{
+	margin:15px;
+}
+
+#logo{
+	background:url(../shun_img/common/line2.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+	margin-bottom:15px;
+	text-align:center;
+}
+
+h1{
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 15px 0;
+	margin-bottom:20px;
+	color:#231815;
+	font-size:120%;
+	font-weight:bold;
+}
+
+p{
+	line-height:180%;
+	margin-bottom:20px;
+}
+
+address{
+	clear:both;
+	text-align:center;
+}
+
+strong{
+	color:#af3114;
+	font-weight:lighter;
+}
+.box{
+	background:#eee;
+	padding:10px;
+}
+
+
+/* entry */
+table.outer{
+	width:100%;
+	border-top:1px solid #bfbab2;
+	margin-bottom:20px;
+}
+table.outer th{
+	border-bottom:1px solid #bfbab2;
+	color:#231815;
+	padding:10px 5px 10px 0;
+	vertical-align:top;
+}
+table.outer th img{
+	margin-right:5px;
+}
+table.outer td{
+	border-bottom:1px solid #bfbab2;
+	padding:10px 0;
+	vertical-align:top;
+}
+table.outer.odd th,
+table.outer.odd td{
+	background:#f6f4e9;
+}
+
+.btn{
+	text-align:center;
+	padding:0 50px;
+}
+.btn .next{
+	float:right;
+	
+}
+.btn .back{
+	float:left;
+	
+}
+.error{
+	color:#af3114;
+}
+.center{
+	text-align:center;
+}
+
+
+/* ditail */
+.pager{
+	text-align:right;
+	margin-bottom:25px;
+}
+.pager a{
+	padding:0 5px;
+}
+.list{
+	background:url(../shun_img/common/line2.gif) repeat-x bottom;
+	margin-bottom:25px;
+	width:100%;
+}
+.list dt{
+	background: url(../shun_img/common/line2.gif) repeat-x top;
+	padding:10px 0;
+	color:#231815;
+}
+.list dd{
+	background: url(../shun_img/common/line1.gif) repeat-x top;
+	padding:10px 0;
+}
+.list .status{
+	background:url(../shun_img/common/line1.gif) repeat-x top;
+	padding:10px 0;
+	font-size:80%;
+	color:#231815;
+	text-align:right;
+	letter-spacing:1px;
+}
+
+/**/
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+}
+.clearfix {
+	display: inline-table;
+	min-height: 1%;
+}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* End hide from IE-mac */

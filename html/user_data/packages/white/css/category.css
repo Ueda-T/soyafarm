@@ -1,0 +1,311 @@
+@charset "utf-8";
+/*--------------------------------------------*/
+p.introCategory{
+font-size:0.85em;
+line-height:140%;
+margin:20px 0;
+}
+/*--------------------------------------------*/
+/*商品のリスト表示「T」タイプ：カテゴリページ*/
+#mainCategory div.btm{
+clear:both;
+margin:30px 0 0 0;
+}
+#mainCategory .itemCStT{
+margin:20px 0 0 0;
+float:left;
+width:330px;
+/*$('div.itemCStT:nth-child(3n-2)').each(function(){
+$(this).css({marginRight:'40px'});*/
+background:url(../img/rohto/item_stt_title_head.gif) no-repeat;
+padding:15px 0 0 0;
+}
+#mainCategory .itemCStT h2{
+margin:0 0 15px 0;
+padding:0 5px 15px 10px;
+font-size:0.95em;
+background:url(../img/rohto/item_stt_title_btm.gif) no-repeat;
+}
+#mainCategory .itemCStT h2 a{
+color:#3e3e3e;
+font-weight:bold;
+text-decoration:none;
+padding:0 0 0 20px;
+background:url(../img/rohto/linkicon1.gif) no-repeat 0 50%;
+}
+#mainCategory .itemCStT h2 a:hover{
+text-decoration:underline;
+}
+#mainCategory .itemCStT p{
+font-size:0.85em;
+line-height:130%;
+margin:0 10px 10px 10px;
+}
+#mainCategory dl.item{
+float:left;
+width:165px;
+}
+#mainCategory .itemCStT dd{
+height:100px;
+margin:0 15px;
+text-align:center;
+}
+#mainCategory .itemCStT dt{
+margin:10px 15px 0 15px;
+font-size:0.75em;
+line-height:130%;
+}
+/*--------------------------------------------*/
+/*アロマ：category.aspx?category=10*/
+.aromaKaori{
+margin:20px 0 30px 0;
+width:700px;
+height:120px;
+background:url(../../../../image/aroma/kaori_back.gif) no-repeat;
+}
+.aromaKaori ul{
+margin:0 0 0 10px;
+padding:10px 0 0 0;
+}
+.aromaKaori li{
+float:left;
+margin:0 20px 0 0;
+}
+.aromaKaori li.dyn{
+margin:0 0 0 0;
+}
+/*--------------------------------------------*/
+/*美容スキンケア：category.aspx?category=20*/
+ul.cate20 {
+	margin:30px 0 0 0;
+}
+ul.cate20 li{
+	overflow:hidden;
+	float:left;
+	margin:0 40px 25px 0;
+	width:330px;
+	height:75px;
+	font-size:0.85em;
+}
+ul.cate20 li a{
+	display:block;
+	padding:30px 0 30px 38px;
+	text-decoration:none;
+	line-height:160%;
+	color:#3e3e3e;
+	font-weight:bold;
+}
+ul.cate20 li a:hover{
+	text-decoration:underline;
+	color:#005aac;
+}
+ul.cate20 li.cate20sub01{
+	background:url(../../../../image/beauty/idx/c01.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub01 a:hover{
+	background:url(../../../../image/beauty/idx/c01_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub02{
+	background:url(../../../../image/beauty/idx/c02.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub02 a:hover{
+	background:url(../../../../image/beauty/idx/c02_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub03{
+	background:url(../../../../image/beauty/idx/c03.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub03 a:hover{
+	background:url(../../../../image/beauty/idx/c03_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub04{
+	background:url(../../../../image/beauty/idx/c04.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub04 a:hover{
+	background:url(../../../../image/beauty/idx/c04_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub05{
+	background:url(../../../../image/beauty/idx/c05.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub05 a:hover{
+	background:url(../../../../image/beauty/idx/c05_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub06{
+	background:url(../../../../image/beauty/idx/c06.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub06 a:hover{
+	background:url(../../../../image/beauty/idx/c06_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub07{
+	background:url(../../../../image/beauty/idx/c07.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub07 a:hover{
+	background:url(../../../../image/beauty/idx/c07_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub08{
+	background:url(../../../../image/beauty/idx/c08.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub08 a:hover{
+	background:url(../../../../image/beauty/idx/c08_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub09{
+	background:url(../../../../image/beauty/idx/c09.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub09 a:hover{
+	background:url(../../../../image/beauty/idx/c09_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub10{
+	background:url(../../../../image/beauty/idx/c10.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub10 a:hover{
+	background:url(../../../../image/beauty/idx/c10_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub11{
+	background:url(../../../../image/beauty/idx/c11.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub11 a:hover{
+	background:url(../../../../image/beauty/idx/c11_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub12{
+	background:url(../../../../image/beauty/idx/c12.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub12 a:hover{
+	background:url(../../../../image/beauty/idx/c12_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub13{
+	background:url(../../../../image/beauty/idx/c13.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub13 a:hover{
+	background:url(../../../../image/beauty/idx/c13_ov.jpg) no-repeat;
+}
+ul.cate20 li.cate20sub14{
+	background:url(../../../../image/beauty/idx/c14.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate20 li.cate20sub14 a:hover{
+	background:url(../../../../image/beauty/idx/c14_ov.jpg) no-repeat;
+}
+/*--------------------------------------------*/
+/*食品飲料：category.aspx?category=9010*/
+ul.cate9010 {
+	margin:30px 0 0 0;
+}
+ul.cate9010 li{
+	overflow:hidden;
+	float:left;
+	margin:0 40px 25px 0;
+	width:330px;
+	height:75px;
+	font-size:0.85em;
+}
+ul.cate9010 li a{
+	display:block;
+	padding:30px 0 30px 38px;
+	text-decoration:none;
+	line-height:160%;
+	color:#3e3e3e;
+	font-weight:bold;
+}
+ul.cate9010 li a:hover{
+	text-decoration:underline;
+	color:#005aac;
+}
+ul.cate9010 li.cate9010sub01{
+	background:url(../../../../image/food/idx/c01.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub01 a:hover{
+	background:url(../../../../image/food/idx/c01_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub02{
+	background:url(../../../../image/food/idx/c02.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate9010 li.cate9010sub02 a:hover{
+	background:url(../../../../image/food/idx/c02_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub03{
+	background:url(../../../../image/food/idx/c03.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub03 a:hover{
+	background:url(../../../../image/food/idx/c03_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub04{
+	background:url(../../../../image/food/idx/c04.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate9010 li.cate9010sub04 a:hover{
+	background:url(../../../../image/food/idx/c04_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub05{
+	background:url(../../../../image/food/idx/c05.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub05 a:hover{
+	background:url(../../../../image/food/idx/c05_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub06{
+	background:url(../../../../image/food/idx/c06.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate9010 li.cate9010sub06 a:hover{
+	background:url(../../../../image/food/idx/c06_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub07{
+	background:url(../../../../image/food/idx/c07.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub07 a:hover{
+	background:url(../../../../image/food/idx/c07_ov.jpg) no-repeat;
+}
+/*ul.cate9010 li.cate9010sub08{
+	background:url(../../../../image/food/idx/c08.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub08 a:hover{
+	background:url(../../../../image/food/idx/c08_ov.jpg) no-repeat;
+}*/
+ul.cate9010 li.cate9010sub09{
+	background:url(../../../../image/food/idx/c09.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate9010 li.cate9010sub09 a:hover{
+	background:url(../../../../image/food/idx/c09_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub10{
+	background:url(../../../../image/food/idx/c10.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub10 a:hover{
+	background:url(../../../../image/food/idx/c10_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub11{
+	background:url(../../../../image/food/idx/c11.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub11 a:hover{
+	background:url(../../../../image/food/idx/c11_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub12{
+	background:url(../../../../image/food/idx/c12.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate9010 li.cate9010sub12 a:hover{
+	background:url(../../../../image/food/idx/c12_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub13{
+	background:url(../../../../image/food/idx/c13.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub13 a:hover{
+	background:url(../../../../image/food/idx/c13_ov.jpg) no-repeat;
+}
+ul.cate9010 li.cate9010sub14{
+	background:url(../../../../image/food/idx/c14.jpg) no-repeat;
+	margin-right:0;
+}
+ul.cate9010 li.cate9010sub14 a:hover{
+	background:url(../../../../image/food/idx/c14_ov.jpg) no-repeat;
+}
+/*--------------------------------------------*/
+
+/*--------------------------------------------*/
+/*end*/

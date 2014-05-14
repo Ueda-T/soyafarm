@@ -1,0 +1,47 @@
+; ##############################################################################
+; サービスに関連する設定
+; ##############################################################################
+[Service]
+; ダミーモード（テスト時のみ指定）
+DUMMY_REQUEST                  = 1
+; MDK固有エラーモード(テスト時のみ指定）
+MDK_ERROR_MODE                 = 0
+
+; ##############################################################################
+; 接続に関連する設定
+; ##############################################################################
+[Connection]
+; 送信方法
+PROTOCOL                       = POST_NO_SECURITY
+
+; 二者間POST(Securityなし)送信URL
+TARGET_HOST_POST_NO_SECURITY   = https://3g.veritrans.co.jp:443/tercerog/webinterface/GWPostNoSecurityCommandRcv
+; 三者間送信URL(UTF-8版)
+TRIPARTITE_URL                 = https://3g.veritrans.co.jp:443/tercerog/webinterface/GWTripartiteCommandRcv
+; 三者間送信URL(Shift_JIS版)
+TRIPARTITE_SJIS_URL            = https://3g.veritrans.co.jp:443/tercerog/webinterface/GWTripartiteSJISCommandRcv
+
+; 接続タイムアウト時間(秒)
+CONNECTION_TIMEOUT             = 120
+
+; SSL暗号用 CA証明書ファイル名
+CA_CERT_FILE                   = /cafile_dir_change_here/cert.pem
+
+; プロキシのURLを指定する(未指定若しくは当プロパティを指定しない場合、プロキシなし扱い)
+;PROXY_SERVER_URL               =
+; プロキシのユーザ名
+;PROXY_USERNAME                 =
+; プロキシのパスワード
+;PROXY_PASSWORD                 =
+
+; マーチャントCCID。VeriTrans指定のものを設定して下さい。
+MERCHANT_CC_ID                 =
+; マーチャントパスワード。VeriTrans指定のものを設定して下さい。
+MERCHANT_SECRET_KEY            =
+
+; ##############################################################################
+; 環境に関連する設定
+; ##############################################################################
+[Environment]
+; 要求、応答DTOに設定される文字列のエンコード(未指定の場合はUTF-8と判断して処理しない)
+DTO_ENCODE                     = UTF-8

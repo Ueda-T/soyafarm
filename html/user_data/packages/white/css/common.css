@@ -1,0 +1,506 @@
+1@charset "utf-8";
+
+/************************************************
+ 共通設定
+************************************************ */
+body {
+	color: #434343;
+	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3", sans-serif;
+	background:#A9CF39 url(../img/back.gif) no-repeat 50% 0;
+/*	font-size: 72.5%;*/
+	font-size:100%;
+	font-weight:normal;
+/*	line-height: 150%;
+	letter-spacing: 0.1em;*/
+}
+
+select {
+/*	border: solid 1px #ccc;*/
+}
+
+/*写真*/
+/*
+.picture {
+	border: 1px solid #ccc;
+}
+*/
+
+strong {
+	vertical-align:top;
+	font-weight:normal;
+}
+
+.red { color: #c4162a; }
+
+.paddingTop10 { padding-top:10px !important; }
+.paddingTop20 { padding-top:20px !important; }
+.paddingBottom10 { padding-bottom:10px !important; }
+.paddingBottom20 { padding-bottom:20px !important; }
+.floatLeft { float:left !important; }
+.floatRight { float:right !important; }
+
+/* ==============================================
+ フレーム
+=============================================== */
+/* 全体を包括 */
+.frame_outer {
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+
+/* コンテンツ */
+#container {
+	margin: 0 auto;
+	padding: 0 0 0 0;
+	width: 960px;
+	background: #fff;
+	text-align: left;
+/*	border-bottom: solid 1px #D6D6D6;*/
+}
+
+/* ==============================================
+ カラム指定
+=============================================== */
+/* ヘッダーとフッターの上下
+[注意]ブロック移動時はbloc.css内で調整が必要 */
+#topcolumn ,
+#bottomcolumn ,
+#footerbottomcolumn {
+	margin: 0 auto;
+/*	padding: 15px;
+	width: 960px;*/
+	background: #fff;
+	text-align: left;
+}
+
+/* 中央カラム */
+.main_column {
+/*	padding: 10px 0 0;*/
+	background-color:#fff;
+}
+
+/* サイドカラム */
+#leftcolumn {
+	float: left;
+	width: 210px;
+}
+#rightcolumn {
+	float: right;
+	width: 210px;
+}
+
+/* 1カラム設定 */
+#one_maincolumn {
+	margin: 0 auto;
+	width: 960px;
+}
+
+/* 2カラム設定 (メイン部が左) */
+#two_maincolumn_left {
+/*	padding-left: 20px;*/
+	float: left;
+	width: 700px;
+}
+
+/* 2カラム設定 (メイン部が右) */
+#two_maincolumn_right {
+/*	padding-right: 20px;*/
+	width: 700px;
+	float: right;
+
+}
+
+/* 3カラム設定 */
+#three_maincolumn {
+	padding-left: 9px;
+	width: 570px;
+	float: left;
+}
+
+/* 下層コンテンツ */
+#undercolumn {
+	width: 100%;
+	margin:0 0 30px 0;
+}
+
+
+/* ==============================================
+ ユーティリティ
+=============================================== */
+/* フロート回り込み解除
+----------------------------------------------- */
+.clearfix:after {
+	display: block;
+	clear: both;
+	height: 0px;
+	line-height: 0px;
+	visibility: hidden;
+	content: ".";
+}
+
+
+/* リンク指定
+----------------------------------------------- */
+a:link ,
+a:visited {
+	color: #005aac;
+/*	text-decoration: none;*/
+}
+a:link:hover ,
+a[href]:hover {
+	color: #d53b00;
+	text-decoration: underline;
+}
+
+
+/* フォント
+----------------------------------------------- */
+h1,h2,h3,h4,h5 {
+	font-size: 100%;
+/*	line-height: 150%;*/
+}
+.price {
+	color:#292929;
+}
+.sale_price {
+	color:#292929;
+}
+
+.normal_price {
+	color:#292929;
+	font-size: 90%;
+}
+.point {
+	color:#CC3333;
+	font-weight: bold;
+}
+.user_name {
+	font-weight: bold;
+}
+.recommend_level {
+	color: #ecbd00;
+}
+
+.attention {
+	color:#CC3333;
+}
+.attentionSt {
+	color:#CC3333;
+	font-weight: bold;
+}
+.st {
+	font-weight: bold;
+}
+.mini {
+	font-size: 90%;
+}
+
+.sale_price .price,
+.total .price {
+	color: #CC3333;
+}
+
+
+
+
+/* 行揃え
+----------------------------------------------- */
+.alignC {
+	text-align: center;
+}
+.alignR {
+	text-align: right;
+}
+.alignL {
+	text-align: left;
+}
+.pricetd em {
+	font-weight: bold;
+}
+
+
+/* フォーム
+----------------------------------------------- */
+input[type='text'] ,
+input[type='password'] ,
+.select {
+	border: solid 1px #ccc;
+	padding: 2px;
+}
+
+.box40 {
+	width: 40px;
+}
+.box60 {
+	width: 60px;
+}
+.box100 {
+	width: 100px;
+}
+.box120 {
+	width: 120px;
+}
+.box140 {
+	width: 140px;
+}
+.box145 {
+	width: 145px;
+}
+.box150 {
+	width: 150px;
+}
+.box240 {
+	width: 240px;
+}
+.box300 {
+	width: 300px;
+}
+.box320 {
+	width: 320px;
+}
+.box350 {
+	width: 350px;
+}
+.box380 {
+	width: 380px;
+}
+
+/* フォームが縦に重なり合う場合に併用する余白 */
+.top {
+	margin-bottom: 5px;
+}
+
+#subCustomer dl.myPageMenu dt.top {
+	margin-bottom:auto;
+}
+
+.ng_top {
+	margin-bottom: 0 !important;
+}
+
+input.selected,textarea.selected,select.selected,option.selected {
+	background-color:#FFF;
+}
+
+input.valNone,textarea.valNone,select.valNone,option.valNone {
+	background-color:#EEE;
+}
+
+/* タイトル
+----------------------------------------------- */
+/*
+h2.title {
+	margin-bottom: 10px;
+	padding: 8px 8px 5px 8px;
+	color: #7291AD;
+	background: #DEF2F3 url("../img/background/bg_tit_sub_01.jpg") repeat-x left bottom;
+	font-size: 170%;
+}
+
+#one_maincolumn .sub_area h3 ,
+#two_maincolumn_right .sub_area h3 ,
+#two_maincolumn_left .sub_area h3 ,
+#three_maincolumn .sub_area h3 ,
+#undercolumn_login .login_area h3 ,
+#undercolumn_shopping h3 ,
+#mypagecolumn h3 ,
+#undercolumn_cart h3 {
+	margin: 0 0 10px 0;
+	padding: 5px 0 10px;
+	color: #292929;
+	background: url("../img/background/line_01.gif") repeat-x left bottom;
+	font-size: 120%;
+}
+
+div#undercolumn_login .login_area h4 {
+	padding-left: 15px;
+	background: url("../img/icon/ico_arrow_05.gif") no-repeat left;
+}
+*/
+
+/* ==============================================
+ ヘッダー
+=============================================== */
+/* レイアウト
+----------------------------------------------- */
+#header_wrap {
+/*	border-top: solid 3px #A8A8A8;*/
+/*	min-height: 82px;*/
+}
+#header {
+}
+#logo_area {
+	padding-left: 10px;
+	float: left;
+	width: 390px;
+	text-align: left;
+}
+#header_utility {
+	float: right;
+	width: 580px;
+}
+
+#errorHeader {
+	color: #F00;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #FEB;
+	text-align: center;
+	padding: 5px;
+}
+
+/* ロゴ
+----------------------------------------------- */
+#site_description {
+	font-size: 90%;
+	color: #292929;
+}
+#logo_area h1 {
+	width: 420px;
+	height: 33px;
+}
+
+#logo_area h1 a:link,
+#logo_area h1 a:visited,
+#logo_area h1 a:hover,
+#logo_area h1 a:active {
+ color:#292929;
+}
+
+
+#logo_area h1 span {
+	display: none; /* テキストロゴ非表示 */
+/* ロゴ画像を使用しない場合
+	display:block;
+	margin-top:25px;
+	font-size:24px;
+	line-height:120%; */
+}
+
+/* ロゴ画像を使用しない場合
+#logo_area h1 img {
+	display:none; 
+}*/
+
+
+/* ヘッダーナビ
+----------------------------------------------- */
+div#header_navi {
+	float: right;
+	width: 409px;
+	height: 38px;
+}
+div#header_navi ul li {
+	display: block;
+	float: right;
+}
+div#header_navi ul li.mypage,
+div#header_navi ul li.entry {
+	margin-top: 6px;
+}
+
+
+/* ==============================================
+ フッター
+=============================================== */
+#footer_wrap {
+	margin: 0 auto;
+	width: 980px;
+	padding-bottom:30px;
+	background: #fff;
+}
+#footer {
+	margin: auto;
+	padding-top: 10px;
+	width: 950px;
+}
+#pagetop {
+	width: 210px;
+	float: right;
+	text-align: right;
+}
+#copyright {
+	width: 740px;
+	float: left;
+	text-align: left;
+	font-size: 97%;
+}
+
+
+/* ==============================================
+ パーツ
+=============================================== */
+/* ボタン
+----------------------------------------------- */
+.btn_area {
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.btn_area li {
+	padding-right: 10px;
+	display: inline;
+}
+
+
+/* 完了メッセージ
+----------------------------------------------- */
+div#complete_area {
+	margin-bottom: 20px;
+}
+div#complete_area .message ,
+div#undercolumn_entry .message {
+	margin-bottom: 20px;
+	line-height: 150%;
+	font-weight: bold;
+	font-size: 120%;
+}
+div#complete_area .shop_information {
+	margin-top: 40px;
+	padding: 20px 0 0 0;
+	border-top: solid 1px #ccc;
+}
+div#complete_area .shop_information .name {
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 140%;
+}
+
+
+/* Tipsy
+----------------------------------------------- */
+.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-arrow { position: absolute; background: url('../img/ajax/tipsy.gif') no-repeat top left; width: 9px; height: 5px; }
+  .tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
+	.tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
+	.tipsy-ne .tipsy-arrow { top: 0; right: 10px; }
+  .tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -4px; background-position: bottom left; }
+	.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; background-position: bottom left; }
+	.tipsy-se .tipsy-arrow { bottom: 0; right: 10px; background-position: bottom left; }
+  .tipsy-e .tipsy-arrow { top: 50%; margin-top: -4px; right: 0; width: 5px; height: 9px; background-position: top right; }
+  .tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }
+
+
+
+/* Designed by
+----------------------------------------------- */
+.designed {
+	margin:0 auto;
+	padding:25px 0 ;
+	text-align:right;
+	font-size:90%;
+}
+.designed a:link ,
+.designed a:visited {
+	color:#666666;
+	text-decoration:underline;
+}
+.designed a:hover {
+	color: #D26A4D;
+}
+
+/*end*/

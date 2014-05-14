@@ -1,0 +1,12 @@
+[Service]
+MDK_VERSION             = 1.4.0E
+
+[RequestDto]
+COMMON_ITEM             = serviceType,optionTypes,serviceCommand,orderId,originalOrderId,amount,serviceOptionType,optionParams
+
+[ResponseDto]
+MASK_ITEM               = cardNumber,cardExpire,birthday,tel,firstKanaName,lastKanaName,mailAddr,merchantMailAddr,cancelMailAddr,name1,name2,kana,kana1,kana2,telNo,address1,address2,address3,post1,post2,customerNo,pan,settleAmount,exchangeRate,paymentDate,paymentStatus,centerTxnId,shipName,shipStreet1,shipStreet2,shipCity,shipState,shipCountry,shipPostalCode,shipPhone,reqFirstKanaName,reqLastKanaName,reqTel,reqBirthday,reqCardNumber,reqCardExpire,securityCode,pin,jis1SecondTrack,jis2Track
+
+[Cipher]
+MESSAGE_DIGEST_TYPE     = sha256
+

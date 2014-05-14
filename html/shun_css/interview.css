@@ -1,0 +1,501 @@
+@charset "shift_jis";
+
+#interview{
+	background:url(../shun_img/common/line2.gif) repeat-x top;
+	padding:20px 0 0 0;
+}
+#interview h1{
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+	margin-bottom:5px;
+}
+#interview h2{
+	margin-bottom:15px;
+	color:#15110e;
+	font-size:120%;
+	font-weight:bold;
+}
+
+#interview p{
+	margin-bottom:20px;
+}
+
+#interview p.honbun{
+	margin-bottom:20px;
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+}
+
+#interview div.block{
+	margin-bottom:20px;
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+}
+
+#interview dl{
+	margin-bottom:20px;
+	background:url(../shun_img/common/line1.gif) repeat-x bottom;
+	padding:0 0 20px 0;
+}
+
+#interview dt.red{
+	float:left;
+	width:60px;
+	color:#af3114;
+	margin-bottom:0.75em;
+	clear:left;
+}
+#interview dt.green{
+	float:left;
+	width:60px;
+	color:#789030;
+	margin-bottom:0.75em;
+	clear:left;
+}
+#interview dd{
+	margin-left:60px;
+	margin-bottom:0.75em;
+}
+
+/* comment
+----------------------------------------------------------------------------- */
+#interview .comment{
+	background:url(../shun_img/interview/comment_top.gif) no-repeat top;
+	padding:10px 0 0 0;
+	margin-top:10px;
+}
+#interview .comment dl{
+	background:url(../shun_img/interview/comment_back.gif) no-repeat bottom;
+	padding:0 0 2px 0;
+}
+#interview .comment dt{
+	float:left;
+	margin:0 15px;
+}
+#interview .comment dd{
+	line-height:160%;
+	margin-right:10px;
+	padding:10px 0;	
+}
+#interview .comment dd img{
+	margin-bottom:5px;
+}
+
+
+/* profile
+----------------------------------------------------------------------------- */
+#interview p.img{
+	float:left;
+	padding-right:20px;
+}
+
+#interview p.name{
+	color:#000;
+	margin-bottom:5px;
+}
+#interview p.prof{
+	color:#000;
+	font-size:80%;
+}
+
+/* backnumber
+----------------------------------------------------------------------------- */
+#interview .box{
+	border:1px solid #dedada;
+	padding:15px 15px 0 15px;
+	margin-bottom:15px;
+	background:#fff;
+	clear:both;
+}
+
+/* column03
+----------------------------------------------------------------------------- */
+#columnSummer{
+	background:url(../shun_img/common/line2.gif) repeat-x top;
+	padding:20px 0 0 0;
+}
+
+#columnSummer h1{
+	padding-bottom:20px;
+	margin:0;
+}
+
+#columnSummer #columnSummerProf h2{
+	padding:0 0 10px 0;
+	font-weight:bold;
+	color:#b83314;
+	font-size:120%;
+	background:none;
+	margin:0;
+}
+
+#columnSummer #columnSummerProf{
+	margin-bottom:20px;
+}
+
+#columnSummer #columnSummerProf .photo{
+	width:100px;
+	float:left;
+	padding-right:15px;
+	font-size:80%;
+	line-height:1.4;
+	color:#837729;
+}
+
+#columnSummer #columnSummerProf .photo img{
+	margin-bottom:3px;
+}
+
+#columnSummer p{
+	line-height:1.6;
+	margin-bottom:10px;
+}
+
+.columnSummerbox{
+	clear:both;
+	padding-bottom:50px;
+}
+
+.columnSummerboxL{
+	float:left;
+	width:350px;
+}
+
+.columnSummerboxR{
+	float:right;
+	width:287px;
+}
+
+.columnSummerboxL.line{
+	background:url(../shun_img/common/line1.gif) repeat-x top;
+	padding-top:15px;
+	margin-top:15px;
+}
+
+.columnSummerboxL h6{
+	font-weight:bold;
+	font-size:120%;
+}
+.columnSummerboxL .fRight{
+	padding-left:10px;
+}
+	
+.columnSummerbox h3,
+.columnSummerbox h5{
+	margin-bottom:15px;
+}
+
+.columnSummerbox h4{
+	margin-bottom:10px;
+}
+
+.columnSummerboxComment{
+	clear:both;
+	background:url(../shun_img/common/line1.gif) repeat-x top;
+	padding-top:20px;
+	margin-top:20px;
+}
+
+.columnSummerboxComment h6{
+	font-weight:bold;
+	color:#b83314;
+	margin-bottom:5px;
+}
+
+.columnSummerboxComment .fRight{
+	padding-left:10px;
+	width:180px;
+	font-size:80%;
+	color:#837729;
+}
+
+.columnSummerboxComment .fRight img{
+	margin-bottom:5px;
+}
+
+.columnSummerOther{
+	clear:both;
+	border:1px solid #e4ca8d;
+	background:#fffde7;
+	zoom:1;
+}
+
+.columnSummerOther h4{
+	padding:5px 10px;
+	background:#f5a21d;
+	color:#FFF;
+	font-weight:bold;
+	margin:0px;
+}
+
+.columnSummerOtherContent{
+	padding:14px;
+}
+
+.columnSummerOtherContent h5{
+	font-weight:bold;
+	color:#b83314;
+	margin-bottom:5px;
+}
+
+
+.columnSummerOtherItem{
+	border:1px solid #ece6a9;
+	padding:4px 9px;
+	background:#FFF;
+	width:285px;
+	zoom:1;
+	height:auto;
+}
+
+.columnSummerOtherItemTxt{
+	width:140px;
+	padding-left:10px;
+}
+
+.columnSummerOtherItemPic,
+.columnSummerOtherItemTxt{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+/* IE6 IE7用　ここから */
+* html .columnSummerOtherItemPic,
+* html .columnSummerOtherItemTxt{/* IE 6 */
+	display:inline;
+	zoom:1;
+}
+
+*:first-child+html .columnSummerOtherItemPic,
+*:first-child+html .columnSummerOtherItemTxt{/* IE 7 */
+	display:inline;
+	zoom:1;
+}
+/* IE6 IE7用　ここまで */
+
+.columnSummerOtherItem .fLeft{
+	padding-right:10px;
+}
+
+.columnSummerOtherItem h6{
+	font-weight:bold;
+	color:#c1800f;
+}
+
+.columnSummerOtherItem .btnDetail a{
+	background:none;
+	text-decoration:none;
+	outline:none;
+}
+
+.columnSummerOtherItem .btnDetail a:hover{
+	background:none;
+	text-decoration:none;
+	outline:none;
+}
+
+/* column04
+----------------------------------------------------------------------------- */
+#columnWinter{
+	background:url(../shun_img/common/line2.gif) repeat-x top;
+	padding:20px 0 0 0;
+}
+
+#columnWinter h1{
+	padding-bottom:20px;
+	margin:0;
+}
+
+#columnWinter p{
+	line-height:1.6;
+	margin-bottom:10px;
+}
+
+.columnWinterbox{
+	clear:both;
+	padding-bottom:40px;
+}
+
+.columnWinterboxL{
+	float:left;
+	width:316px;
+}
+
+.columnWinterboxR{
+	float:right;
+	width:316px;
+}
+
+.columnWinterboxL.line{
+	background:url(../shun_img/common/line1.gif) repeat-x top;
+	padding-top:15px;
+	margin-top:15px;
+}
+
+.columnWinterboxL h6,
+.columnWinterboxR h6{
+	font-weight:bold;
+	font-size:120%;
+}
+.columnWinterboxL .fRight{
+	padding-left:10px;
+}
+	
+.columnWinterbox h3,
+.columnWinterbox h5{
+	margin-bottom:15px;
+}
+
+.columnWinterbox h4{
+	margin-bottom:15px;
+}
+
+.columnWinterboxComment{
+	margin-bottom:20px;
+}
+
+.columnWinterboxComment h5{
+	font-weight:bold;
+	color:#b83314;
+	margin-bottom:5px;
+}
+
+.columnWinterboxComment .fRight{
+	padding-left:10px;
+}
+
+.columnWinterboxComment .fRight img{
+	margin-bottom:5px;
+}
+
+.columnWinterOther{
+	clear:both;
+	border:1px solid #e4ca8d;
+	background:#fffde7;
+	zoom:1;
+}
+
+.columnWinterOther h4{
+	padding:5px 10px;
+	background:#f5a21d;
+	color:#FFF;
+	font-weight:bold;
+	margin:0px;
+}
+
+.columnWinterOtherContent{
+	padding:14px;
+}
+
+.columnWinterOtherContent h5{
+	font-weight:bold;
+	color:#b83314;
+	margin-bottom:5px;
+}
+
+
+.columnWinterOtherItem{
+	border:1px solid #ece6a9;
+	padding:4px 9px;
+	background:#FFF;
+	width:285px;
+	zoom:1;
+	height:auto;
+}
+
+.columnWinterOtherItemTxt{
+	width:140px;
+	padding-left:10px;
+}
+
+.columnWinterOtherItemPic,
+.columnWinterOtherItemTxt{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+/* IE6 IE7用　ここから */
+* html .columnWinterOtherItemPic,
+* html .columnWinterOtherItemTxt{/* IE 6 */
+	display:inline;
+	zoom:1;
+}
+
+*:first-child+html .columnWinterOtherItemPic,
+*:first-child+html .columnWinterOtherItemTxt{/* IE 7 */
+	display:inline;
+	zoom:1;
+}
+/* IE6 IE7用　ここまで */
+
+.columnWinterOtherItem .fLeft{
+	padding-right:10px;
+}
+
+.columnWinterOtherItem h6{
+	font-weight:bold;
+	color:#c1800f;
+}
+
+.columnWinterOtherItem .btnDetail a{
+	background:none;
+	text-decoration:none;
+	outline:none;
+}
+
+.columnWinterOtherItem .btnDetail a:hover{
+	background:none;
+	text-decoration:none;
+	outline:none;
+}
+
+
+
+
+#columnProf h2{
+	padding:0 0 10px 0;
+	font-weight:bold;
+	color:#b83314;
+	font-size:120%;
+	background:none;
+	margin:0;
+}
+
+#columnProf{
+	margin-bottom:20px;
+}
+
+#columnProf .photo{
+	width:100px;
+	float:left;
+	padding-right:15px;
+	font-size:80%;
+	line-height:1.4;
+	color:#837729;
+}
+
+#columnProf .photo img{
+	margin-bottom:3px;
+}
+
+.columnbn{
+	border:1px solid #dedada;
+	padding:15px 15px 0 15px;
+	margin-bottom:15px;
+	background:#fff;
+	clear:both;
+}
+
+.pageNavi{
+	clear:both;
+	border:1px solid #dedada;
+	padding:10px 15px;
+	margin-bottom:20px;
+}
+
+.pageNavi li{
+	width:290px;
+	float:left;
+	padding-right:15px;
+	margin-bottom:5px;
+}
