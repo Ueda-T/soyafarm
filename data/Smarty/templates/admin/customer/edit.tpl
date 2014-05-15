@@ -205,6 +205,13 @@ $(document).ready(function(){
                     <input type="hidden" name="kashidaore_kbn" value="<!--{$arrForm.kashidaore_kbn|h}-->" />
                 </td>
             </tr>
+            <tr>
+                <th>顧客形態</th>
+                <td>
+                    <!--{$arrCustomerTypeCd[$arrForm.customer_type_cd]|h}-->
+                    <input type="hidden" name="customer_type_cd" value="<!--{$arrForm.customer_type_cd|h}-->" />
+                </td>
+            </tr>
             <input type="hidden" name="dm_flg" value="<!--{$arrForm.dm_flg|h}-->" />
             <input type="hidden" name="agree" value="1" />
         </table>

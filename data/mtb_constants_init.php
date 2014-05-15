@@ -431,8 +431,8 @@ define('INOS_CUSTOMER_POINT_LEN', 5);
 define('INOS_CUSTOMER_TORIHIKI_ID_LEN', 50);
 /** 顧客取込 WEB顧客CD桁数 */
 define('INOS_CUSTOMER_CUSTOMER_ID_LEN', 10);
-/** 顧客取込 顧客状態CD桁数 */
-define('INOS_CUSTOMER_CUSTOMER_STATUS_CD_LEN', 1);
+/** 顧客取込 顧客形態CD桁数 */
+define('INOS_CUSTOMER_CUSTOMER_TYPE_CD_LEN', 2);
 
 /** 定期取込 コース受注NO桁数 */
 define('INOS_REGULAR_BASE_NO_LEN', 10);

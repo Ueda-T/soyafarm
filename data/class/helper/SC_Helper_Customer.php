@@ -479,6 +479,9 @@ EOF;
             $objFormParam->addParam
                 ("償却顧客区分", 'kashidaore_kbn', INT_LEN, 'n',
                  array("NUM_CHECK", "MAX_LENGTH_CHECK"));
+            $objFormParam->addParam
+                ("顧客形態", 'customer_type_cd', INT_LEN, 'n',
+                 array("NUM_CHECK", "MAX_LENGTH_CHECK"));
         }
 
         if (SC_Display_Ex::detectDevice() !== DEVICE_TYPE_MOBILE){

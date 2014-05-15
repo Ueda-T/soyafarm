@@ -53,6 +53,11 @@ class LC_Page_Admin_Customer_Edit extends LC_Page_Admin_Ex {
         $objDb = new SC_Helper_DB_Ex();
         $this->arrPayment = $objDb->sfGetIDValueList
 	    ("dtb_payment", "payment_id", "payment_method");
+
+        // 顧客形態
+        $objDb = new SC_Helper_DB_Ex();
+        $this->arrCustomerTypeCd = $objDb->sfGetIDValueList
+	    ("dtb_customer_type", "customer_type_cd", "customer_type_name");
     }
 
     /**

@@ -112,6 +112,10 @@ function func_return(){
                 <th>償却顧客区分</th>
                 <td><!--{$arrKashidaoreKbn[$arrForm.kashidaore_kbn]|h}--></td>
             </tr>
+            <tr>
+                <th>顧客形態</th>
+                <td><!--{$arrCustomerTypeCd[$arrForm.customer_type_cd]|h}--></td>
+            </tr>
         </table>
         <div class="btn-area">
             <ul>
