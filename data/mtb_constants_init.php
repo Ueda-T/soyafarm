@@ -384,6 +384,8 @@ define('INOS_SHIPMENT_CD_LEN', 2);
 define('INOS_DELIV_ID_LEN', 2);
 /** 箱サイズ文字数 */
 define('INOS_BOX_SIZE_LEN', 3);
+/** 送り状枚数桁数 */
+define('INOS_INVOICE_NUM_LEN', 2);
 /** 配達時間CD(配送時間ID)桁数 */
 define('INOS_TIME_ID_LEN', 2);
 /** 明細書同梱区分桁数 */
@@ -453,6 +455,8 @@ define('INOS_REGULAR_DETAIL_TODOKE_DAY_LEN', 2);
 define('INOS_REGULAR_DETAIL_TODOKE_WEEK_LEN', 1);
 /** 定期詳細取込 キャンセル理由CD桁数 */
 define('INOS_REGULAR_DETAIL_CANCEL_REASON_CD_LEN', 2);
+/** 定期詳細取込 値引率桁数 */
+define('INOS_CUT_RATE_LEN', 3);
 
 /** 商品取込 一般価格 */
 define('INOS_PRODUCTS_PRICE_NORMAL_LEN', 7);
