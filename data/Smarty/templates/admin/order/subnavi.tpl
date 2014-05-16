@@ -20,13 +20,6 @@
 
 </ul>
 
-<!--{if $tpl_csv_download_auth == $smarty.const.CSV_DOWNLOAD_AUTH_ON}-->
-<ul class="level1" style="margin-top:14px;">
-    <li style="padding:5px 4px;font-weight:bold;font-size:110%;">定期情報</li>
-    <li<!--{if $tpl_subno == 'export_mix_regular'}--> class="on"<!--{/if}--> id="export-mix-regular"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/expMixRegular.php"><span>新旧商品混在定期情報エクスポート</span></a></li>
-</ul>
-<!--{/if}-->
-
 <!--{if $tpl_inos_auth == $smarty.const.INOS_AUTH_ON}-->
 <ul class="level1" style="margin-top:14px;">
     <li style="padding:5px 4px;font-weight:bold;font-size:110%;">INOSシステム連携</li>

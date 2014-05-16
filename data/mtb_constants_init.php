@@ -1,11 +1,11 @@
 <?php
 /** フロント表示関連 */
-define('SAMPLE_NAME', "例：呂登 太郎");
-define('SAMPLE_KANA', "例：ﾛｳﾄ ﾀﾛｳ");
-define('SAMPLE_TEL', "例：0120-880-610");
-define('SAMPLE_ZIP', "例：544-8666");
-define('SAMPLE_ADDRESS1', "例：大阪市生野区巽西");
-define('SAMPLE_ADDRESS2', "例：1-8-1 呂登マンション000号室");
+define('SAMPLE_NAME', "例：大豆 太郎");
+define('SAMPLE_KANA', "例：ﾀﾞｲｽﾞ ﾀﾛｳ");
+define('SAMPLE_TEL', "例：0120-39-3009");
+define('SAMPLE_ZIP', "例：542-0086");
+define('SAMPLE_ADDRESS1', "例：大阪市中央区西心斎橋");
+define('SAMPLE_ADDRESS2', "例：2-1-5　日本生命御堂筋八幡町ビル");
 /** ユーザファイル保存先 */
 define('USER_DIR', "user_data/");
 /** ユーザファイル保存先 */
@@ -216,9 +216,9 @@ define('BRAND_HEAD', ">");
 /** 生年月日初期選択年 */
 define('START_BIRTH_YEAR', 1970);
 /** 価格名称 */
-define('NORMAL_PRICE_TITLE', "価格");
+define('NORMAL_PRICE_TITLE', "税込価格");
 /** 価格名称 */
-define('SALE_PRICE_TITLE', "社員価格");
+define('SALE_PRICE_TITLE', "税抜価格");
 /** ログファイル */
 define('LOG_REALFILE', DATA_REALDIR . "logs/site.log");
 /** 会員ログイン ログファイル */
@@ -966,16 +966,16 @@ define('ORDER_PROMOTION_MAX_COUNT', 50);
 define('SHIPPING_MAIL_MAX_COUNT', 100);
 
 // パンくずHOME表記
-define('TPL_PC_HOME_NAME', 'ロート通販 HOME');
+define('TPL_PC_HOME_NAME', 'ソヤファームクラブ HOME');
 
 // メールタイトル
-define('MAIL_TITLE_SHOP_NAME', 'ロート通販オンラインショップ');
+define('MAIL_TITLE_SHOP_NAME', 'ソヤファームクラブ');
 
 $mailSignature =<<<EOF
-ロート通販オンラインショップ　http://www.shop.rohto.co.jp/
-フリーダイヤル:0120-880-610　受付時間:9時～21時(年末年始を除く)
+ソヤファームクラブ　http://www.soyafarm.com/
+フリーダイヤル:0120-39-3009　受付時間:9時～19時(日・祝休み)
 ▼お問い合わせフォームはこちら
-https://www.shop.rohto.co.jp/shop/contact/
+https://www.soyafarm.com/shop/contact/
 EOF;
 
 // メール署名
@@ -990,5 +990,5 @@ define('CART_REGULAR_KEY', 'regular_cart');
 define('REGULAR_FUTURE_MONTH', 3);
 
 // エラーメール送信先
-define('DB_ERROR_MAIL_TO', "rohto-ml@iqueve.co.jp");
+define('DB_ERROR_MAIL_TO', "soyafarm@iqueve.co.jp");
 ?>
