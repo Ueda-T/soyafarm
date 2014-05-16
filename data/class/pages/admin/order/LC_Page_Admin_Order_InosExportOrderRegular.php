@@ -144,6 +144,7 @@ select
         else concat(shpref.name, sh.shipping_addr01)
         end AS addr01,
     sh.shipping_addr02,
+    od.course_cd,
     oh.status,
     date_format(sh.shipping_commit_date, '%Y/%m/%d') as shipping_commit_date,
     sh.shipping_area_code,
@@ -155,6 +156,7 @@ select
                 then {$inos_deliv_id_sagawa}
         else "" end as deliv_id,
     oh.deliv_box_id,
+    oh.invoice_num,
     date_format(sh.shipping_date, '%Y/%m/%d') as shipping_date,
     ifnull(sh.time_id, {$deliv_time_id_none}) as time_id,
     oh.note,
@@ -165,10 +167,7 @@ select
     oh.payment_id,
     oh.subtotal,
     oh.deliv_fee,
-    oh.use_point as use_point_price,
     oh.payment_total,
-    oh.add_point,
-    oh.use_point,
     oh.purchase_motive_code,
     oh.input_assistance_code,
     oh.event_code,
@@ -177,8 +176,6 @@ select
      where id = oh.device_type_id
     ) as order_kbn,
     oh.regular_base_no,
-    oh.return_num,
-    oh.return_amount,
     oh.order_id,
     oh.customer_id,
     oh.memo04,
@@ -196,8 +193,7 @@ select
     od.quantity,
     od.price,
     od.price * od.quantity AS price_total,
-    od.course_cd,
-    od.return_quantity
+    od.cut_rate
 from
     dtb_order as oh
     inner join dtb_shipping as sh
@@ -401,9 +397,18 @@ select
         else concat(rpref.name, rh.order_addr01)
         end as order_addr01,
     rh.order_addr02,
+    rd.course_cd,
     rh.status,
+    rd.todoke_kbn,
+    rd.todoke_day,
+    rd.todoke_week,
+    rd.todoke_week2,
+    date_format(rd.next_arrival_date, '%Y/%m/%d') as next_arrival_date,
     date_format(rh.next_ship_date, '%Y/%m/%d') as next_ship_date,
+    date_format(rd.after_next_arrival_date, '%Y/%m/%d') as after_next_arrival_date,
     date_format(rh.after_next_ship_date, '%Y/%m/%d') as after_next_ship_date,
+    date_format(rd.cancel_date, '%Y/%m/%d') as cancel_date,
+    rd.cancel_reason_cd,
     rh.shipment_cd,
     case
         when rh.deliv_id = {$deliv_id_yamato} OR
@@ -413,6 +418,7 @@ select
                 then {$inos_deliv_id_sagawa}
         else "" end as deliv_id,
     rh.box_size,
+    rh.invoice_num,
     rh.time_id,
     oh.note,
     rh.include_kbn,
@@ -428,16 +434,7 @@ select
     rd.product_name,
     rd.quantity,
     rd.price,
-    rd.course_cd,
-    rd.status as detail_status,
-    rd.todoke_kbn,
-    rd.todoke_day,
-    rd.todoke_week,
-    rd.todoke_week2,
-    date_format(rd.next_arrival_date, '%Y/%m/%d') as next_arrival_date,
-    date_format(rd.after_next_arrival_date, '%Y/%m/%d') as after_next_arrival_date,
-    date_format(rd.cancel_date, '%Y/%m/%d') as cancel_date,
-    rd.cancel_reason_cd
+    rd.cut_rate
 from
     dtb_regular_order_detail rd
     inner join dtb_regular_order as rh
