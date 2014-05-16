@@ -10,9 +10,7 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
     var $arrRowResult;
 
     var $INOS_DELIV_ID_YAMATO;
-    var $INOS_DELIV_ID_SAGAWA;
     var $DELIV_ID_YAMATO;
-    var $DELIV_ID_SAGAWA;
     var $DELIV_ID_YAMATO_MAIL;
     var $DELIV_BOX_ID_TAKUHAI;
     var $DELIV_BOX_ID_MAIL;
@@ -36,11 +34,9 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
 
         // 基幹宅配便コード
         $this->INOS_DELIV_ID_YAMATO = INOS_DELIV_ID_YAMATO;
-        $this->INOS_DELIV_ID_SAGAWA = INOS_DELIV_ID_SAGAWA;
 
         // WEB宅配便コード
         $this->DELIV_ID_YAMATO = DELIV_ID_YAMATO;
-        $this->DELIV_ID_SAGAWA = DELIV_ID_SAGAWA;
         $this->DELIV_ID_YAMATO_MAIL = DELIV_ID_YAMATO_MAIL;
 
         // WEB箱ID
@@ -54,11 +50,13 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
                                           , 'shipping_tel'
                                           , 'shipping_zip'
                                           , 'shipping_addr01'
+                                          , 'course_cd'
                                           , 'status'
                                           , 'commit_date'
                                           , 'shipping_area_code'
                                           , 'deliv_id'
                                           , 'deliv_box_id'
+                                          , 'invoice_num'
                                           , 'time_id'
                                           , 'deliv_kbn'
                                           , 'cool_kbn'
@@ -66,22 +64,16 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
                                           , 'payment_id'
                                           , 'subtotal'
                                           , 'deliv_fee'
-                                          , 'use_point'
                                           , 'payment_total'
-                                          , 'add_point'
-                                          , 'use_point'
                                           , 'order_kbn'
                                           , 'regular_base_no'
-                                          , 'return_num'
-                                          , 'return_amount'
                                           , 'line_no'
                                           , 'product_code'
                                           , 'product_name'
                                           , 'quantity'
                                           , 'price'
                                           , 'price_total'
-                                          , 'course_cd'
-                                          , 'return_quantity'
+                                          , 'cut_rate'
                                            );
 
         set_time_limit(0);
@@ -165,11 +157,13 @@ set order_base_no = nullif(order_base_no, '')
   , shipping_addr_kana = nullif(shipping_addr_kana, '')
   , shipping_addr01 = nullif(shipping_addr01, '')
   , shipping_addr02 = nullif(shipping_addr02, '')
+  , course_cd = nullif(course_cd, '')
   , status = nullif(status, '')
   , commit_date = nullif(commit_date, '0000-00-00')
   , shipping_area_code = nullif(shipping_area_code, '')
   , deliv_id = nullif(deliv_id, '')
   , deliv_box_id = nullif(deliv_box_id, '')
+  , invoice_num = nullif(invoice_num, '')
   , shipping_date = nullif(shipping_date, '0000-00-00 00:00:00')
   , time_id = nullif(time_id, '')
   , note = nullif(note, '')
@@ -180,17 +174,12 @@ set order_base_no = nullif(order_base_no, '')
   , payment_id = nullif(payment_id, '')
   , subtotal = nullif(subtotal, '')
   , deliv_fee = nullif(deliv_fee, '')
-  , use_point01 = nullif(use_point01, '')
   , payment_total = nullif(payment_total, '')
-  , add_point = nullif(add_point, '')
-  , use_point02 = nullif(use_point02, '')
   , purchase_motive_code = nullif(purchase_motive_code, '')
   , input_assistance_code = nullif(input_assistance_code, '')
   , event_code = nullif(event_code, '')
   , order_kbn = nullif(order_kbn, '')
   , regular_base_no = nullif(regular_base_no, '')
-  , return_num = nullif(return_num, '')
-  , return_amount = nullif(return_amount, '')
   , web_order_no = nullif(web_order_no, '')
   , web_customer_id = nullif(web_customer_id, '')
   , memo04 = nullif(memo04, '')
@@ -203,8 +192,7 @@ set order_base_no = nullif(order_base_no, '')
   , quantity = nullif(quantity, '')
   , price = nullif(price, '')
   , price_total = nullif(price_total, '')
-  , course_cd = nullif(course_cd, '')
-  , return_quantity = nullif(return_quantity, '')
+  , cut_rate = nullif(cut_rate, '')
 ;
 __EOS;
 
@@ -578,9 +566,8 @@ INSERT INTO dtb_order (
    ,subtotal
    ,deliv_id
    ,deliv_box_id
+   ,invoice_num
    ,deliv_fee
-   ,use_point
-   ,add_point
    ,tax
    ,total
    ,payment_total
@@ -599,8 +586,6 @@ INSERT INTO dtb_order (
    ,input_assistance_code
    ,event_code
    ,regular_base_no
-   ,return_num
-   ,return_amount
    ,del_flg
    ,memo04
 )
@@ -624,14 +609,10 @@ SELECT
     THEN {$this->DELIV_ID_YAMATO_MAIL}
     WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
      AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-    THEN {$this->DELIV_ID_YAMATO}
-    WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-     AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-    THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+    THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
    ,IM.deliv_box_id
+   ,IM.invoice_num
    ,IM.deliv_fee
-   ,IM.use_point02
-   ,IM.add_point
    ,0
    ,(IM.subtotal + IM.deliv_fee) AS total
    ,IM.payment_total
@@ -650,8 +631,6 @@ SELECT
    ,IM.input_assistance_code
    ,IM.event_code
    ,IM.regular_base_no
-   ,IM.return_num
-   ,IM.return_amount
    ,IM.del_flg
    ,IM.memo04
 FROM
@@ -726,10 +705,7 @@ SELECT
     THEN {$this->DELIV_ID_YAMATO_MAIL}
     WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
      AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-    THEN {$this->DELIV_ID_YAMATO}
-    WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-     AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-    THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+    THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
    ,IM.time_id
    ,(SELECT DT.deliv_time AS shipping_time
        FROM dtb_delivtime DT
@@ -739,10 +715,7 @@ SELECT
                                THEN {$this->DELIV_ID_YAMATO_MAIL}
                                WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                                 AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-                               THEN {$this->DELIV_ID_YAMATO}
-                               WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                                AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-                               THEN {$this->DELIV_ID_SAGAWA} END
+                               THEN {$this->DELIV_ID_YAMATO} END
     )
    ,IM.shipping_num
    ,IM.shipping_date
@@ -783,8 +756,8 @@ INSERT INTO dtb_order_detail (
    ,product_code
    ,price
    ,quantity
+   ,cut_rate
    ,course_cd
-   ,return_quantity
    ,sell_flg
 )
 SELECT
@@ -796,8 +769,8 @@ SELECT
    ,IM.product_code
    ,IM.price
    ,IM.quantity
+   ,IM.cut_rate
    ,IM.course_cd
-   ,IM.return_quantity
    ,1
 FROM
     dtb_order_inos_import IM
@@ -856,13 +829,10 @@ inner join (SELECT IM.web_order_no
                    THEN {$this->DELIV_ID_YAMATO_MAIL}
                    WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                     AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-                   THEN {$this->DELIV_ID_YAMATO}
-                   WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                    AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-                   THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+                   THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
                   ,IM.deliv_box_id
+                  ,IM.invoice_num
                   ,IM.deliv_fee
-                  ,IM.use_point02
                   ,(IM.subtotal + IM.deliv_fee) AS total
                   ,IM.payment_total
                   ,IM.payment_id
@@ -876,8 +846,6 @@ inner join (SELECT IM.web_order_no
                   ,IM.input_assistance_code
                   ,IM.event_code
                   ,IM.regular_base_no
-                  ,IM.return_num
-                  ,IM.return_amount
                   ,IM.del_flg
                   ,IM.memo04
                FROM dtb_order_inos_import IM
@@ -894,8 +862,8 @@ inner join (SELECT IM.web_order_no
                ,o.subtotal = imp2.subtotal
                ,o.deliv_id = imp2.deliv_id
                ,o.deliv_box_id = imp2.deliv_box_id
+               ,o.invoice_num = imp2.invoice_num
                ,o.deliv_fee = imp2.deliv_fee
-               ,o.use_point = imp2.use_point02
                ,o.total = imp2.total
                ,o.payment_total = imp2.payment_total
                ,o.payment_id = imp2.payment_id
@@ -910,8 +878,6 @@ inner join (SELECT IM.web_order_no
                ,o.input_assistance_code = imp2.input_assistance_code
                ,o.event_code = imp2.event_code
                ,o.regular_base_no = imp2.regular_base_no
-               ,o.return_num = imp2.return_num
-               ,o.return_amount = imp2.return_amount
                ,o.del_flg = imp2.del_flg
                ,o.memo04 = imp2.memo04
 ;
@@ -938,10 +904,7 @@ inner join (SELECT
                THEN {$this->DELIV_ID_YAMATO_MAIL}
                WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                 AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-               THEN {$this->DELIV_ID_YAMATO}
-               WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-               THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+               THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
               ,IM.time_id
               ,(SELECT DT.deliv_time
                   FROM dtb_delivtime DT
@@ -952,10 +915,7 @@ inner join (SELECT
                             THEN {$this->DELIV_ID_YAMATO_MAIL}
                             WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                              AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-                            THEN {$this->DELIV_ID_YAMATO}
-                            WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                             AND IM.deliv_box_id = {$this->DELIV_BOX_ID_TAKUHAI}
-                            THEN {$this->DELIV_ID_SAGAWA} END
+                            THEN {$this->DELIV_ID_YAMATO} END
                ) AS shipping_time
               ,IM.shipping_num
               ,IM.shipping_date
@@ -1030,8 +990,8 @@ INSERT INTO dtb_order_detail (
    ,product_code
    ,price
    ,quantity
+   ,cut_rate
    ,course_cd
-   ,return_quantity
    ,sell_flg
 )
 SELECT
@@ -1043,8 +1003,8 @@ SELECT
    ,IM.product_code
    ,IM.price
    ,IM.quantity
+   ,IM.cut_rate
    ,IM.course_cd
-   ,IM.return_quantity
    ,1
 FROM
     dtb_order_inos_import IM
@@ -1456,6 +1416,7 @@ __EOS;
        , shipping_area_code
        , deliv_id
        , deliv_box_id
+       , invoice_num
        , date_format(shipping_date, '%Y/%m/%d') as shipping_date
        , time_id
        , note
@@ -1466,17 +1427,12 @@ __EOS;
        , payment_id
        , subtotal
        , deliv_fee
-       , use_point01
        , payment_total
-       , add_point
-       , use_point02
        , purchase_motive_code
        , input_assistance_code
        , event_code
        , order_kbn
        , regular_base_no
-       , return_num
-       , return_amount
        , web_order_no
        , web_customer_id
        , memo04
@@ -1489,8 +1445,8 @@ __EOS;
        , quantity
        , price
        , price_total
+       , cut_rate
        , course_cd
-       , return_quantity
        , error_name
     from dtb_order_inos_import
    where error_flg = 1
@@ -1512,6 +1468,7 @@ __EOS;
                          , "出荷場所CD"
                          , "宅配便CD"
                          , "箱サイズ"
+                         , "送り状枚数"
                          , "納品指定日"
                          , "配達時間CD"
                          , "指定条件"
@@ -1522,17 +1479,12 @@ __EOS;
                          , "支払方法CD"
                          , "合計金額"
                          , "税込送料"
-                         , "ポイント使用額"
                          , "総合計金額"
-                         , "獲得ポイント"
-                         , "使用ポイント"
                          , "購入動機CD"
                          , "入力補助CD"
                          , "イベントCD"
                          , "受注区分"
                          , "コース受注NO"
-                         , "返品回数"
-                         , "返品金額"
                          , "WEB受注NO"
                          , "WEB顧客CD"
                          , "クレジット取引ID"
@@ -1545,8 +1497,8 @@ __EOS;
                          , "数量"
                          , "税込単価"
                          , "税込金額"
+                         , "値引率"
                          , "コースCD"
-                         , "返品数量"
                          , "エラー内容");
         // CSVダウンロード実行
         $objCsv = new SC_Helper_CSV_Ex();
