@@ -832,7 +832,7 @@ define('DELIV_ID_YAMATO', 1);
 define('DELIV_ID_SAGAWA', 2);
 /** 配送業者ID(ヤマト運輸メール便) */
 define('DELIV_ID_YAMATO_MAIL', 3);
-/** 産直品フラグ(岡山) */
+/** 産直品フラグ(紀泉) */
 define('DROP_SHIPMENT_FLG_OFF', '1');
 /** 産直品フラグ(産直) */
 define('DROP_SHIPMENT_FLG_ON', '2');
