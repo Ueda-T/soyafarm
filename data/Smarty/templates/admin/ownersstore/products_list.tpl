@@ -26,10 +26,8 @@
         <th>ロゴ</th>
         <th>商品名</th>
         <th>導入バージョン</th>
-        <!--{if ($tpl_update_auth == $smarty.const.UPDATE_AUTH_ON)}-->
         <th>インストール</th>
         <th>設定</th>
-        <!--{/if}-->
         <th>購入ステータス</th>
     </tr>
     <!--{foreach from=$arrProducts item=product name=products_list_loop}-->
@@ -40,12 +38,8 @@
             </td>
             <td>
                 <p>
-                    <!--{if ($tpl_update_auth == $smarty.const.UPDATE_AUTH_ON)}-->
                     <a href="<!--{$smarty.const.OSTORE_URL}-->products/detail.php?product_id=<!--{$product.product_id|h}-->" target="_blank">
                         <!--{$product.name}--></a>
-                    <!--{else}-->
-                        <!--{$product.name}-->
-                    <!--{/if}-->
                 </p>
                 <p>Version.<!--{$product.version|default:"--"}-->　<!--{$product.last_update_date|sfDispDBDate:false|h}--></p>
             </td>
@@ -56,7 +50,6 @@
             </td>
 
             <!--{* ダウンロード対象商品なら各種ボタンを表示する *}-->
-            <!--{if ($tpl_update_auth == $smarty.const.UPDATE_AUTH_ON)}-->
             <!--{if $product.download_flg}-->
 
                 <td>
@@ -97,7 +90,6 @@
 
                 <td>--</td>
                 <td>--</td>
-            <!--{/if}-->
             <!--{/if}-->
 
             <td><!--{$product.status|h|nl2br}--></td>
