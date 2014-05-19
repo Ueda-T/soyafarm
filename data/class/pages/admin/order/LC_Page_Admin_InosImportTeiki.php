@@ -14,9 +14,7 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
     var $arrRowResult;
 
     var $INOS_DELIV_ID_YAMATO;
-    var $INOS_DELIV_ID_SAGAWA;
     var $DELIV_ID_YAMATO;
-    var $DELIV_ID_SAGAWA;
     var $DELIV_ID_YAMATO_MAIL;
     var $DELIV_BOX_ID_TAKUHAI;
     var $DELIV_BOX_ID_MAIL;
@@ -44,11 +42,9 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
 
         // 基幹宅配便コード
         $this->INOS_DELIV_ID_YAMATO = INOS_DELIV_ID_YAMATO;
-        $this->INOS_DELIV_ID_SAGAWA = INOS_DELIV_ID_SAGAWA;
 
         // WEB宅配便コード
         $this->DELIV_ID_YAMATO = DELIV_ID_YAMATO;
-        $this->DELIV_ID_SAGAWA = DELIV_ID_SAGAWA;
         $this->DELIV_ID_YAMATO_MAIL = DELIV_ID_YAMATO_MAIL;
 
         // WEB箱ID
@@ -62,8 +58,8 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
                    );
         // 明細用休止、解約時用の必須チェック不要カラム
         $this->arrNoExistsDtlHoldPtnCol
-            = array('dtl_next_arrival_date',
-                    'dtl_after_next_arrival_date'
+            = array('next_arrival_date',
+                    'after_next_arrival_date'
                    );
         // 削除時用の必須チェック不要カラム
         $this->arrNoExistsDelPtnCol
@@ -79,20 +75,22 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
                     'shipment_cd',
                     'deliv_id',
                     'box_size',
+                    'invoice_num',
                     'time_id',
                     'include_kbn',
                     'payment_id',
                     'deliv_fee',
                     'buy_num',
-                    'dtl_line_no',
-                    'dtl_product_code',
-                    'dtl_quantity',
-                    'dtl_price',
-                    'dtl_course_cd',
-                    'dtl_status',
-                    'dtl_todoke_kbn',
-                    'dtl_next_arrival_date',
-                    'dtl_after_next_arrival_date',
+                    'line_no',
+                    'product_code',
+                    'quantity',
+                    'price',
+                    'cut_rate',
+                    'course_cd',
+                    'status',
+                    'todoke_kbn',
+                    'next_arrival_date',
+                    'after_next_arrival_date',
                    );
         // 削除時用の必須チェック必要カラム
         $this->arrExistsDelPtnCol
@@ -176,12 +174,22 @@ set regular_base_no = nullif(regular_base_no, ''),
     order_addr_kana = nullif(order_addr_kana, ''),
     order_addr01 = nullif(order_addr01, ''),
     order_addr02 = nullif(order_addr02, ''),
+    course_cd = nullif(course_cd, ''),
     status = nullif(status, ''),
+    todoke_kbn = nullif(todoke_kbn, ''),
+    todoke_day = nullif(todoke_day, ''),
+    todoke_week = nullif(todoke_week, ''),
+    todoke_week2 = nullif(todoke_week2, ''),
+    next_arrival_date = nullif(next_arrival_date, ''),
     next_ship_date = nullif(next_ship_date, ''),
+    after_next_arrival_date = nullif(after_next_arrival_date, ''),
     after_next_ship_date = nullif(after_next_ship_date, ''),
+    cancel_date = nullif(cancel_date, ''),
+    cancel_reason_cd = nullif(cancel_reason_cd, ''),
     shipment_cd = nullif(shipment_cd, ''),
     deliv_id = nullif(deliv_id, ''),
     box_size = nullif(box_size, ''),
+    invoice_num = nullif(invoice_num, ''),
     time_id = nullif(time_id, ''),
     remarks = nullif(remarks, ''),
     include_kbn = nullif(include_kbn, ''),
@@ -191,21 +199,13 @@ set regular_base_no = nullif(regular_base_no, ''),
     order_id = nullif(order_id, ''),
     del_flg = nullif(del_flg, ''),
     update_date = nullif(update_date, '0000-00-00 00:00:00'),
-    dtl_line_no = nullif(dtl_line_no, ''),
-    dtl_product_code = nullif(dtl_product_code, ''),
-    dtl_product_name = nullif(dtl_product_name, ''),
-    dtl_quantity = nullif(dtl_quantity, ''),
-    dtl_price = nullif(dtl_price, ''),
-    dtl_course_cd = nullif(dtl_course_cd, ''),
-    dtl_status = nullif(dtl_status, ''),
-    dtl_todoke_kbn = nullif(dtl_todoke_kbn, ''),
-    dtl_todoke_day = nullif(dtl_todoke_day, ''),
-    dtl_todoke_week = nullif(dtl_todoke_week, ''),
-    dtl_todoke_week2 = nullif(dtl_todoke_week2, ''),
-    dtl_next_arrival_date = nullif(dtl_next_arrival_date, ''),
-    dtl_after_next_arrival_date = nullif(dtl_after_next_arrival_date, ''),
-    dtl_cancel_date = nullif(dtl_cancel_date, ''),
-    dtl_cancel_reason_cd = nullif(dtl_cancel_reason_cd, '')
+    line_no = nullif(line_no, ''),
+    product_code = nullif(product_code, ''),
+    product_name = nullif(product_name, ''),
+    quantity = nullif(quantity, ''),
+    price = nullif(price, ''),
+    cut_rate = nullif(cut_rate, '')
+;
 __EOS;
 
     $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
@@ -279,10 +279,10 @@ __EOS;
      , t1.error_name = '商品マスタに該当する商品が存在しておりません'
  where t1.error_flg = 0
    and t1.del_flg = 0
-   and t1.dtl_status < 9
+   and t1.status < 9
    and not exists (select 'X'
                      from dtb_products_class pc
-                    where t1.dtl_product_code = pc.product_code
+                    where t1.product_code = pc.product_code
                       and pc.del_flg = 0)
 __EOS;
 
@@ -322,7 +322,7 @@ __EOS;
         $objFormParam->convParam();
 
         // 項目チェック処理実行、コース受注NOをキーに結果取得
-        $arrErrData[][$arrData["regular_base_no"]][$arrData["dtl_line_no"]]
+        $arrErrData[][$arrData["regular_base_no"]][$arrData["line_no"]]
             = $this->lfCheckError($objFormParam);
         }
 
@@ -347,7 +347,7 @@ __EOS;
            set imp.error_flg = 1
              , imp.error_name = '{$err_msg}'
          where imp.regular_base_no = '{$regular_base_no}'
-         and imp.dtl_line_no = '{$line_no}'
+         and imp.line_no = '{$line_no}'
 __EOS;
                     $objQuery->query($sql);
 
@@ -364,8 +364,8 @@ __EOS;
 update dtb_regular_inos_import t1
      , (select regular_base_no
           from dtb_regular_inos_import
-      group by regular_base_no, dtl_line_no
-        having count(dtl_line_no) > 1) t2
+      group by regular_base_no, line_no
+        having count(line_no) > 1) t2
    set t1.error_flg = 1
      , t1.error_name = 'インポートファイル内 行NO重複エラー'
  where t1.regular_base_no = t2.regular_base_no
@@ -405,11 +405,6 @@ __EOS;
                 && $arrRet["status"] != REGULAR_ORDER_STATUS_PURCHASE) {
                 $objFormParam->removeCheck
                     ($this->arrNoExistsHoldPtnCol, 'EXIST_CHECK');
-            }
-            // 明細状況が0:受注中、1：購入中で無いときは必須一部解除
-            if ($arrRet["dtl_status"] != REGULAR_ORDER_STATUS_PURCHASE) {
-                $objFormParam->removeCheck
-                    ($this->arrNoExistsDtlHoldPtnCol, 'EXIST_CHECK');
             }
 
             $arrErr = $objFormParam->checkError(false);
@@ -577,6 +572,7 @@ INSERT INTO dtb_regular_order (
    ,shipment_cd
    ,deliv_id
    ,box_size
+   ,invoice_num
    ,time_id
    ,remarks
    ,include_kbn
@@ -611,11 +607,9 @@ INSERT INTO dtb_regular_order (
                 THEN {$this->DELIV_ID_YAMATO_MAIL}
                 WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                  AND IM.box_size = {$this->DELIV_BOX_ID_TAKUHAI}
-                THEN {$this->DELIV_ID_YAMATO}
-                WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                 AND IM.box_size = {$this->DELIV_BOX_ID_TAKUHAI}
-                THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+                THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
          , IM.box_size
+         , IM.invoice_num
          , IM.time_id
          , IM.remarks
          , IM.include_kbn
@@ -699,11 +693,9 @@ INNER JOIN (SELECT CS.customer_id
                         THEN {$this->DELIV_ID_YAMATO_MAIL}
                         WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                          AND IM.box_size = {$this->DELIV_BOX_ID_TAKUHAI}
-                        THEN {$this->DELIV_ID_YAMATO}
-                        WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                         AND IM.box_size = {$this->DELIV_BOX_ID_TAKUHAI}
-                        THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+                        THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
                  , IM.box_size
+                 , IM.invoice_num
                  , IM.time_id
                  , IM.remarks
                  , IM.include_kbn
@@ -745,6 +737,7 @@ INNER JOIN (SELECT CS.customer_id
          , R.shipment_cd = IM2.shipment_cd
          , R.deliv_id = IM2.deliv_id
          , R.box_size = IM2.box_size
+         , R.invoice_num = IM2.invoice_num
          , R.time_id = IM2.time_id
          , R.remarks = IM2.remarks
          , R.include_kbn = IM2.include_kbn
@@ -783,11 +776,9 @@ INNER JOIN (SELECT CS.customer_id
                         THEN {$this->DELIV_ID_YAMATO_MAIL}
                         WHEN IM.deliv_id = {$this->INOS_DELIV_ID_YAMATO}
                          AND IM.box_size = {$this->DELIV_BOX_ID_TAKUHAI}
-                        THEN {$this->DELIV_ID_YAMATO}
-                        WHEN IM.deliv_id = {$this->INOS_DELIV_ID_SAGAWA}
-                         AND IM.box_size = {$this->DELIV_BOX_ID_TAKUHAI}
-                        THEN {$this->DELIV_ID_SAGAWA} END AS deliv_id
+                        THEN {$this->DELIV_ID_YAMATO} END AS deliv_id
                  , IM.box_size
+                 , IM.invoice_num
                  , IM.time_id
                  , IM.remarks
                  , IM.include_kbn
@@ -833,6 +824,7 @@ INNER JOIN (SELECT CS.customer_id
          , R.shipment_cd = IM2.shipment_cd
          , R.deliv_id = IM2.deliv_id
          , R.box_size = IM2.box_size
+         , R.invoice_num = IM2.invoice_num
          , R.time_id = IM2.time_id
          , R.remarks = IM2.remarks
          , R.include_kbn = IM2.include_kbn
@@ -875,6 +867,7 @@ INSERT INTO dtb_regular_order_detail (
    ,product_name
    ,price
    ,quantity
+   ,cut_rate
    ,todoke_kbn
    ,todoke_day
    ,todoke_week
@@ -890,23 +883,24 @@ INSERT INTO dtb_regular_order_detail (
    ,update_date
 )
     SELECT RH.regular_id
-         , IM.dtl_line_no
+         , IM.line_no
          , PC.product_id
          , PC.product_class_id
-         , IM.dtl_product_code
-         , IM.dtl_product_name
-         , IM.dtl_price
-         , IM.dtl_quantity
-         , IM.dtl_todoke_kbn
-         , IM.dtl_todoke_day
-         , IM.dtl_todoke_week
-         , IM.dtl_todoke_week2
-         , IM.dtl_course_cd
-         , IM.dtl_status
-         , IM.dtl_next_arrival_date
-         , IM.dtl_after_next_arrival_date
-         , IM.dtl_cancel_date
-         , IM.dtl_cancel_reason_cd
+         , IM.product_code
+         , IM.product_name
+         , IM.price
+         , IM.quantity
+         , IM.cut_rate
+         , IM.todoke_kbn
+         , IM.todoke_day
+         , IM.todoke_week
+         , IM.todoke_week2
+         , IM.course_cd
+         , IM.status
+         , IM.next_arrival_date
+         , IM.after_next_arrival_date
+         , IM.cancel_date
+         , IM.cancel_reason_cd
          , IM.del_flg
          , IM.order_date
          , IM.update_date
@@ -914,7 +908,7 @@ INSERT INTO dtb_regular_order_detail (
 INNER JOIN dtb_regular_order RH
         ON RH.regular_base_no = IM.regular_base_no
  LEFT JOIN dtb_products_class PC
-        ON PC.product_code = IM.dtl_product_code
+        ON PC.product_code = IM.product_code
        AND PC.del_flg = 0
      WHERE IM.error_flg = 0
        AND IM.del_flg = 0
@@ -1169,12 +1163,22 @@ select regular_base_no
      , order_addr_kana
      , order_addr01
      , order_addr02
+     , course_cd
      , status
+     , todoke_kbn
+     , todoke_day
+     , todoke_week
+     , todoke_week2
+     , date_format(next_arrival_date, '%Y/%m/%d') as next_arrival_date
      , next_ship_date
+     , date_format(after_next_arrival_date, '%Y/%m/%d') as after_next_arrival_date
      , after_next_ship_date
+     , date_format(cancel_date, '%Y/%m/%d') as cancel_date
+     , cancel_reason_cd
      , shipment_cd
      , deliv_id
      , box_size
+     , invoice_num
      , time_id
      , remarks
      , include_kbn
@@ -1184,21 +1188,12 @@ select regular_base_no
      , order_id
      , del_flg
      , date_format(update_date, '%Y/%m/%d %H:%i:%s') as update_date
-     , dtl_line_no
-     , dtl_product_code
-     , dtl_product_name
-     , dtl_quantity
-     , dtl_price
-     , dtl_course_cd
-     , dtl_status
-     , dtl_todoke_kbn
-     , dtl_todoke_day
-     , dtl_todoke_week
-     , dtl_todoke_week2
-     , date_format(dtl_next_arrival_date, '%Y/%m/%d') as dtl_next_arrival_date
-     , date_format(dtl_after_next_arrival_date, '%Y/%m/%d') as dtl_after_next_arrival_date
-     , date_format(dtl_cancel_date, '%Y/%m/%d') as dtl_cancel_date
-     , dtl_cancel_reason_cd
+     , line_no
+     , product_code
+     , product_name
+     , quantity
+     , price
+     , cut_rate
      , error_name
   from dtb_regular_inos_import
  where error_flg = 1
@@ -1208,13 +1203,13 @@ __EOS;
         $arrHeader = array
 	    ("コース受注NO", "顧客CD", "受注日", "送付先カナ氏名", "送付先漢字氏名",
 	     "送付先電話番号", "送付先郵便番号", "送付先カナ住所", "送付先住所1",
-	     "送付先住所2", "状況フラグ", "次回出荷日", "次々回出荷日", "出荷場所CD",
-	     "宅配便CD", "箱サイズ", "配達時間CD", "指定条件", "明細書同梱区分",
-	     "支払方法CD", "税込送料", "購入済回数", "WEB受注NO", "削除フラグ",
-	     "更新日時", "行NO", "商品CD", "商品名称", "数量", "税込単価",
-	     "コースCD", "状況フラグ", "届け日指定区分", "お届け日", "曜日指定1",
-	     "曜日指定2", "次回届け日", "次々回届け日", "キャンセル日",
-	     "キャンセル理由CD", "エラー内容");
+	     "送付先住所2", "コースCD","状況フラグ", "届け日指定区分", "お届け日", 
+         "曜日指定1", "曜日指定2", "次回届け日", "次回出荷日", "次々回届け日", 
+         "次々回出荷日", "キャンセル日", "キャンセル理由CD", "出荷場所CD", 
+         "宅配便CD", "箱サイズ", "送り状枚数","配達時間CD", "指定条件",
+         "明細書同梱区分", "支払方法CD", "税込送料", "購入済回数", "WEB受注NO",
+         "削除フラグ", "更新日時", "行NO", "商品CD", "商品名称", "数量", "税込単価",
+         "値引率", "エラー内容");
 
         // CSVダウンロード実行
         $objCsv = new SC_Helper_CSV_Ex();

@@ -59,6 +59,9 @@ RewriteCond %{REQUEST_URI} !(.*/dialog/.*$)
 RewriteCond %{REQUEST_URI} !(.*/login_check.php$)
 RewriteCond %{REQUEST_URI} !(.*/ajax/input.*$)
 RewriteCond %{REQUEST_URI} !(.*/install_sbivt3g.php$)
+RewriteCond %{REQUEST_URI} !(.*/user_data/.*$)
+RewriteCond %{REQUEST_URI} !(.*/test/.*$)
+RewriteCond %{REQUEST_URI} !(.*/upgrade/.*$)
 RewriteCond %{REQUEST_URI} /$ [OR]
 RewriteCond %{REQUEST_URI} .php$
 RewriteCond %{HTTPS} on

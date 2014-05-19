@@ -45,7 +45,7 @@ class LC_Page_Admin_Products_Product extends LC_Page_Admin_Products_Ex {
         $this->arrCourseCd = $masterData->getMasterData("mtb_course_cd");
         $this->arrTodokeKbn = $masterData->getMasterData("mtb_todoke_kbn");
 
-        $this->arrSANTYOKU = array(1 => '岡山', 2 => '産直');
+        $this->arrSANTYOKU = array(1 => '紀泉', 2 => '産直');
         $this->arrHAISOKBN_1 =
             array(0 => '通常', 1 => 'ワレモノ', 2 => 'なまもの');
         $this->arrHAISOKBN_2 = array(0 => '通常', 1 => '冷蔵', 2 => '冷凍');

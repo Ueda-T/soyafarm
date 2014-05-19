@@ -39,13 +39,12 @@ class LC_Page_Admin_Customer_InosImportCustomer extends LC_Page_Admin_Ex {
                     'addr01',
                     'email',
                     'sex',
-                    'customer_kbn',
                     'dm_flg',
                     'tel_flg',
                     'mailmaga_flg',
                     'privacy_kbn',
                     'kashidaore_kbn',
-                    'point',
+                    'customer_type_cd',
                    );
         // 削除時用の必須チェック必要カラム
         $this->arrExistsDelPtnCol
@@ -125,7 +124,6 @@ set customer_cd = nullif(customer_cd, '')
   , kana = nullif(kana, '')
   , name = nullif(name, '')
   , tel = nullif(tel, '')
-  , tel2 = nullif(tel2, '')
   , zip = nullif(zip, '')
   , addr_kana = nullif(addr_kana, '')
   , addr01 = nullif(addr01, '')
@@ -133,16 +131,13 @@ set customer_cd = nullif(customer_cd, '')
   , email = nullif(email, '')
   , birth = nullif(birth, '')
   , sex = nullif(sex, '')
-  , customer_kbn = nullif(customer_kbn, '')
   , dm_flg = nullif(dm_flg, '')
   , tel_flg = nullif(tel_flg, '')
   , mailmaga_flg = nullif(mailmaga_flg, '')
   , privacy_kbn = nullif(privacy_kbn, '')
   , kashidaore_kbn = nullif(kashidaore_kbn, '')
-  , point = nullif(point, '')
-  , point_valid_date = nullif(point_valid_date, '')
   , customer_id = nullif(customer_id, '')
-  , customer_status_cd = nullif(customer_status_cd, '')
+  , customer_type_cd = nullif(customer_type_cd, '')
   , create_date = nullif(create_date, '0000-00-00 00:00:00')
   , update_date = nullif(update_date, '0000-00-00 00:00:00')
 ;
@@ -552,7 +547,6 @@ insert into dtb_customer (
   , kana
   , name
   , tel
-  , tel2
   , zip
   , pref
   , addr_kana
@@ -561,17 +555,14 @@ insert into dtb_customer (
   , email
   , birth
   , sex
-  , customer_kbn
   , dm_flg
   , tel_flg
   , mailmaga_flg
   , privacy_kbn
   , kashidaore_kbn
-  , point
-  , point_valid_date
   , torihiki_id
   , customer_id
-  , customer_status_cd
+  , customer_type_cd
   , del_flg
   , create_date
   , update_date
@@ -586,26 +577,22 @@ select
   , imp.kana
   , imp.name
   , replace(imp.tel, '-', '')
-  , nullif(replace(imp.tel2, '-', ''), '')
   , imp.zip
   , pre.id as pref
   , nullif(imp.addr_kana, '')
   , replace(imp.addr01, ifnull(pre.name, ''), '') as addr01
-  , ifnull(nullif(imp.addr02, ''), '番地なし') as addr02
+  , nullif(imp.addr02, '') as addr02
   , imp.email
   , imp.birth
   , imp.sex
-  , imp.customer_kbn
   , imp.dm_flg
   , imp.tel_flg
   , imp.mailmaga_flg
   , imp.privacy_kbn
   , imp.kashidaore_kbn
-  , imp.point
-  , imp.point_valid_date
   , nullif(imp.torihiki_id, '')
   , (@i := @i + 1) as customer_id
-  , imp.customer_status_cd
+  , imp.customer_type_cd
   , imp.del_flg
   , imp.create_date
   , imp.update_date
@@ -652,26 +639,22 @@ inner join (select imp.customer_cd
                  , imp.kana
                  , imp.name
                  , replace(imp.tel, '-', '') as tel
-                 , nullif(replace(imp.tel2, '-', ''), '') as tel2
                  , imp.zip
                  , pre.id as pref
                  , nullif(imp.addr_kana, '') as addr_kana
                  , replace(imp.addr01, ifnull(pre.name, ''), '') as addr01
-                 , ifnull(nullif(imp.addr02, ''), '番地なし') as addr02
+                 , nullif(imp.addr02, '') as addr02
                  , imp.email
                  , imp.birth
                  , imp.sex
-                 , imp.customer_kbn
                  , imp.dm_flg
                  , imp.tel_flg
                  , imp.mailmaga_flg
                  , imp.privacy_kbn
                  , imp.kashidaore_kbn
-                 , imp.point
-                 , imp.point_valid_date
                  , nullif(imp.torihiki_id, '') as torihiki_id
                  , imp.customer_id
-                 , imp.customer_status_cd
+                 , imp.customer_type_cd
                  , imp.update_date
               from dtb_customer_inos_import imp
    left outer join mtb_zip mzip
@@ -689,7 +672,6 @@ inner join (select imp.customer_cd
                  , c.kana = imp2.kana
                  , c.name = imp2.name
                  , c.tel = imp2.tel
-                 , c.tel2 = imp2.tel2
                  , c.zip = imp2.zip
                  , c.pref = imp2.pref
                  , c.addr_kana = imp2.addr_kana
@@ -698,17 +680,14 @@ inner join (select imp.customer_cd
                  , c.email = imp2.email
                  , c.birth = imp2.birth
                  , c.sex = imp2.sex
-                 , c.customer_kbn = imp2.customer_kbn
                  , c.dm_flg = imp2.dm_flg
                  , c.tel_flg = imp2.tel_flg
                  , c.mailmaga_flg = imp2.mailmaga_flg
                  , c.privacy_kbn = imp2.privacy_kbn
                  , c.kashidaore_kbn = imp2.kashidaore_kbn
-                 , c.point = imp2.point
-                 , c.point_valid_date = imp2.point_valid_date
                  , c.torihiki_id = IF(LENGTH(imp2.torihiki_id), imp2.torihiki_id, c.torihiki_id)
                  , c.customer_id = imp2.customer_id
-                 , c.customer_status_cd = imp2.customer_status_cd
+                 , c.customer_type_cd = imp2.customer_type_cd
                  , c.update_date = imp2.update_date
                  , c.updator_id = {$_SESSION['member_id']}
                  , c.recv_date = NOW()
@@ -926,7 +905,6 @@ __EOS;
        , kana
        , name
        , tel
-       , tel2
        , zip
        , addr_kana
        , addr01
@@ -934,17 +912,14 @@ __EOS;
        , email
        , birth
        , sex
-       , customer_kbn
        , dm_flg
        , tel_flg
        , mailmaga_flg
        , privacy_kbn
        , kashidaore_kbn
-       , point
-       , point_valid_date
        , torihiki_id
        , customer_id
-       , customer_status_cd
+       , customer_type_cd
        , del_flg
        , date_format(create_date, '%Y/%m/%d %H:%i:%s') as create_date
        , date_format(update_date, '%Y/%m/%d %H:%i:%s') as update_date
@@ -958,7 +933,6 @@ __EOS;
                          , "カナ氏名"
                          , "漢字氏名"
                          , "電話番号"
-                         , "電話番号2"
                          , "郵便番号"
                          , "カナ住所"
                          , "住所1"
@@ -966,17 +940,14 @@ __EOS;
                          , "メールアドレス"
                          , "生年月日"
                          , "性別"
-                         , "顧客区分"
                          , "DM区分"
                          , "電話区分"
                          , "メール送信区分"
                          , "個人情報区分"
                          , "償却顧客区分"
-                         , "使用可能ポイント"
-                         , "ポイント有効期限"
                          , "クレジット会員ID"
                          , "WEB顧客CD"
-                         , "顧客状態CD"
+                         , "顧客形態CD"
                          , "削除フラグ"
                          , "登録日時"
                          , "更新日時"

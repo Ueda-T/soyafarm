@@ -610,7 +610,7 @@ select
     sh.shipping_date,
     sh.shipping_commit_date,
     case
-        when sh.shipping_area_code = 1 then "岡山"
+        when sh.shipping_area_code = 1 then "紀泉"
         when sh.shipping_area_code = 2 then "産直"
         else "" end as shipping_area_code,
     case

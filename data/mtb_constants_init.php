@@ -1,11 +1,11 @@
 <?php
 /** フロント表示関連 */
-define('SAMPLE_NAME', "例：呂登 太郎");
-define('SAMPLE_KANA', "例：ﾛｳﾄ ﾀﾛｳ");
-define('SAMPLE_TEL', "例：0120-880-610");
-define('SAMPLE_ZIP', "例：544-8666");
-define('SAMPLE_ADDRESS1', "例：大阪市生野区巽西");
-define('SAMPLE_ADDRESS2', "例：1-8-1 呂登マンション000号室");
+define('SAMPLE_NAME', "例：大豆 太郎");
+define('SAMPLE_KANA', "例：ﾀﾞｲｽﾞ ﾀﾛｳ");
+define('SAMPLE_TEL', "例：0120-39-3009");
+define('SAMPLE_ZIP', "例：542-0086");
+define('SAMPLE_ADDRESS1', "例：大阪市中央区西心斎橋");
+define('SAMPLE_ADDRESS2', "例：2-1-5　日本生命御堂筋八幡町ビル");
 /** ユーザファイル保存先 */
 define('USER_DIR', "user_data/");
 /** ユーザファイル保存先 */
@@ -216,9 +216,9 @@ define('BRAND_HEAD', ">");
 /** 生年月日初期選択年 */
 define('START_BIRTH_YEAR', 1970);
 /** 価格名称 */
-define('NORMAL_PRICE_TITLE', "価格");
+define('NORMAL_PRICE_TITLE', "税込価格");
 /** 価格名称 */
-define('SALE_PRICE_TITLE', "社員価格");
+define('SALE_PRICE_TITLE', "税抜価格");
 /** ログファイル */
 define('LOG_REALFILE', DATA_REALDIR . "logs/site.log");
 /** 会員ログイン ログファイル */
@@ -384,6 +384,8 @@ define('INOS_SHIPMENT_CD_LEN', 2);
 define('INOS_DELIV_ID_LEN', 2);
 /** 箱サイズ文字数 */
 define('INOS_BOX_SIZE_LEN', 3);
+/** 送り状枚数桁数 */
+define('INOS_INVOICE_NUM_LEN', 2);
 /** 配達時間CD(配送時間ID)桁数 */
 define('INOS_TIME_ID_LEN', 2);
 /** 明細書同梱区分桁数 */
@@ -431,8 +433,8 @@ define('INOS_CUSTOMER_POINT_LEN', 5);
 define('INOS_CUSTOMER_TORIHIKI_ID_LEN', 50);
 /** 顧客取込 WEB顧客CD桁数 */
 define('INOS_CUSTOMER_CUSTOMER_ID_LEN', 10);
-/** 顧客取込 顧客状態CD桁数 */
-define('INOS_CUSTOMER_CUSTOMER_STATUS_CD_LEN', 1);
+/** 顧客取込 顧客形態CD桁数 */
+define('INOS_CUSTOMER_CUSTOMER_TYPE_CD_LEN', 2);
 
 /** 定期取込 コース受注NO桁数 */
 define('INOS_REGULAR_BASE_NO_LEN', 10);
@@ -453,6 +455,8 @@ define('INOS_REGULAR_DETAIL_TODOKE_DAY_LEN', 2);
 define('INOS_REGULAR_DETAIL_TODOKE_WEEK_LEN', 1);
 /** 定期詳細取込 キャンセル理由CD桁数 */
 define('INOS_REGULAR_DETAIL_CANCEL_REASON_CD_LEN', 2);
+/** 定期詳細取込 値引率桁数 */
+define('INOS_CUT_RATE_LEN', 3);
 
 /** 商品取込 一般価格 */
 define('INOS_PRODUCTS_PRICE_NORMAL_LEN', 7);
@@ -828,7 +832,7 @@ define('DELIV_ID_YAMATO', 1);
 define('DELIV_ID_SAGAWA', 2);
 /** 配送業者ID(ヤマト運輸メール便) */
 define('DELIV_ID_YAMATO_MAIL', 3);
-/** 産直品フラグ(岡山) */
+/** 産直品フラグ(紀泉) */
 define('DROP_SHIPMENT_FLG_OFF', '1');
 /** 産直品フラグ(産直) */
 define('DROP_SHIPMENT_FLG_ON', '2');
@@ -962,16 +966,16 @@ define('ORDER_PROMOTION_MAX_COUNT', 50);
 define('SHIPPING_MAIL_MAX_COUNT', 100);
 
 // パンくずHOME表記
-define('TPL_PC_HOME_NAME', 'ロート通販 HOME');
+define('TPL_PC_HOME_NAME', 'ソヤファームクラブ HOME');
 
 // メールタイトル
-define('MAIL_TITLE_SHOP_NAME', 'ロート通販オンラインショップ');
+define('MAIL_TITLE_SHOP_NAME', 'ソヤファームクラブ');
 
 $mailSignature =<<<EOF
-ロート通販オンラインショップ　http://www.shop.rohto.co.jp/
-フリーダイヤル:0120-880-610　受付時間:9時～21時(年末年始を除く)
+ソヤファームクラブ　http://www.soyafarm.com/
+フリーダイヤル:0120-39-3009　受付時間:9時～19時(日・祝休み)
 ▼お問い合わせフォームはこちら
-https://www.shop.rohto.co.jp/shop/contact/
+https://www.soyafarm.com/shop/contact/
 EOF;
 
 // メール署名
@@ -986,5 +990,5 @@ define('CART_REGULAR_KEY', 'regular_cart');
 define('REGULAR_FUTURE_MONTH', 3);
 
 // エラーメール送信先
-define('DB_ERROR_MAIL_TO', "rohto-ml@iqueve.co.jp");
+define('DB_ERROR_MAIL_TO', "soyafarm@iqueve.co.jp");
 ?>
