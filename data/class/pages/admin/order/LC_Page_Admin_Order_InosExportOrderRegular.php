@@ -178,7 +178,6 @@ select
     oh.regular_base_no,
     oh.order_id,
     oh.customer_id,
-    oh.memo04,
     (select group_concat(op.promotion_cd separator ',')
         from dtb_order_promotion op
         where oh.order_id = op.order_id

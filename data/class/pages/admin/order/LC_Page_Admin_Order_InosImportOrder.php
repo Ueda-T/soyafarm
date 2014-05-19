@@ -182,7 +182,6 @@ set order_base_no = nullif(order_base_no, '')
   , regular_base_no = nullif(regular_base_no, '')
   , web_order_no = nullif(web_order_no, '')
   , web_customer_id = nullif(web_customer_id, '')
-  , memo04 = nullif(memo04, '')
   , promotion_cd = nullif(promotion_cd, '')
   , del_flg = nullif(del_flg, '')
   , update_date = nullif(update_date, '0000-00-00 00:00:00')
@@ -587,7 +586,6 @@ INSERT INTO dtb_order (
    ,event_code
    ,regular_base_no
    ,del_flg
-   ,memo04
 )
 SELECT
     (@i := @i + 1) AS order_id
@@ -632,7 +630,6 @@ SELECT
    ,IM.event_code
    ,IM.regular_base_no
    ,IM.del_flg
-   ,IM.memo04
 FROM
     dtb_order_inos_import IM
 LEFT JOIN dtb_customer CS
@@ -847,7 +844,6 @@ inner join (SELECT IM.web_order_no
                   ,IM.event_code
                   ,IM.regular_base_no
                   ,IM.del_flg
-                  ,IM.memo04
                FROM dtb_order_inos_import IM
           LEFT JOIN dtb_payment PM
                  ON PM.payment_id = IM.payment_id
@@ -879,7 +875,6 @@ inner join (SELECT IM.web_order_no
                ,o.event_code = imp2.event_code
                ,o.regular_base_no = imp2.regular_base_no
                ,o.del_flg = imp2.del_flg
-               ,o.memo04 = imp2.memo04
 ;
 __EOS;
     if (!$objQuery->query($sql)) {
@@ -1435,7 +1430,6 @@ __EOS;
        , regular_base_no
        , web_order_no
        , web_customer_id
-       , memo04
        , promotion_cd
        , del_flg
        , date_format(update_date, '%Y/%m/%d %H:%i:%s') as update_date
@@ -1487,7 +1481,6 @@ __EOS;
                          , "コース受注NO"
                          , "WEB受注NO"
                          , "WEB顧客CD"
-                         , "クレジット取引ID"
                          , "プロモーションCD"
                          , "削除フラグ"
                          , "更新日時"
