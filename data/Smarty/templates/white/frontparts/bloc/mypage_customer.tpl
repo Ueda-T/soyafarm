@@ -51,6 +51,7 @@
 		<!--{/if}-->
 		</dt>
 
+<!--{*
 		<dt>
 		<!--{if $tpl_mypageno == 'regular'}-->
 			<span class="koko">定期購入一覧</span>
@@ -58,6 +59,7 @@
 			<a href="regular.php">定期購入一覧</a>
 		<!--{/if}-->
 		</dt>
+*}-->
 
 		<dt>
 		<!--{if $tpl_mypageno == 'delivery'}-->
