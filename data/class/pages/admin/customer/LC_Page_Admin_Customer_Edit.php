@@ -326,7 +326,7 @@ __EOS;
 	$salt = $this->getSalt($custid);
 	$passwd = SC_Utils_Ex::sfGetHashString($arrForm['password'], $salt);
 	GC_Utils_Ex::gfPrintLog(sprintf("[%s]→[%s]", $arrForm['password'], $passwd));
-	if (!empty($passwd) && ($passwd != DEFAULT_PASSWORD)) {
+	if (!empty($arrForm['password']) && ($arrForm['password'] != DEFAULT_PASSWORD)) {
 	    $s = ",password = \"$passwd\"";
 	}
 	$sql = sprintf($sql, $s);
