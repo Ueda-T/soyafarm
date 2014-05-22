@@ -182,7 +182,6 @@ set order_base_no = nullif(order_base_no, '')
   , regular_base_no = nullif(regular_base_no, '')
   , web_order_no = nullif(web_order_no, '')
   , web_customer_id = nullif(web_customer_id, '')
-  , promotion_cd = nullif(promotion_cd, '')
   , del_flg = nullif(del_flg, '')
   , update_date = nullif(update_date, '0000-00-00 00:00:00')
   , line_no = nullif(line_no, '')
@@ -509,10 +508,12 @@ __EOS;
     if(!$this->deleteImport()) {
         return array(0, INOS_ERROR_FLG_EXIST_ERROR);
     }
+    /*
     // 受注プロモーション登録
     if(!$this->orderPromotionImport()) {
         return array(0, INOS_ERROR_FLG_EXIST_ERROR);
     }
+    */
     // 取込んだ件数取得
     $count = $objQuery->count
         ('dtb_order_inos_import', 'error_flg = ?', 0);
@@ -1430,7 +1431,6 @@ __EOS;
        , regular_base_no
        , web_order_no
        , web_customer_id
-       , promotion_cd
        , del_flg
        , date_format(update_date, '%Y/%m/%d %H:%i:%s') as update_date
        , line_no
@@ -1481,7 +1481,6 @@ __EOS;
                          , "コース受注NO"
                          , "WEB受注NO"
                          , "WEB顧客CD"
-                         , "プロモーションCD"
                          , "削除フラグ"
                          , "更新日時"
                          , "行NO"
