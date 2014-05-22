@@ -4,7 +4,7 @@
         <td><!--{$tpl_subject|h}--></td>
     </tr>
     <tr>
-        <td><!--{$tpl_body|h|nl2br}--></td>
+        <td><!--{$tpl_body|nl2br}--></td>
     </tr>
 </table>
 

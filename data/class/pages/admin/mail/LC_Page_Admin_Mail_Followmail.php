@@ -179,36 +179,54 @@ EOF;
         // コースCD：単回購入
         $COURSE_CD_NOT_REGULAR = COURSE_CD_NOT_REGULAR;
         // 定期受注：解約
-        $REGULAR_ORDER_STATUS_CANCEL = REGULAR_ORDER_STATUS_CANCEL;
+        $ORDER_PENDING = ORDER_PENDING;
         // フォローメール送信結果：送信済み
         $SEND_RESULT_COMPLETE = SEND_RESULT_COMPLETE;
 
-        $sql =<<<EOF
-
-         SELECT *
-           FROM dtb_order O
-     INNER JOIN dtb_order_detail OD
-             ON O.order_id = OD.order_id
-          WHERE DATE_FORMAT(O.commit_date, '%Y-%m-%d') = 
+	$sql =<<<EOF
+     SELECT distinct O.customer_id, O.order_name, O.order_id, O.order_email
+       FROM dtb_order O
+ INNER JOIN dtb_customer C
+         ON C.customer_id = O.customer_id
+        AND C.del_flg = 0
+        AND C.mailmaga_flg = 1
+ INNER JOIN dtb_order_detail OD
+         ON OD.order_id = O.order_id
+        AND OD.product_code IN ({$product_code})
+        AND OD.course_cd = {$COURSE_CD_NOT_REGULAR}
+ INNER JOIN dtb_products P1
+         ON P1.product_id = OD.product_id
+      WHERE O.del_flg = 0
+        AND O.payment_total > O.return_amount
+        AND DATE_FORMAT(O.commit_date, '%Y-%m-%d') = 
                     DATE_FORMAT(('{$this->date}' - 
                         INTERVAL {$arrFollowMail["send_term"]} DAY), '%Y-%m-%d')
-            AND O.payment_total > O.return_amount
-            AND OD.product_code IN ({$product_code})
-            AND OD.course_cd = {$COURSE_CD_NOT_REGULAR}
  AND NOT EXISTS (SELECT 'X'
                    FROM dtb_regular_order RO
              INNER JOIN dtb_regular_order_detail ROD
-                     ON RO.regular_id = ROD.regular_id
-                  WHERE RO.customer_id = O.customer_id
-                    AND ROD.product_id = OD.product_id
-                    AND ROD.status != {$REGULAR_ORDER_STATUS_CANCEL})
+                     ON ROD.regular_id = RO.regular_id
+             INNER JOIN dtb_products P2
+                     ON P2.product_id = ROD.product_id
+                  WHERE RO.del_flg = 0
+                    AND RO.customer_id = O.customer_id
+                    AND P2.brand_id = P1.brand_id )
+ AND NOT EXISTS (SELECT 'X'
+                   FROM dtb_order O2
+             INNER JOIN dtb_order_detail D2
+                     ON O2.order_id = D2.order_id
+             INNER JOIN dtb_products P3
+                     ON P3.product_id = D2.product_id
+                  WHERE O2.customer_id = O.customer_id
+                    AND P3.brand_id = P1.brand_id
+                    AND O2.order_id != O.order_id
+                    AND O2.create_date < O.create_date
+                    AND O2.status != {$ORDER_PENDING}
+                    AND O2.del_flg = 0 )
  AND NOT EXISTS (SELECT 'X'
                    FROM dtb_follow_mail_history FMH
              INNER JOIN dtb_follow_mail_customer FMC
                      ON FMH.send_id = FMC.send_id
                   WHERE FMH.follow_id = {$arrFollowMail["follow_id"]}
-                    AND DATE_FORMAT(FMH.start_date, '%Y-%m-%d')
-                            = DATE_FORMAT('{$this->date}', '%Y-%m-%d')
                     AND FMC.email = O.order_email
                     AND FMC.send_flg = {$SEND_RESULT_COMPLETE})
 EOF;

@@ -525,7 +525,7 @@ EOF;
 		($objFormParam->getValue('search_sdelivyear'),
 		 $objFormParam->getValue('search_sdelivmonth'),
 		 $objFormParam->getValue('search_sdelivday'));
-            $where .= " AND EXISTS (SELECT order_id FROM dtb_shipping sh WHERE sh.order_id = oh.order_id AND (sh.shipping_date >= ? OR sh.shipping_date IS NULL))";
+            $where .= " AND EXISTS (SELECT order_id FROM dtb_shipping sh WHERE sh.order_id = oh.order_id AND sh.shipping_date >= ?)";
             $arrValues[] = $date;
             break;
         case 'search_edelivyear':
@@ -533,7 +533,7 @@ EOF;
 		($objFormParam->getValue('search_edelivyear'),
 		 $objFormParam->getValue('search_edelivmonth'),
 		 $objFormParam->getValue('search_edelivday'));
-            $where .= " AND EXISTS (SELECT order_id FROM dtb_shipping sh WHERE sh.order_id = oh.order_id AND (sh.shipping_date <= ? OR sh.shipping_date IS NULL))";
+            $where .= " AND EXISTS (SELECT order_id FROM dtb_shipping sh WHERE sh.order_id = oh.order_id AND sh.shipping_date <= ?)";
             $arrValues[] = $date;
             break;
         // ▲ 2011.05.09 お届け日指定を検索条件に追加
