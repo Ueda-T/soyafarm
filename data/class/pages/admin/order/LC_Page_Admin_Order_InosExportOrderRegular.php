@@ -178,10 +178,6 @@ select
     oh.regular_base_no,
     oh.order_id,
     oh.customer_id,
-    (select group_concat(op.promotion_cd separator ',')
-        from dtb_order_promotion op
-        where oh.order_id = op.order_id
-    ) as promotion_cd,
     oh.del_flg,
     date_format(oh.update_date, '%Y/%m/%d %H:%i:%s') as update_date,
     (select count(*)+1 from dtb_order_detail as od2
