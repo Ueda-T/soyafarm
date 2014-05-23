@@ -489,6 +489,16 @@ function fnAddProduct(regular_flg, objForm) {
 		            <!--{$arrProduct.product_code_min|h}-->～<!--{$arrProduct.product_code_max|h}-->
 		        <!--{/if}--></td>
 			</tr>
+
+			<!--{* ▼ブランド名 *}-->
+			<!--{if $arrProduct.brand_name|strlen >= 1}-->
+			<tr>
+				<th>ブランド名</th>
+				<td><!--{$arrProduct.brand_name|h}--></td>
+			</tr>
+			<!--{/if}-->
+			<!--{* ▲ブランド名 *}-->
+
 			<!--{* ▼容量 *}-->
 			<!--{if $arrProduct.capacity|strlen >= 1}-->
 			<tr>
