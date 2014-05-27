@@ -376,7 +376,7 @@ class LC_Page_Admin_Products_Product extends LC_Page_Admin_Products_Ex {
              array("EXIST_CHECK", "NUM_CHECK", "MAX_LENGTH_CHECK"));
         $objFormParam->addParam
             ("成分表示フラグ", 'component_flg', INT_LEN, 'n',
-             array("EXIST_CHECK", "NUM_CHECK", "MAX_LENGTH_CHECK"));
+             array("NUM_CHECK", "MAX_LENGTH_CHECK"));
         $objFormParam->addParam
             ("検索除外", 'not_search_flg', INT_LEN, 'n',
              array("EXIST_CHECK", "NUM_CHECK", "MAX_LENGTH_CHECK"));

@@ -346,12 +346,14 @@ $(function() {
             <th>メール便業者</th>
             <td><!--{html_radios name="mail_deliv_id" options=$arrMAILDELIV selected=$arrForm.mail_deliv_id separator='&nbsp;&nbsp;'}--></td>
         </tr>
+<!--{*
         <tr>
             <th>成分表示</th>
             <td>
                 <span class="attention"><!--{$arrErr.component_flg}--></span>
                 <!--{html_radios name="component_flg" options=$arrCOMPONENT_FLG selected=$arrForm.component_flg separator='&nbsp;&nbsp;'}--></td>
         </tr>
+*}-->
         <tr>
             <th>検索除外</th>
             <td>
@@ -395,6 +397,7 @@ $(function() {
 				<span class="attention"><!--{$arrErr.sell_flg}--></span>
 				<!--{html_radios name="sell_flg" options=$arrSELL_FLG selected=$arrForm.sell_flg separator='&nbsp;&nbsp;'}--></td>
         </tr>
+<!--{*
         <tr>
             <th>社員購入グループ</th>
             <td>
@@ -405,10 +408,11 @@ $(function() {
                 </select>
             </td>
         </tr>
+*}-->
 
         <!--{if $arrForm.has_product_class == false}-->
         <tr>
-            <th><!--{$smarty.const.NORMAL_PRICE_TITLE}-->(税込)<span class="attention"> *</span></th>
+            <th><!--{$smarty.const.NORMAL_PRICE_TITLE}--><span class="attention"> *</span></th>
             <td>
                 <span class="attention"><!--{$arrErr.price01}--></span>
                 <input type="text" id="spin1" name="price01" value="<!--{$arrForm.price01|h}-->" size="6" class="box6" maxlength="<!--{$smarty.const.PRICE_LEN}-->" style="<!--{if $arrErr.price01 != ""}-->background-color: <!--{$smarty.const.ERR_COLOR}-->;<!--{/if}-->"/>円
@@ -416,7 +420,7 @@ $(function() {
             </td>
         </tr>
         <tr>
-            <th><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)<span class="attention"> *</span></th>
+            <th><!--{$smarty.const.SALE_PRICE_TITLE}--><span class="attention"> *</span></th>
             <td>
                 <span class="attention"><!--{$arrErr.price02}--></span>
                 <input type="text" id="spin2" name="price02" value="<!--{$arrForm.price02|h}-->" size="6" class="box6" maxlength="<!--{$smarty.const.PRICE_LEN}-->" style="<!--{if $arrErr.price02 != ""}-->background-color: <!--{$smarty.const.ERR_COLOR}-->;<!--{/if}-->"/>円

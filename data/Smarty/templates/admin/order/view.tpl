@@ -126,7 +126,6 @@
             <th>備考</th>
             <td><!--{$arrForm.message.value|h|nl2br}--></td>
         </tr>
-*}-->
         <tr>
             <th>現在ポイント</th>
             <td>
@@ -137,6 +136,7 @@
             <!--{/if}-->
             </td>
         </tr>
+*}-->
         <tr>
             <th>アクセス端末</th>
             <td><!--{$arrDeviceType[$arrForm.device_type_id.value]|h}--></td>

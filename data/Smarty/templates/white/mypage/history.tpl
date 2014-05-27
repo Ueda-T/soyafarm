@@ -110,7 +110,7 @@
                         <td><!--{$shippingItem.shipping_tel}--></td>
                     </tr>
                     <tr>
-                        <th rowspan="2">お届け方法</th>
+                        <th rowspan="3">お届け方法</th>
                         <th>お届け希望日</th>
                         <td><!--{$shippingItem.shipping_date|default:'指定なし'|h}--></td>
                     </tr>
@@ -118,12 +118,10 @@
                         <th>時間指定</th>
                         <td><!--{$shippingItem.shipping_time|default:'指定なし'|h}--></td>
                     </tr>
-<!--{*
                     <tr>
                         <th>配達時のご要望</th>
                         <td><!--{$tpl_arrOrderData.note|default:'指定なし'|h}--></td>
                     </tr>
-*}-->
                     <tr>
                         <th colspan="2">伝票番号</th>
                         <td><!--{$shippingItem.shipping_num|default:''|h}--></td>
