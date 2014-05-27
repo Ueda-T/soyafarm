@@ -273,6 +273,23 @@ $(document).ready(function() {
                     <!--{/if}-->
             <h2 style="background-color:#88C442;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">定期購入</h2>
 			<table cellpadding="0" cellspacing="0" class="cartGoods" style="margin-top:0;">
+                        <!--{assign var=key1 value="course_cd`$item.cart_no`"}-->
+                        <!--{assign var=key2 value="todoke_cycle`$item.cart_no`"}-->
+                        <!--{assign var=key3 value="todoke_week_no`$item.cart_no`"}-->
+                        <!--{assign var=key4 value="todoke_week`$item.cart_no`"}-->
+                        <!--{assign var=key5 value="todoke_kbn`$item.cart_no`"}-->
+			<span class="attention"><!--{$arrErr[$key1]}--></span>
+			<span class="attention"><!--{$arrErr[$key2]}--></span>
+                        <div id="course_cd">お届け間隔
+                        <input type="hidden" name="<!--{$key5}-->" id="<!--{$key5}-->" value="<!--{$arrForm[$key5]}-->" />
+                            <select name="<!--{$key1}-->" id="<!--{$key1}-->" onchange="fnFormModeSubmit('form<!--{$key}-->','set_regular','cart_no','<!--{$item.cart_no}-->'); return false" style="<!--{$arrErr[$key1]|sfGetErrorColor}-->">
+                            <!--{html_options options=$arrCourseCd selected=$arrForm[$key1]|default:''}-->
+                            </select>
+                            <select name="<!--{$key2}-->" id="<!--{$key2}-->" onchange="fnFormModeSubmit('form<!--{$key}-->','set_regular','cart_no','<!--{$item.cart_no}-->'); return false" style="<!--{$arrErr[$key2]|sfGetErrorColor}-->">
+                            <!--{html_options options=$arrTodokeKbn selected=$arrForm[$key2]|default:''}-->
+                            </select>
+                        </div>
+
                      <!--{assign var=teiki_flg value=1}-->
                 <!--{/if}-->
                 <tr style="<!--{if $item.error}-->background-color: <!--{$smarty.const.ERR_COLOR}-->;<!--{/if}-->">
@@ -303,6 +320,8 @@ $(document).ready(function() {
                     </td>
 				</tr>
 				<tr>
+				    <td>
+				<!--{*
 					<td style="padding:5px 9px 0 0; text-align:left;">
                         <!--{assign var=key1 value="course_cd`$item.cart_no`"}-->
                         <!--{assign var=key2 value="todoke_cycle`$item.cart_no`"}-->
@@ -332,6 +351,7 @@ $(document).ready(function() {
                             <!--{html_options options=$arrTodokeWeek selected=$arrForm[$key4]|default:''}-->
                             </select>
                         </div>
+				*}-->
                     </td>
 				</tr>
 				<tr>

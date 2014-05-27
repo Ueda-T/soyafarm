@@ -203,8 +203,29 @@ $(document).ready(function() {
             <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_teiki.gif" alt="定期購入" /></h1>
             <table class="cartListTeikiTbl" summary="定期商品">
                 <tr>
+                    <td>
+                        <!--{assign var=key1 value="course_cd`$item.cart_no`"}-->
+                        <!--{assign var=key2 value="todoke_cycle`$item.cart_no`"}-->
+                        <!--{assign var=key3 value="todoke_week_no`$item.cart_no`"}-->
+                        <!--{assign var=key4 value="todoke_week`$item.cart_no`"}-->
+                        <!--{assign var=key5 value="todoke_kbn`$item.cart_no`"}-->
+					    <span class="attention"><!--{$arrErr[$key1]}--></span>
+					    <span class="attention"><!--{$arrErr[$key2]}--></span>
+                        <div id="course_cd">お届け間隔
+                        <input type="hidden" name="<!--{$key5}-->" id="<!--{$key5}-->" value="<!--{$arrForm[$key5]}-->" />
+                            <select name="<!--{$key1}-->" id="<!--{$key1}-->" onchange="fnFormModeSubmit('form<!--{$key}-->','set_regular','cart_no','<!--{$item.cart_no}-->'); return false" style="<!--{$arrErr[$key1]|sfGetErrorColor}-->">
+                            <!--{html_options options=$arrCourseCd selected=$arrForm[$key1]|default:''}-->
+                            </select>
+                            <select name="<!--{$key2}-->" id="<!--{$key2}-->" onchange="fnFormModeSubmit('form<!--{$key}-->','set_regular','cart_no','<!--{$item.cart_no}-->'); return false" style="<!--{$arrErr[$key2]|sfGetErrorColor}-->">
+                            <!--{html_options options=$arrTodokeKbn selected=$arrForm[$key2]|default:''}-->
+                            </select>
+                        </div>
+					    <span class="attention"><!--{$arrErr[$key3]}--></span>
+					    <span class="attention"><!--{$arrErr[$key4]}--></span>
+                </tr>
+                <tr>
                     <th class="alignC" colspan="2">商品名</th>
-                    <th class="alignC" >お届け間隔</th>
+                    <!--{*<th class="alignC" >お届け間隔</th>*}-->
                     <th class="num">数量<!--{*<br /><span>変更する場合は数字を入力してください</span>*}--></th>
                     <th class="price" nowrap>小計<span class="dyn">(税込)</span></th>
                     <th class="deleteBtn">取消</th>
@@ -240,6 +261,7 @@ $(document).ready(function() {
                         <br />
                         価格：<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円
                     </td>
+					    <!--{*
                     <td>
                         <!--{assign var=key1 value="course_cd`$item.cart_no`"}-->
                         <!--{assign var=key2 value="todoke_cycle`$item.cart_no`"}-->
@@ -270,6 +292,7 @@ $(document).ready(function() {
                             </select>
                         </div>
                     </td>
+			*}-->
                     <td class="alignC"><!--{$item.quantity}-->
                         <ul id="quantity_level">
                             <li><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="16" height="16" alt="-" /></a></li>

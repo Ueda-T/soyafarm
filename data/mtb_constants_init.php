@@ -991,4 +991,10 @@ define('REGULAR_FUTURE_MONTH', 3);
 
 // エラーメール送信先
 define('DB_ERROR_MAIL_TO', "soyafarm@iqueve.co.jp");
+
+// 定期1ヶ月指定商品(「,」区切りにて指定)
+define('REGULAR_ONE_MONTH_PRODUCTS', "0001");
+
+// 定期お届け日指定(「,」区切りにて指定)
+define('REGULAR_DELIV_PATTERN', "1,5,10,15,20,25");
 ?>

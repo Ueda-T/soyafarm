@@ -37,9 +37,10 @@ class LC_Page_Cart extends LC_Page_Ex {
         // お届け間隔
         $this->arrCourseCd = $masterData->getMasterData("mtb_course_cd");
         $this->arrTodokeKbn = $masterData->getMasterData("mtb_todoke_kbn");
+        // お届け間隔は月のみ
+        unset($this->arrTodokeKbn[1]);
         // お届け曜日
-        $this->arrTodokeWeekNo =
-            $masterData->getMasterData("mtb_todoke_week");
+        $this->arrTodokeWeekNo = $masterData->getMasterData("mtb_todoke_week");
         // XXX 既存のマスタとIDが一致しないため、独自で設定
         //$this->arrTodokeWeek = $masterData->getMasterData('mtb_wday');
         $this->arrTodokeWeek = array(1 => '日',
@@ -386,6 +387,13 @@ class LC_Page_Cart extends LC_Page_Ex {
         $this->tpl_regular_purchase_flg =
             $objRegular->checkRegularPurchase($this->cartItems);
 
+	// 定期商品にお届け間隔が1ヶ月指定が含まれているかチェック
+	if ($this->lfCheckRegularOneMonth($this->cartItems)) {
+	    // 定期間隔を1ヶ月以外除外する
+	    unset($this->arrCourseCd[3]);
+	    unset($this->arrCourseCd[2]);
+	}
+
 	$this->tpl_order_promotion_err = false;
 	$this->tpl_input_campaign_ok_flg = false;
 	if ($_SESSION["CAMPAIGN_CODE"]) {
@@ -399,10 +407,10 @@ class LC_Page_Cart extends LC_Page_Ex {
 	    if ($this->lfCheckCampaignCodeTekiyo($_SESSION["CAMPAIGN_CODE"])) {
 		$this->tpl_input_campaign_ok_flg = true;
 	    }
-    }
+	}
 
-    // タグセット
-    $this->lfSetTag($this);
+	// タグセット
+	$this->lfSetTag($this);
     }
 
     /**
@@ -437,8 +445,19 @@ class LC_Page_Cart extends LC_Page_Ex {
         // 定期関連の項目
         $objCartSess = new SC_CartSession_Ex();
         $cartItems =& $objCartSess->getAllCartList();
+	$chkCartNo = "";
+	$baseCourseCd = "";
+	$baseTodokeCycle = "";
         foreach($cartItems[1] as $item) {
             if ($item['regular_flg'] == REGULAR_PURCHASE_FLG_ON) {
+		if ($chkCartNo) {
+		    $arrRequest['course_cd' . $item['cart_no']] = $baseCourseCd;
+		    $arrRequest['todoke_cycle' . $item['cart_no']] = $baseTodokeCycle;
+		} else {
+		    $chkCartNo = $item['cart_no'];
+		    $baseCourseCd = $arrRequest['course_cd' . $item['cart_no']];
+		    $baseTodokeCycle = $arrRequest['todoke_cycle' . $item['cart_no']];
+		}
                 $objFormParam->addParam(
                     "お届け間隔", 'course_cd' . $item['cart_no'],
                     INT_LEN, 'n', array("NUM_CHECK", "MAX_LENGTH_CHECK"));
@@ -828,6 +847,31 @@ EOF;
 	}
 
 	return $res;
+    }
+
+    /**
+     * カート内に定期商品が含まれるか判定
+     *
+     * @param $arrCartItems カートセッション情報の連想配列
+     * @param  integer $cartKey 登録を行うカート情報のキー
+     * @param boolean true:定期商品あり false:定期商品なし
+     */
+    function lfCheckRegularOneMonth($arrCartItems, $cartKey=1) {
+
+	// 1ヶ月指定商品を配列にセット
+	$chkProduct = explode(",", REGULAR_ONE_MONTH_PRODUCTS);
+        foreach ($arrCartItems as $key => $val) {
+	    foreach ($val as $item) {
+		// 定期の場合
+		if ($item['regular_flg'] == REGULAR_PURCHASE_FLG_ON) {
+		    if (array_search($item['productsClass']['product_code']
+				    , $chkProduct) !== false) {
+			return true;
+		    }
+		}
+	    }
+	}
+	return false;
     }
 
     /**
