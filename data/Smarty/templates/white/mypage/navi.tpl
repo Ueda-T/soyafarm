@@ -8,6 +8,7 @@
 					<dl class="stage">
 						<dt><strong><!--{$CustomerName|h}--></strong>&nbsp;様</dt>
 						<!--{*<dd>現在のお客様のステージは<a href="#">ブロンズ</a>ステージです。</dd>*}-->
+                                                <dd><!--{$tpl_discount.customer_type_name|h}--></dd>
 					</dl>
 				</td>
 				<td class="cNumber">お客様番号：<!--{$CustomerId}--></td>
