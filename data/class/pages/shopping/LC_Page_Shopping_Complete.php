@@ -66,6 +66,9 @@ class LC_Page_Shopping_Complete extends LC_Page_Ex {
         // コンバージョンタグをセット
         $this->lfSetTag($this, $this->tpl_order_id);
 
+	// グーグルタグマネージャのEコマースコンバージョン
+        $this->googleTagmgrCvTag($this);
+
         unset($_SESSION['order_id']);
     }
 
@@ -94,30 +97,54 @@ class LC_Page_Shopping_Complete extends LC_Page_Ex {
     function lfSetEcInfo($order_id) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         $sql_order=<<<EOS
-SELECT
-    ODR.order_id
-   ,ODR.subtotal
-   ,ODR.total
-   ,ODR.payment_total
-   ,ODR.tax
-   ,ODR.deliv_fee
-   ,ODR.order_addr01
-   ,PRF.name AS pref_name
-   ,DTL.product_name
-   ,DTL.product_code
-   ,DTL.price
-   ,DTL.quantity
-FROM
-    dtb_order ODR
-    INNER JOIN dtb_order_detail DTL
+    SELECT ODR.order_id
+         , ODR.subtotal
+         , ODR.total
+         , ODR.payment_total
+         , ODR.tax
+         , ODR.deliv_fee
+         , ODR.order_addr01
+         , PRF.name AS pref_name
+         , DTL.product_id
+         , DTL.product_name
+         , DTL.product_code
+         , DTL.price
+         , DTL.quantity
+      FROM dtb_order ODR
+INNER JOIN dtb_order_detail DTL
         ON ODR.order_id = DTL.order_id
-    INNER JOIN mtb_pref  PRF
+INNER JOIN mtb_pref  PRF
         ON ODR.order_pref = PRF.id
-WHERE
-    ODR.order_id = ?
-    AND DTL.product_id != 0
+     WHERE ODR.order_id = ?
+       AND DTL.product_id != 0
 EOS;
         $this->arrCompleteOrder = $objQuery->getall($sql_order, array($order_id));
+    }
+
+    /*
+     *
+     */
+    function googleTagmgrCvTag(&$thisPage) {
+        $objTpl = new SC_SiteView_Ex();
+        $objPage = new LC_Page_Ex();
+
+        $objPage->tpl_order = json_encode($this->arrCompleteOrder);
+
+        // アサイン
+	$objTpl->assignobj($objPage);
+
+        // 端末判定
+        $device = SC_Display_Ex::detectDevice();
+        switch ($device) {
+	case DEVICE_TYPE_PC:
+	    $tag_tpl_dir = TAG_TEMPLATE_REALDIR;
+	    break;
+	default:
+	    break;
+        }
+
+	$thisPage->tpl_tag_tagmgr = 
+	    $objTpl->fetch($tag_tpl_dir . "tagmgrCv.tpl");
     }
 
     /**

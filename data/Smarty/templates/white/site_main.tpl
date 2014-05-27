@@ -1,4 +1,7 @@
 <body>
+<!--{* ▼UNITAG *}-->
+<!--{if $tpl_tag_tagmgr}--><!--{$tpl_tag_tagmgr|smarty:nodefaults}--><!--{/if}-->
+<!--{* ▲UNITAG *}-->
 <!--{include file="tagmgr.tpl"}-->
 <!--{* A8タグ表示用 *}-->
 <!--{if "sfPrintA8Tag"|function_exists === TRUE}-->
