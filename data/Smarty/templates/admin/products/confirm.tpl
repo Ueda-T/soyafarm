@@ -112,10 +112,12 @@ $(function() {
             <th>メール便業者</th>
             <td><!--{$arrMAILDELIV[$arrForm.mail_deliv_id]|h}--></td>
         </tr>
+<!--{*
         <tr>
             <th>成分表示</th>
             <td><!--{$arrCOMPONENT_FLG[$arrForm.component_flg]|h}--></td>
         </tr>
+*}-->
         <tr>
             <th>検索除外</th>
             <td><!--{$arrNOT_SEARCH_FLG[$arrForm.not_search_flg]|h}--></td>
@@ -141,18 +143,20 @@ $(function() {
             <th>販売対象フラグ</th>
             <td><!--{$arrSELL_FLG[$arrForm.sell_flg]|h}--></td>
         </tr>
+<!--{*
         <tr>
             <th>社員購入グループ</th>
             <td><!--{$arrEMPLOYEE_CD_NAME[$arrForm.employee_sale_cd]|h}--></td>
         </tr>
+*}-->
 
         <!--{if $arrForm.has_product_class != true}-->
         <tr>
-            <th><!--{$smarty.const.NORMAL_PRICE_TITLE}-->(税込)</th>
+            <th><!--{$smarty.const.NORMAL_PRICE_TITLE}--></th>
 			<td><!--{if strlen($arrForm.price01) >= 1}--><!--{$arrForm.price01|h}--> 円<!--{/if}--></td>
         </tr>
 		<tr>
-			<th><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)</th>
+			<th><!--{$smarty.const.SALE_PRICE_TITLE}--></th>
 			<td><!--{if strlen($arrForm.price02) >= 1}--><!--{$arrForm.price02|h}--> 円<!--{/if}--></td>
 		</tr>
 		<tr>
