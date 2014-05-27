@@ -895,7 +895,10 @@ INSERT INTO dtb_regular_order_detail (
          , IM.todoke_day
          , IM.todoke_week
          , IM.todoke_week2
-         , IM.course_cd
+         , CASE WHEN IM.course_cd = 30 THEN 1
+           WHEN IM.course_cd = 60 THEN 2
+           WHEN IM.course_cd = 90 THEN 3
+           ELSE IM.course_cd END AS course_cd
          , IM.status
          , IM.next_arrival_date
          , IM.after_next_arrival_date
