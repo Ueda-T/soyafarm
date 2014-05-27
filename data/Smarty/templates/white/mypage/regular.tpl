@@ -7,7 +7,7 @@ function fnChangeRegular(regular_id, line_no, objForm) {
     // 行NO
     objForm.line_no.value = line_no;
 
-    objForm.action = './regular_change.php';
+    objForm.action = './regular_detail.php';
     objForm.submit();
 }
 </script>
@@ -66,19 +66,19 @@ function fnChangeRegular(regular_id, line_no, objForm) {
 				</td>
 				<td class="alignC" nowrap><!--{$regularDetail.next_arrival_date|date_format:"%Y年%m月%d日"|h}--></td><!--{* 次回お届け日 *}-->
 				<td class="alignC" nowrap><!--{$regularDetail.after_next_arrival_date|date_format:"%Y年%m月%d日"|h}--></td><!--{* 次々回お届け日 *}-->
-				<td class="alignC"><!--{* 確認・変更 *}-->
-
+				<td class="alignC">
+                                        <!--{* 確認・変更 *}-->
 					<!--{** 次回お届け日が未定は変更不可 **}-->
 					<!--{if $regularDetail.next_arrival_date == ""}-->
-					次回お届け日が未定のため<br />変更できません。
+					次回お届け日が未定のため<br />確認できません。
 
 					<!--{** 次回お届け日の1週間以内は変更不可 **}-->
 					<!--{elseif !$regularDetail.disp_flg}-->
-					只今、出荷準備中のため<br />変更できません。
+					只今、出荷準備中のため<br />確認できません。
 
 					<!--{** 「6：休止中」は変更不可 **}-->
 					<!--{elseif $regularDetail.status == $smarty.const.REGULAR_ORDER_STATUS_PAUSE}-->
-					休止中のため<br />変更できません。
+					休止中のため<br />確認できません。
 
 					<!--{else}-->
 					<ul class="regularChangeBtnList">

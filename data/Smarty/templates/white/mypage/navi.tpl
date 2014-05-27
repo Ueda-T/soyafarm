@@ -47,9 +47,7 @@
 
 			<li><a href="history_list.php" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn04.gif" alt="ご注文履歴" width="240" height="115" class="swp"></a></li>
 
-<!--{*
 			<li><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn05.gif" alt="定期購入一覧" width="240" height="115" class="swp"></a></li>
-*}-->
 			<!--{*
 			<!--{if $smarty.const.OPTION_FAVOFITE_PRODUCT == 1}-->
 				<li><a href="favorite.php" class="<!--{if $tpl_mypageno == 'favorite'}--> selected<!--{/if}-->">

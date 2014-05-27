@@ -21,6 +21,7 @@ class LC_Page_MyPage_RegularChange extends LC_Page_AbstractMypage_Ex {
      */
     function init() {
         parent::init();
+	$this->tpl_mainpage = 'mypage/regular_detail.tpl';
         $this->tpl_mypageno = 'regular';
         if (SC_Display_Ex::detectDevice() === DEVICE_TYPE_MOBILE){
             $this->tpl_subtitle = 'MYページ';
