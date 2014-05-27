@@ -144,7 +144,11 @@ select
         else concat(shpref.name, sh.shipping_addr01)
         end AS addr01,
     sh.shipping_addr02,
-    od.course_cd,
+    case
+        when od.course_cd = 1 then 30
+        when od.course_cd = 2 then 60
+        when od.course_cd = 3 then 90
+        else od.course_cd end as course_cd,
     oh.status,
     date_format(sh.shipping_commit_date, '%Y/%m/%d') as shipping_commit_date,
     sh.shipping_area_code,
@@ -392,7 +396,11 @@ select
         else concat(rpref.name, rh.order_addr01)
         end as order_addr01,
     rh.order_addr02,
-    rd.course_cd,
+    case
+        when rd.course_cd = 1 then 30
+        when rd.course_cd = 2 then 60
+        when rd.course_cd = 3 then 90
+        else rd.course_cd end as course_cd,
     rh.status,
     rd.todoke_kbn,
     rd.todoke_day,

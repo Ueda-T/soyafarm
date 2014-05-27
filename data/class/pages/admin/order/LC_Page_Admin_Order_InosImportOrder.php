@@ -768,7 +768,10 @@ SELECT
    ,IM.price
    ,IM.quantity
    ,IM.cut_rate
-   ,IM.course_cd
+   ,CASE WHEN IM.course_cd = 30 THEN 1
+    WHEN IM.course_cd = 60 THEN 2
+    WHEN IM.course_cd = 90 THEN 3
+    ELSE IM.course_cd END AS course_cd
    ,1
 FROM
     dtb_order_inos_import IM
@@ -1000,7 +1003,10 @@ SELECT
    ,IM.price
    ,IM.quantity
    ,IM.cut_rate
-   ,IM.course_cd
+   ,CASE WHEN IM.course_cd = 30 THEN 1
+    WHEN IM.course_cd = 60 THEN 2
+    WHEN IM.course_cd = 90 THEN 3
+    ELSE IM.course_cd END AS course_cd
    ,1
 FROM
     dtb_order_inos_import IM
