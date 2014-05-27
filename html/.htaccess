@@ -30,6 +30,11 @@ RewriteEngine on
 
 RewriteBase /
 
+# mobile
+RewriteCond %{ENV:UA} ^mobile$
+RewriteCond %{REQUEST_URI} !^/nomobile.html$
+RewriteRule (.*) /nomobile.html [R,L]
+
 # http -> https
 RewriteCond %{REQUEST_URI} .*/contact/.*$ [OR]
 RewriteCond %{REQUEST_URI} .*/mypage/.*$ [OR]
