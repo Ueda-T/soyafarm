@@ -32,7 +32,7 @@
                 <colgroup width="20%"></colgroup>
                 <colgroup width="30%"></colgroup>
                 <tr>
-                    <th class="alignL">オーダー番号</th>
+                    <th class="alignL">注文番号</th>
                     <td><!--{$tpl_arrOrderData.order_id}--></td>
                     <th class="alignL">ご注文日</th>
                     <td><!--{$tpl_arrOrderData.create_date|date_format:"%Y年%m月%d日"|h}--></td>
@@ -41,7 +41,7 @@
                     <th class="alignL">処理状況</th>
                     <td colspan="3">
 <!--{assign var=i value=$tpl_arrOrderData.status}-->
-<!--{if $arrOrderStatus[$i].image_l}--><img src="<!--{$TPL_URLPATH}-->img/rohto/<!--{$arrOrderStatus[$i].image_l}-->" /><!--{else}--><!--{$arrOrderStatus[$i].name}--><!--{/if}-->
+<!--{$arrOrderStatus[$i].name}-->
 </td>
                 </tr>
                 <tr>
@@ -57,7 +57,9 @@
                     <td>
                         商品金額(税込)：<!--{$tpl_arrOrderData.subtotal|number_format}-->円<br />
                         送料(税込)：<!--{assign var=key value="deliv_fee"}--><!--{$tpl_arrOrderData[$key]|number_format|h}-->円<br />
+<!--{*
                         使用ポイント：<!--{assign var=key value="use_point"}--><!--{$tpl_arrOrderData[$key]|number_format|h}-->pt<br />
+*}-->
                         合計金額(税込)：<!--{$tpl_arrOrderData.payment_total|number_format}-->円
                     </td>
                 </tr>
@@ -87,29 +89,6 @@
             </form>
         </div>
 
-<!--{*
-        <!-- 使用ポイントここから -->
-        <!--{if $smarty.const.USE_POINT !== false}-->
-            <table summary="使用ポイント">
-                <colgroup width="30%"></colgroup>
-                <colgroup width="70%"></colgroup>
-                <tr>
-                    <th class="alignL">ご使用ポイント</th>
-                    <td><!--{assign var=key value="use_point1"}--><!--{$tpl_arrOrderData[$key]|number_format|default:0}--> pt</td>
-                </tr>
-                <tr>
-                    <th class="alignL">ご使用お誕生日ポイント</th>
-                    <td><!--{assign var=key value="use_point2"}--><!--{$tpl_arrOrderData[$key]|number_format|default:0}--> pt</td>
-                </tr>
-                <tr>
-                    <th class="alignL">今回加算されるポイント</th>
-                    <td><!--{$tpl_arrOrderData.add_point|number_format|default:0}--> pt</td>
-                </tr>
-            </table>
-        <!--{/if}-->
-        <!-- 使用ポイントここまで -->
-*}-->
-
         <!--{foreach item=shippingItem name=shippingItem from=$arrShipping}-->
             <h2 class="bsc">お届け先<!--{if $isMultiple}--><!--{$smarty.foreach.shippingItem.iteration}--><!--{/if}--></h2>
 
@@ -131,7 +110,7 @@
                         <td><!--{$shippingItem.shipping_tel}--></td>
                     </tr>
                     <tr>
-                        <th rowspan="3">お届け方法</th>
+                        <th rowspan="2">お届け方法</th>
                         <th>お届け希望日</th>
                         <td><!--{$shippingItem.shipping_date|default:'指定なし'|h}--></td>
                     </tr>
@@ -139,10 +118,12 @@
                         <th>時間指定</th>
                         <td><!--{$shippingItem.shipping_time|default:'指定なし'|h}--></td>
                     </tr>
+<!--{*
                     <tr>
                         <th>配達時のご要望</th>
                         <td><!--{$tpl_arrOrderData.note|default:'指定なし'|h}--></td>
                     </tr>
+*}-->
                     <tr>
                         <th colspan="2">伝票番号</th>
                         <td><!--{$shippingItem.shipping_num|default:''|h}--></td>
@@ -206,24 +187,6 @@
         </table>
         </div>
 
-<!--{*
-        <h2 class="bsc">メール配信履歴一覧</h2>
-        <table>
-            <tr>
-                <th class="alignC">処理日</th>
-                <th class="alignC">通知メール</th>
-                <th class="alignC">件名</th>
-            </tr>
-            <!--{section name=cnt loop=$tpl_arrMailHistory}-->
-            <tr class="center">
-                <td class="alignC"><!--{$tpl_arrMailHistory[cnt].send_date|sfDispDBDate|h}--></td>
-                <!--{assign var=key value="`$tpl_arrMailHistory[cnt].template_id`"}-->
-                <td class="alignC"><!--{$arrMAILTEMPLATE[$key]|h}--></td>
-                <td><a href="#" onclick="win02('./mail_view.php?send_id=<!--{$tpl_arrMailHistory[cnt].send_id}-->','mail_view','650','800'); return false;"><!--{$tpl_arrMailHistory[cnt].subject|h}--></a></td>
-            </tr>
-            <!--{/section}-->
-        </table>
-*}-->
         <!-- お問い合わせ -->
         <p class="btn">
             <a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/"><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_pastorder.gif" alt="このご注文へのお問い合わせ" class="swp" /></a>

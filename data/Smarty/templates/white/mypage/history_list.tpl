@@ -16,10 +16,8 @@
 	<!--{/if}-->
 
 	<ul class="styleDisc" style="margin:20px 0;">
-		<li>「オーダー番号」をクリックすると、そのご注文の詳細を確認することができます。</li>
-		<li>「お支払方法」に「ご入金（<span class="red">未</span>）」となっているご注文は、お支払が未確認となっております。</li>
-		<li>「購入商品」の<input type="checkbox" name="" value=""> にチェックを付けて「チェックを付けた商品を購入する」ボタンを押すと、同じ商品を購入することができます。</li>
-		<li>「購入商品」が「終了」となっている場合は、限定品やキャンペーン品などで、現在はお取り扱いがない商品です。</li>
+		<li>「注文番号」をクリックすると、そのご注文の詳細を確認することができます。</li>
+		<li>「商品名」の<input type="checkbox" name="" value=""> にチェックを付けて「チェックを付けた商品を購入する」ボタンを押すと、同じ商品を購入することができます。</li>
 	</ul>
 
 		<div class="cartList">
@@ -43,10 +41,10 @@
     				<table summary="購入履歴">
     					<tr>
     						<th class="alignC">注文日<br />注文番号</th>
-    						<th class="alignC" nowrap>購入金額</th>
-    						<th class="alignC">お支払方法</th>
+    						<th class="alignC" nowrap>お支払い<br />金額合計</th>
+    						<th class="alignC">お支払い方法</th>
     						<th class="alignC">処理状況</th>
-    						<th class="alignC">購入商品</th>
+    						<th class="alignC">商品名</th>
     					</tr>
                         <!--{assign var=product_cnt value=0}-->
     					<!--{section name=cnt loop=$arrOrder}-->
@@ -58,7 +56,7 @@
     							<td class="alignC"><!--{$arrPayment[$payment_id]|h}--></td>
     							<td>
 <!--{assign var=i value=$arrOrder[cnt].status}-->
-<!--{if $arrOrderStatus[$i].image_s}--><img src="<!--{$TPL_URLPATH}-->img/rohto/<!--{$arrOrderStatus[$i].image_s}-->" /><!--{else}--><!--{$arrOrderStatus[$i].name}--><!--{/if}-->
+<!--{$arrOrderStatus[$i].name}-->
 </td>
     							<td>
                                     <!--{foreach item=arrOrderMsItem from=$arrOrderMs}-->
