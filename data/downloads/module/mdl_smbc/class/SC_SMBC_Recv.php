@@ -1,6 +1,10 @@
 <?php
 require_once HTML_REALDIR .'require.php';
-require_once DATA_REALDIR . 'module/Request.php';
+if (version_compare(ECCUBE_VERSION, '2.12', '>=')) {
+    require_once(DATA_REALDIR . 'module/HTTP/Request.php');
+} else {
+    require_once(DATA_REALDIR . 'module/Request.php');
+}
 require_once(MODULE_REALDIR . 'mdl_smbc/inc/include.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
 // レスポンス内容
@@ -98,6 +102,23 @@ class SC_SMBC_Recv {
         }
 
         return false;
+    }
+    
+    /**
+     * 受注ステータスが新規注文・入金待ち・決済処理中以外の受注の場合true
+     *
+     * @param array $array POSTデータ
+     * @return boolean
+     */
+    function checkOrderStatus ($array){
+        $arrOrder = array();
+        $arrOrder =  $this->objQuery->select("status", "dtb_order", "del_flg = 0 AND order_id = ?", array(intval($array['shoporder_no'])));
+
+        if ($arrOrder[0]['status'] == ORDER_NEW || $arrOrder[0]['status'] == ORDER_PAY_WAIT || $arrOrder[0]['status'] == ORDER_PENDING) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

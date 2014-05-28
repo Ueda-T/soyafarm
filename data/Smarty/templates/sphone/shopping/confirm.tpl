@@ -60,6 +60,29 @@ $(document).ready(function() {
                         数量:<!--{$item.quantity|number_format}-->　<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円</td>
                 </tr>
             <!--{/foreach}-->
+            <!--{* 同梱品情報 *}-->
+            <!--{if $tpl_include_product_flg}-->
+            <!--{foreach from=$arrIncludeProduct item=item}-->
+                <tr>
+                    <td colspan="2">
+                        <ul>
+                            <li>プレゼント商品</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ul>
+                            <li><strong><!--{$item.product_name|h}--></strong></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        数量:<!--{$item.quantity|number_format}--></td>
+                </tr>
+            <!--{/foreach}-->
+            <!--{/if}-->
             <tr>
                 <th style="text-align:right;">小計</th>
                 <td style="text-align:right;"><!--{$tpl_total_inctax[$cartKey]|number_format}-->円</td>

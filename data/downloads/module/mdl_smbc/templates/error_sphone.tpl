@@ -118,7 +118,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #C5C5C
             <input type="hidden" name="uniqid" value="<!--{$tpl_uniqid}-->" />
 
             <div class="tblareabtn">
-              <p><a href="#" onclick="fnModeSubmit('return','',''); return false;" class="btn_back ui-link">戻る</a></p>
+              <p><a href="#" onclick="document.form1.submit(); return false;" class="btn_back ui-link">戻る</a></p>
             </div>
         </form>
     </div>

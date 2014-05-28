@@ -2229,5 +2229,287 @@ __EOS;
         is_dir(dirname($pathname)) || SC_Utils::recursiveMkdir(dirname($pathname), $mode);
         return is_dir($pathname) || @mkdir($pathname, $mode);
     }
+
+    /**
+     * PHP のタイムアウトを延長する
+     *
+     * ループの中で呼び出すことを意図している。
+     * 暴走スレッドが残留する確率を軽減するため、set_time_limit(0) とはしていない。
+     * @param  integer $seconds 最大実行時間を延長する秒数。
+     * @return boolean 成功=true, 失敗=false
+     */
+    function extendTimeOut($seconds = null)
+    {
+        $safe_mode = (boolean) ini_get('safe_mode');
+        if ($safe_mode) return false;
+
+        if (is_null($seconds)) {
+            $seconds
+                = is_numeric(ini_get('max_execution_time'))
+                ? intval(ini_get('max_execution_time'))
+                : intval(get_cfg_var('max_execution_time'))
+            ;
+        }
+
+        // タイムアウトをリセット
+        set_time_limit($seconds);
+
+        return true;
+    }
+
+   /**
+     * コンパイルファイルを削除します.
+     * @return void
+     */
+    function clearCompliedTemplate()
+    {
+        // コンパイルファイルの削除処理
+        SC_Helper_FileManager_Ex::deleteFile(COMPILE_REALDIR, false);
+        SC_Helper_FileManager_Ex::deleteFile(COMPILE_ADMIN_REALDIR, false);
+        SC_Helper_FileManager_Ex::deleteFile(SMARTPHONE_COMPILE_REALDIR, false);
+        SC_Helper_FileManager_Ex::deleteFile(MOBILE_COMPILE_REALDIR, false);
+    }
+
+    /**
+     * 指定されたパスの配下を再帰的にコピーします.
+     * @param  string $imageDir コピー元ディレクトリのパス
+     * @param  string $destDir  コピー先ディレクトリのパス
+     * @return void
+     */
+    function copyDirectory($source_path, $dest_path)
+    {
+        $handle=opendir($source_path);
+        while ($filename = readdir($handle)) {
+            if ($filename === '.' || $filename === '..') continue;
+            $cur_path = $source_path . $filename;
+            $dest_file_path = $dest_path . $filename;
+            if (is_dir($cur_path)) {
+                // ディレクトリの場合
+                // コピー先に無いディレクトリの場合、ディレクトリ作成.
+                if (!empty($filename) && !file_exists($dest_file_path)) mkdir($dest_file_path);
+                SC_Utils_Ex::copyDirectory($cur_path . '/', $dest_file_path . '/');
+            } else {
+                if (file_exists($dest_file_path)) unlink($dest_file_path);
+                copy($cur_path, $dest_file_path);
+            }
+        }
+    }
+
+    /**
+     * 文字列を区切り文字を挟み反復する
+     * @param  string $input      繰り返す文字列。
+     * @param  string $multiplier input を繰り返す回数。
+     * @param  string $separator  区切り文字
+     * @return string
+     */
+    public function repeatStrWithSeparator($input, $multiplier, $separator = ',')
+    {
+        return implode($separator, array_fill(0, $multiplier, $input));
+    }
+
+    /**
+     * RFC3986に準拠したURIエンコード
+     * MEMO: PHP5.3.0未満では、~のエンコードをしてしまうための処理
+     *
+     * @param  string $str 文字列
+     * @return string RFC3986エンコード文字列
+     */
+    public function encodeRFC3986($str)
+    {
+        return str_replace('%7E', '~', rawurlencode($str));
+    }
+
+    /**
+     * マルチバイト対応の trim
+     *
+     * @param  string $str      入力文字列
+     * @param  string $charlist 削除する文字を指定
+     * @return string 変更後の文字列
+     */
+    public static function trim($str, $charlist = null)
+    {
+        $re = SC_Utils_Ex::getTrimPregPattern($charlist);
+
+        return preg_replace('/(^' . $re . ')|(' . $re . '$)/us', '', $str);
+    }
+
+    /**
+     * マルチバイト対応の ltrim
+     *
+     * @param  string $str      入力文字列
+     * @param  string $charlist 削除する文字を指定
+     * @return string 変更後の文字列
+     */
+    public static function ltrim($str, $charlist = null)
+    {
+        $re = SC_Utils_Ex::getTrimPregPattern($charlist);
+
+        return preg_replace('/^' . $re . '/us', '', $str);
+    }
+
+    /**
+     * マルチバイト対応の rtrim
+     *
+     * @param  string $str      入力文字列
+     * @param  string $charlist 削除する文字を指定
+     * @return string 変更後の文字列
+     */
+    public static function rtrim($str, $charlist = null)
+    {
+        $re = SC_Utils_Ex::getTrimPregPattern($charlist);
+
+        return preg_replace('/' . $re . '$/us', '', $str);
+    }
+
+    /**
+     * 文字列のトリム処理で使用する PCRE のパターン
+     *
+     * @param  string $charlist 削除する文字を指定
+     * @return string パターン
+     */
+    public static function getTrimPregPattern($charlist = null)
+    {
+        if (is_null($charlist)) {
+            return '\s+';
+        } else {
+            return '[' . preg_quote($charlist, '/') . ']+';
+        }
+    }
+
+    /**
+     * データ量の単位を付与する
+     *
+     * @param  int    $data
+     * @return string
+     */
+    public function getUnitDataSize($data)
+    {
+        if ($data < 1000) {
+            $return = $data . "KB";
+        } elseif ($data < 1000000) {
+            $return = $data/1000 . "MB";
+        } else {
+            $return = $data/1000000 . "GB";
+        }
+
+        return $return;
+    }
+
+    /**
+     * カテゴリーツリー状の配列を作成.
+     *
+     * @param  string  $primary_key
+     * @param  string  $glue_key
+     * @param  integer $max_depth
+     * @param  array   $correction
+     * @param  integer $root_id
+     * @return array   ツリーの配列
+     */
+    public static function buildTree($primary_key, $glue_key, $max_depth, $correction = array(), $root_id = 0)
+    {
+        $children = array();
+        foreach ($correction as $child) {
+            $children[$child[$glue_key]][] = $child;
+        }
+        $arrTree = $children[$root_id];
+        foreach ($arrTree as &$child) {
+            SC_Utils_Ex::addChild($child, $primary_key, 1, $max_depth, $children);
+        }
+
+        return $arrTree;
+    }
+
+    /**
+     * ツリーの親子をつなげるルーチン.
+     *
+     * @param  array   $target      親
+     * @param  string  $primary_key 主キーの識別子
+     * @param  integer $level       親の階層
+     * @param  integer $max_depth   階層の深さの最大値
+     * @param  array   $children    子の配列（キーが親ID）
+     * @return void
+     */
+    public static function addChild(&$target, $primary_key, $level, $max_depth, &$children = array())
+    {
+        if (isset($children[$target[$primary_key]])) {
+            $target['children'] = $children[$target[$primary_key]];
+            if ($level + 1 < $max_depth) {
+                foreach ($target['children'] as &$child) {
+                    SC_Utils_Ex::addChild($child, $primary_key, $level++, $max_depth, $children);
+                }
+            }
+        }
+    }
+
+    /**
+     * 配列のキーをIDにした配列を作成.
+     *
+     * @param  string $ID_name    IDが格納されているキー名
+     * @param  array  $correction 元の配列
+     * @return array
+     */
+    public static function makeArrayIDToKey($ID_name, $correction = array())
+    {
+        $arrTmp = array();
+        foreach ($correction as $item) {
+            $arrTmp[$item[$ID_name]] = $item;
+        }
+        $return =& $arrTmp;
+        unset($arrTmp);
+
+        return $return;
+    }
+
+    /**
+     * 階層情報が含まれている配列から親ID配列を取得する.
+     *
+     * @param  integer $start_id    取得起点
+     * @param  string  $primary_key 主キー名
+     * @param  string  $glue_key    親IDキー名
+     * @param  array   $correction  階層構造が含まれている配列
+     * @param  boolean $cid_is_key  キーがIDの配列の場合はtrue
+     * @param  integer $root_id     ルートID
+     * @param  boolean $id_only     IDだけの配列を返す場合はtrue
+     * @return array   親ID配列
+     */
+    public static function getTreeTrail($start_id, $primary_key, $glue_key, $correction = array(), $cid_is_key = FALSE, $root_id = 0, $id_only = TRUE)
+    {
+        if ($cid_is_key) {
+            $arrIDToKay = $correction;
+        } else {
+            $arrIDToKay = SC_Utils_Ex::makeArrayIDToKey($primary_key, $correction);
+        }
+        $id = $start_id;
+        $arrTrail = array();
+        while ($id != $root_id && !SC_Utils_Ex::isBlank($id)) {
+            if ($id_only) {
+                $arrTrail[] = $id;
+            } else {
+                $arrTrail[] = $arrIDToKay[$id];
+            }
+            if (isset($arrIDToKay[$id][$glue_key])) {
+                $id = $arrIDToKay[$id][$glue_key];
+            } else {
+                $id = $root_id;
+            }
+        }
+
+        return array_reverse($arrTrail);
+    }
+    
+    /**
+     * ベースとなるパスと相対パスを比較してファイルが存在する事をチェックする
+     *
+     * @param  string  $file
+     * @param  string  $base_path
+     * @return bool true = exists / false does not exist
+     */
+    public  function checkFileExistsWithInBasePath($file,$base_path) 
+    {  
+        $arrPath = explode('/', str_replace('\\', '/',$file));
+        $arrBasePath = explode('/', str_replace('\\', '/',$base_path));
+        $path_diff = implode("/",array_diff_assoc($arrPath, $arrBasePath));
+        return file_exists(realpath(str_replace('..','',$base_path . $path_diff))) ? true : false;
+    }
 }
 ?>

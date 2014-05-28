@@ -38,6 +38,10 @@ define('MDL_SMBC_PAYEASY_BILL_METHOD', '07');
 define('MDL_SMBC_ELECTRONIC_MONEY_BILL_METHOD', '09');
 // ネットバンク
 define('MDL_SMBC_NETBUNK_BILL_METHOD', '10');
+// クレジット(継続課金)
+// dtb_payment.memo01の識別用. 決済ステーションとの連携では MDL_SMBC_CREDIT_BILL_METHOD を使用する
+define('MDL_SMBC_CREDIT_REGULAR_BILL_METHOD', '9905');
+
 
 /* 決済種類コード */
 // クレジットカード
@@ -83,6 +87,10 @@ define('MDL_SMBC_DATA_LINK_CARD_INFO_KEEP_VERSION', '214');
 define('MDL_SMBC_PAGE_LINK_PC_VERSION', '110');
 // 画面連携：モバイル
 define('MDL_SMBC_PAGE_LINK_MOBILE_VERSION', '120');
+// 継続課金画面連携：PC
+define('MDL_SMBC_REGULAR_PAGE_LINK_PC_VERSION', '130');
+// 継続課金画面連携：モバイル
+define('MDL_SMBC_REGULAR_PAGE_LINK_MOBILE_VERSION', '140');
 // クレジット 請求確定連携
 define('MDL_SMBC_KAKUTEI_LINK_CREDIT_VERSION', '212');
 // クレジット 与信全額取消連携
@@ -93,6 +101,23 @@ define('MDL_SMBC_YOSHIN_PART_CANCEL_LINK_CREDIT_VERSION', '216');
 define('MDL_SMBC_SALES_ALL_CANCEL_LINK_CREDIT_VERSION', '217');
 // クレジット 売上一部取消連携
 define('MDL_SMBC_SALES_PART_CANCEL_LINK_CREDIT_VERSION', '218');
+// 継続課金 顧客登録
+define('MDL_SMBC_REGULAR_REGISTER_VERSION', '240');
+// 継続課金 顧客変更
+define('MDL_SMBC_REGULAR_CHANGE_VERSION', '241');
+// 継続課金 有効性結果取得
+define('MDL_SMBC_REGULAR_CHECK_VERSION', '213');
+// 継続課金 顧客情報削除
+define('MDL_SMBC_REGULAR_DELETE_VERSION', '242');
+// 継続課金 請求予定確定
+define('MDL_SMBC_REGULAR_SETTLED_VERSION', '243');
+
+// 顧客契約情報取得 処理区分
+define('MDL_SMBC_CONTRACT_REQUEST_SHORI_KBN', '0305');
+// 有効性結果取得 処理区分
+define('MDL_SMBC_CHECK_REQUEST_SHORI_KBN', '1105');
+// 与信結果取得 処理区分
+define('MDL_SMBC_AUTHORIZED_REQUEST_SHORI_KBN', '1005');
 
 /* 請求金額上限 */
 // クレジット
@@ -109,6 +134,8 @@ define('MDL_SMBC_PAYEASY_UPPER_RULE_MAX', 99999999);
 define('MDL_SMBC_ELECTRONIC_MONEY_UPPER_RULE_MAX', 50000);
 // ネットバンク
 define('MDL_SMBC_NETBUNK_UPPER_RULE_MAX', 99999999);
+// 継続課金フロアリミット
+define('MDL_SMBC_REGULAR_UPPER_RULE_MAX', 30000);
 
 /* 支払方法名 */
 // クレジット
@@ -125,6 +152,9 @@ define('MDL_SMBC_PAYEASY_PAY_TYPE', 'ペイジー決済');
 define('MDL_SMBC_ELECTRONIC_MONEY_PAY_TYPE', '電子マネー決済');
 // ネットバンク
 define('MDL_SMBC_NETBUNK_PAY_TYPE', 'ネットバンク決済');
+// クレジット(継続課金)
+define('MDL_SMBC_CREDIT_REGULAR_PAY_TYPE', 'クレジットカード決済(定期購入)');
+
 
 /* クレジット決済 */
 // クレジット有効年の加算値
@@ -164,4 +194,34 @@ define('MDL_SMBC_PAYMENT_STATUS_OK', 1);
 define('MDL_SMBC_PAYMENT_STATUS_OVER', 2);
 // 請求取消済み
 define('MDL_SMBC_PAYMENT_STATUS_SHORT', 3);
+
+/** 決済ステータス(未請求) */
+define('MDL_SMBC_REGULAR_STATUS_NONE', 1);
+/** 決済ステータス(与信OK) */
+define('MDL_SMBC_REGULAR_STATUS_COMPLETED', 2);
+/** 決済ステータス(与信NG) */
+define('MDL_SMBC_REGULAR_STATUS_DENIED', 3);
+/** 決済ステータス(与信期限切れ) */
+define('MDL_SMBC_REGULAR_STATUS_EXPIRED', 4);
+/** 決済ステータス(請求確定) */
+define('MDL_SMBC_REGULAR_STATUS_SETTLED', 5);
+/** 決済ステータス(受注キャンセル) */
+define('MDL_SMBC_REGULAR_STATUS_CANCEL', 6);
+/** 決済ステータス(有効性結果NG) */
+define('MDL_SMBC_REGULAR_STATUS_CHECKNG', 7);
+/** 決済ステータス(バッチ実行中) */
+define('MDL_SMBC_REGULAR_STATUS_EXECUTING', 98);
+/** 決済ステータス(バッチエラー) */
+define('MDL_SMBC_REGULAR_STATUS_ERROR', 99);
+$GLOBALS['arrSmbcRegularStatus'] = array(
+    MDL_SMBC_REGULAR_STATUS_NONE              => '未請求',
+    MDL_SMBC_REGULAR_STATUS_COMPLETED         => '与信OK',
+    MDL_SMBC_REGULAR_STATUS_DENIED            => '与信NG',
+    MDL_SMBC_REGULAR_STATUS_EXPIRED           => '与信期限切れ',
+    MDL_SMBC_REGULAR_STATUS_SETTLED           => '請求確定',
+    MDL_SMBC_REGULAR_STATUS_CANCEL            => '受注キャンセル',
+    MDL_SMBC_REGULAR_STATUS_CHECKNG           => '有効性結果NG',
+    MDL_SMBC_REGULAR_STATUS_EXECUTING         => 'バッチ実行中',
+    MDL_SMBC_REGULAR_STATUS_ERROR             => 'バッチエラー'
+);
 ?>

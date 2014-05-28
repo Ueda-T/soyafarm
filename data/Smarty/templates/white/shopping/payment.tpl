@@ -156,6 +156,19 @@
 						&nbsp;</td>
 					</tr>
 				<!--{/foreach}-->
+				<!--{* 同梱品情報 *}-->
+				<!--{if $tpl_include_product_flg}-->
+				<!--{foreach from=$arrIncludeProduct item=item}-->
+					<tr>
+						<td>
+							<!--{$item.product_name|h}--><br />
+							<!--{$item.product_code|h}-->
+						</td>
+						<td class="alignC"><!--{$item.quantity|number_format}--></td>
+						<td>プレゼント商品</td>
+					</tr>
+				<!--{/foreach}-->
+				<!--{/if}-->
 				</tbody>
 				<tfoot>
 				<!--{*

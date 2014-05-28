@@ -409,6 +409,13 @@ class LC_Page_Cart extends LC_Page_Ex {
 	    }
 	}
 
+	// 同梱品情報取得
+	$this->tpl_include_product_flg = false;
+        $this->arrIncludeProduct = $objPurchase->getIncludeProducts();
+        if (is_array($this->arrIncludeProduct)) {
+	    $this->tpl_include_product_flg = true;
+	}
+
 	// タグセット
 	$this->lfSetTag($this);
     }

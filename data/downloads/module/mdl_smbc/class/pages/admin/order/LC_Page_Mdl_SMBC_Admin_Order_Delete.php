@@ -1,6 +1,6 @@
 <?php
 // {{{ requires
-require_once(CLASS_REALDIR . "pages/LC_Page.php");
+require_once(CLASS_EX_REALDIR . 'page_extends/admin/LC_Page_Admin_Ex.php');
 require_once(MODULE_REALDIR . 'mdl_smbc/inc/include.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC.php');
@@ -13,7 +13,7 @@ require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC_Data.php');
  * @author LOCKON CO.,LTD.
  * @version $Id$
  */
-class LC_Page_Mdl_SMBC_Admin_Order_Delete extends LC_Page {
+class LC_Page_Mdl_SMBC_Admin_Order_Delete extends LC_Page_Admin_Ex {
 
     // 請求確定連携データの配列
     var $arrParam;
@@ -30,6 +30,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Delete extends LC_Page {
      * @return void
      */
     function init() {
+        $this->skip_load_page_layout = true;
         parent::init();
         $this->tpl_mainpage = MDL_SMBC_TEMPLATE_PATH . 'admin/order/delete.tpl';
         $this->tpl_subnavi = TEMPLATE_ADMIN_REALDIR . 'order/subnavi.tpl';
@@ -68,12 +69,12 @@ class LC_Page_Mdl_SMBC_Admin_Order_Delete extends LC_Page {
 
         // 検索ワードの引き継ぎ
         foreach ($_POST as $key => $val) {
-            if (ereg("^search_", $key)) {
+            if (preg_match('/^search_/', $key)) {
                 $this->arrHidden[$key] = $val;
             }
         }
         foreach ($_POST as $key => $val) {
-            if (ereg("^card_", $key)) {
+            if (preg_match('/^card_/', $key)) {
                 $this->arrCard[$key] = $val;
             }
         }
@@ -124,7 +125,6 @@ class LC_Page_Mdl_SMBC_Admin_Order_Delete extends LC_Page {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /**
@@ -193,22 +193,22 @@ class LC_Page_Mdl_SMBC_Admin_Order_Delete extends LC_Page {
                 break;
             case 'search_order_name':
                 $where .= " AND " . $dbFactory->concatColumn(array("name01", "name02")) . " LIKE ?";
-                $nonsp_val = mb_ereg_replace("[ 　]+","",$val);
+                $nonsp_val = preg_replace('/[ 　]/u', '', $val);
                 $arrval[] = "%$nonsp_val%";
                 break;
             case 'search_order_kana':
                 $where .= " AND " . $dbFactory->concatColumn(array("kana01", "kana02")) . " LIKE ?";
-                $nonsp_val = mb_ereg_replace("[ 　]+","",$val);
+                $nonsp_val = preg_replace('/[ 　]/u', '', $val);
                 $arrval[] = "%$nonsp_val%";
                 break;
             case 'search_tel':
                 $where .= " AND " . $dbFactory->concatColumn(array("tel01", "tel02", "tel03")) . " LIKE ?";
-                $nonsp_val = ereg_replace("-", "",$val);
+                $nonsp_val = preg_replace('/[ 　]/u', '', $val);
                 $arrval[] = "%$nonsp_val%";
                 break;
             case 'search_email':
                 $where .= " AND email ILIKE ?";
-                $nonsp_val = mb_ereg_replace("[ 　]+","",$val);
+                $nonsp_val = preg_replace('/[ 　]/u', '', $val);
                 $arrval[] = "%$nonsp_val%";
                 break;
             case 'search_syear':

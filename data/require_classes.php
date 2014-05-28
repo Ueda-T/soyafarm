@@ -63,4 +63,5 @@ require_once CLASS_EX_REALDIR . 'helper_extends/SC_Helper_Purchase_Ex.php';
 require_once CLASS_EX_REALDIR . 'helper_extends/SC_Helper_Plugin_Ex.php';
 require_once CLASS_EX_REALDIR . 'helper_extends/SC_Helper_Customer_Ex.php';
 require_once CLASS_EX_REALDIR . 'helper_extends/SC_Helper_Regular_Ex.php';
+require_once CLASS_EX_REALDIR . 'helper_extends/SC_Helper_FileManager_Ex.php';
 ?>

@@ -43,18 +43,18 @@
                     <span class="regular_change">
                     <!--{** 次回お届け日が未定は変更不可 **}-->
 					<!--{if $arrRegularDetail[cnt].next_arrival_date == ""}-->
-					次回お届け日が未定のため<br />変更できません。
+					次回お届け日が未定のため<br />確認できません。
 
 					<!--{** 次回お届け日の1週間以内は変更不可 **}-->
 					<!--{elseif !$arrRegularDetail[cnt].disp_flg}-->
-					只今、出荷準備中のため<br />変更できません。
+					只今、出荷準備中のため<br />確認できません。
 
 					<!--{** 「6：休止中」は変更不可 **}-->
 					<!--{elseif $arrRegularDetail[cnt].status == $smarty.const.REGULAR_ORDER_STATUS_PAUSE}-->
-					休止中のため<br />変更できません。
+					休止中のため<br />確認できません。
 
 					<!--{else}-->
-                             <a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/regular_detail.php?regular_id=<!--{$arrRegularDetail[cnt].regular_id}-->&line_no=<!--{$arrRegularDetail[cnt].line_no}-->">お届けスケジュールの変更</a>
+                             <a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/regular_detail.php?regular_id=<!--{$arrRegularDetail[cnt].regular_id}-->&line_no=<!--{$arrRegularDetail[cnt].line_no}-->">お届けスケジュールの確認</a>
 					<!--{/if}-->
                     </span>
               </p>

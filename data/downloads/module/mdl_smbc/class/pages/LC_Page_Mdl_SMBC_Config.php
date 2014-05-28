@@ -2,6 +2,7 @@
 require_once(CLASS_EX_REALDIR . 'page_extends/admin/LC_Page_Admin_Ex.php');
 require_once(CLASS_EX_REALDIR . 'page_extends/admin/ownersstore/LC_Page_Admin_OwnersStore_Ex.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
+require_once CONFIG_REALFILE;
 
 /**
  * SMBC決済モジュールの管理画面クラス.
@@ -61,7 +62,6 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
      /**
@@ -92,9 +92,19 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
 
         // パラメータ情報の初期化
         $this->objFormParam->addParam("接続先", "connect_url", INT_LEN, "na", array("EXIST_CHECK", "MAX_LENGTH_CHECK", "SPTAB_CHECK"));
-        $this->objFormParam->addParam("契約コード", "shop_cd", MDL_SMBC_SHOP_CD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
-        $this->objFormParam->addParam("収納企業コード", "syuno_co_cd", MDL_SMBC_SYUNO_CO_CD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
-        $this->objFormParam->addParam("ショップパスワード", "shop_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+
+        // いずれかの入力があれば、必須チェックを付与する
+        if (!SC_Utils_Ex::isBlank($arrData['shop_cd'])
+            || !SC_Utils_Ex::isBlank($arrData['syuno_co_cd'])
+            || !SC_Utils_Ex::isBlank($arrData['shop_pwd'])) {
+            $this->objFormParam->addParam("契約コード", "shop_cd", MDL_SMBC_SHOP_CD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("収納企業コード", "syuno_co_cd", MDL_SMBC_SYUNO_CO_CD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("ショップパスワード", "shop_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+        } else {
+            $this->objFormParam->addParam("契約コード", "shop_cd", MDL_SMBC_SHOP_CD_LEN, "na", array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("収納企業コード", "syuno_co_cd", MDL_SMBC_SYUNO_CO_CD_LEN, "na", array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("ショップパスワード", "shop_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+        }
 
         $this->objFormParam->addParam("クレジット", "credit", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
         $this->objFormParam->addParam("コンビニ（番号方式）", "conveni_number", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
@@ -103,6 +113,7 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
         $this->objFormParam->addParam("ペイジー", "pay_easy", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
         $this->objFormParam->addParam("電子マネー", "electronic_money", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
         $this->objFormParam->addParam("ネットバンク", "netbank", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
+        $this->objFormParam->addParam("クレジットカード(継続課金)", "credit_regular", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
 
         if ($arrData['credit'] == 1) {
             $this->objFormParam->addParam("１回払い", "pay_once", INT_LEN, "n", array("MAX_LENGTH_CHECK", "NUM_CHECK"));
@@ -147,6 +158,23 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             }
         }
 
+        // 定期販売用設定
+        // いずれかの入力があれば、必須チェックを付与する
+        if (!SC_Utils_Ex::isBlank($arrData['regular_shop_cd'])
+            || !SC_Utils_Ex::isBlank($arrData['regular_syuno_co_cd'])
+            || !SC_Utils_Ex::isBlank($arrData['regular_shop_pwd'])
+            || !SC_Utils_Ex::isBlank($arrData['regular_deal_pwd'])) {
+            $this->objFormParam->addParam("契約コード", "regular_shop_cd", MDL_SMBC_SHOP_CD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("収納企業コード", "regular_syuno_co_cd", MDL_SMBC_SYUNO_CO_CD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("ショップパスワード", "regular_shop_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("取引検索パスワード", "regular_deal_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("EXIST_CHECK", "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+        } else {
+            $this->objFormParam->addParam("契約コード", "regular_shop_cd", MDL_SMBC_SHOP_CD_LEN, "na", array( "SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("収納企業コード", "regular_syuno_co_cd", MDL_SMBC_SYUNO_CO_CD_LEN, "na", array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("ショップパスワード", "regular_shop_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+            $this->objFormParam->addParam("取引検索パスワード", "regular_deal_pwd", MDL_SMBC_SHOP_PWD_LEN, "na", array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
+        }
+
         $this->objFormParam->setParam($arrData);
         $this->objFormParam->convParam();
     }
@@ -163,8 +191,41 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
         $objErr = new SC_CheckError($arrRet);
         $objErr->arrErr = $this->objFormParam->checkError();
 
+        if (SC_Utils_Ex::isBlank($arrRet['shop_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['syuno_co_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['shop_pwd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_shop_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_syuno_co_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_shop_pwd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_deal_pwd'])) {
+            $objErr->arrErr['top'] = '※ 都度決済設定または、定期販売設定の情報は、どちらか必ず入力してください。';
+        }
+
+        if (SC_Utils_Ex::isBlank($arrRet['shop_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['syuno_co_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['shop_pwd'])) {
+            if ($arrRet['credit'] == 1
+                || $arrRet['conveni_number'] == 1
+                || $arrRet['payment_slip'] == 1
+                || $arrRet['bank_transfer'] == 1
+                || $arrRet['pay_easy'] == 1
+                || $arrRet['electronic_money'] == 1
+                || $arrRet['netbank'] == 1) {
+                $objErr->arrErr['top'] = '※ 都度決済設定が入力されていません。';
+            }
+        }
+
+        if (SC_Utils_Ex::isBlank($arrRet['regular_shop_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_syuno_co_cd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_shop_pwd'])
+            && SC_Utils_Ex::isBlank($arrRet['regular_deal_pwd'])) {
+            if ($arrRet['credit_regular'] == 1) {
+                $objErr->arrErr['top'] = '※ 定期販売設定が入力されていません。';
+            }
+        }
+
         if ($arrRet['credit'] != 1 && $arrRet['conveni_number'] != 1 && $arrRet['payment_slip'] != 1 && $arrRet['bank_transfer'] != 1 &&
-            $arrRet['pay_easy'] != 1 && $arrRet['electronic_money'] != 1 && $arrRet['netbank'] != 1 ) {
+            $arrRet['pay_easy'] != 1 && $arrRet['electronic_money'] != 1 && $arrRet['netbank'] != 1 && $arrRet['credit_regular'] != 1) {
             $objErr->arrErr['pay_type'] = "※ 利用決済が入力されていません。<br />";
         }
 
@@ -297,11 +358,6 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             }
 
             ////////////////////////////////////////////////////////////
-            // 入力内容を、dtb_module.sub_dataへ登録                  //
-            ////////////////////////////////////////////////////////////
-            $objSMBC->registerSubData($arrForm);
-
-            ////////////////////////////////////////////////////////////
             // dtb_mdl_smbc_orderテーブルの存在チェックを行い         //
             // 存在しなければテーブルを作成する                       //
             ////////////////////////////////////////////////////////////
@@ -358,15 +414,87 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             ";
                 $objQuery->query($cre_sql);
             }
+            
+            if(!in_array("dtb_mdl_smbc_regular_customer", $arrTableList)){
+                $cre_sql = "create table dtb_mdl_smbc_regular_customer (
+                    bill_no bigint NOT NULL,
+                    customer_id int NOT NULL,
+                    name01 text,
+                    name02 text,
+                    kana01 text,
+                    kana02 text,
+                    zip01 text,
+                    zip02 text,
+                    pref smallint,
+                    addr01 text,
+                    addr02 text,
+                    email text,
+                    email_mobile text,
+                    tel01 text,
+                    tel02 text,
+                    tel03 text,
+                    sex smallint,
+                    del_flg smallint NOT NULL DEFAULT 0,
+                    create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    update_date timestamp NOT NULL,
+                    PRIMARY KEY (bill_no)
+                );
+            ";
+                $objQuery->query($cre_sql);
+            }
+            
+            if(!in_array("dtb_mdl_smbc_regular_order", $arrTableList)){
+                $cre_sql = "create table dtb_mdl_smbc_regular_order (
+                    bill_no bigint NOT NULL,
+                    shoporder_no varchar(25) NOT NULL,
+                    order_id int NOT NULL,
+                    regular_status smallint NOT NULL,
+                    cleaning_ym TEXT,
+                    cleaning_result smallint,
+                    regular_interval_from TEXT,
+                    regular_interval_to TEXT,
+                    target_ym varchar(6),
+                    kessai_no bigint,
+                    rescd text,
+                    res text,
+                    del_flg smallint NOT NULL DEFAULT 0,
+                    create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    update_date timestamp NOT NULL,
+                    PRIMARY KEY (shoporder_no, bill_no, order_id)
+                );
+            ";
+                $objQuery->query($cre_sql);
+            }
+
+            // インデックスの設定
+            $arrIndexes = $objQuery->listTableIndexes("dtb_mdl_smbc_regular_order");
+            if(!in_array("dtb_mdl_smbc_regular_order_create_date", $arrIndexes)){
+                $cre_sql = "CREATE INDEX dtb_mdl_smbc_regular_order_create_date_idx ON dtb_mdl_smbc_regular_order (create_date);";
+                $objQuery->query($cre_sql);
+            }
+            if(!in_array("dtb_mdl_smbc_regular_order_target_ym", $arrIndexes)){
+                $cre_sql = "CREATE INDEX dtb_mdl_smbc_regular_order_target_ym_idx ON dtb_mdl_smbc_regular_order (target_ym);";
+                $objQuery->query($cre_sql);
+            }
+            $arrIndexes = $objQuery->listTableIndexes("dtb_order_detail");
+            if(!in_array("dtb_order_detail_order_id", $arrIndexes)){
+                $cre_sql = "CREATE INDEX dtb_order_detail_order_id_idx ON dtb_order_detail (order_id);";
+                $objQuery->query($cre_sql);
+            }
 
             ////////////////////////////////////////////////////////////
             // dtb_paymentへ支払方法を設定する。                      //
             // チェックボックスで選択されなかった支払方法は論理削除。 //
             ////////////////////////////////////////////////////////////
+            if(version_compare(ECCUBE_VERSION, '2.13') >= 0) {
+                $php_path = 'mdl_smbc/';
+            } else {
+                $php_path = MDL_SMBC_PATH;
+            }
             // ネットバンク
             if (isset($arrForm['netbank']) && $arrForm['netbank'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'netbank.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_NETBUNK_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_NETBUNK_BILL_METHOD, "payment_method" => MDL_SMBC_NETBUNK_PAY_TYPE)
+                    array('module_path' => $php_path . 'netbank.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_NETBUNK_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_NETBUNK_BILL_METHOD, "payment_method" => MDL_SMBC_NETBUNK_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_NETBUNK_BILL_METHOD);
@@ -374,7 +502,7 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             // 電子マネー
             if (isset($arrForm['electronic_money']) && $arrForm['electronic_money'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'e_money.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_ELECTRONIC_MONEY_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_ELECTRONIC_MONEY_BILL_METHOD, "payment_method" => MDL_SMBC_ELECTRONIC_MONEY_PAY_TYPE)
+                    array('module_path' => $php_path . 'e_money.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_ELECTRONIC_MONEY_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_ELECTRONIC_MONEY_BILL_METHOD, "payment_method" => MDL_SMBC_ELECTRONIC_MONEY_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_ELECTRONIC_MONEY_BILL_METHOD);
@@ -382,7 +510,7 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             // ペイジー
             if (isset($arrForm['pay_easy']) && $arrForm['pay_easy'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'payeasy.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_PAYEASY_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_PAYEASY_BILL_METHOD, "payment_method" => MDL_SMBC_PAYEASY_PAY_TYPE)
+                    array('module_path' => $php_path . 'payeasy.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_PAYEASY_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_PAYEASY_BILL_METHOD, "payment_method" => MDL_SMBC_PAYEASY_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_PAYEASY_BILL_METHOD);
@@ -390,7 +518,7 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             // 銀行振込
             if (isset($arrForm['bank_transfer']) && $arrForm['bank_transfer'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'bank_transfer.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_BANK_TRANSFER_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_BANK_TRANSFER_BILL_METHOD, "payment_method" => MDL_SMBC_BANK_TRANSFER_PAY_TYPE)
+                    array('module_path' => $php_path . 'bank_transfer.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_BANK_TRANSFER_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_BANK_TRANSFER_BILL_METHOD, "payment_method" => MDL_SMBC_BANK_TRANSFER_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_BANK_TRANSFER_BILL_METHOD);
@@ -398,7 +526,7 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             // 払込票（コンビニ、ゆうちょ等）
             if (isset($arrForm['payment_slip']) && $arrForm['payment_slip'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'payment_slip.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_PAYMENT_SLIP_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_PAYMENT_SLIP_BILL_METHOD, "payment_method" => MDL_SMBC_PAYMENT_SLIP_PAY_TYPE)
+                    array('module_path' => $php_path . 'payment_slip.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_PAYMENT_SLIP_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_PAYMENT_SLIP_BILL_METHOD, "payment_method" => MDL_SMBC_PAYMENT_SLIP_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_PAYMENT_SLIP_BILL_METHOD);
@@ -406,7 +534,7 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             // コンビニ（番号方式）
             if (isset($arrForm['conveni_number']) && $arrForm['conveni_number'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'conveni.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_CONVENI_NUMBER_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_CONVENI_NUMBER_BILL_METHOD, "payment_method" => MDL_SMBC_CONVENI_NUMBER_PAY_TYPE)
+                    array('module_path' => $php_path . 'conveni.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_CONVENI_NUMBER_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_CONVENI_NUMBER_BILL_METHOD, "payment_method" => MDL_SMBC_CONVENI_NUMBER_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_CONVENI_NUMBER_BILL_METHOD);
@@ -414,11 +542,38 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             // クレジット決済
             if (isset($arrForm['credit']) && $arrForm['credit'] == '1') {
                 $this->updatePaymentTable(
-                    array('module_path' => MDL_SMBC_PATH . 'credit.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_CREDIT_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_CREDIT_BILL_METHOD, "payment_method" => MDL_SMBC_CREDIT_PAY_TYPE)
+                    array('module_path' => $php_path . 'credit.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_CREDIT_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_CREDIT_BILL_METHOD, "payment_method" => MDL_SMBC_CREDIT_PAY_TYPE)
                 );
             } else {
                 $this->deletePaymentType(MDL_SMBC_CREDIT_BILL_METHOD);
             }
+            // クレジット決済(継続課金)
+            if (isset($arrForm['credit_regular']) && $arrForm['credit_regular'] == '1') {
+                $this->updatePaymentTable(
+                    array('module_path' => $php_path . 'credit_regular.php', 'rule' => 1, 'rule_max' => 1, 'upper_rule' => MDL_SMBC_REGULAR_UPPER_RULE_MAX, 'memo01' => MDL_SMBC_CREDIT_REGULAR_BILL_METHOD, "payment_method" => MDL_SMBC_CREDIT_REGULAR_PAY_TYPE)
+                );
+                $regular_product_type_id = $this->lfSetKeizoku($objQuery);
+                if (strlen($regular_product_type_id) > 0 ) {
+                    $arrForm['regular_product_type_id'] = $regular_product_type_id;
+                }
+                $arrForm['keizoku_flg'] = '1';
+            } else {
+                $this->deletePaymentType(MDL_SMBC_CREDIT_REGULAR_BILL_METHOD);
+                $product_type_id = $objQuery->get('id', 'mtb_product_type', 'name = ?', array('定期対応購入商品'));
+                if (!SC_Utils_Ex::isBlank($product_type_id)) {
+                    $objQuery->delete('mtb_product_type', 'id = ?', array($product_type_id));
+                    SC_Helper_FileManager_Ex::deleteFile(DATA_REALDIR . 'cache/mtb_product_type.serial', true);
+                    $objQuery->update('dtb_deliv', array('del_flg' => '1', 'update_date' => 'CURRENT_TIMESTAMP'),
+                                      'product_type_id = ?', array($product_type_id));
+                }
+                $arrForm['keizoku_flg'] = '0';
+            }
+            ////////////////////////////////////////////////////////////
+            // 入力内容を、dtb_module.sub_dataへ登録                  //
+            ////////////////////////////////////////////////////////////
+            $objSMBC->registerSubData($arrForm);
+
+            SC_Utils_Ex::clearCompliedTemplate();
 
             // 2.12系はプラグインのインストールを行う
             if(defined('PLUGIN_UPLOAD_REALDIR') && version_compare(ECCUBE_VERSION, '2.12.0') >= 0) {
@@ -493,15 +648,15 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
             ),
             array(
                 "src" => MDL_SMBC_PATH . "copy/bankaccount.php",
-                "dst" => HTML_REALDIR . 'admin/system/bankaccount.php'
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'system/bankaccount.php'
             ),
             array(
                 'src' => MDL_SMBC_PLUGIN_PATH . "systemSubnavi.tpl",
                 'dst' => $plugin_path .'/systemSubnavi.tpl',
             ),
             array(
-                'src' => MDL_SMBC_PLUGIN_PATH . "log.png",
-                'dst' => PLUGIN_HTML_REALDIR . $arrPluginInfo['PLUGIN_CODE'] . '/log.png',
+                'src' => MDL_SMBC_PLUGIN_PATH . "logo.png",
+                'dst' => PLUGIN_HTML_REALDIR . $arrPluginInfo['PLUGIN_CODE'] . '/logo.png',
             ),
         );
         if (! $this->updateFile($arrTarget) ) {
@@ -555,5 +710,51 @@ class LC_Page_Mdl_SMBC_Config extends LC_Page_Admin_Ex {
         return true;
     }
 
+    /**
+     * 定期用商品種別・配送情報をDBへ登録
+     * 
+     * @param type $objQuery 
+     */
+    function lfSetKeizoku($objQuery){
+
+        
+        $product_type_count = $objQuery->count('mtb_product_type', 'name = ?', array('定期対応購入商品'));
+        $regular_product_type_id = null;
+        if ($product_type_count <= 0) {
+            // mtb_product_typeを登録
+            $regular_product_type_id = $objQuery->max('id', 'mtb_product_type') + 1;
+            $arrInsertProductType = array(
+                "id" => $regular_product_type_id,
+                "name" => '定期対応購入商品',
+                "rank" => $objQuery->max('rank', 'mtb_product_type') + 1
+            );
+            $objQuery->insert('mtb_product_type', $arrInsertProductType);
+                
+            // mtb_product_typeのキャッシュファイルを削除
+            SC_Helper_FileManager_Ex::deleteFile(DATA_REALDIR . 'cache/mtb_product_type.serial', true);
+
+            // dtb_delivに配送情報を登録
+            $arrInsertDeliv = array(
+                "deliv_id" => $objQuery->nextVal('dtb_deliv_deliv_id'),
+                "product_type_id" => $regular_product_type_id,
+                "name" => "定期購入配送業者",
+                "service_name" => "定期購入配送業者",
+                "remark" => null,
+                "confirm_url" => null,
+                "rank" => $objQuery->max('rank', 'dtb_deliv') + 1,
+                "status" => "1",
+                "del_flg" => "0",
+                "creator_id" => "2",
+                "create_date" => 'CURRENT_TIMESTAMP',
+                "update_date" => 'CURRENT_TIMESTAMP'
+            );
+            $objQuery->insert('dtb_deliv', $arrInsertDeliv);       
+        } else {
+            $arrRegularProductTypeId = $objQuery->select('id', 'mtb_product_type', 'name = ?', array('定期対応購入商品'));
+            $regular_product_type_id = $arrRegularProductTypeId[0]['id'];
+        }
+
+        return $regular_product_type_id;
+    }
 }
 ?>

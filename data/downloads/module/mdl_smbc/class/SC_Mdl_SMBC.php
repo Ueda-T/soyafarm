@@ -58,20 +58,16 @@ class SC_Mdl_SMBC {
 
         $updateFile = array(
             array(
-                "src" => "LC_Page_Ex.php",
-                "dst" => DATA_REALDIR . 'class_extends/page_extends/LC_Page_Ex.php'
-            ),
-            array(
                 "src" => "credit.php",
-                "dst" => HTML_REALDIR . 'admin/order/credit.php'
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/credit.php'
             ),
             array(
                 "src" => "delete.php",
-                "dst" => HTML_REALDIR . 'admin/order/delete.php'
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/delete.php'
             ),
             array(
                 "src" => "credit_edit.php",
-                "dst" => HTML_REALDIR . 'admin/order/credit_edit.php'
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/credit_edit.php'
             ),
             array(
                 "src" => "subnavi.tpl",
@@ -135,19 +131,63 @@ class SC_Mdl_SMBC {
             ),
             array(
                 "src" => "payment.php",
-                "dst" => HTML_REALDIR . 'admin/order/payment.php'
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/payment.php'
             ),
             array(
                 "src" => "shop_error.php",
                 "dst" => HTML_REALDIR . 'smbc/shop_error.php'
             ),
+            array(
+                "src" => "regular.php",
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/regular.php'
+            ),
+            array(
+                "src" => "upload_csv_regular.php",
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/upload_csv_regular.php'
+            ),            
+            array(
+                "src" => "navi.tpl",
+                "dst" => TEMPLATE_REALDIR . 'mypage/navi.tpl'
+            ),
+            array(
+                "src" => "index.tpl",
+                "dst" => MOBILE_TEMPLATE_REALDIR . 'mypage/index.tpl'
+            ),
+            array(
+                "src" => "navi_sphone.tpl",
+                "dst" => SMARTPHONE_TEMPLATE_REALDIR . 'mypage/navi.tpl'
+            ),
+            array(
+                "src" => "regular_list.php",
+                "dst" => HTML_REALDIR . 'mypage/regular_list.php'
+            ),
+            array(
+                "src" => "regular_complete.php",
+                "dst" => HTML_REALDIR . 'smbc/regular_complete.php'
+            ),
         );
+
+        if(version_compare(ECCUBE_VERSION, '2.13') < 0) {
+            $updateFile[] = array(
+                "src" => "LC_Page_Ex.php",
+                "dst" => DATA_REALDIR . 'class_extends/page_extends/LC_Page_Ex.php'
+            );
+        }
+
         if(version_compare(ECCUBE_VERSION, '2.11.1') < 0) {
             $updateFile[] = array(
                 "src" => "SC_Helper_Purchase_Ex.php",
                 "dst" => DATA_REALDIR . 'class_extends/helper_extends/SC_Helper_Purchase_Ex.php'
             );
         }
+
+        if(version_compare(ECCUBE_VERSION, '2.12') >= 0) {
+            $updateFile[] = array(
+                "src" => "upload_csv_regular.php",
+                "dst" => HTML_REALDIR . ADMIN_DIR . 'order/upload_csv_regular.php'
+            );
+        }
+
         $this->updateFile = $updateFile;
     }
 
@@ -255,8 +295,8 @@ class SC_Mdl_SMBC {
         if (!$raw && is_array($msg)) {
             $keys = array('card_no');
             foreach ($keys as $key) {
-                if (isset($msg[$key])) {
-                    $msg[$key] = ereg_replace(".", "*", $msg[$key]);
+                if (isset($msg[$key]) && !is_array($msg[$key])) {
+                    $msg[$key] = str_pad('', strlen($msg[$key]), '*');
                 }
             }
 
@@ -332,7 +372,7 @@ class SC_Mdl_SMBC {
 
             // ファイルがない、またはファイルはあるが異なる場合
             if(!file_exists($dst_file) || sha1_file($src_file) != sha1_file($dst_file)) {
-                if(is_writable($dst_file) || is_writable(dirname($dst_file)) || $this->mkdirp(dirname($dst_file), 0777)) {
+                if(is_writable($dst_file) || is_writable(dirname($dst_file)) || $this->mkdirp(dirname($dst_file), 0755)) {
                     // backupを作成
                     if (file_exists($dst_file)) {
                         copy($dst_file, $dst_file . '.mdl_smbc' . date(".Ymd"));

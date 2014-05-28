@@ -29,6 +29,7 @@ class LC_Page_Mdl_SMBC_Conveni extends LC_Page_Ex {
         // 現在のページが、決済画面であることを伝える。
         $this->page_mdl_smbc = true;
 
+        $this->skip_load_page_layout = true;
         parent::init();
         $this->objSmbcData = new SC_SMBC_Data();
 
@@ -40,6 +41,7 @@ class LC_Page_Mdl_SMBC_Conveni extends LC_Page_Ex {
         $template .= SC_MobileUserAgent::isMobile() ? '_mobile' : '';
         $template .= SC_SmartphoneUserAgent::isSmartphone() ? '_sphone' : '';
         $this->tpl_mainpage = $template.'.tpl';
+		$this->tpl_column_num = 1;  //左右にカラムのない画面（1カラムの画面）であることを指定
 
         // スマートフォンの場合はEC-CUBE標準のフレームを使わない
         if(SC_SmartphoneUserAgent::isSmartphone()){
@@ -126,7 +128,6 @@ class LC_Page_Mdl_SMBC_Conveni extends LC_Page_Ex {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /**

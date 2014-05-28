@@ -24,35 +24,17 @@
 require_once CLASS_REALDIR . 'pages/LC_Page.php';
 
 class LC_Page_Ex extends LC_Page {
-
-    // }}}
-    // {{{ functions
-
-    /**
-     * Page を初期化する.
-     *
-     * @return void
-     */
     function init() {
+        // モジュール -> 本体のページへ移動
+        if ($_SERVER['PHP_SELF'] !=  ROOT_URLPATH . "shopping/load_payment_module.php" && $_SERVER['PHP_SELF'] != ROOT_URLPATH . "resize_image.php" && !$this->page_mdl_smbc && isset($_SESSION['MDL_SMBC']['order_id']) && (empty($_POST['mode']) || $_POST['mode'] == 'return')){
+            $temp_order_id = $_SESSION['order_id'];
+            $objPurchase = new SC_Helper_Purchase_Ex();
+            $objPurchase->rollbackOrder($_SESSION['order_id'], ORDER_CANCEL, true);
+            $_SESSION['order_id'] = $temp_order_id;
+
+            unset($_SESSION['MDL_SMBC']);
+        }
         parent::init();
-    }
-
-    /**
-     * Page のプロセス.
-     *
-     * @return void
-     */
-    function process() {
-        parent::process();
-    }
-
-    /**
-     * デストラクタ.
-     *
-     * @return void
-     */
-    function destroy() {
-        parent::destroy();
     }
 }
 

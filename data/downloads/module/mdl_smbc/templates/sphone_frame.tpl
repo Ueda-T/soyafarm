@@ -32,27 +32,7 @@
 <!--{* 共通CSS *}-->
 <link rel="stylesheet" media="only screen" href="<!--{$TPL_URLPATH}-->css/import.css" type="text/css" />
 
-<!--{if $tpl_page_category == "abouts"}-->
-<!--{if ($smarty.server.HTTPS != "") && ($smarty.server.HTTPS != "off")}-->
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-<!--{else}-->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<!--{/if}-->
-<!--{/if}-->
-<script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/navi.js"></script>
-<script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/win_op.js"></script>
-<script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/site.js"></script>
 <script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/jquery-1.4.2.min.js"></script>
-<script src="<!--{$TPL_URLPATH}-->js/jquery.biggerlink.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function(){
-        $('#recomendarea div.recomendleft, #recomendarea div.recomendright, #undercolumn div.listrightblock, #whoboughtarea div.whoboughtleft, #whoboughtarea div.whoboughtright').biggerlink();
-    });
-</script>
-
-<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/barbutton.js"></script>
-<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/category.js"></script>
-<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/news.js"></script>
 
 <title><!--{$arrSiteInfo.shop_name|h}--><!--{if $tpl_subtitle|strlen >= 1}--> / <!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--> / <!--{$tpl_title|h}--><!--{/if}--></title>
 <!--{if $arrPageLayout.author|strlen >= 1}-->
@@ -259,9 +239,6 @@ div#footer {
 #footer-menu {
 text-align: left;
 font: bold 100% helvetica;
-}
-#footer-menu li{
-background: #ffffff url(../img/common/chevron.png) no-repeat right center;
 }
 #footer-navi {
 float:left;
@@ -591,25 +568,6 @@ line-height: 1.5em;
 <!--▼ BEGIN FOOTER-->
 <div id="footer">
 <div id="footer-info">
-<ul id="footer-menu">
-<li><a href="<!--{$smarty.const.CART_URLPATH|h}-->">カゴの中を見る</a></li>
-<li><a href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/mypage/login.php">MYページ</a></li>
-<li><a href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/entry/kiyaku.php">新規会員登録</a></li>
-
-<!--{php}-->
-$tmp = $this->get_template_vars('tpl_mainpage');
-if(preg_match("/index\.tpl$/", $tmp))
-$this->assign('isTop', 1);
-<!--{/php}-->
-
-</ul>
-
-<span class="footB">
-<a href="<!--{$smarty.const.HTTP_URL}-->abouts/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">当サイトについて</a>│
-<a href="<!--{$smarty.const.HTTPS_URL}-->contact/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">お問い合わせ</a><br>
-<a href="<!--{$smarty.const.HTTP_URL}-->order/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">特定商取引に関する表記</a>│
-<a href="<!--{$smarty.const.HTTP_URL}-->guide/privacy.php">プライバシーポリシー</a>
-</span>
 
 <div id="copyright">(C) <!--{$arrSiteInfo.shop_name|h}-->.</div>
 
@@ -638,14 +596,6 @@ $this->assign('isTop', 1);
 <!--{* ▲FooterBottom COLUMN*}-->
 
 </body>
-<!--{assign var=index value="`$smarty.const.ROOT_URLPATH``$smarty.const.DIR_INDEX_FILE`"}-->
-<!--{if $index != $smarty.server.PHP_SELF}-->
-    <script type="text/javascript" language="JavaScript">
-    //<![CDATA[
-    setTopButton("<!--{$smarty.const.HTTPS_URL}-->");
-    //]]>
-    </script>
-<!--{/if}-->
 <!-- ▲BODY部 エンド -->
 
 </html>

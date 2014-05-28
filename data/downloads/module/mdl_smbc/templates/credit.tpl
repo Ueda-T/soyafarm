@@ -19,8 +19,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
-<script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/jquery.facebox/facebox.js"></script>
-<link rel="stylesheet" type="text/css" href="<!--{$smarty.const.ROOT_URLPATH}-->js/jquery.facebox/facebox.css" media="screen" />
 <script type="text/javascript">//<![CDATA[
 var send = true;
 
@@ -33,13 +31,6 @@ function fnCheckSubmit() {
         return false;
     }
 }
-
-$(document).ready(function() {
-    $('a.expansion').facebox({
-        loadingImage : '<!--{$smarty.const.ROOT_URLPATH}-->js/jquery.facebox/loading.gif',
-        closeImage   : '<!--{$smarty.const.ROOT_URLPATH}-->js/jquery.facebox/closelabel.png'
-    });
-});
 //]]></script>
 
 <!--CONTENTS-->

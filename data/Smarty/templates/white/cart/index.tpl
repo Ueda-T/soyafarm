@@ -334,6 +334,37 @@ $(document).ready(function() {
             <!--{/if}-->
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
+            <!--{* ▼同梱品情報表示 *}-->
+            <!--{if $tpl_include_product_flg}-->
+            <!--{foreach from=$arrIncludeProduct item=item}-->
+                <!--{if $include_flg == 0}-->
+            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_tankai.gif" alt="プレゼント商品" /></h1>
+            <table class="cartListTankaiTbl" summary="プレゼント商品">
+                <tr>
+                    <th class="alignC" colspan="2">商品名</th>
+                    <th class="num">数量</th>
+                </tr>
+                <!--{assign var=include_flg value=1}-->
+                <!--{/if}-->
+                <tr>
+
+                    <td class="alignC">
+                        <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$item.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$item.product_name|h}-->" width="65" />
+                        </a>
+                    </td>
+                    <td><!--{* 商品名 *}-->
+                        <!--{$item.product_name|h}--><br />
+                        <!--{$item.product_code|h}-->
+                    </td>
+                    <td class="alignC"><!--{$item.quantity}-->
+                    </td>
+                </tr>
+            <!--{/foreach}-->
+            </table>
+            <!--{/if}-->
+            <!--{* ▲同梱品情報表示 *}-->
+
+
             <!--{* ▲商品情報 *}-->
 <div class="cartTotalBox">
 	<div class="inner">

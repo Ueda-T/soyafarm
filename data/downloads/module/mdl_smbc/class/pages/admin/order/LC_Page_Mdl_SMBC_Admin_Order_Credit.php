@@ -1,6 +1,6 @@
 <?php
 // {{{ requires
-require_once(CLASS_REALDIR . "pages/LC_Page.php");
+require_once(CLASS_EX_REALDIR . 'page_extends/admin/LC_Page_Admin_Ex.php');
 require_once(MODULE_REALDIR . 'mdl_smbc/inc/include.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC.php');
@@ -11,7 +11,7 @@ require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC.php');
  * @author LOCKON CO.,LTD.
  * @version $Id$
  */
-class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page {
+class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page_Admin_Ex {
 
     // 請求確定連携データの配列
     var $arrParam;
@@ -28,6 +28,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page {
      * @return void
      */
     function init() {
+        $this->skip_load_page_layout = true;
         parent::init();
         $this->tpl_mainpage = MDL_SMBC_TEMPLATE_PATH . 'admin/order/credit.tpl';
         $this->tpl_subnavi = TEMPLATE_ADMIN_REALDIR . 'order/subnavi.tpl';
@@ -60,7 +61,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page {
 
         // 検索ワードの引き継ぎ
         foreach ($_POST as $key => $val) {
-            if (ereg("^search_", $key)) {
+            if (preg_match('/^search_/', $key)) {
                 $this->arrHidden[$key] = $val;
             }
         }
@@ -167,7 +168,6 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /*
@@ -190,7 +190,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page {
                 }elseif(DB_TYPE == "mysql"){
                     $where .= " AND concat(order_name01,order_name02) ILIKE ?";
                 }
-                $nonsp_val = mb_ereg_replace("[ 　]+","",$val);
+                $nonsp_val = preg_replace('/[ 　]/u', '', $val);
                 $arrval[] = "%$nonsp_val%";
                 break;
             case 'search_order_kana':
@@ -199,7 +199,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit extends LC_Page {
                 }elseif(DB_TYPE == "mysql"){
                     $where .= " AND concat(order_kana01,order_kana02) ILIKE ?";
                 }
-                $nonsp_val = mb_ereg_replace("[ 　]+","",$val);
+                $nonsp_val = preg_replace('/[ 　]/u', '', $val);
                 $arrval[] = "%$nonsp_val%";
                 break;
             case 'search_order_id1':

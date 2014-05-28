@@ -92,6 +92,25 @@ $(document).ready(function() {
                     <td class="alignR"><!--{$item.total_inctax|number_format}-->円</td>
                 </tr>
             <!--{/foreach}-->
+            <!--{* 同梱品情報 *}-->
+            <!--{if $tpl_include_product_flg}-->
+            <!--{foreach from=$arrIncludeProduct item=item}-->
+                <tr>
+                    <td class="alignC">
+                            <img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$item.main_list_image|sfNoImageMainList|h}-->&amp;width=65&amp;height=65" alt="<!--{$item.product_name|h}-->" /></a>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>プレゼント商品</li>
+                            <li><strong><!--{$item.product_name|h}--></strong></li>
+                        </ul>
+                    </td>
+                    <td class="alignR">&nbsp;</td>
+                    <td class="alignR"><!--{$item.quantity|number_format}--></td>
+                    <td class="alignR">&nbsp;</td>
+                </tr>
+            <!--{/foreach}-->
+            <!--{/if}-->
             <tr>
                 <th colspan="4" class="alignR" scope="row">小計</th>
                 <td class="alignR"><!--{$tpl_total_inctax[$cartKey]|number_format}-->円</td>
