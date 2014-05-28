@@ -289,6 +289,9 @@ class LC_Page_Shopping_Payment extends LC_Page_Ex {
             $this->tpl_mainpage = $this->getMobileMainpage($this->is_single_deliv, $this->getMode());
         }
 
+        // 同梱品情報取得
+        $this->arrIncludeProduct = $objPurchase->getIncludeProducts();
+
         $this->arrForm = $objFormParam->getFormParamList();
     }
 

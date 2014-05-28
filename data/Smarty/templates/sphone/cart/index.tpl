@@ -397,6 +397,30 @@ $(document).ready(function() {
             <!--{/if}-->
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
+            <!--{* ▼同梱品情報表示 *}-->
+            <!--{foreach from=$arrIncludeProduct item=item}-->
+                <!--{if $include_flg == 0}-->
+            <h2 style="background-color:#C7B068;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">プレゼント商品</h2>
+			<table cellpadding="0" cellspacing="0" class="cartGoods" style="margin-top:0;">
+                <!--{assign var=include_flg value=1}-->
+                <!--{/if}-->
+                <tr>
+					<td width="120">
+						<img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$item.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$item.product_name|h}-->" width="65" />
+					</td>
+					<td style="padding:10px 9px 0 0; width:100%;">
+						<!--{* 商品名 *}-->
+						<!--{$item.product_name|h}--><br />
+						<!--{$item.product_code|h}--><br />
+						数量:<!--{$item.quantity}-->
+					</td>
+				</tr>
+            <!--{/foreach}-->
+
+            </table>
+            <!--{* ▲同梱品情報情報 *}-->
+
+
             <!--{* ▲商品情報 *}-->
 			<table cellpadding="0" cellspacing="0" class="cartGoods02">
 				<tr>

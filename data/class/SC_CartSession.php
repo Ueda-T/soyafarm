@@ -718,6 +718,8 @@ class SC_CartSession {
 
         // ログインユーザの顧客区分取得
         $customer_kbn = $objCustomer->getValue("customer_kbn");
+		// ログインユーザID取得
+        $customer_id = $objCustomer->getValue('customer_id');
 		// 社員の場合は、プロモーション適用しない
 		if ($customer_kbn == CUSTOMER_KBN_EMPLOYEE) {
 			return false;
@@ -825,17 +827,94 @@ class SC_CartSession {
 
 		// 割引対象がない場合設定なし
 		if (!isset($arrDelivData[0]["promotion_cd"])) {
+			if ($customer_id) {
+				// 顧客別割引確認
+				$this->checkCustomerDiscount($customer_id, $productTypeId);
+			}
 			return false;
 		}
 
 		// 定期情報編集時
 		if ($this->getKey() == CART_REGULAR_KEY) {
 			// 割引対象チェック
-			return $this->checkDiscountCampaignRegular($productTypeId, $arrDelivData, $arrData);
+			$res = $this->checkDiscountCampaignRegular($productTypeId, $arrDelivData, $arrData);
 		} else {
-			return $this->checkDiscountCampaign($productTypeId, $arrDelivData, $arrData);
+			$res = $this->checkDiscountCampaign($productTypeId, $arrDelivData, $arrData);
 		}
+		if ($customer_id) {
+			// 顧客別割引確認
+			$this->checkCustomerDiscount($customer_id, $productTypeId);
+		}
+		return $res;
 	}
+
+    /**
+     * 商品単価が顧客割引率が安いか判定する
+     *
+     * @param integer $customerId 顧客ID
+     * @param integer $productTypeId 商品種別ID
+     * @return none
+     */
+    function checkCustomerDiscount($customerId, $productTypeId) {
+
+		$objQuery =& SC_Query_Ex::getSingletonInstance();
+
+		$sql =<<<EOF
+SELECT 
+    t.cut_rate as cut_rate
+FROM 
+	dtb_customer c
+INNER JOIN dtb_customer_type t
+ON c.customer_type_cd = t.customer_type_cd
+AND t.del_flg = 0
+WHERE 
+    c.del_flg = 0
+AND 
+    c.customer_id = ?
+EOF;
+
+		// 割引率取得
+		$rate = $objQuery->getOne($sql, array($customerId));
+
+		// 割引率がない場合、今回購入内容から割引率取得
+		if (!$rate) {
+			$quantity = 0;
+			$course_cd = "";
+			foreach ($this->cartSession[$productTypeId] as $key => $item) {
+				// 定期の場合チェックする
+				if ($item["regular_flg"] == REGULAR_PURCHASE_FLG_ON) {
+					$quantity += $item["quantity"];
+					$course_cd = $item["course_cd"];
+				}
+			}
+			// 定期購入がある場合、割引率取得
+			if ($quantity) {
+				$sql =<<<EOF
+SELECT cut_rate
+FROM dtb_customer_type
+WHERE course_cd = ?
+AND quantity_from <= ?
+AND quantity_to >= ?
+EOF;
+				// 割引率取得
+				$rate = $objQuery->getOne($sql, array($course_cd, $quantity, $quantity));
+			}
+		}
+
+		if ($rate) {
+			foreach ($this->cartSession[$productTypeId] as $key => $item) {
+				$price = $item["productsClass"]["price01"];
+				$discount = $item["price"];
+				$quantity = $item["quantity"];
+				$chkPrice = $price - floor($price * $rate / 100);
+				if (intval($discount) > intval($chkPrice)) {
+					$this->cartSession[$productTypeId][$key]["price"] = $chkPrice;
+					$this->cartSession[$productTypeId][$key]["total_inctax"] = 
+						$chkPrice * $quantity;
+				}
+			}
+		}
+    }
 
     /**
      * キャンペーンコードなしのプロモーション取得

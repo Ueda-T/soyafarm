@@ -262,6 +262,9 @@ class LC_Page_Shopping_Confirm extends LC_Page_Ex {
         }
         // メール便判定
         $this->mail_deliv_flg = $objCartSess->checkMailDelivery($this->cartKey);
+
+        // 同梱品情報取得
+        $this->arrIncludeProduct = $objPurchase->getIncludeProducts();
     }
 
     /**
