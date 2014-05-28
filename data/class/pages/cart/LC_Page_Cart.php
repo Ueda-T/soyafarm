@@ -409,6 +409,9 @@ class LC_Page_Cart extends LC_Page_Ex {
 	    }
 	}
 
+	// 同梱品情報取得
+        $this->arrIncludeProduct = $objPurchase->getIncludeProducts();
+
 	// タグセット
 	$this->lfSetTag($this);
     }
