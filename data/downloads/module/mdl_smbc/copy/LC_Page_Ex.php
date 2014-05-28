@@ -26,7 +26,7 @@ require_once CLASS_REALDIR . 'pages/LC_Page.php';
 class LC_Page_Ex extends LC_Page {
     function init() {
         // モジュール -> 本体のページへ移動
-        if ($_SERVER['PHP_SELF'] != "/shopping/load_payment_module.php" && $_SERVER['PHP_SELF'] != "/resize_image.php" && !$this->page_mdl_smbc && isset($_SESSION['MDL_SMBC']['order_id']) && (empty($_POST['mode']) || $_POST['mode'] == 'return')){
+        if ($_SERVER['PHP_SELF'] !=  ROOT_URLPATH . "shopping/load_payment_module.php" && $_SERVER['PHP_SELF'] != ROOT_URLPATH . "resize_image.php" && !$this->page_mdl_smbc && isset($_SESSION['MDL_SMBC']['order_id']) && (empty($_POST['mode']) || $_POST['mode'] == 'return')){
             $temp_order_id = $_SESSION['order_id'];
             $objPurchase = new SC_Helper_Purchase_Ex();
             $objPurchase->rollbackOrder($_SESSION['order_id'], ORDER_CANCEL, true);

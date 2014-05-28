@@ -28,7 +28,6 @@ require_once(MODULE_REALDIR . "mdl_smbc/class/pages/admin/system/LC_Page_Mdl_SMB
 // {{{ generate page
 
 $objPage = new LC_Page_Mdl_SMBC_Admin_System_Bankaccount();
-register_shutdown_function(array($objPage, "destroy"));
 $objPage->init();
 $objPage->process();
 ?>

@@ -1,6 +1,7 @@
 <?php
 require_once CLASS_EX_REALDIR . 'page_extends/LC_Page_Ex.php';
 require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC_Data.php');
+require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC_Page.php');
 
 /**
  * クレジット決済情報入力画面 のページクラス.
@@ -19,6 +20,12 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
 
     // 連携データ管理クラス
     var $objSmbcData;
+    
+    // 送信データ用配列
+    var $arrParam;
+
+    // 送信先URL
+    var $server_url;
 
     /**
      * Page を初期化する.
@@ -28,24 +35,37 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
     function init() {
         // 現在のページが、決済画面であることを伝える。
         $this->page_mdl_smbc = true;
+        $this->skip_load_page_layout = true;
 
         parent::init();
         $this->objSmbcData = new SC_SMBC_Data();
-
+      
         // 送信用データの配列初期化
         $this->initArrParam();
 
         // テンプレートの設定
-        $template = MDL_SMBC_TEMPLATE_PATH . 'credit';
-        $template .= SC_MobileUserAgent::isMobile() ? '_mobile' : '';
-        $template .= SC_SmartphoneUserAgent::isSmartphone() ? '_sphone' : '';
-        $this->tpl_mainpage = $template.'.tpl';
+        $this->product_type_id = $this->lfGetProductTypeId();
+        $objSMBC =& SC_Mdl_SMBC::getInstance();
+        $this->arrModule = $objSMBC->getSubData();
+        
+        if ($this->product_type_id == $this->arrModule['regular_product_type_id']) {
+            $template = MDL_SMBC_TEMPLATE_PATH . 'page_link';
+            $template .= SC_MobileUserAgent::isMobile() ? '_mobile' : '';
+            $template .= SC_SmartphoneUserAgent::isSmartphone() ? '_sphone' : '';
 
-        // スマートフォンの場合はEC-CUBE標準のフレームを使わない
-        if(SC_SmartphoneUserAgent::isSmartphone()){
-            $this->template = MDL_SMBC_TEMPLATE_PATH.'sphone_frame.tpl';
+            if (SC_MobileUserAgent::isMobile() == true) {
+                $this->tpl_mainpage = $template.'.tpl';
+            } else {
+                $this->template = $template.'.tpl';
+            }
+        } else {
+            $template = MDL_SMBC_TEMPLATE_PATH . 'credit';
+            $template .= SC_MobileUserAgent::isMobile() ? '_mobile' : '';
+            $template .= SC_SmartphoneUserAgent::isSmartphone() ? '_sphone' : '';
+            $this->tpl_mainpage = $template.'.tpl';
         }
 
+		$this->tpl_column_num = 1;  //左右にカラムのない画面（1カラムの画面）であることを指定
         $this->tpl_title = "SMBC決済 クレジット";
 
         // 年月プルダウンの初期化
@@ -94,70 +114,81 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
     function action() {
         $objCartSess = new SC_CartSession();
         $objSiteSess = new SC_SiteSession();
+        $objCustomer = new SC_Customer_Ex();
         $_SESSION['MDL_SMBC']['order_id'] = $_SESSION['order_id'];
 
         // 連携データを取得
         $this->arrParam = $this->objSmbcData->makeParam($_SESSION['order_id']);
 
-        //支払い方法のプルダウン
-        foreach($this->arrParam['arr_pay_method'] as $key => $val){
-            if($val != 1){
-                unset($this->arrPayMethod[$key]);
-            }
-        }
-
-        switch($_POST['mode']) {
-            // 次へボタン押下時
-            case 'send':
-                $this->sendMode();
-                break;
-            // 戻るボタン押下時
-            case 'return':
-                $this->returnMode();
+        $this->product_type_id = $this->lfGetProductTypeId();
+        // 継続課金商品の場合は画面連携
+        if ($this->product_type_id == $this->arrModule['regular_product_type_id']) {           
+            if ($objCustomer->isLoginSuccess() == false) {
+                SC_Utils_Ex::sfDispSiteError(FREE_ERROR_MSG, '', false, '定期商品の非会員購入は出来ません。');
                 exit;
-                break;
-            // 初回表示
-            default:
-                $objForm = $this->initParam();
-                $this->arrForm = $objForm->getHashArray();
-                break;
-        }
+            }
+            $this->lfRegularOrder();
+        } else {        
+            //支払い方法のプルダウン
+            foreach($this->arrParam['arr_pay_method'] as $key => $val){
+                if($val != 1){
+                    unset($this->arrPayMethod[$key]);
+                }
+            }
 
-        // 前のページで正しく登録手続きが行われた記録があるか判定
-        $arrOrderForCheck = $this->objSmbcData->getOrderTemp($_SESSION['order_id']);
-        if ($arrOrderForCheck['status'] != ORDER_PENDING) {
-            unset($_SESSION['order_id']);
-            unset($_SESSION['MDL_SMBC']['order_id']);
-            SC_Utils_Ex::sfDispSiteError(PAGE_ERROR, $objSiteSess);
-        }
-        // 完了画面で登録ボタンの表示判定のため
-        $_SESSION['credit_regist'] = false;
+            switch($_POST['mode']) {
+                // 次へボタン押下時
+                case 'send':
+                    $this->sendMode();
+                    break;
+                // 戻るボタン押下時
+                case 'return':
+                    $this->returnMode();
+                    exit;
+                    break;
+                // 初回表示
+                default:
+                    $objForm = $this->initParam();
+                    $this->arrForm = $objForm->getHashArray();
+                    break;
+            }
 
-        //カード情報お預かりサービスを利用している場合はカード番号の存在チェックを行う
-        if($this->arrParam['card_info_keep'] == 1 && $this->arrParam['customer_id'] > 0){
+            // 前のページで正しく登録手続きが行われた記録があるか判定
+            $arrOrderForCheck = $this->objSmbcData->getOrderTemp($_SESSION['order_id']);
+            if ($arrOrderForCheck['status'] != ORDER_PENDING) {
+                unset($_SESSION['order_id']);
+                unset($_SESSION['MDL_SMBC']['order_id']);
+                SC_Utils_Ex::sfDispSiteError(PAGE_ERROR, $objSiteSess);
+            }
+            // 完了画面で登録ボタンの表示判定のため
+            $_SESSION['credit_regist'] = false;
 
-            $_SESSION['credit_regist'] = true;
+            //カード情報お預かりサービスを利用している場合はカード番号の存在チェックを行う
+            if($this->arrParam['card_info_keep'] == 1 && $this->arrParam['customer_id'] > 0){
 
-            // 照会
-            $arrResponse = $this->objSmbcData->checkCardInfo($this->arrParam, "02");
+                $_SESSION['credit_regist'] = true;
 
-            // 顧客番号は照会時の戻り値で決済を行う
-            $this->bill_no = $arrResponse['bill_no'];
+                // 照会
+                $arrResponse = $this->objSmbcData->checkCardInfo($this->arrParam, "02");
 
-            if($arrResponse['rescd'] == MDL_SMBC_RES_OK && $arrResponse['crd_cnt'] > 0){
-                $this->arrParam['regist_card_num'] = $arrResponse['crd_info_b_1'];// カード番号
+                // 顧客番号は照会時の戻り値で決済を行う
+                $this->bill_no = $arrResponse['bill_no'];
 
-                // カードブランド画像
-                // ブランドごとに任意のファイル名に変更する場合はココでswitch等を使い分岐させる
-                // $arrResponse['crd_info_d_1'] = (int) 1:VISA 2:Master 3:JCB 4:AMEX 5:Diners
-                $this->arrParam['regist_card_brand'] = "card_brand_".$arrResponse['crd_info_d_1'].".jpg";
+                if($arrResponse['rescd'] == MDL_SMBC_RES_OK && $arrResponse['crd_cnt'] > 0){
+                    $this->arrParam['regist_card_num'] = $arrResponse['crd_info_b_1'];// カード番号
 
-                $_SESSION['credit_regist'] = false;
+                    // カードブランド画像
+                    // ブランドごとに任意のファイル名に変更する場合はココでswitch等を使い分岐させる
+                    // $arrResponse['crd_info_d_1'] = (int) 1:VISA 2:Master 3:JCB 4:AMEX 5:Diners
+                    $this->arrParam['regist_card_brand'] = "card_brand_".$arrResponse['crd_info_d_1'].".jpg";
+
+                    $_SESSION['credit_regist'] = false;
+                }else{
+                    $this->arrParam['card_info_keep'] = 2;
+                }
             }else{
                 $this->arrParam['card_info_keep'] = 2;
             }
-        }else{
-            $this->arrParam['card_info_keep'] = 2;
         }
     }
 
@@ -167,7 +198,6 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /**
@@ -365,7 +395,7 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
         // 送信データを設定
         $this->arrParam['PaReq'] = $arrResponse['pareq'];
         $this->arrParam['MD'] = $arrResponse['shoporder_no'];
-        $this->arrParam['TermUrl'] = HTTP_URL . "smbc/credit_secure.php";
+        $this->arrParam['TermUrl'] = HTTPS_URL . "smbc/credit_secure.php";
 
         // イシュアURLを送信先とする
         $this->server_url = $arrResponse['issuer_url'];
@@ -448,6 +478,113 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
         $this->arrErr['res'] = mb_convert_encoding($arrResponse['res'], "UTF-8", "auto");
         // 結果コード
         $this->arrErr['rescd'] = $arrResponse['rescd'];
+    }
+    
+    function lfGetProductTypeId() {
+        $objQuery = new SC_Query();
+        $objProduct = new SC_Product_Ex();
+        
+        $arrProductClassId = $objQuery->select("product_class_id", "dtb_order_detail", "order_id = ?", array($_SESSION['order_id']));
+
+        $arrProduct = $objProduct->getProductsClass($arrProductClassId[0]['product_class_id']);
+        $productTypeId = $arrProduct['product_type_id'];
+        
+        return $productTypeId;
+    }
+    
+    function lfRegularOrder() {
+        $this->objSmbcPage = new SC_SMBC_Page();
+
+        $_SESSION['regular_order_id'] = $_SESSION['order_id'];
+        $this->arrParam = $this->objSmbcPage->regularMakeParam($_SESSION['order_id']);
+        $this->arrParam['shoporder_no'] = $this->objSmbcPage->createRegularOrderId();
+        
+        // 接続先
+        if($this->arrParam['connect_url'] == "real"){
+            // 本番用
+            $connect_url_PC = MDL_SMBC_REGULAR_PAGE_LINK_PC_URL_REAL;
+            $connect_url_SP = MDL_SMBC_REGULAR_PAGE_LINK_PC_URL_REAL;
+            $connect_url_MB = MDL_SMBC_REGULAR_PAGE_LINK_MOBILE_URL_REAL;
+        }else{
+            // テスト用
+            $connect_url_PC = MDL_SMBC_REGULAR_PAGE_LINK_PC_URL_TEST;
+            $connect_url_SP = MDL_SMBC_REGULAR_PAGE_LINK_PC_URL_TEST;
+            $connect_url_MB = MDL_SMBC_REGULAR_PAGE_LINK_MOBILE_URL_TEST;
+        }
+        unset($this->arrParam['connect_url']);
+
+        // PC/SP/MBによって送信先URLを切り替え
+        if(SC_MobileUserAgent::isMobile()){//MB
+            $this->server_url = $connect_url_MB;
+        }elseif(SC_SmartphoneUserAgent::isSmartphone()){//SP
+            $this->server_url = $connect_url_SP;
+        }else{//PC
+            $this->server_url = $connect_url_PC;
+        }
+
+        // 送信データをログ出力
+        $this->objSmbcPage->printLog($this->arrParam);
+               
+        $this->registRegularOrder($this->arrParam);
+                
+        mb_convert_variables('UTF-8', 'auto', $this->arrParam);
+
+        // 送信データを全角カタカナで送る必要がある項目があるが
+        // モバイルの場合SC_Helper_Mobileでob_startを使って、
+        // カタカナを半角にする処理が入っているため、そのまま送るとエラーになってしまう。
+        // そのため、ob_end_flush()つかって一旦バッファを無くし、再度必要なものだけ設定する
+        if (SC_MobileUserAgent::isMobile() == true) {
+            while(ob_get_level()) {
+                 ob_end_flush();
+            }
+            mb_http_output('SJIS-win');
+            ob_start(array('SC_MobileEmoji', 'handler'));
+            ob_start('mb_output_handler');
+        }
+
+        $_SESSION['credit_regist'] = false;
+        
+    }
+    
+    /**
+     * dtb_order 及び関連のレコードを登録する.
+     */
+    public function registRegularOrder($arrParam) {
+        $objQuery =& SC_Query_Ex::getSingletonInstance();
+        $objPurchase = new SC_Helper_Purchase_Ex();
+
+        $arrOrderTemp = $objPurchase->getOrderTempByOrderId($_SESSION['order_id']);
+
+        // dtb_mdl_smbc_regular_customer を作成
+        $arrRegularCustomer = array();
+        SC_Helper_Purchase::copyFromOrder($arrRegularCustomer, $arrOrderTemp, '', 'order',
+                                          array('name01', 'name02', 'kana01', 'kana02',
+                                                'zip01', 'zip02', 'pref', 'addr01', 'addr02',
+                                                'tel01', 'tel02', 'tel03',
+                                                'email', 'sex'));
+        $arrRegularCustomer['customer_id'] = $arrOrderTemp['customer_id'];
+        $arrRegularCustomer['bill_no'] = $arrParam['bill_no'];
+        $arrRegularCustomer['create_date'] = $arrOrderTemp['create_date'];
+        $arrRegularCustomer['update_date'] = $arrOrderTemp['update_date'];
+        $arrRegularCustomer['del_flg'] = '0';
+        // bill_no が重複している場合はスキップ
+        if (!$objQuery->exists('dtb_mdl_smbc_regular_customer', 'bill_no = ?',
+                               array($arrRegularCustomer['bill_no']))) {
+                $objQuery->insert('dtb_mdl_smbc_regular_customer', $arrRegularCustomer);
+        }
+
+        // dtb_mdl_smbc_regular_order を作成
+        $arrRegularOrder['bill_no'] = $arrParam['bill_no'];
+        $arrRegularOrder['shoporder_no'] = $arrParam['shoporder_no'];
+        $arrRegularOrder['order_id'] = $arrOrderTemp['order_id'];
+        $arrRegularOrder['regular_status'] = MDL_SMBC_REGULAR_STATUS_NONE;
+        $arrRegularOrder['target_ym'] = $arrParam['seikyuu_kaishi_ym'];
+//        $arrRegularOrder['rescd'] = $arrParam['rescd'];
+//        $arrRegularOrder['res'] = $arrParam['res'];
+        $arrRegularOrder['create_date'] = $arrOrderTemp['create_date'];
+        $arrRegularOrder['update_date'] = $arrOrderTemp['update_date'];
+        $arrRegularOrder['del_flg'] = '1';
+        $objQuery->insert('dtb_mdl_smbc_regular_order', $arrRegularOrder);
     }
 }
 ?>

@@ -94,7 +94,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
-<body>
+<body onload="org=document.charset; document.charset='Shift_JIS'; document.form1.submit(); document.charset=org;">
 <style type="text/css">
 /* スマートフォン用グラデーションボタン
 ----------------------------------------------- */

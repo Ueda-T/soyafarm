@@ -25,6 +25,7 @@ class LC_Page_Mdl_SMBC_Admin_System_Bankaccount extends LC_Page_Admin_Ex {
      * @return void
      */
     function init() {
+        $this->skip_load_page_layout = true;
         parent::init();
         $this->tpl_mainpage = MDL_SMBC_TEMPLATE_PATH . 'admin/system/bankaccount.tpl';
         $this->tpl_mainno = 'system';
@@ -96,7 +97,6 @@ class LC_Page_Mdl_SMBC_Admin_System_Bankaccount extends LC_Page_Admin_Ex {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /**

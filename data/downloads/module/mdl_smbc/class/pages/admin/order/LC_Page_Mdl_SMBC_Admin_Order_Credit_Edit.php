@@ -1,6 +1,6 @@
 <?php
 // {{{ requires
-require_once(CLASS_REALDIR . "pages/LC_Page.php");
+require_once(CLASS_EX_REALDIR . 'page_extends/admin/LC_Page_Admin_Ex.php');
 require_once(MODULE_REALDIR . 'mdl_smbc/inc/include.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
 require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC.php');
@@ -11,7 +11,7 @@ require_once(MDL_SMBC_CLASS_PATH . 'SC_SMBC.php');
  * @author LOCKON CO.,LTD.
  * @version $Id$
  */
-class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
+class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page_Admin_Ex {
 
     // {{{ functions
 
@@ -21,6 +21,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
      * @return void
      */
     function init() {
+        $this->skip_load_page_layout = true;
         parent::init();
         $this->tpl_mainpage = MDL_SMBC_TEMPLATE_PATH . 'admin/order/edit.tpl';
 
@@ -41,6 +42,9 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
         $this->arrDeliv = SC_Helper_DB_Ex::sfGetIDValueList("dtb_deliv", "deliv_id", 'name');
 
         $this->httpCacheControl('nocache');
+        if (version_compare(ECCUBE_VERSION, '2.13', '>=')) {
+            $this->version_2_13 = true;
+        }
     }
 
     /**
@@ -80,12 +84,20 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
                     $version = MDL_SMBC_SALES_PART_CANCEL_LINK_CREDIT_VERSION;
                 }
                 // 決済ステーション連携
-                $this->lfSendMode($this->tpl_order_id, $version);
+                if ($_GET['type'] == 'regular') {
+                    $this->sendUpdateCustomer($this->tpl_order_id);
+                } else {
+                    $this->lfSendMode($this->tpl_order_id, $version);
+                }
             }
         }
 
         $this->arrForm = $objFormParam->getFormParamList();
-        $this->arrDelivTime = $objPurchase->getDelivTime($objFormParam->getValue('deliv_id'));
+        if ($this->version_2_13) {
+            $this->arrDelivTime = SC_Helper_Delivery_Ex::getDelivTime($objFormParam->getValue('deliv_id'));
+        } else {
+            $this->arrDelivTime = $objPurchase->getDelivTime($objFormParam->getValue('deliv_id'));
+        }
 
         $this->tpl_onload .= $this->getAnchorKey($objFormParam);
         $this->arrInfo = SC_Helper_DB_Ex::sfGetBasisData();
@@ -168,6 +180,7 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
         $objFormParam->addParam("単価", "price");
         $objFormParam->addParam("個数", "quantity");
         $objFormParam->addParam("商品ID", "product_id");
+        $objFormParam->addParam("商品規格", "product_class_id");
         $objFormParam->addParam("ポイント付与率", "point_rate");
         $objFormParam->addParam("商品コード", "product_code");
         $objFormParam->addParam("商品名", "product_name");
@@ -175,6 +188,10 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
         $objFormParam->addParam("規格2", "classcategory_id2");
         $objFormParam->addParam("規格名1", "classcategory_name1");
         $objFormParam->addParam("規格名2", "classcategory_name2");
+        if ($this->version_2_13) {
+            $objFormParam->addParam('税率', 'tax_rate', INT_LEN, 'n', array('NUM_CHECK'));
+            $objFormParam->addParam('課税規則', 'tax_rule', INT_LEN, 'n', array('NUM_CHECK'));
+        }
         $objFormParam->addParam("メモ", "note", MTEXT_LEN, "KVa", array("MAX_LENGTH_CHECK"));
         // DB読込用
         $objFormParam->addParam("小計", "subtotal");
@@ -190,6 +207,10 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
         $objFormParam->addParam("受注日", "create_date");
         $objFormParam->addParam("発送日", "commit_date");
         $objFormParam->addParam("入金日", "payment_date");
+        if ($this->version_2_13) {
+            $objFormParam->addParam('税率', 'order_tax_rate');
+            $objFormParam->addParam('課税規則', 'order_tax_rule');
+        }
     }
 
 
@@ -280,7 +301,6 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /**
@@ -334,10 +354,25 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
         $totalpoint = 0;
         $totaltax = 0;
         for($i = 0; $i < $max; $i++) {
-            // 小計の計算
-            $subtotal += SC_Helper_DB_Ex::sfCalcIncTax($arrValues['price'][$i]) * $arrValues['quantity'][$i];
-            // 小計の計算
-            $totaltax += SC_Helper_DB_Ex::sfTax($arrValues['price'][$i]) * $arrValues['quantity'][$i];
+            if ($this->version_2_13) {
+                // 小計の計算
+                $subtotal += SC_Helper_TaxRule_Ex::sfCalcIncTax($arrValues['price'][$i],
+                                                                $arrValues['product_id'][$i],
+                                                                $arrValues['product_class_id'][$i],
+                                                                $arrValues['order_pref'],
+                                                                $arrValues['order_country_id']) * $arrValues['quantity'][$i];
+                // 税額の計算
+                $totaltax += SC_Helper_TaxRule_Ex::sfTax($arrValues['price'][$i],
+                                                         $arrValues['product_id'][$i],
+                                                         $arrValues['product_class_id'][$i],
+                                                         $arrValues['order_pref'],
+                                                         $arrValues['order_country_id']) * $arrValues['quantity'][$i];
+            } else {
+                // 小計の計算
+                $subtotal += SC_Helper_DB_Ex::sfCalcIncTax($arrValues['price'][$i]) * $arrValues['quantity'][$i];
+                // 税額の計算
+                $totaltax += SC_Helper_DB_Ex::sfTax($arrValues['price'][$i]) * $arrValues['quantity'][$i];
+            }
             // 加算ポイントの計算
             $totalpoint += SC_Utils_Ex::sfPrePoint($arrValues['price'][$i], $arrValues['point_rate'][$i]) * $arrValues['quantity'][$i];
         }
@@ -447,6 +482,67 @@ class LC_Page_Mdl_SMBC_Admin_Order_Credit_Edit extends LC_Page {
             $this->lfDispError($arrResponse);
         }
     }
+
+    /**
+     * 定期購入の請求金額を変更する.
+     *
+     * @param array $arrRegularOrder 定期受注情報の配列
+     * @param integer $payment_total 変更後のお支払合計
+     * @return boolean 請求金額変更の送信が成功した場合 true, エラーの場合 false
+     */
+    function sendUpdateCustomer($order_id) {
+        $objQuery = SC_Query_Ex::getSingletonInstance();
+        $arrRegularOrder = $objQuery->getRow('*', 'dtb_mdl_smbc_regular_order',
+                                             'order_id = ?', array($order_id));
+        $objSmbc = new SC_SMBC();
+        $objSmbc->addArrParam("version", 3);
+        $objSmbc->addArrParam("bill_method", 2);
+        $objSmbc->addArrParam("shop_cd", 7);
+        $objSmbc->addArrParam("syuno_co_cd", 8);
+        $objSmbc->addArrParam("shop_pwd", 20);
+        $objSmbc->addArrParam("kessai_id", 4);
+        $objSmbc->addArrParam("shoporder_no", 23);
+        $objSmbc->addArrParam("bill_no", 14);
+
+        $objMdlSMBC = SC_Mdl_SMBC::getInstance();
+        $arrModule = $objMdlSMBC->getSubData();
+
+        $arrParams = array(
+            'version' => MDL_SMBC_REGULAR_CHANGE_VERSION,
+            'bill_method' => MDL_SMBC_CREDIT_BILL_METHOD,
+            'shop_cd' => $arrModule['regular_shop_cd'],
+            'syuno_co_cd' => $arrModule['regular_syuno_co_cd'],
+            'shop_pwd' => $arrModule['regular_shop_pwd'],
+            'kessai_id' => MDL_SMBC_CREDIT_KESSAI_ID,
+            'shoporder_no' => $arrRegularOrder['shoporder_no'],
+            'bill_no' => str_pad($arrRegularOrder['bill_no'], 14, "0", STR_PAD_LEFT),
+            'seikyuu_kingaku1' => $_POST['payment_total'],
+            'seikyuu_kingaku2' => $_POST['payment_total']
+        );
+
+        $objSmbc->setParam($arrParams);
+        $connect_url = ($arrModule['connect_url'] == 'real') ? MDL_SMBC_CREDIT_KAKUTEI_LINK_URL_REAL : MDL_SMBC_CREDIT_KAKUTEI_LINK_URL_TEST;
+        $arrResponse = $objSmbc->sendParam($connect_url);
+        // 連携結果を取得
+        $res_mode = $this->objSmbc->getMode($arrResponse);
+
+        if($res_mode == 'complete') {
+            // EC-CUBE更新
+            $sqlval['update_date'] = 'Now()';
+            $sqlval['total'] = $_POST['total'];
+            $sqlval['payment_total'] = $_POST['payment_total'];
+            $sqlval['discount'] = $_POST['discount'] + $_POST['add_discount'];
+            $sqlval['note'] = $_POST['note'];
+
+            // 受注テーブルの更新
+            $objQuery->update("dtb_order", $sqlval, "order_id = ?", array($order_id));
+            $this->tpl_onload = "window.alert('受注履歴を編集しました。');parent.window.opener.document.form1.submit();";
+
+        }elseif($res_mode == 'error'){
+            $this->lfDispError($arrResponse);
+        }
+    }
+
     /**
      * 決済ステーションから受け取ったエラー情報を、表示用データにする.
      *

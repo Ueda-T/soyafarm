@@ -22,12 +22,14 @@ class LC_Page_Mdl_SMBC_Shopping_Credit_Complete extends LC_Page_Ex {
      * @return void
      */
     function init() {
+        $this->skip_load_page_layout = true;
         parent::init();
         $template = MDL_SMBC_TEMPLATE_PATH . "complete";
         $template .= SC_MobileUserAgent::isMobile() ? '_mobile' : '';
         $template .= SC_SmartphoneUserAgent::isSmartphone() ? '_sphone' : '';
         $this->tpl_mainpage = $template.'.tpl';
         $this->tpl_title = "ご注文完了";
+		$this->tpl_column_num = 1;  //左右にカラムのない画面（1カラムの画面）であることを指定
 
         // スマートフォンの場合はEC-CUBE標準のフレームを使わない
         if(SC_SmartphoneUserAgent::isSmartphone()){
@@ -79,7 +81,6 @@ class LC_Page_Mdl_SMBC_Shopping_Credit_Complete extends LC_Page_Ex {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     // カードお預かり機能にカードを登録する

@@ -107,6 +107,20 @@ function toggleConveniBox() {
         document.form1.elements['circlek_sunkus'].disabled = true;
     }
 }
+function toggleCreditRegularBox() {
+    var isDisabled = document.form1.credit_regular.checked;
+    if (document.form1.credit_regular.checked) {
+        document.form1.elements['regular_shop_cd'].disabled = false;
+        document.form1.elements['regular_syuno_co_cd'].disabled = false;
+        document.form1.elements['regular_shop_pwd'].disabled = false;
+        document.form1.elements['regular_deal_pwd'].disabled = false;
+    } else {
+        document.form1.elements['regular_shop_cd'].disabled = true;
+        document.form1.elements['regular_syuno_co_cd'].disabled = true;
+        document.form1.elements['regular_shop_pwd'].disabled = true;
+        document.form1.elements['regular_deal_pwd'].disabled = true;
+    }
+}
 function togglePaymentSlip() {
     if (document.form1.payment_slip.checked) {
         document.form1.elements['payment_slip_issue'][0].disabled = false;
@@ -147,12 +161,15 @@ function enableDestination() {
 SMBCファイナンスサービス決済モジュールをご利用頂く為には、ショップ様ご自身でSMBCファイナンスサービス株式会社とご契約頂く必要があります。<br/>
 お申し込みにつきましては、下記のページよりお問い合わせ下さい。<br/>
 <br/>
-<a href="http://www.smbc-fs.co.jp/" target="_blank"> ＞＞ SMBCファイナンスサービスへのお問合せ</a><br/>
+<a href="https://ssl.kb.smbc-fs.co.jp/contact_s/" target="_blank"> ＞＞ SMBCファイナンスサービスへのお問合せ</a><br/>
 <br/>
 《ご注意事項》<br/>
 ご契約内容をご確認頂き、設定をお願い致します。<br/>
 尚、ご契約内容や設定変更をご希望される場合についてはSMBCファイナンスサービス（株）の営業担当者宛ご連絡していただきますようお願い致します。<br/>
 <br/>
+<!--{if $arrErr.top}-->
+    <!--{if $arrErr.top}--><span class="attention"><!--{$arrErr.top}--></span><!--{/if}-->
+<!--{/if}-->
 <table class="form">
     <colgroup width="28%">
     <colgroup width="72%">
@@ -167,6 +184,9 @@ SMBCファイナンスサービス決済モジュールをご利用頂く為に�
         <label><input type="radio" name="connect_url" value="real" <!--{if $arrForm.connect_url.value eq "real"}-->checked<!--{/if}--> />本番用（実際に運用する場合に選択）</label><br />
         <label><input type="radio" name="connect_url" value="test" <!--{if $arrForm.connect_url.value eq "test"}-->checked<!--{/if}--> />試験用（動作を確認する場合に選択）</label><br />
         </td>
+    </tr>
+    <tr class="n">
+        <th class="colmun" colspan="2">▼都度決済設定</th>
     </tr>
     <tr>
         <th class="colmun">契約コード<span class="attention"> *</span></th>
@@ -183,7 +203,8 @@ SMBCファイナンスサービス決済モジュールをご利用頂く為に�
             <!--{if $arrErr[$key]}--><span class="attention"><!--{$arrErr[$key]}--></span><!--{/if}-->
             <input type="text" name="syuno_co_cd" class="box30" size="30" value="<!--{$arrForm.syuno_co_cd.value|h}-->" maxlength="<!--{$arrForm[$key].length|h}-->" <!--{if $arrErr[$key]}--><!--{sfSetErrorStyle}--><!--{/if}--> />
         </td>
-    </tr>    <tr>
+    </tr>    
+    <tr>
         <th class="colmun">ショップパスワード<span class="attention"> *</span></th>
         <td>
             <!--{assign var=key value="shop_pwd"}-->
@@ -203,6 +224,7 @@ SMBCファイナンスサービス決済モジュールをご利用頂く為に�
         <label><input type="checkbox" name="netbank" value="1" <!--{if $arrForm.netbank.value eq 1}-->checked<!--{/if}--> />ネットバンク決済</label><br />
         <label><input type="checkbox" name="electronic_money" value="1" <!--{if $arrForm.electronic_money.value eq 1}-->checked<!--{/if}--> />電子マネー決済</label><br />
         <label><input type="checkbox" name="payment_slip" value="1" onclick="togglePaymentSlip();" <!--{if $arrForm.payment_slip.value eq 1}-->checked<!--{/if}--> />払込票利用の決済（コンビニエンスストア（払込票）決済、ゆうちょ振替決済など）</label><br />
+        <label><input type="checkbox" name="credit_regular" value="1" onclick="toggleCreditRegularBox();" <!--{if $arrForm.credit_regular.value eq 1}-->checked<!--{/if}--> />クレジットカード決済(継続課金)</label><br />
         </td>
     </tr>
     <tr class="n">
@@ -314,6 +336,47 @@ SMBCファイナンスサービス決済モジュールをご利用頂く為に�
         <label><input type="radio" name="payment_slip_destination" value="2" <!--{if $arrForm.payment_slip_destination.value eq 2}-->checked<!--{/if}--> <!--{if $arrForm.payment_slip_issue.value ne 2}-->disabled<!--{/if}--> />注文者様</label><br />
         </td>
     </tr>
+    <tr class="n">
+        <th class="colmun" colspan="2">
+          ▼クレジットカード 定期販売設定<br />(「クレジットカード(継続課金)」を選択している場合は必須)<br />
+          定期販売の３Ｄセキュア認証・セキュリティコード認証の利用有無は
+          決済ステーションへの契約にお申込頂いた内容でチェックされます。<br />
+          変更をご希望の場合は、営業担当者へご連絡下さい。
+        </th>
+    </tr>
+    <tr>
+        <th class="colmun">契約コード</th>
+        <td>
+            <!--{assign var=key value="regular_shop_cd"}-->
+            <!--{if $arrErr[$key]}--><span class="attention"><!--{$arrErr[$key]}--></span><!--{/if}-->
+            <input type="text" name="<!--{$key}-->" class="box30" size="30" value="<!--{$arrForm[$key].value|h}-->" maxlength="<!--{$arrForm[$key].length|h}-->" <!--{if $arrErr[$key]}--><!--{sfSetErrorStyle}--><!--{/if}--> />
+        </td>
+    </tr>
+    <tr>
+        <th class="colmun">収納企業コード</th>
+        <td>
+            <!--{assign var=key value="regular_syuno_co_cd"}-->
+            <!--{if $arrErr[$key]}--><span class="attention"><!--{$arrErr[$key]}--></span><!--{/if}-->
+            <input type="text" name="<!--{$key}-->" class="box30" size="30" value="<!--{$arrForm[$key].value|h}-->" maxlength="<!--{$arrForm[$key].length|h}-->" <!--{if $arrErr[$key]}--><!--{sfSetErrorStyle}--><!--{/if}--> />
+        </td>
+    </tr>
+    <tr>
+        <th class="colmun">ショップパスワード</th>
+        <td>
+            <!--{assign var=key value="regular_shop_pwd"}-->
+            <!--{if $arrErr[$key]}--><span class="attention"><!--{$arrErr[$key]}--></span><!--{/if}-->
+            <input type="text" name="<!--{$key}-->" class="box30" size="30" value="<!--{$arrForm[$key].value|h}-->" maxlength="<!--{$arrForm[$key].length|h}-->" <!--{if $arrErr[$key]}--><!--{sfSetErrorStyle}--><!--{/if}--> />
+        </td>
+    </tr>
+    <tr>
+        <th class="colmun">取引検索用パスワード</th>
+        <td>
+            <!--{assign var=key value="regular_deal_pwd"}-->
+            <!--{if $arrErr[$key]}--><span class="attention"><!--{$arrErr[$key]}--></span><!--{/if}-->
+            <input type="text" name="<!--{$key}-->" class="box30" size="30" value="<!--{$arrForm[$key].value|h}-->" maxlength="<!--{$arrForm[$key].length|h}-->" <!--{if $arrErr[$key]}--><!--{sfSetErrorStyle}--><!--{/if}--> />
+        </td>
+    </tr>
+
 </table>
 
 <div class="btn-area">

@@ -36,7 +36,7 @@ function fnCreditEditSubmit() {
 }
 //-->
 </script>
-<form name="form1" id="form1" method="post" action="?">
+<form name="form1" id="form1" method="post" action="?<!--{if $smarty.get.type}-->&type=<!--{$smarty.get.type|h}--><!--{/if}-->">
 <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 <input type="hidden" name="mode" value="<!--{$tpl_mode|default:"edit"}-->">
 <input type="hidden" name="order_id" value="<!--{$tpl_order_id}-->">
@@ -166,7 +166,7 @@ function fnCreditEditSubmit() {
                         </td>
                         <td class="right">
                             <!--{assign var=key value="shipment_price"}-->
-                            <!--{$arrForm[$key].value[$shipping_index][$item_index]|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円
+                            <!--{$arrForm[$key].value[$shipping_index][$item_index]|number_format}-->円
                             <input type="hidden" name="<!--{$key}-->[<!--{$shipping_index}-->][<!--{$item_index}-->]" value="<!--{$arrForm[$key].value[$shipping_index][$item_index]|h}-->" />
                         </td>
                         <td class="right">
@@ -270,7 +270,11 @@ function fnCreditEditSubmit() {
         <td class="center"><!--{$arrForm.quantity.value[$key]|h}--></td>
         <!--{assign var=price value=`$arrForm.price.value[$key]`}-->
         <!--{assign var=quantity value=`$arrForm.quantity.value[$key]`}-->
-        <td class="right"><!--{if $price != 0}--><!--{$price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|sfMultiply:$quantity|number_format}-->円<!--{else}-->無料<!--{/if}--></td>
+        <!--{if $version_2_13}-->
+            <td class="right"><!--{if $price != 0}--><!--{$price|sfCalcIncTax:$arrForm.tax_rate.value[$key]:$arrForm.tax_rule.value[$key]|sfMultiply:$quantity|number_format}-->円<!--{else}-->無料<!--{/if}--></td>
+        <!--{else}-->
+            <td class="right"><!--{if $price != 0}--><!--{$price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|sfMultiply:$quantity|number_format}-->円<!--{else}-->無料<!--{/if}--></td>
+        <!--{/if}-->
     </tr>
     <!--{/section}-->
     <tr>

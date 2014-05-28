@@ -27,6 +27,7 @@ class LC_Page_Mdl_SMBC_EMONEY extends LC_Page_Ex {
         // 現在のページが、決済画面であることを伝える。
         $this->page_mdl_smbc = true;
 
+        $this->skip_load_page_layout = true;
         parent::init();
         $this->objSmbcPage = new SC_SMBC_Page();
 
@@ -119,7 +120,6 @@ class LC_Page_Mdl_SMBC_EMONEY extends LC_Page_Ex {
      * @return void
      */
     function destroy() {
-        parent::destroy();
     }
 
     /**

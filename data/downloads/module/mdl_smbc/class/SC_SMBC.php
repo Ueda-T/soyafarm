@@ -1,9 +1,11 @@
 <?php
-require_once DATA_REALDIR . 'module/Request.php';
+if (version_compare(ECCUBE_VERSION, '2.12', '>=')) {
+    require_once(DATA_REALDIR . 'module/HTTP/Request.php');
+} else {
+    require_once(DATA_REALDIR . 'module/Request.php');
+}
 require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
 
-// 消費税
-define('MDL_SMBC_TAX', '1.05');
 // 請求内容（漢字）
 define('MDL_SMBC_SEIKYUU_NAME', 'お申込代金');
 // 請求内容（カナ）
@@ -143,6 +145,13 @@ class SC_SMBC {
      * @return array $arrParam
      */
     function makeParam ($order_id) {
+        if (version_compare(ECCUBE_VERSION, '2.13', '>=')) {
+            $arrTaxRule = SC_Helper_TaxRule_Ex::getTaxRule();
+            $tax = 1 + ($arrTaxRule['tax_rate'] / 100);
+        } else {
+            $arrConf = SC_Helper_DB_Ex::sfGetBasisData();
+            $tax = 1 + ($arrConf['tax_rate'] / 100);
+        }
         $arrParam = array();
 
         // dtb_orderの情報を取得
@@ -155,7 +164,7 @@ class SC_SMBC {
         // 請求金額
         $arrParam['seikyuu_kingaku'] = $arrOrderTemp['payment_total'];
         // 内消費税
-        $arrParam['shouhi_tax'] = floor($arrOrderTemp['payment_total']-($arrOrderTemp['payment_total']/MDL_SMBC_TAX));
+        $arrParam['shouhi_tax'] = floor($arrOrderTemp['payment_total']-($arrOrderTemp['payment_total']/$tax));
         // 成約日
         $arrParam['seiyaku_date'] = date('Ymd');
         // 請求内容（漢字）
@@ -207,7 +216,7 @@ class SC_SMBC {
      * @param integer $payment_id 支払番号
      * @return array
      */
-    function getModuleMasterData($payment_id, $type) {
+    function getModuleMasterData($payment_id, $type = null) {
         $arrModule = array();
 
         // payment_idをキーにして、モジュールデータを取得
@@ -276,22 +285,27 @@ class SC_SMBC {
         $arrCustomer['bill_no'] = ($arrOrderTemp['customer_id'] >0) ? str_pad($arrOrderTemp['customer_id'], 14, "0", STR_PAD_LEFT) : "";
 
         // 顧客名。英数字を全角にする。
-        $arrCustomer['bill_name'] = mb_convert_kana($arrOrderTemp['order_name01'] . $arrOrderTemp['order_name02'], "KVAN");
+        //$arrCustomer['bill_name'] = mb_convert_kana($arrOrderTemp['order_name01'] . $arrOrderTemp['order_name02'], "KVAN");
+        $arrCustomer['bill_name'] = mb_convert_kana($arrOrderTemp['order_name'], "KVAN");
 
         // 顧客カナ名。半角カナに変換。
-        $arrCustomer['bill_kana'] = mb_convert_kana($arrOrderTemp['order_kana01'] . $arrOrderTemp['order_kana02'], "kan");
+        //$arrCustomer['bill_kana'] = mb_convert_kana($arrOrderTemp['order_kana01'] . $arrOrderTemp['order_kana02'], "kan");
+        $arrCustomer['bill_kana'] = mb_convert_kana($arrOrderTemp['order_kana'], "kan");
 
         // 顧客郵便番号
-        $arrCustomer['bill_zip'] = $arrOrderTemp['order_zip01'] . $arrOrderTemp['order_zip02'];
+        //$arrCustomer['bill_zip'] = $arrOrderTemp['order_zip01'] . $arrOrderTemp['order_zip02'];
+        $arrCustomer['bill_zip'] = str_replace("-", "", $arrOrderTemp['order_zip']);
 
         // 顧客電話番号
-        $arrCustomer['bill_phon'] = $arrOrderTemp['order_tel01'] . $arrOrderTemp['order_tel02'] . $arrOrderTemp['order_tel03'];
+        //$arrCustomer['bill_phon'] = $arrOrderTemp['order_tel01'] . $arrOrderTemp['order_tel02'] . $arrOrderTemp['order_tel03'];
+        $arrCustomer['bill_phon'] = $arrOrderTemp['order_tel'];
 
         // 顧客メールアドレス
         $arrCustomer['bill_mail'] = $arrOrderTemp['order_email'];
 
         // 顧客メールアドレス区分(PC:0 モバイル:1)
-        $arrCustomer['bill_mail_kbn'] = (SC_Helper_Mobile::gfIsMobileMailAddress($arrOrderTemp['order_email'])) ? 1 : 0; // TODO 定数化する
+        //$arrCustomer['bill_mail_kbn'] = (SC_Helper_Mobile::gfIsMobileMailAddress($arrOrderTemp['order_email'])) ? 1 : 0; // TODO 定数化する
+        $arrCustomer['bill_mail_kbn'] = 0; // 全てPC扱い
 
         // 顧客住所。
         $arrCustomer['bill_adr'] = mb_convert_kana($this->arrPref[$arrOrderTemp['order_pref']] . $arrOrderTemp['order_addr01'] . $arrOrderTemp['order_addr02'], "AKNS");
@@ -401,6 +415,122 @@ class SC_SMBC {
     }
 
     /**
+     * 定期受注ID(継続課金での shoporder_no) を生成する.
+     */
+    function createRegularOrderId() {
+        $objQuery = SC_Query_Ex::getSingletonInstance();
+        $regular_order_id = str_replace('.', '', (uniqid('R', true)));
+        while($exists = $objQuery->get('shoporder_no', 'dtb_mdl_smbc_regular_order',
+                                       'shoporder_no = ?', array($regular_order_id))) {
+            $regular_order_id = str_replace('.', '', (uniqid('R', true)));
+        }
+        return $regular_order_id;
+    }
+
+    /**
+     * 定期受注検索の SELECT 句を返す.
+     *
+     * @param string $extended_where dtb_mdl_smbc_regular_order の WHERE 句を拡張する場合に使用する.
+     * @return string 定期受注検索の SELECT 句
+     */
+    public static function regularOrderSelectSQL($extended_where = '') {
+        $select = "T.shoporder_no, T.create_date, T.regular_interval_from, T.regular_interval_to, T.regular_status, T.order_id, T.rescd, T.res, T.bill_no ";
+
+        // 商品名
+        // XXX サブクエリの影響で SC_DB_Factory でうまく置換できない
+        if (DB_TYPE == 'pgsql') {
+            $select .= <<< __EOS__
+                   , (SELECT ARRAY_TO_STRING(ARRAY(
+                             SELECT product_name || '/' || COALESCE(classcategory_name1, '(なし)') || '/' || COALESCE(classcategory_name2, '(なし)')
+                               FROM dtb_order_detail
+                              WHERE dtb_order_detail.order_id =
+                                 (SELECT order_id
+                                    FROM dtb_mdl_smbc_regular_order T1
+                                   WHERE T1.shoporder_no = T.shoporder_no AND del_flg = 0 {$extended_where}
+                                  ORDER BY create_date DESC LIMIT 1)), '<br />')) as product_name
+__EOS__;
+        } else {
+            $select .= <<< __EOS__
+                       , (SELECT GROUP_CONCAT(CONCAT(product_name, '/', IFNULL(classcategory_name1, '(なし)'), '/', IFNULL(classcategory_name2, '(なし)')) SEPARATOR '<br />')
+                               FROM dtb_order_detail
+                              WHERE dtb_order_detail.order_id =
+                                 (SELECT order_id
+                                    FROM dtb_mdl_smbc_regular_order T1
+                                   WHERE T1.shoporder_no = T.shoporder_no AND del_flg = 0 {$extended_where}
+                                  ORDER BY create_date DESC LIMIT 1))  as product_name
+__EOS__;
+        }
+        // お名前
+        $name_sql = (DB_TYPE == 'pgsql')
+                    ? "name01 || name02"
+                    : "CONCAT(name01, name02)";
+        $select .= <<< __EOS__
+                   , (SELECT {$name_sql}
+                        FROM dtb_mdl_smbc_regular_customer T1
+                       WHERE bill_no =
+                                 (SELECT bill_no
+                                    FROM dtb_mdl_smbc_regular_order T1
+                                   WHERE T1.shoporder_no = T.shoporder_no AND del_flg = 0 {$extended_where}
+                                  ORDER BY create_date DESC LIMIT 1)
+                       ) as name
+__EOS__;
+        $regular_status_settled = MDL_SMBC_REGULAR_STATUS_SETTLED;
+        $regular_status_completed = MDL_SMBC_REGULAR_STATUS_COMPLETED;
+        // 購入回数
+        $select .= <<< __EOS__
+                   , (SELECT count(order_id)
+                        FROM dtb_mdl_smbc_regular_order T1
+                       WHERE T1.shoporder_no = T.shoporder_no AND del_flg = 0 {$extended_where}
+                         AND regular_status IN ({$regular_status_completed}, {$regular_status_settled})) AS purchased
+__EOS__;
+
+        // 購入金額
+        $select .= <<< __EOS__
+                   , (SELECT payment_total
+                               FROM dtb_order
+                              WHERE dtb_order.order_id =
+                                 (SELECT order_id
+                                    FROM dtb_mdl_smbc_regular_order T1
+                                   WHERE T1.shoporder_no = T.shoporder_no AND del_flg = 0 {$extended_where}
+                                  ORDER BY create_date DESC LIMIT 1)) as payment_total
+__EOS__;
+
+        // 受注ステータス
+        $select .= <<< __EOS__
+                   , (SELECT status
+                               FROM dtb_order
+                              WHERE dtb_order.order_id =
+                                 (SELECT order_id
+                                    FROM dtb_mdl_smbc_regular_order T1
+                                   WHERE T1.shoporder_no = T.shoporder_no AND del_flg = 0 {$extended_where}
+                                  ORDER BY create_date DESC LIMIT 1)) as status
+__EOS__;
+
+        return $select;
+    }
+
+    /**
+     * 定期受注検索の FROM 句を返す.
+     *
+     * @param string $extended_where dtb_mdl_smbc_regular_order の WHERE 句を拡張する場合に使用する.
+     * @return string FROM 句
+     */
+    public static function regularOrderFromSQL($extended_where = '') {
+        $from = <<< __EOS__
+                dtb_mdl_smbc_regular_order T
+            JOIN (SELECT
+                     MAX(create_date) AS new_date, shoporder_no
+                    FROM dtb_mdl_smbc_regular_order WHERE del_flg = 0 {$extended_where}
+                   GROUP BY shoporder_no) AS A
+              ON A.shoporder_no = T.shoporder_no AND del_flg = 0
+             AND A.new_date = T.create_date
+            JOIN dtb_order
+              ON T.order_id = dtb_order.order_id
+__EOS__;
+        return $from;
+    }
+
+    /**
      * データを決済ステーションへ送信する
      *
      * @param string $serverUrl 送信先URL
@@ -466,6 +596,11 @@ class SC_SMBC {
      * @return unknown
      */
     function parse($response) {
+        // 先頭が " の場合は CSV形式
+        if (preg_match('/^"/', $response)) {
+            return $this->parseCSV($response);
+        }
+
         $arrResponse = array();
 
         $response = explode("\n", $response);
@@ -476,6 +611,48 @@ class SC_SMBC {
         }
         return $arrResponse;
     }
+
+    /**
+     * CSV 形式の結果を parse する
+     */
+    function parseCSV($response) {
+        $arrHeader = array();
+        $arrBody = array();
+        $arrFooter = array();
+        $arrResults = array();
+
+        $arrResponse = explode("\r\n", $response);
+        foreach ($arrResponse as $row) {
+            $arrRow = explode(",", $row);
+            foreach ($arrRow as &$col) {
+                $col = trim($col, '"');
+                $col = mb_convert_encoding($col, CHAR_CODE, 'SJIS-win');
+            }
+            switch ($arrRow[0]) {
+                // ヘッダレコード
+                case 10:
+                    $arrHeader = $arrRow;
+                    $arrHeader['rescd'] = $arrRow[1];
+                    $arrHeader['res'] = $arrRow[2];
+                    break;
+                // ボディレコード
+                case 20:
+                    $arrBody[] = $arrRow;
+                    break;
+                // フッタレコード
+                case 80:
+                    $arrFooter = $arrRow;
+                    break;
+                default:
+            }
+        }
+        $arrResults['header'] = $arrHeader;
+        $arrResults['body'] = $arrBody;
+        $arrResults['footer'] = $arrFooter;
+
+        return $arrResults;
+    }
+
 
     /**
      * 送信データの文字コード変換（SJIS）を行う。
@@ -530,8 +707,8 @@ class SC_SMBC {
         if (!$raw && is_array($msg)) {
             $keys = array('card_no', 'security_cd');
             foreach ($keys as $key) {
-                if (isset($msg[$key])) {
-                    $msg[$key] = ereg_replace(".", "*", $msg[$key]);
+                if (isset($msg[$key]) && !is_array($msg[$key])) {
+                    $msg[$key] = str_pad('', strlen($msg[$key]), '*');
                 }
             }
 
