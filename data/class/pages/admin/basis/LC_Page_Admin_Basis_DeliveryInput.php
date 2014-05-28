@@ -63,7 +63,7 @@ class LC_Page_Admin_Basis_DeliveryInput extends LC_Page_Admin_Ex {
         switch ($this->mode) {
             case 'edit':
                 if (count($this->arrErr) == 0) {
-                    $objFormParam->setValue('deliv_id', $this->lfRegistData($objFormParam->getHashArray(), $_SESSION['member_id']));
+		    $objFormParam->setValue('deliv_id', $this->lfRegistData($objFormParam->getHashArray(), $_SESSION['member_id']));
                     $this->tpl_onload = "window.alert('配送方法設定が完了しました。');";
                 }
                 break;
@@ -178,17 +178,15 @@ class LC_Page_Admin_Basis_DeliveryInput extends LC_Page_Admin_Ex {
             }
 
             // 配送料、配達日数の登録
-            if(INPUT_DELIV_FEE) {
-                for($cnt = 1; $cnt <= DELIVFEE_MAX; $cnt++) {
-                    $keyname_days = 'days'.$cnt;
-                    if(strcmp($arrRet[$keyname], "") != 0 && strcmp($arrRet[$keyname_days], "") != 0) {
-                        $sqlval = array(
-                            'days' => $arrRet[$keyname_days]
-                        );
+            if (INPUT_DELIV_FEE) {
+                for ($cnt = 1; $cnt <= DELIVFEE_MAX; $cnt++) {
+                    $keyname_days = 'days' . $cnt;
+                    if (//strcmp($arrRet[$keyname], "") != 0 &&
+			strcmp($arrRet[$keyname_days], "") != 0) {
+                        $sqlval = array('days' => $arrRet[$keyname_days]);
                         $objQuery->update("dtb_delivfee", $sqlval, "deliv_id = ? AND fee_id = ?", array($deliv_id, $cnt));
                     }
                 }
-                
             }
         }
         else {
