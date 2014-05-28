@@ -54,7 +54,7 @@
 					休止中のため<br />変更できません。
 
 					<!--{else}-->
-                             <a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/regular_change.php?regular_id=<!--{$arrRegularDetail[cnt].regular_id}-->&line_no=<!--{$arrRegularDetail[cnt].line_no}-->">お届けスケジュールの変更</a>
+                             <a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/regular_detail.php?regular_id=<!--{$arrRegularDetail[cnt].regular_id}-->&line_no=<!--{$arrRegularDetail[cnt].line_no}-->">お届けスケジュールの変更</a>
 					<!--{/if}-->
                     </span>
               </p>

@@ -46,9 +46,8 @@
 			<li><a href="history_list.php" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->">購入履歴
 			<span class="dsc">現在のご注文完了された商品の配送手続き状況及び、注文内容を確認できます。</span></a></li>
 
-<!--{*
 			<li><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}--> selected<!--{/if}-->">定期購入履歴</a></li>
-*}-->
+
 			<li><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->">ご登録内容の変更
 			<span class="dsc">お客様情報を変更できます。</span></a></li>
 			<li><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}--> selected<!--{/if}-->">配送先新規登録
