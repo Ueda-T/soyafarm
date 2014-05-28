@@ -67,6 +67,9 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
    
         }else{
             $this->completeOrder();
+
+            // 完了画面へリダイレクト
+            SC_Response_Ex::sendRedirect(SHOPPING_COMPLETE_URLPATH);
         }
     }
 
@@ -86,9 +89,30 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
      */
     public function completeOrder() {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
+        $objCustomer = new SC_Customer_Ex();
+        $objCartSession = new SC_CartSession_Ex();
+
+	// 顧客情報に取引IDが設定されていない場合セットする
+	$sql =<<<EOF
+SELECT torihiki_id
+FROM dtb_customer
+WHERE customer_id = ?
+EOF;
+	$customerId = $objCustomer->getValue('customer_id');
+	$torihikiId = $objQuery->getOne($sql, array($customerId));
 
         $objQuery->begin();
         
+	if (!$torihikiId) {
+	    $torihikiId = str_pad($customerId, 14, "0", STR_PAD_LEFT);
+	    $arrCustomer = array('torihiki_id' => $torihikiId,
+				'send_flg' => 0,
+				'updator_id' => $customerId,
+				'update_date' => 'Now()');
+	    $where = "customer_id = ?";
+	    $objQuery->update("dtb_customer", $arrCustomer
+			    , $where, array($customerId));
+	}
         $arrRegularOrder = array();
         $arrRegularOrder['del_flg'] = '0';
         $arrRegularOrder['regular_status'] = MDL_SMBC_REGULAR_STATUS_NONE;
@@ -98,18 +122,23 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
         $arrResult = $objQuery->getRow('*', 'dtb_mdl_smbc_regular_order', 'order_id = ?', array($_SESSION['regular_order_id']));
         
         $arrOrder = array();
-        $arrOrder['note'] = '管理番号: ' . $arrResult['shoporder_no'] . PHP_EOL;
-        $arrOrder['note'] .= '請求年月: ' . substr($arrResult['target_ym'], 0, 4) . '/' . substr($arrResult['target_ym'], 4, 2);
+        $arrOrder['memo01'] = '管理番号: ' . $arrResult['shoporder_no'] . PHP_EOL;
+        $arrOrder['memo01'] .= '請求年月: ' . substr($arrResult['target_ym'], 0, 4) . '/' . substr($arrResult['target_ym'], 4, 2);
         $arrOrder['status'] = ORDER_NEW;
         $arrOrder['del_flg'] = '0';
         $arrOrder['update_date'] = 'CURRENT_TIMESTAMP';
-        $objQuery->update("dtb_order", $arrOrder, "order_id = ?", array($_SESSION['regular_order_id']));
+        //$objQuery->update("dtb_order", $arrOrder, "order_id = ?", array($_SESSION['regular_order_id']));
         
         // メールを送信
         $objPurchase = new SC_Helper_Purchase_Ex();
+        $objPurchase->registerOrder($_SESSION['regular_order_id'], $arrOrder);
         $objPurchase->sendOrderMail($_SESSION['regular_order_id']);
 
         $objQuery->commit();
+
+        // SESSION情報破棄
+        $cartkey = $objCartSession->getKey();
+        $objPurchase->cleanupSession($_SESSION['regular_order_id'], $objCartSession, $objCustomer, $cartkey);
     }
 }
 ?>

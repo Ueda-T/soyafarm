@@ -280,9 +280,23 @@ class SC_SMBC {
     function getCustomerData($arrOrderTemp) {
         $arrCustomer = array();
 
+        $objQuery =& SC_Query_Ex::getSingletonInstance();
+
+	// 顧客情報に取引IDが設定されていない場合セットする
+	$sql =<<<EOF
+SELECT torihiki_id
+FROM dtb_customer
+WHERE customer_id = ?
+EOF;
+	$torihikiId = $objQuery->getOne($sql, array($arrOrderTemp['customer_id']));
+
         // 顧客番号。ゲスト購入の時（customer_id = 0）は空を格納
         $arrCustomer['customer_id'] = $arrOrderTemp['customer_id'];
-        $arrCustomer['bill_no'] = ($arrOrderTemp['customer_id'] >0) ? str_pad($arrOrderTemp['customer_id'], 14, "0", STR_PAD_LEFT) : "";
+	if ($torihikiId) {
+	    $arrCustomer['bill_no'] = $torihikiId;
+	} else {
+	    $arrCustomer['bill_no'] = ($arrOrderTemp['customer_id'] >0) ? str_pad($arrOrderTemp['customer_id'], 14, "0", STR_PAD_LEFT) : "";
+	}
 
         // 顧客名。英数字を全角にする。
         //$arrCustomer['bill_name'] = mb_convert_kana($arrOrderTemp['order_name01'] . $arrOrderTemp['order_name02'], "KVAN");
@@ -418,12 +432,16 @@ class SC_SMBC {
      * 定期受注ID(継続課金での shoporder_no) を生成する.
      */
     function createRegularOrderId() {
+	/*
         $objQuery = SC_Query_Ex::getSingletonInstance();
         $regular_order_id = str_replace('.', '', (uniqid('R', true)));
         while($exists = $objQuery->get('shoporder_no', 'dtb_mdl_smbc_regular_order',
                                        'shoporder_no = ?', array($regular_order_id))) {
             $regular_order_id = str_replace('.', '', (uniqid('R', true)));
         }
+	 */
+	// 固定値にするため処理変更
+        $regular_order_id = 0;
         return $regular_order_id;
     }
 
