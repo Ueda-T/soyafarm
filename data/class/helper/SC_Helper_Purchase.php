@@ -548,13 +548,13 @@ class SC_Helper_Purchase {
         $cartList = $objCartSess->getCartList($productTypeId);
         $delivDateIds = array();
 
-	$chkRegularFlg = false;
+        $chkRegularFlg = false;
         foreach ($cartList as $item) {
             $delivDateIds[] = $item['productsClass']['deliv_date_id'];
-	    // 定期有無確認
+            // 定期有無確認
             if ($item['regular_flg'] == REGULAR_PURCHASE_FLG_ON) {
-		$chkRegularFlg = true;
-	    }
+                $chkRegularFlg = true;
+            }
         }
 
         //発送目安
@@ -563,17 +563,17 @@ class SC_Helper_Purchase {
 
         $objQuery =& SC_Query_Ex::getSingletonInstance();
 
-	$start_day = "";
-	if ($id) {
-	    $sql =<<<__EOS
+        $start_day = "";
+        if ($id) {
+            $sql =<<<__EOS
 select can_be_delivered from mtb_delivery_date where id = {$id};
 __EOS;
-	    $start_day = $objQuery->getOne($sql);
-	}
+            $start_day = $objQuery->getOne($sql);
+        }
 
         //お届け可能日のスタート値から、お届け日の配列を取得する
-	$arrDelivDate = $this->getDateArray($start_day, DELIV_DATE_END_MAX
-					    , $chkRegularFlg);
+        $arrDelivDate = $this->getDateArray($start_day, DELIV_DATE_END_MAX
+                                        , $chkRegularFlg);
 
         return $arrDelivDate;
     }
@@ -584,7 +584,7 @@ __EOS;
     function getDateArray($start_day, $end_day, $regularFlg = false) {
         $masterData = new SC_DB_MasterData();
         $arrWDAY = $masterData->getMasterData("mtb_wday");
-	$arrRegularPattern = explode(",", REGULAR_DELIV_PATTERN);
+        $arrRegularPattern = explode(",", REGULAR_DELIV_PATTERN);
 
         //お届け可能日のスタート値がセットされていれば
         if ($start_day >= 1) {
@@ -595,9 +595,11 @@ __EOS;
                 // 基本時間から日数を追加していく
                 $tmp_time = $now_time + ($i * 24 * 3600);
                 list($y, $m, $d, $w) = explode(" ", date("Y m d w", $tmp_time));
-		if (array_search($d, $arrRegularPattern) === false) {
-		    continue;
-		}
+                if ($regularFlg) {
+                    if (array_search($d, $arrRegularPattern) === false) {
+                        continue;
+                    }
+                }
                 $val = sprintf("%04d/%02d/%02d(%s)", $y, $m, $d, $arrWDAY[$w]);
                 $arrDate[$val] = $val;
             }

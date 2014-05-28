@@ -36,8 +36,12 @@
 　【時間帯指定】　<!--{$shipping.shipping_time|default:"指定なし"}-->
 　【お届け日】　　<!--{$shipping.shipping_date|date_format:"%Y/%m/%d"|default:"指定なし"}-->
 <!--{section name=cnt loop=$arrOrderDetail}-->
-　<!--{$smarty.section.cnt.iteration}-->.<!--{$arrOrderDetail[cnt].product_name}--> <!--{$arrOrderDetail[cnt].classcategory_name1}--> <!--{$arrOrderDetail[cnt].classcategory_name2}-->
+　<!--{$smarty.section.cnt.iteration}-->.<!--{$arrOrderDetail[cnt].product_name}--> <!--{$arrOrderDetail[cnt].classcategory_name1}--> <!--{$arrOrderDetail[cnt].classcategory_name2}--><!--{if !$arrOrderDetail[cnt].sell_flg}-->（プレゼント商品）<!--{/if}-->
+<!--{if $arrOrderDetail[cnt].sell_flg}-->
 　　単価：<!--{$arrOrderDetail[cnt].price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円　×　数量：<!--{$arrOrderDetail[cnt].quantity}-->　＝　商品代金：<!--{$arrOrderDetail[cnt].price*$arrOrderDetail[cnt].quantity|number_format}-->円
+<!--{else}-->
+　　数量：<!--{$arrOrderDetail[cnt].quantity}-->
+<!--{/if}-->
 
 <!--{/section}-->
 <!--{/foreach}-->

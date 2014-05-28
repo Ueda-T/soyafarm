@@ -94,7 +94,9 @@ class SC_Helper_Mail {
         $where = "order_id = ?";
         $arrRet = $objQuery->select("*", "dtb_order", $where, array($order_id));
         $arrOrder = $arrRet[0];
-        $where = "order_id = ? and sell_flg = 1";
+        // 同梱品情報も取得するように変更
+        //$where = "order_id = ? and sell_flg = 1";
+        $where = "order_id = ?";
         $objQuery->setOrder('order_detail_id');
         $arrTplVar->arrOrderDetail = $objQuery->select("*", "dtb_order_detail", $where, array($order_id));
 

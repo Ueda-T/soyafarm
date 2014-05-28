@@ -398,6 +398,7 @@ $(document).ready(function() {
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
             <!--{* ▼同梱品情報表示 *}-->
+            <!--{if $tpl_include_product_flg}-->
             <!--{foreach from=$arrIncludeProduct item=item}-->
                 <!--{if $include_flg == 0}-->
             <h2 style="background-color:#C7B068;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">プレゼント商品</h2>
@@ -418,6 +419,7 @@ $(document).ready(function() {
             <!--{/foreach}-->
 
             </table>
+            <!--{/if}-->
             <!--{* ▲同梱品情報情報 *}-->
 
 

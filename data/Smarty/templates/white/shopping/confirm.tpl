@@ -93,6 +93,7 @@ $(document).ready(function() {
                 </tr>
             <!--{/foreach}-->
             <!--{* 同梱品情報 *}-->
+            <!--{if $tpl_include_product_flg}-->
             <!--{foreach from=$arrIncludeProduct item=item}-->
                 <tr>
                     <td class="alignC">
@@ -109,6 +110,7 @@ $(document).ready(function() {
                     <td class="alignR">&nbsp;</td>
                 </tr>
             <!--{/foreach}-->
+            <!--{/if}-->
             <tr>
                 <th colspan="4" class="alignR" scope="row">小計</th>
                 <td class="alignR"><!--{$tpl_total_inctax[$cartKey]|number_format}-->円</td>

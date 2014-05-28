@@ -335,6 +335,7 @@ $(document).ready(function() {
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
             <!--{* ▼同梱品情報表示 *}-->
+            <!--{if $tpl_include_product_flg}-->
             <!--{foreach from=$arrIncludeProduct item=item}-->
                 <!--{if $include_flg == 0}-->
             <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_tankai.gif" alt="プレゼント商品" /></h1>
@@ -360,6 +361,7 @@ $(document).ready(function() {
                 </tr>
             <!--{/foreach}-->
             </table>
+            <!--{/if}-->
             <!--{* ▲同梱品情報表示 *}-->
 
 
