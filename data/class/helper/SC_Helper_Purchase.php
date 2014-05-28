@@ -1663,6 +1663,7 @@ EOF;
 SELECT
     T1.product_id AS product_id
    ,T1.name AS product_name
+   ,T1.main_list_image AS main_list_image
    ,T2.product_class_id AS product_class_id
    ,T2.product_code AS product_code
    ,T4.name AS classcategory_name1
@@ -1964,5 +1965,29 @@ __EOF;
 
     }
 
+    /**
+     * 同梱品がある場合、商品情報をセットする
+     *
+     * @param none
+     * @return array arrProduct 同梱品商品情報
+     */
+    function getIncludeProducts() {
+
+		// 同梱品がある場合、受注明細にセット
+		if (isset($_SESSION["INCLUDE_PROMOTION"]) 
+			&& is_array($_SESSION["INCLUDE_PROMOTION"])) {
+			$arrProduct = array();
+			for ($iCnt = 0; $iCnt < count($_SESSION["INCLUDE_PROMOTION"]); $iCnt++) {
+				// 商品規格ID取得
+				$includeId = $this->getProductClassId($_SESSION["INCLUDE_PROMOTION"][$iCnt]["product_cd"]);
+
+				// 受注詳細情報追加
+				$arrProduct[$iCnt] = $this->getProductDetail($includeId);
+				$arrProduct[$iCnt]["quantity"] = $_SESSION["INCLUDE_PROMOTION"][$iCnt]["quantity"];
+			}
+			return $arrProduct;
+		}
+		return false;
+	}
 
 }
