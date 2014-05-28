@@ -1,3 +1,11 @@
+<!--{php}-->
+require_once(MODULE_REALDIR . 'mdl_smbc/inc/include.php');
+require_once(MDL_SMBC_CLASS_PATH . 'SC_Mdl_SMBC.php');
+$objSMBC =& SC_Mdl_SMBC::getInstance();
+$arrSubData = $objSMBC->getSubData();
+$this->assign('keizoku_flg', $arrSubData['keizoku_flg']);
+<!--{/php}-->
+
 <div id="side_navi">
 <ul class="level1">
     <li id="navi-order-index" class="<!--{if $tpl_mainno == 'order' && $tpl_subno == 'index'}-->on<!--{/if}-->"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/<!--{$smarty.const.DIR_INDEX_PATH}-->"><span>受注照会</span></a></li>
@@ -30,4 +38,4 @@
     <li<!--{if $tpl_subno == 'inos_export_order_regular'}--> class="on"<!--{/if}--> id="navi-inos-export-order-regular"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_export_order_regular.php"><span>受注・定期エクスポート</span></a></li>
 </ul>
 <!--{/if}-->
-</div
+</div>
