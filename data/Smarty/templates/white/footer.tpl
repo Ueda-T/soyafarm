@@ -10,11 +10,12 @@
 	<li class="edge"><a href="http://www.fujioil.co.jp/">会社概要</a></li>
 </ul>
 <ul id="sub_ft" class="clearfix">
-	<li><a href="/contact/">お問い合わせ</a></li>
-	<li class="tocart"><a href="https://www.soyafarm.com/cart/index.php?CT=1">買い物かごを見る</a></li>
+<ul id="sub_ft" class="clearfix">
+	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/">お問い合わせ</a></li>
+	<li class="tocart"><a href="<!--{$smarty.const.ROOT_URLPATH}-->cart/">買い物かごを見る</a></li>
 	<li><a href="/flow/">商品ご購入の流れ</a></li>
-	<li><a href="https://www.soyafarm.com/member/">Web会員新規登録</a></li>
-	<li class="edge"><a href="https://www.soyafarm.com/mypage/">ログイン/マイページ</a></li>
+	<li class="edge"><a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/">ログイン/マイページ</a></li>
+</ul>
 </ul>
 <ul id="remote_ft" class="clearfix">
 	<li><a href="/links/">リンク</a></li>
