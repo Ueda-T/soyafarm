@@ -4,7 +4,7 @@
       <div class="form_area">
                【ご注文日】<br />
                &nbsp;<!--{$tpl_arrOrderData.create_date|date_format:"%Y年%m月%d日"|h}--><br />
-               【オーダー番号】<br />
+               【注文番号】<br />
                &nbsp;<!--{$tpl_arrOrderData.order_id}--><br />
                【処理状況】<br />
                 <!--{assign var=i value=$tpl_arrOrderData.status}-->
@@ -21,7 +21,6 @@
                【ご購入金額】<br />
                     &nbsp;商品金額(税込)：<!--{$tpl_arrOrderData.subtotal|number_format}-->円<br />
                     &nbsp;送料(税込)：<!--{assign var=key value="deliv_fee"}--><!--{$tpl_arrOrderData[$key]|number_format|h}-->円<br />
-                    &nbsp;使用ポイント：<!--{assign var=key value="use_point"}--><!--{$tpl_arrOrderData[$key]|number_format|h}-->pt<br />
                     &nbsp;合計金額(税込)：<!--{$tpl_arrOrderData.payment_total|number_format}-->円<br /><br />
                【お支払方法】<br />
                &nbsp;<!--{$arrPayment[$tpl_arrOrderData.payment_id]|h}--><br /><br />
