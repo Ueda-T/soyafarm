@@ -18,7 +18,7 @@
         <dl class="form_entry">
          <dt>件名&nbsp;<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></dt>
          <dd><span class="attention"><!--{$arrErr.subject}--></span>
-            <select name="subject" style="<!--{$arrErr.subject|sfGetErrorColor}-->">
+            <select name="subject" id="subject" style="<!--{$arrErr.subject|sfGetErrorColor}-->">
                 <option value="" selected="selected">↓お選びください</option>
                 <!--{html_options options=$arrSubject selected=$arrForm.subject}-->
             </select>
@@ -62,3 +62,4 @@
      </form>
 </section>
 <!--▲CONTENTS-->
+<script src="<!--{$smarty.const.ROOT_URLPATH}-->js/contact.js" type="text/javascript"></script>

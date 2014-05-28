@@ -73,7 +73,7 @@
                     <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />件名</th>
                     <td>
                         <span class="attention"><!--{$arrErr.subject}--></span>
-                        <select name="subject" style="<!--{$arrErr.subject|sfGetErrorColor}-->">
+                        <select name="subject" id="subject" style="<!--{$arrErr.subject|sfGetErrorColor}-->">
                             <option value="" selected="selected">↓お選びください</option>
                             <!--{html_options options=$arrSubject selected=$arrForm.subject}-->
                         </select>
@@ -108,7 +108,7 @@
                     <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />内容</th>
                     <td>
                         <span class="attention"><!--{$arrErr.contents}--></span>
-                        <textarea name="contents" class="box380" cols="60" rows="20" style="<!--{$arrErr.contents.value|h|sfGetErrorColor}-->; ime-mode: auto;"><!--{$arrForm.contents.value|h}--></textarea><br />
+                        <textarea name="contents" id="contents" class="box380" cols="60" rows="20" style="<!--{$arrErr.contents.value|h|sfGetErrorColor}-->; ime-mode: auto;"><!--{$arrForm.contents.value|h}--></textarea><br />
                         <span class="mini">(500文字以内でお願いします。)</span>
                     </td>
                 </tr>
@@ -134,3 +134,4 @@
 </div>
 <!--▲CONTENTS-->
 <!--{$tpl_clickAnalyzer}-->
+<script src="<!--{$smarty.const.ROOT_URLPATH}-->js/contact.js" type="text/javascript"></script>

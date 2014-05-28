@@ -10,7 +10,7 @@
 	<li class="edge"><a href="http://www.fujioil.co.jp/">会社概要</a></li>
 </ul>
 <ul id="sub_ft" class="clearfix">
-	<li><a href="https://www.soyafarm.com/contact/">お問い合わせ</a></li>
+	<li><a href="/contact/">お問い合わせ</a></li>
 	<li class="tocart"><a href="https://www.soyafarm.com/cart/index.php?CT=1">買い物かごを見る</a></li>
 	<li><a href="/flow/">商品ご購入の流れ</a></li>
 	<li><a href="https://www.soyafarm.com/member/">Web会員新規登録</a></li>
