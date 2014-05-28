@@ -3,6 +3,7 @@
 	<!--{if $point_disp !== false}-->
 		<p>
 			<!--{$CustomerName|h}--></strong>&nbsp;様<br />
+                        <!--{$tpl_discount.customer_type_name|h}--><br />
 			お客様番号：<!--{$CustomerId}-->
 		</p>
 
