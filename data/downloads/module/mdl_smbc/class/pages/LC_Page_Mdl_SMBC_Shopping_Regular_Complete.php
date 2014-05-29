@@ -93,6 +93,8 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
         $objCustomer = new SC_Customer_Ex();
         $objCartSession = new SC_CartSession_Ex();
 
+        $_SESSION['regular_order_id'] = $_SESSION['order_id'];
+
 	// 顧客情報に取引IDが設定されていない場合セットする
 	$sql =<<<EOF
 SELECT torihiki_id

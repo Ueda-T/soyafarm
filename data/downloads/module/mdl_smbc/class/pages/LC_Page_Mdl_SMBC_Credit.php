@@ -495,6 +495,7 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
     function lfRegularOrder() {
         $this->objSmbcPage = new SC_SMBC_Page();
 
+	unset($_SESSION['regular_order_id']);
         $_SESSION['regular_order_id'] = $_SESSION['order_id'];
         $this->arrParam = $this->objSmbcPage->regularMakeParam($_SESSION['order_id']);
         $this->arrParam['shoporder_no'] = $this->objSmbcPage->createRegularOrderId();
@@ -584,7 +585,18 @@ class LC_Page_Mdl_SMBC_Credit extends LC_Page_Ex {
         $arrRegularOrder['create_date'] = $arrOrderTemp['create_date'];
         $arrRegularOrder['update_date'] = $arrOrderTemp['update_date'];
         $arrRegularOrder['del_flg'] = '1';
-        $objQuery->insert('dtb_mdl_smbc_regular_order', $arrRegularOrder);
+        // データが重複している場合はスキップ
+	$where =<<<EOF
+shoporder_no = ?
+AND bill_no = ?
+AND order_id = ?
+EOF;
+        if (!$objQuery->exists('dtb_mdl_smbc_regular_order', $where,
+	    array($arrRegularOrder['shoporder_no']
+		, $arrRegularOrder['bill_no']
+		, $arrRegularOrder['order_id']))) {
+	    $objQuery->insert('dtb_mdl_smbc_regular_order', $arrRegularOrder);
+        }
     }
 }
 ?>
