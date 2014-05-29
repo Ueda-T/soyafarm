@@ -32,7 +32,7 @@ $(document).ready(function() {
 
         <form name="form1" id="form1" method="post" action="?">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
-        <input type="hidden" name="mode" value="confirm" />
+        <input type="hidden" name="mode" value="<!--{if $chk_torihiki_id}-->check_confirm<!--{else}-->confirm<!--{/if}-->" />
         <input type="hidden" name="uniqid" value="<!--{$tpl_uniqid}-->" />
 
 		<div class="bdrGray">

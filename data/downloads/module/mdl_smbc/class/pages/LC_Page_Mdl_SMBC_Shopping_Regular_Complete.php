@@ -97,6 +97,7 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
 SELECT torihiki_id
 FROM dtb_customer
 WHERE customer_id = ?
+AND torihiki_status = 1
 EOF;
 	$customerId = $objCustomer->getValue('customer_id');
 	$torihikiId = $objQuery->getOne($sql, array($customerId));
@@ -106,6 +107,7 @@ EOF;
 	if (!$torihikiId) {
 	    $torihikiId = str_pad($customerId, 14, "0", STR_PAD_LEFT);
 	    $arrCustomer = array('torihiki_id' => $torihikiId,
+				'torihiki_status' => 1,
 				'send_flg' => 0,
 				'updator_id' => $customerId,
 				'update_date' => 'Now()');

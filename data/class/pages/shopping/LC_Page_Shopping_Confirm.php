@@ -85,6 +85,11 @@ class LC_Page_Shopping_Confirm extends LC_Page_Ex {
 
         // ログインユーザの顧客区分取得
         $customer_kbn = $objCustomer->getValue("customer_kbn");
+        $this->chk_torihiki_id = false;
+		if ($objCustomer->getValue("torihiki_id") && 
+			$objCustomer->getValue("torihiki_status") == "1") {
+			$this->chk_torihiki_id = true;
+		}
 		// 社員の場合は、プロモーション適用しない
 		if ($customer_kbn == CUSTOMER_KBN_EMPLOYEE) {
 			// キャンペーンコード削除
@@ -208,6 +213,12 @@ class LC_Page_Shopping_Confirm extends LC_Page_Ex {
             SC_Response_Ex::sendRedirect(SHOPPING_PAYMENT_URLPATH);
             exit;
             break;
+        case 'check_confirm':
+            // クレジットカード決済時に既に決済情報を持ってる場合
+            // カード変更を行うか確認する
+            $this->tpl_mainpage = 'shopping/check_confirm.tpl';
+            break;
+
         case 'confirm':
             // 定期商品でお届け日指定していない場合、お届け指定可能日付の最短日付をセットする
             // お届け日一覧の取得
@@ -244,8 +255,14 @@ class LC_Page_Shopping_Confirm extends LC_Page_Ex {
 											, SC_MobileUserAgent_Ex::isMobile());
 			}
 
+			// クレジット変更画面からの遷移かチェック
+			$chkChange = true;
+			if (isset($_REQUEST["change_mode"]) && $_REQUEST["change_mode"] == "no_change") {
+				$chkChange = false;
+			}
+
             // 決済モジュールを使用する場合
-            if ($this->use_module) {
+            if ($this->use_module && $chkChange) {
                 $objPurchase->completeOrder(ORDER_PENDING);
                 SC_Response_Ex::sendRedirect(SHOPPING_MODULE_URLPATH);
             }
