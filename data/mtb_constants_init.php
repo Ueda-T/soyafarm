@@ -997,4 +997,7 @@ define('REGULAR_ONE_MONTH_PRODUCTS', "0001");
 
 // 定期お届け日指定(「,」区切りにて指定)
 define('REGULAR_DELIV_PATTERN', "1,5,10,15,20,25");
+
+// 顧客マスタデフォルト割引コード
+define('DEFAULT_CUSTOMER_TYPE_CD', "1");
 ?>

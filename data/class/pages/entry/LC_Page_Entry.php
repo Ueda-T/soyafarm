@@ -76,6 +76,7 @@ class LC_Page_Entry extends LC_Page_Ex {
         $objFormParam = new SC_FormParam_Ex();
         $objCartSess = new SC_CartSession_Ex();
         $objSiteSess = new SC_SiteSession_Ex();
+        $objPurchase = new SC_Helper_Purchase_Ex();
 
         $this->cartKey = $objCartSess->getKey();
 
@@ -203,6 +204,14 @@ class LC_Page_Entry extends LC_Page_Ex {
 	}
 	$this->tpl_kiyaku_text
 	    = $this->lfMakeKiyakuText($arrKiyaku, $this->max, $this->offset);
+
+        // 同梱品情報取得
+        $this->tpl_include_product_flg = false;
+        $this->arrIncludeProduct = $objPurchase->getIncludeProducts();
+        if (is_array($this->arrIncludeProduct)) {
+            $this->tpl_include_product_flg = true;
+        }
+
     }
 
     /**

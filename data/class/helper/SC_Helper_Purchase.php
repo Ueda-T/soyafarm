@@ -2024,8 +2024,8 @@ __EOF;
 
         $typeCd = $objQuery->getOne($sql, array($customer_id));
 
-		// 割引コードが未設定の場合更新する
-		if (!$typeCd && 
+		// 割引コードがデフォルト設定の場合更新する
+		if ((!$typeCd || $typeCd == DEFAULT_CUSTOMER_TYPE_CD) && 
 			(isset($_SESSION["DISCOUNT_CODE"]) && $_SESSION["DISCOUNT_CODE"])) {
 			$arrData = array();
 			$arrData["customer_type_cd"] = $_SESSION["DISCOUNT_CODE"];

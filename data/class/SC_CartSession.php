@@ -880,7 +880,7 @@ EOF;
 		$code = $arrRate[0]["customer_type_cd"];
 
 		// 割引率がない場合、今回購入内容から割引率取得
-		if (!$rate) {
+		if (!$rate || $rate == DEFAULT_CUSTOMER_TYPE_CD) {
 			$quantity = 0;
 			$course_cd = "";
 			foreach ($this->cartSession[$productTypeId] as $key => $item) {
