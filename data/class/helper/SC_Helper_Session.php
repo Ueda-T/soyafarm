@@ -99,7 +99,6 @@ EOF;
          } else {
              // セッションデータがある場合は、レコード作成
              if(strlen($sess_data) > 0) {
-                 /*
                  $sql =<<<EOF
 INSERT INTO dtb_session 
 (sess_id, sess_data, update_date)
@@ -112,12 +111,13 @@ EOF;
                  $sqlval[] = $sess_data;
 
                  $objQuery->query($sql, $sqlval, false, null, MDB2_PREPARE_MANIP);
-                  */
+                 /*
                  $sqlval['sess_id'] = $id;
                  $sqlval['sess_data'] = $sess_data;
                  $sqlval['update_date'] = 'Now()';
                  $sqlval['create_date'] = 'Now()';
                  $objQuery->insert("dtb_session", $sqlval);
+                  */
              }
          }
          return true;
