@@ -322,7 +322,8 @@ __EOS;
 SELECT dp.product_cd
      , CONCAT(dp.product_cd, '　',
               IFNULL(p.name, ''), '　',
-              FORMAT(dp.sales_price, 0), '円') AS value
+              FORMAT(dp.sales_price, 0), '円', '　値引率',
+              FORMAT(dp.cut_rate, 0), '%') AS value
   FROM dtb_promotion_discount_product dp
   LEFT JOIN dtb_products_class pc
     ON dp.product_cd = pc.product_code
