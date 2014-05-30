@@ -342,7 +342,9 @@
 								ご指定頂けません。
 							<!--{else}-->
 								<select name="<!--{$key}-->" id="<!--{$key}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->">
-									<!--{*<option value="" selected="">指定なし</option>*}-->
+									<!--{if !$tpl_regular_flg}-->
+									<option value="" selected="">指定なし</option>
+									<!--{/if}-->
 									<!--{assign var=shipping_date_value value=$arrForm[$key].value|default:$shippingItem.shipping_date}-->
 									<!--{html_options options=$arrDelivDate selected=$shipping_date_value}-->
 								</select>&nbsp;

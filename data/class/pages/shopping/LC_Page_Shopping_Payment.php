@@ -296,6 +296,11 @@ class LC_Page_Shopping_Payment extends LC_Page_Ex {
             $this->tpl_include_product_flg = true;
         }
 
+        // 定期購入判定
+        $objRegular = new SC_Helper_Regular_Ex();
+        $this->tpl_regular_flg =
+            $objRegular->checkRegularPurchase($this->cartItems);
+
         $this->arrForm = $objFormParam->getFormParamList();
     }
 
