@@ -861,7 +861,8 @@ class SC_CartSession {
 
 		$sql =<<<EOF
 SELECT 
-    t.cut_rate as cut_rate
+    t.cut_rate as cut_rate,
+    c.customer_type_cd as customer_type_cd
 FROM 
 	dtb_customer c
 INNER JOIN dtb_customer_type t
@@ -874,7 +875,9 @@ AND
 EOF;
 
 		// 割引率取得
-		$rate = $objQuery->getOne($sql, array($customerId));
+		$arrRate = $objQuery->getAll($sql, array($customerId));
+		$rate = $arrRate[0]["cut_rate"];
+		$code = $arrRate[0]["customer_type_cd"];
 
 		// 割引率がない場合、今回購入内容から割引率取得
 		if (!$rate) {
@@ -890,14 +893,18 @@ EOF;
 			// 定期購入がある場合、割引率取得
 			if ($quantity) {
 				$sql =<<<EOF
-SELECT cut_rate
+SELECT cut_rate,
+	customer_type_cd
 FROM dtb_customer_type
 WHERE course_cd = ?
 AND quantity_from <= ?
 AND quantity_to >= ?
 EOF;
 				// 割引率取得
-				$rate = $objQuery->getOne($sql, array($course_cd, $quantity, $quantity));
+				$arrRate = $objQuery->getAll($sql
+									, array($course_cd, $quantity, $quantity));
+				$rate = $arrRate[0]["cut_rate"];
+				$code = $arrRate[0]["customer_type_cd"];
 			}
 		}
 
@@ -914,6 +921,8 @@ EOF;
 				}
 			}
 		}
+		$_SESSION["DISCOUNT_RATE"] = $rate;
+		$_SESSION["DISCOUNT_CODE"] = $code;
     }
 
     /**

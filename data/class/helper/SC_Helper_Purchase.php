@@ -44,6 +44,9 @@ class SC_Helper_Purchase {
             SC_Utils_Ex::sfDispSiteError(PAGE_ERROR, $objSiteSession);
         }
 
+		// 顧客割引設定
+		$this->lfSetCustomerType($customerId);
+
         $uniqId = $objSiteSession->getUniqId();
         $this->verifyChangeCart($uniqId, $objCartSession);
 
@@ -863,6 +866,7 @@ EOF;
             $arrDetail[$i]['price'] = $item['price'];
             $arrDetail[$i]['quantity'] = $item['quantity'];
             $arrDetail[$i]['sell_flg'] = 1;
+            $arrDetail[$i]['cut_rate'] = $_SESSION["DISCOUNT_RATE"];
 			$arrShip["shipping_area_code"] = $p["drop_shipment"];
 			$arrShip["deliv_kbn"] = $p["deliv_kbn1"];
 			$arrShip["cool_kbn"] = $p["deliv_kbn2"];
@@ -942,6 +946,8 @@ EOF;
         $objQuery = SC_Query_Ex::getSingletonInstance();
         $arrValues = $objQuery->extractOnlyColsOf($table, $arrParams);
 
+	// 送り状枚数
+	$arrValues['invoice_num'] = 1;
         $exists = $objQuery->count($table, $where, array($order_id));
         if ($exists > 0) {
 
@@ -1613,6 +1619,8 @@ EOF;
 		unset($_SESSION["ORDER_PROMOTION_CD"]);
 		unset($_SESSION["INCLUDE_PROMOTION"]);
 		unset($_SESSION["USE_POINT"]);
+		unset($_SESSION["DISCOUNT_RATE"]);
+		unset($_SESSION["DISCOUNT_CODE"]);
 		// 新規顧客用情報破棄
 		unset($_SESSION["new_customer"]);
 		unset($_SESSION["new_customer_id"]);
@@ -1991,5 +1999,41 @@ __EOF;
 		}
 		return false;
 	}
+
+    /**
+     * 顧客割引設定がない場合、更新する
+     *
+     * @param int $customer_id 顧客ID
+     * @return none
+     */
+    function lfSetCustomerType($customer_id) {
+        $objQuery =& SC_Query_Ex::getSingletonInstance();
+
+        if (empty($customer_id)) {
+            return;
+        }
+
+        $sql =<<<__EOF
+SELECT
+    customer_type_cd
+FROM
+    dtb_customer
+WHERE
+    customer_id = ?
+__EOF;
+
+        $typeCd = $objQuery->getOne($sql, array($customer_id));
+
+		// 割引コードが未設定の場合更新する
+		if (!$typeCd && 
+			(isset($_SESSION["DISCOUNT_CODE"]) && $_SESSION["DISCOUNT_CODE"])) {
+			$arrData = array();
+			$arrData["customer_type_cd"] = $_SESSION["DISCOUNT_CODE"];
+			$objQuery->update("dtb_customer", $arrData
+							, "customer_id = ?", array($customer_id));
+		}
+
+        return;
+    }
 
 }

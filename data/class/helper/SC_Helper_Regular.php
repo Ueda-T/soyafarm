@@ -565,6 +565,7 @@ INSERT INTO
         ,todoke_week2
         ,course_cd
         ,status
+        ,cut_rate
         ,del_flg
         ,create_date
         ,update_date
@@ -583,6 +584,7 @@ INSERT INTO
         {$arrDetail['todoke_week']},
         '{$arrDetail['course_cd']}',
         1,
+        '{$_SESSION['DISCOUNT_RATE']}',
         0,
         now(),
         now()
