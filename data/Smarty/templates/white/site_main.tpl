@@ -13,9 +13,7 @@
 </noscript>
 
 <div id="wrapper">
-<div class="frame_outer">
-    <a name="top" id="top"></a>
-
+<a name="top" id="top"></a>
     <!--{* ▼HeaderHeaderTop COLUMN*}-->
     <!--{if $arrPageLayout.HeaderTopNavi|@count > 0}-->
         <div id="headertopcolumn">
@@ -42,32 +40,22 @@
 
         <!--{* ▼TOP COLUMN*}-->
         <!--{if $arrPageLayout.TopNavi|@count > 0}-->
-            <div id="wrapContent" class="topCol">
-				<div id="wrapContentEle">
-                <!--{* ▼上ナビ *}-->
-                <!--{foreach key=TopNaviKey item=TopNaviItem from=$arrPageLayout.TopNavi}-->
-                    <!-- ▼<!--{$TopNaviItem.bloc_name}--> -->
-                    <!--{if $TopNaviItem.php_path != ""}-->
-                        <!--{include_php file=$TopNaviItem.php_path items=$TopNaviItem}-->
-                    <!--{else}-->
-                        <!--{include file=$TopNaviItem.tpl_path items=$TopNaviItem}-->
-                    <!--{/if}-->
-                    <!-- ▲<!--{$TopNaviItem.bloc_name}--> -->
-                <!--{/foreach}-->
-                <!--{* ▲上ナビ *}-->
-                </div>
-            </div>
+            <!--{* ▼上ナビ *}-->
+            <!--{foreach key=TopNaviKey item=TopNaviItem from=$arrPageLayout.TopNavi}-->
+                <!-- ▼<!--{$TopNaviItem.bloc_name}--> -->
+                <!--{if $TopNaviItem.php_path != ""}-->
+                    <!--{include_php file=$TopNaviItem.php_path items=$TopNaviItem}-->
+                <!--{else}-->
+                    <!--{include file=$TopNaviItem.tpl_path items=$TopNaviItem}-->
+                <!--{/if}-->
+                <!-- ▲<!--{$TopNaviItem.bloc_name}--> -->
+            <!--{/foreach}-->
+            <!--{* ▲上ナビ *}-->
         <!--{/if}-->
         <!--{* ▲TOP COLUMN*}-->
 
     <!--{* ▼CONTENTS *}-->
-    <!--{assign var=top value="`$smarty.const.ROOT_URLPATH`index.php"}-->
-    <!--{if $smarty.server.PHP_SELF == $top}-->
-    <div class="homeMain">
-	<!--{else}-->
-    <div id="wrapContent">
-    	<div id="wrapContentEle">
-	<!--{/if}-->
+    <div id="contents">
         <!--{* ▼LEFT COLUMN *}-->
         <!--{if $arrPageLayout.LeftNavi|@count > 0}-->
             <div id="leftcolumn" class="side_column heightLine">
@@ -91,19 +79,10 @@
             <!--{if $tpl_column_num == 3}-->
                 id="three_maincolumn"
             <!--{elseif $tpl_column_num == 2}-->
-                <!--{if $arrPageLayout.LeftNavi|@count == 0}-->
-                    <!--{if $smarty.server.PHP_SELF == $top}-->
-                    class="homeMainEle"
-                    <!--{else}-->
                     id="main"
-                    <!--{/if}-->
-                <!--{else}-->
-                    id="two_maincolumn_right"
-                <!--{/if}-->
             <!--{elseif $tpl_column_num == 1}-->
                 id="one_maincolumn"
             <!--{/if}-->
-            <!--{*class="main_column"*}-->
         >
             <!--{* ▼メイン上部 *}-->
             <!--{if $arrPageLayout.MainHead|@count > 0}-->
@@ -141,11 +120,7 @@
 
         <!--{* ▼RIGHT COLUMN *}-->
         <!--{if $arrPageLayout.RightNavi|@count > 0}-->
-		<!--{if $smarty.server.PHP_SELF == $top}-->
-			<div class="homeSide">
-		<!--{else}-->
-            <div id="sub" class="side_column heightLine">
-		<!--{/if}-->
+            <div id="navi">
                 <!--{* ▼右ナビ *}-->
                 <!--{foreach key=RightNaviKey item=RightNaviItem from=$arrPageLayout.RightNavi}-->
                     <!-- ▼<!--{$RightNaviItem.bloc_name}--> -->
@@ -178,11 +153,7 @@
             </div>
         <!--{/if}-->
         <!--{* ▲BOTTOM COLUMN*}-->
-
-        <!--{if $smarty.server.PHP_SELF != $top}-->
-        </div>
-        <!--{/if}-->
-	</div>
+	</div><!--/#contents-->
     <!--{* ▲CONTENTS *}-->
 </div><!--/#wrapper-->
 
@@ -208,7 +179,6 @@
         </div>
     <!--{/if}-->
     <!--{* ▲FooterBottom COLUMN*}-->
-</div>
 
 <!--{include file="tracking.tpl"}-->
 

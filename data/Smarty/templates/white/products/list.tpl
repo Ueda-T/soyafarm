@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/products.css" type="text/css" media="all" />
 <script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/products.js"></script>
 <script type="text/javascript">//<![CDATA[
 function fnSetClassCategories(form, classcat_id2_selected) {
@@ -68,6 +69,8 @@ function fnInCart(productForm) {
 		<!--{$TopicPath}-->
 	</p>
 
+<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/h1_lineup.gif" alt="商品ラインナップ"></h1>
+
     <!--★タイトル★-->
     <!--{assign var=stClass value="cateTitle"}-->
 	<!--{if $tpl_arrCategory.image}-->
@@ -137,6 +140,7 @@ function fnInCart(productForm) {
 	<div class="goodsList clearfix">
 <!--{/if}-->
 
+<ul id="lineup">
     <!--{foreach from=$arrProducts item=arrProduct name=arrProducts}-->
 
 <!--{*
@@ -158,49 +162,44 @@ function fnInCart(productForm) {
 
         <!--{assign var=id value=$arrProduct.product_id}-->
         <!--{assign var=arrErr value=$arrProduct.arrErr}-->
+        <li>
         <!--▼商品-->
-        <div class="itemStP">
         <form name="product_form<!--{$id|h}-->" action="?" onsubmit="return false;">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
         <input type="hidden" name="regular_flg" id="regular_flg" value="" />
-			<table cellspacing="0">
-				<tr>
-					<td class="thum">
+
+						<!--★商品名★-->
+							<h2><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--></h2>
+
+					<div class="photo">
 						<a name="product<!--{$id|h}-->"></a>
 
 							<!--★画像★-->
 							<a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->" class="over"><!--商品写真--><img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$arrProduct.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$arrProduct.name|h}-->" class="picture" /></a>
-					</td>
+					</div>
 
-					<td>
+					<div class="detail">
 						<!--★コメント★-->
-						<dl>
-							<dd class="gaiyo"><!--{$arrProduct.main_list_comment}--></dd>
-						<!--★商品名★-->
-							<dt><a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->"><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--></a></dt>
+						<p><!--{$arrProduct.main_list_comment}--></p>
 
+						<p class="shosai">
+							<a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_products_detail.gif" alt="商品の詳細はこちら" border="0" class="btn"></a>
+						</p>
+
+					<div class="tocart">
+						<h3><img src="<!--{$TPL_URLPATH}-->img/soyafarm/ttl_buy.gif" alt="ご購入はこちら" width="411" height="26"></h3>
+						<div class="pinkBox">
 							<!--★価格★-->
-						<!--{if strlen($tpl_customer_kbn) == null || $tpl_customer_kbn == $smarty.const.CUSTOMER_KBN_NORMAL}-->
-							<dd class="price">￥
-								<!--{if $arrProduct.price01_min == $arrProduct.price01_max}-->
-									<!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-								<!--{else}-->
-									<!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～<!--{$arrProduct.price01_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
+							<ul>
+								<li class="price">税込<span><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></span>円<br />
+								（税抜<span class="price2"><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></span>円）
+								</li>
+								<!--{* ▼容量 *}-->
+								<!--{if $arrProduct.capacity|strlen >= 1}-->
+								<li><!--{$arrProduct.capacity|h}--></li>
 								<!--{/if}-->
-							<span>(税込)</span>
-							</dd>
-							<!--★社員価格★-->
-						<!--{elseif $tpl_customer_kbn == $smarty.const.CUSTOMER_KBN_EMPLOYEE }-->
-							<dd class="price">￥
-								<!--{if $arrProduct.price02_min == $arrProduct.price02_max}-->
-									<!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-								<!--{else}-->
-									<!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～<!--{$arrProduct.price02_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-								<!--{/if}-->
-							<span>(税込)</span>
-							</dd>
-						<!--{/if}-->
-						</dl>
+								<!--{* ▲容量 *}-->
+							</ul>
 
                 <!--▼買い物かご-->
                 <input type="hidden" name="product_id" value="<!--{$id|h}-->" />
@@ -208,7 +207,6 @@ function fnInCart(productForm) {
 
                     <!--{if $tpl_stock_find[$id]}-->
                         <!--{if $tpl_classcat_find1[$id]}-->
-                            <div class="classlist">
                                 <dl class="size01 clearfix">
                                         <!--▼規格1-->
                                         <dt><!--{$tpl_class_name1[$id]|h}-->：</dt>
@@ -236,49 +234,31 @@ function fnInCart(productForm) {
                                         <!--▲規格2-->
                                     </dl>
                                 <!--{/if}-->
-                            </div>
                         <!--{/if}-->
-                            <div class="quantity">
+                        
                                 <!--{if $arrErr.quantity != ""}-->
                                     <br /><span class="attention"><!--{$arrErr.quantity}--></span>
                                 <!--{/if}-->
 
-                                <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
+                                <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
+                                <div id="cartbtn_default">
+                                <!--★カゴに入れる★-->
                                     <!--{ * 数量はプルダウンで選択できるように* }-->
-                                    <!--
-                                    <input type="text" name="quantity" size="3" value="<!--{$arrProduct.quantity|default:1|h}-->" maxlength="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" />
-                                    -->
                                     <!--{assign var=class_id value=$tpl_product_class_id[$id]}-->
                                     <select name="quantity" style="<!--{$arrErr.quantity|sfGetErrorColor}-->">
                                         <!--{html_options options=$tpl_arrQuantity[$class_id] }-->
                                     </select>
 
-                                    <a href="javascript:void(0);" onclick="fnInCart(document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/reserve_s.jpg" alt="予約する" align="absmiddle" class="swp" /></a>
-                                <!--{else}-->
-                                    <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
-                                    <div id="cartbtn_default">
-                                    <!--★カゴに入れる★-->
-                                        <!--{ * 数量はプルダウンで選択できるように* }-->
-                                        <!--
-                                        <input type="text" name="quantity" size="3" value="<!--{$arrProduct.quantity|default:1|h}-->" maxlength="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" />
-                                        -->
-                                        <!--{assign var=class_id value=$tpl_product_class_id[$id]}-->
-                                        <select name="quantity" style="<!--{$arrErr.quantity|sfGetErrorColor}-->">
-                                            <!--{html_options options=$tpl_arrQuantity[$class_id] }-->
-                                        </select>
-
-                                        <div class="cartBtnList">
-	                                        <!--★社員は定期購入不可★-->
-	                                        <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE && $arrProduct.teiki_flg != 0}-->
-	                                        <p id="cartbtn_teiki_<!--{$id}-->" class="teikiBtn">
-	                                        <a href="javascript:void(0);" onclick="fnAddProduct('1', document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/teiki_s.gif" alt="定期購入する" align="absmiddle" class="swp" /></a>
-	                                        </p>
-                                          <!--{/if}-->
-	                                        <a href="javascript:void(0);" onclick="fnInCart(document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart_s.gif" alt="カートに入れる" align="absmiddle" class="swp" /></a>
-                                    </div>
-                                    <!--{/if}-->
-                                <!--{/if}-->
+                                    <div class="cartBtnList">
+                                        <!--★社員は定期購入不可★-->
+                                        <!--{if $arrProduct.teiki_flg != 0}-->
+                                        <p id="cartbtn_teiki_<!--{$id}-->" class="teikiBtn">
+                                        <a href="javascript:void(0);" onclick="fnAddProduct('1', document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/teiki_s.gif" alt="定期購入する" align="absmiddle" class="swp" /></a>
+                                        </p>
+                                        <!--{/if}-->
+                                        <p><a href="javascript:void(0);" onclick="fnInCart(document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart_s.gif" alt="カートに入れる" align="absmiddle" class="swp" /></a></p>
                                 </div>
+                                <!--{/if}-->
 
                                 <!--{* 在庫切れ時の表示切り替え *}-->
                                 <!--{foreach from=$tpl_stock_status_name key=key item=stock_status }-->
@@ -296,19 +276,12 @@ function fnInCart(productForm) {
                         <!--{/foreach}-->
                     <!--{/if}-->
                 <!--▲買い物かご-->
-
-				</td>
-			</tr>
-		</table>
+				</div><!--/.pinkBox-->
+			</div><!--/.toCart-->
+				</div>
         </form>
-	</div>
-
-	<!--{if $smarty.foreach.arrProducts.iteration %2 === 0 || $smarty.foreach.arrProducts.last}-->
-		<div class="btm"></div>
-	<!--{/if}-->
-
         <!--▲商品-->
-
+        </li>
     <!--{foreachelse}-->
         <!--{include file="frontparts/search_zero.tpl"}-->
 
@@ -364,6 +337,7 @@ function fnInCart(productForm) {
 		</form>
 
     <!--{/foreach}-->
+    </ul>
 
 <!--{if $arrProducts}-->
 </div>

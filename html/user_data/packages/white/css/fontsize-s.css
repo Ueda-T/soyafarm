@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	fontsize S
+
+///////////////////////////////////////////////////////////*/
+
+body {
+	font-size: 72%;
+}
+
+dl#fontsize dd.fs-s_ac    { display: block;}
+dl#fontsize dd.fs-s   			 { display: none;}
+dl#fontsize dd.fs-m_ac    { display: none;}
+dl#fontsize dd.fs-m   			 { display: block;}

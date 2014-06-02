@@ -649,6 +649,13 @@ div#whobought_area h2 {
 /*********************************************** */
 /* 現在のカゴの中
 ----------------------------------------------- */
+.cartNoData {
+	margin:0 auto;
+	padding:40px 0;
+	text-align:center;
+	
+}
+
 div#undercolumn_cart .point_announce {
     padding: 20px;
     margin-bottom: 20px;

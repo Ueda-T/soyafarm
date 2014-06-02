@@ -1,8 +1,8 @@
 <!--▼CONTENTS-->
 <div id="undercolumn">
     <div id="undercolumn_contact">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_title.gif" alt="お問い合わせ"></h1>
 
+<!--{*
 		<!--{if $smarty.session.customer}-->
 		<p class="pankuzu">
 			<a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/">マイページ</a>
@@ -16,8 +16,6 @@
         <input type="hidden" name="mode" value="confirm" />
 
         <!--▼お問い合わせフォーム-->
-
-        <!--{* 顧客名を表示 *}-->
         <!--{if $smarty.session.customer}-->
         <div class="wrapCustomer">
             <div class="myPagePersonal">
@@ -35,36 +33,8 @@
             </div>
         </div>
         <!--{/if}-->
-
-        <div class="wrapContact">
-            <div class="bf">
-                <img src="<!--{$TPL_URLPATH}-->img/rohto/contact_before.gif" alt="お問い合わせの前にご確認ください" width="431" height="37" class="p01">
-                <img src="<!--{$TPL_URLPATH}-->img/rohto/contact_text.gif" alt="よくある質問を掲載しています。まずこちらをご覧ください。" width="431" height="15" class="p02">
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->contents/faq.php" class="p03"><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_btn_faq.gif" alt="FAQ（よくある質問）" width="310" height="50" class="swp"></a>
-
-            <div class="pickup">
-                <table cellpadding="0" cellspacing="5">
-                    <tr>
-                        <th><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_pictip_title.gif" width="165" height="18" alt="特に多く寄せられるご質問"></th>
-<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->contents/faq02.php#faq204" class="icon1">定期購入の変更をしたい。</a></td>
-<td class="right"><a href="<!--{$smarty.const.ROOT_URLPATH}-->contents/faq05.php#faq705" class="icon1">メールマガジンの配信変更をしたい。</a></td>
-</tr>
-<tr>
-<th>&nbsp;</th>
-<td colspan="2" style="border:0; padding-top:5px;"><a href="<!--{$smarty.const.ROOT_URLPATH}-->contents/faq05.php#faq702" class="icon1">ログインができない場合はどうすればよいですか？ </a></td>
-
-                    </tr>
-                </table>
-            </div><!--/pickup-->
-        </div><!--／bf-->
-
-            <div class="btn">
-                <span><a href="http://www.rohto.co.jp/support/" target="_blank"><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_btn1.gif" alt="製品に関するご質問・販売店等に関するお問い合わせはこちら" width="265" height="55" class="swp"></a></span>
-
-                <span><a href="https://www.rclub2.rohto.co.jp/club/mail/" target="_blank"><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_btn2.gif" alt="ロートくらぶに関するお問い合わせはこちら" width="265" height="55" class="swp"></a></span>
-            </div><!--／btn-->
-
-            <p class="nakedC">ご注文に関するお問い合わせ等については、下記のフォームよりお問い合わせください。</p>
+*}-->
+            <p class="nakedC">下記の項目を入力の上、送信してください。</p>
 
             <div class="wrapForm">
 
@@ -118,15 +88,6 @@
             </p>
             </div><!--／wrapForm-->
 
-            <ul class="kome">
-                <li>ご記入漏れがある場合、お問い合わせにお答え出来ない場合がございます。</li>
-                <li>メールアドレスは、くれぐれもお間違いのないようにご入力ください。</li>
-                <li>平日の17時以降、土・日祝日のお問い合わせにつきましては、返信までにお時間をいただくことがございます。</li>
-                <li>お問い合わせ内容により、お電話にてご返答する場合がございます。あらかじめご了承ください。</li>
-                <li>商品およびロート通販の内容以外のお問い合わせ（ex.ビジネスのご提案）についてはご容赦くださいますようお願いいたします。</li>
-            </ul>
-
-        </div><!--／wrapContact-->
         <input type="hidden" name="now" value="<!--{$smarty.now|date_format:'%Y/%m/%d %H:%M:%S'}-->" />
         <!--▲お問い合わせフォーム-->
         </form>

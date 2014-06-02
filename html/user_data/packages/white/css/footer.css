@@ -27,7 +27,7 @@
 }
 #footer #remote_ft {
 	padding-bottom: 20px;
-	background: url(../img/common/img_line.gif) no-repeat bottom center;
+	background: url(../img/footer/img_line.gif) no-repeat bottom center;
 }
 #footer #global_ft li,
 #footer #sub_ft li,
@@ -42,7 +42,7 @@
 #footer #sub_ft li a,
 #footer #remote_ft li a {
 	padding: 0 0 0 15px;
-	background: url(../img/icon/icon_link_ft.gif) no-repeat 6px 0.25em;
+	background: url(../img/footer/icon_link_ft.gif) no-repeat 6px 0.25em;
 	line-height: 1.4;
 }
 #footer li.edge	{

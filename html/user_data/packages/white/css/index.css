@@ -1,0 +1,167 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	ルートトップページ
+
+///////////////////////////////////////////////////////////*/
+
+img {border: none;}
+
+h1#logo_hd {
+	margin-bottom: 0;
+}
+h2 {
+ margin-bottom: 16px;
+}
+
+/* メインイメージ
+----------------------------------------------------------------*/
+#mainimg {
+	width: 910px;
+
+}
+#mainimg p {
+	margin: 0;
+	padding: 0;
+}
+
+/* コンテンツ
+----------------------------------------------------------------*/
+#contents {
+	background: none;
+}
+#main {
+	width: 700px;
+	margin-top: 0px;
+	padding: 0px;
+	background: none;
+}
+
+/* 商品ラインナップ
+----------------------------------------------------------------*/
+.box {
+	background: url(../img/soyafarm/bg_frame.gif) repeat-y left;
+}
+.box ul {
+	width: 688px;
+	margin-bottom: 6px;
+	padding: 0px 3px 9px 9px;
+	background: url(../img/soyafarm/ft_frame.gif) no-repeat left bottom;
+}
+.box ul#lineup li {
+	width: 304px;
+	padding: 4px 14px 14px 26px;
+	background: url(../img/soyafarm/bg_lineup.gif) no-repeat left top;
+	float: left;
+}
+.box ul li .photo {
+	width: auto;
+	float: right;
+}
+.box ul li dl {
+	width: 203px;
+	float: left;
+}
+.box ul li dl dt {
+	padding: 6px 0px 4px 0px;
+}
+
+
+/* What's new
+----------------------------------------------------------------*/
+.box ul#news li {
+	width: 641px;
+	margin: 0px 18px 15px 12px;
+	padding: 0px 8px 0px 9px;
+	border-bottom: 1px dotted #A6CE39;
+}
+#news h2 {
+	font-size: 90%;
+	line-height: 1.1em;
+	font-weight: normal;
+}
+#news h3 {
+	font-size: 120%;
+	color: #FF4900;
+}
+#news h4 {
+	padding-left: 20px;
+	color: #476B00;
+	background: url(../img/soyafarm/icon_leaf.gif) no-repeat 0 0.2em;
+	font-size: 120%;
+}
+#news p {
+	padding-bottom: 0.7em;
+	line-height: 1.3em;
+}
+.box ul#news li .photo {
+	margin: 0px 0px 7px 5px;
+	border: 1px solid #A9CF3A;
+}
+
+#warning2 {
+	padding: 5px;
+	background: #FFFFFF;
+	border: 3px solid #bdfff3;
+	margin: 0 0 10px;
+	position: relative;
+}
+
+
+#warning2 .lead p {
+	overflow: hidden;
+	padding: 10px 0 0;
+	zoom: 1;
+}
+#warning2 .lead p strong {
+	display: block;
+}
+#warning2 .theme_logo {
+	float: left;
+	margin-top: 0;
+}
+
+#warning2 .main {
+	border-top: 1px dotted #CCCCCC;
+	clear: both;
+	padding: 10px 0 0;
+}
+
+/* クリアフィックス 
+----------------------------------------------------------------------------*/
+#header:after,
+#mainimg:after,
+.box ul:after,
+.box ul li:after,
+#warning .lead:after,
+#warning2 .lead:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+#header,
+#mainimg,
+.box ul,
+.box ul li,
+#warning .lead
+#warning2 .lead { display: inline-block; }
+/* no ie-mac \*/
+* html #header,
+* html #mainimg,
+* html .box ul,
+* html .box ul li,
+* html #warning .lead
+* html #warning2 .lead { height: 1%; }
+#header,
+#mainimg,
+.box ul,
+.box ul li,
+#warning .lead
+#warning2 .lead { display: block; }
+/* clearfix END */
+
+
+

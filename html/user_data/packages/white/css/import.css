@@ -3,9 +3,7 @@
 /************************************************
  import css
 ************************************************ */
-@import url("./set.css");
-@import url("./common.css");
-@import url("./contents.css");
+@import url("./reset.css");
 /*@import url("./table.css");*/
 @import url("./bloc.css");
 @import url("./bloc_alpha.css");
@@ -15,23 +13,8 @@
  custom css
 ************************************************ */
 
-/* タグスタイルの初期化 */
-@import "reset.css"; 
-
-@import url("./base.css");
-
-@import url("./hf.css");
-@import url("./navside.css");
-@import url("./home.css");
-@import url("./topcatch.css");
-
-@import url("./goods.css");
-@import url("./category.css");
-@import url("./free.css");
-
-@import url("./sys.css");
-@import url("./lay.css");
-@import url("./shun.css");
+/* 基本設定＆汎用クラス */
+@import "base.css"; 
 
 /* ヘッダー設定 */
 @import "header.css"; 
@@ -41,3 +24,6 @@
 
 /* フッター設定 */
 @import "footer.css"; 
+
+@import url("./common.css");
+@import url("./contents.css");

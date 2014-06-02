@@ -7,7 +7,15 @@
 <meta name="copyright" content="Rohto Pharmaceutical Co., Ltd.">
 <title><!--{if $tpl_subtitle|strlen >= 1}--><!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--><!--{$tpl_title|h}--><!--{/if}-->【<!--{$arrSiteInfo.shop_name|h}-->】</title>
 <link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/import.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="<!--{$TPL_URLPATH}-->css/fontsize-m.css" media="screen,tv,projection,print" />
+<link rel="alternate stylesheet" type="text/css" href="<!--{$TPL_URLPATH}-->css/fontsize-s.css" media="screen,tv,projection,print" title="s" />
+<link rel="alternate stylesheet" type="text/css" href="<!--{$TPL_URLPATH}-->css/fontsize-l.css" media="screen,tv,projection,print" title="l" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="<!--{$smarty.const.HTTP_URL}-->rss/<!--{$smarty.const.DIR_INDEX_PATH}-->" />
+
+<!--{assign var=top value="`$smarty.const.ROOT_URLPATH`index.php"}-->
+<!--{if $smarty.server.PHP_SELF == $top}-->
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/index.css" type="text/css" media="all" />
+<!--{/if}-->
 <!--{*  ダイアログ用 *}-->
 <link rel="stylesheet" href="<!--{$smarty.const.ROOT_URLPATH}-->css/superTables.css" type="text/css" media="all" />
 
@@ -28,6 +36,11 @@
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/rov.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery_topcatch.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery.colorbox.js"></script>
+<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/rollover.js"></script>
+<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/scroll.js"></script>
+<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/font_switch.js"></script>
+<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/onload.js"></script>
+<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/AC_RunActiveContent.js" ></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/common.js"></script>
 <!--{*  ダイアログ用 *}-->
 <script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/dialogs.js"></script>

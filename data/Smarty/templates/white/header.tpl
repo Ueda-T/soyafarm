@@ -4,15 +4,15 @@
 
 	<h1 id="logo_hd"><a href="<!--{$smarty.const.ROOT_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/common/img_logo.gif" alt="SOYAFARM CLUB　自然の恵み、大豆をもっと暮らしの中に" width="169" height="58"></a></h1>
 	<p id="freecall"><img src="<!--{$TPL_URLPATH}-->img/common/img_tel.gif" alt="お電話でのご注文はこちら　【通話料無料】0120-39-3009" width="298" height="43"></p>
-	<dl id="fontsize">
-	<dt><img src="<!--{$TPL_URLPATH}-->img/common/txt_fontsize.gif" alt="文字サイズ" width="67" height="13"></dt>
-	<dd class="fs-s"><a href="javascript:void(0);" onclick="setActiveStyleSheet('s'); return false;" onkeypress="setActiveStyleSheet('s'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-s.gif" alt="文字サイズ：小" width="28" height="28" class="btn"></a></dd>
-	<dd class="fs-s_ac"><a href="javascript:void(0);" onclick="setActiveStyleSheet('s'); return false;" onkeypress="setActiveStyleSheet('s'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-s-on.gif" alt="文字サイズ：小" width="28" height="28"></a></dd>
-	<dd class="fs-m"><a href="javascript:void(0);" onclick="setActiveStyleSheet('m'); return false;" onkeypress="setActiveStyleSheet('m'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-m.gif" alt="文字サイズ：中" width="28" height="28" class="btn"></a></dd>
-	<dd class="fs-m_ac"><a href="javascript:void(0);" onclick="setActiveStyleSheet('m'); return false;" onkeypress="setActiveStyleSheet('m'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-m-on.gif" alt="文字サイズ：中" width="28" height="28"></a></dd>
-	<dd class="fs-l"><a href="javascript:void(0);" onclick="setActiveStyleSheet('l'); return false;" onkeypress="setActiveStyleSheet('l'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-l.gif" alt="文字サイズ：大" width="28" height="28" class="btn"></a></dd>
-	<dd class="fs-l_ac"><a href="javascript:void(0);" onclick="setActiveStyleSheet('l'); return false;" onkeypress="setActiveStyleSheet('l'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-l-on.gif" alt="文字サイズ：大" width="28" height="28"></a></dd>
-	</dl>
+		<dl id="fontsize">
+		<dt><img src="<!--{$TPL_URLPATH}-->img/common/txt_fontsize.gif" alt="文字サイズ" width="67" height="13" /></dt>
+		<dd class="fs-s"><a href="javascript:void(0);" onclick="setActiveStyleSheet('s'); return false;" onkeypress="setActiveStyleSheet('s'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-s.gif" alt="文字サイズ：小" width="28" height="28" class="btn" /></a></dd>
+		<dd class="fs-s_ac"><a href="javascript:void(0);" onclick="setActiveStyleSheet('s'); return false;" onkeypress="setActiveStyleSheet('s'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-s-on.gif" alt="文字サイズ：小" width="28" height="28" /></a></dd>
+		<dd class="fs-m"><a href="javascript:void(0);" onclick="setActiveStyleSheet('m'); return false;" onkeypress="setActiveStyleSheet('m'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-m.gif" alt="文字サイズ：中" width="28" height="28" class="btn" /></a></dd>
+		<dd class="fs-m_ac"><a href="javascript:void(0);" onclick="setActiveStyleSheet('m'); return false;" onkeypress="setActiveStyleSheet('m'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-m-on.gif" alt="文字サイズ：中" width="28" height="28" /></a></dd>
+		<dd class="fs-l"><a href="javascript:void(0);" onclick="setActiveStyleSheet('l'); return false;" onkeypress="setActiveStyleSheet('l'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-l.gif" alt="文字サイズ：大" width="28" height="28" class="btn" /></a></dd>
+		<dd class="fs-l_ac"><a href="javascript:void(0);" onclick="setActiveStyleSheet('l'); return false;" onkeypress="setActiveStyleSheet('l'); return false;"><img src="<!--{$TPL_URLPATH}-->img/common/bt_font-l-on.gif" alt="文字サイズ：大" width="28" height="28" /></a></dd>
+		</dl>
 <!--{*
 		<div class="gNavS">
 			<div class="sagasu">

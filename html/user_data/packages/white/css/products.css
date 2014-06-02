@@ -1,0 +1,129 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	商品ラインナップ
+
+///////////////////////////////////////////////////////////*/
+
+img {border: none;}
+
+/* 商品ラインナップ
+----------------------------------------------------------------*/
+ul#lineup li {
+	margin-bottom: 15px;
+	padding-bottom: 20px;
+	background: url(../img/soyafarm/img_border.gif) no-repeat left bottom;
+	clear: both;
+}
+#lineup h2 {
+	margin-bottom: 0.7em;
+	padding: 0px 0px 0.3em 30px;
+	background: url(../img//soyafarm/icon_leaf.gif) no-repeat 0px 0.1em;
+	border-bottom: 1px dashed #A6CE39;
+	font-size: 120%;
+	line-height: 1.1em;
+	color: #476B00;
+}
+#lineup .photo {
+	width: 244px;
+	padding-top: 8px;
+	text-align: center;
+	float: left;
+}
+#lineup .detail {
+	width: 411px;
+	float: right;
+}
+#lineup .detail p {
+	padding-bottom: 0.5em;
+	font-size: 120%;
+	color: #FF4900;
+	font-weight: bold;
+}
+#lineup .detail p.shosai {
+	padding: 6px 0px;
+	text-align: right;
+}
+#lineup ul.recommend {
+	padding: 12px 5px 3px 24px;
+	background: #DBFFF8 url(../img/soyafarm/ft_recommend.gif) no-repeat left bottom;
+}
+#lineup ul.recommend li {
+	margin: 0px;
+	padding: 0px 0px 0.4em 12px;
+	background: #DBFFF8 url(../img/soyafarm/maru_blue.gif) no-repeat 0px 0.2em;
+	line-height: 1.1em;
+}
+ul#lineup li .pinkBox {
+	padding: 5px 17px 10px 19px;
+	background: #FBDBE3 url(../img/soyafarm/ft_buy.gif) no-repeat left bottom;
+}
+ul#lineup li .pinkBox ul {
+	width: 193px;
+	margin: 0px;
+	padding: 5px 0px 0px 0px;
+	float: left;
+}
+ul#lineup li .pinkBox ul li {
+	margin: 0px;
+	padding: 0px;
+	background: none;
+	line-height: 100%;
+}
+ul#lineup li .pinkBox ul li.price {
+	font-size: 120%;
+	line-height: 130%;
+	color: #DE0000;
+}
+ul#lineup li .pinkBox ul li.price span {
+	font-size: 250%;
+	font-weight: bold;
+}
+ul#lineup li .pinkBox ul li.spec {
+	font-size: 90%;
+	line-height: 130%;
+	padding-top: 3px;
+}
+ul#lineup li .pinkBox dl {
+	width: 182px;
+	float: right;
+}
+ul#lineup li .pinkBox dl dt {
+	padding: 0.5em 0px;
+}
+ul#lineup li .pinkBox dl dd {
+	height: 40px;
+}
+ul#lineup li .pinkBox dl dt select {
+	margin-left: 1em;
+}
+
+ul#lineup li .pinkBox ul li.price span.price2{
+	font-size: 120%;
+	font-weight: bold;
+}
+
+
+
+/* クリアフィックス 
+----------------------------------------------------------------------------*/
+ul#lineup li:after,
+ul#lineup li .pinkBox:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+ul#lineup li,
+ul#lineup li .pinkBox { display: inline-block; }
+/* no ie-mac \*/
+* html ul#lineup li,
+* html ul#lineup li .pinkBox { height: 1%; }
+ul#lineup li,
+ul#lineup li .pinkBox { display: block; }
+/* clearfix END */
+
+
+

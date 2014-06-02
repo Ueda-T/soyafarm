@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	fontsize M(デフォルト）
+
+///////////////////////////////////////////////////////////*/
+
+body {
+	font-size: 81%;
+}
+
+dl#fontsize dd.fs-m_ac    { display: block;}
+dl#fontsize dd.fs-m   			 { display: none;}
