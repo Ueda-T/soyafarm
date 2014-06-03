@@ -583,7 +583,7 @@ EOF;
      * @return SC_CheckError $objErr エラー情報
      */
     function sfCustomerRegisterErrorCheck(&$objErr, $isAdmin = false) {
-        $objErr->doFunc(array("生年月日", 'year', 'month', 'day'), array("CHECK_BIRTHDAY"));
+        $objErr->doFunc(array("生年月日", 'year', 'month', 'day'), array("EXIST_CHECK", "CHECK_BIRTHDAY"));
 
         if (SC_Display_Ex::detectDevice() !== DEVICE_TYPE_MOBILE) {
             if (!$isAdmin) {
