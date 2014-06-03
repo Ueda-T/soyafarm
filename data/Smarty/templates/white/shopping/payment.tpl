@@ -127,23 +127,22 @@
 </script>
 <div id="undercolumn">
     <div id="undercolumn_shopping">
-        <h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step1.gif" alt="購入手続き" /></h1>
+        <h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 
 		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品" /></h3>
 
 		<div class="cartList">
 			<table class="cartListTankaiTbl" summary="ご注文商品">
 				<tr>
-					<th>商品名</th>
-					<th nowrap>数量</th>
-					<th class="linern">お届け間隔</th>
+					<th class="alignC">商品名</th>
+					<th class="num alignC" nowrap>数量</th>
+					<th class="linern alignC">お届け間隔</th>
 				</tr>
 				<tbody>
 				<!--{foreach from=$arrCartItems item=item}-->
 					<tr>
 						<td>
-							<!--{$item.productsClass.name|h}--><br />
-							<!--{$item.productsClass.product_code|h}-->
+							<!--{$item.productsClass.name|h}-->
 						</td>
 						<td class="alignC"><!--{$item.quantity|number_format}--></td>
 						<td>
@@ -161,8 +160,7 @@
 				<!--{foreach from=$arrIncludeProduct item=item}-->
 					<tr>
 						<td>
-							<!--{$item.product_name|h}--><br />
-							<!--{$item.product_code|h}-->
+							<!--{$item.product_name|h}-->
 						</td>
 						<td class="alignC"><!--{$item.quantity|number_format}--></td>
 						<td>プレゼント商品</td>
@@ -188,7 +186,7 @@
 <div class="wrapCoan">
 		<!--{if $tpl_login}-->
         <div class="wrapCoanEle">
-			<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi01.gif" width="820" height="35" alt="お客様情報"></h3>
+			<h3 class="order">お客様情報</h3>
 			<!--{*
             <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />お支払方法をご選択ください。</h4>
             <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
@@ -217,7 +215,7 @@
             </table>
         </div>
         <div class="wrapCoanEle">
-			<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi03.gif" width="820" height="35" alt="お届け先" /></h3>
+			<h3 class="order">お届け先</h3>
 
 			<input type="hidden" name="other_deliv_id" value="" />
 			<!--{if $arrErr.deli != ""}-->
@@ -271,7 +269,7 @@
         </div>
 		<!--{/if}-->
 
-        <h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi04.gif" width="820" height="35" alt="お届け方法"></h3>
+        <h3 class="order">お届け方法</h3>
         <!--{assign var=key value="deliv_id"}-->
         <!--{if $is_single_deliv}-->
             <input type="hidden" name="<!--{$key}-->" value="<!--{$arrForm[$key].value|h}-->" id="deliv_id" />
@@ -385,7 +383,7 @@
         <!--{/if}-->
 
         <div class="wrapCoanEle">
-			<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi05.gif" width="820" height="35" alt="お支払方法"></h3>
+			<h3 class="order">お支払方法</h3>
             <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />お支払方法をご選択ください。</h4>
             <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
             <!--{assign var=key value="payment_id"}-->
@@ -430,20 +428,11 @@
 				<tr>
 					<th class="btm"><span>請求書(明細書)の送付</span></th>
 					<td>
-			            <table cellspacing="0" class="tblOrderSeikyusho">
-			                <tr>
-			                <!--{foreach from=$arrIncludeKbn item=str_include_kbn key=idx}-->
-			                    <td class="inc_kbn_<!--{$idx}-->" style="<!--{if $arrForm.payment_id.value == $smarty.const.PAYMENT_ID_DAIBIKI && $idx == $smarty.const.INCLUDE_KBN_BESSOU}-->display:none;<!--{/if}--><!--{if $idx == 0}-->border-left:20px solid #FFF;<!--{/if}-->">
-			                    <span id="seikyuTyp<!--{$idx+1}-->">
-			                    <label for="bill_spec<!--{$idx}-->">
-			                    <input type="radio" id="bill_spec<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$idx}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$idx|sfGetChecked:$arrForm[$key].value}--> onclick="haikeiC('seikyuTyp<!--{$idx+1}-->','#fcefeb'),haikeiC('seikyuTyp<!--{if $idx == 0}-->2<!--{else}-->1<!--{/if}-->','#ffffff')" /><span><!--{$str_include_kbn}--></span>
-			                    <img src="<!--{$TPL_URLPATH}-->img/rohto/billspec<!--{$idx}-->.jpg" alt="<!--{$str_include_kbn}-->" style="display:block; margin:10px auto;" />
-			                    </label>
-			                    </span>
-			                    </td>
-			                <!--{/foreach}-->
-			                </tr>
-						</table>
+						<!--{foreach from=$arrIncludeKbn item=str_include_kbn key=idx}-->
+						    <label for="bill_spec<!--{$idx}-->">
+						    <input type="radio" id="bill_spec<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$idx}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$idx|sfGetChecked:$arrForm[$key].value}--> onclick="haikeiC('seikyuTyp<!--{$idx+1}-->','#fcefeb'),haikeiC('seikyuTyp<!--{if $idx == 0}-->2<!--{else}-->1<!--{/if}-->','#ffffff')" /><span><!--{$str_include_kbn}--></span>
+						    </label>
+						<!--{/foreach}-->
 					</td>
 				</tr>
 			</table>
@@ -451,7 +440,7 @@
 
         <!--{if $tpl_campaign_code|default:''|strlen == 0 && $customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
         <div class="wrapCoanEle">
-			    <h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi06.gif" width="820" height="35" alt="アンケート"></h3>
+			    <h3 class="order">アンケート</h3>
             <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />アンケートにご協力ください。</h4>
             <!--{assign var=key value="event_code"}-->
             <!--{if $arrErr[$key] != ""}-->
@@ -477,12 +466,16 @@
         </div>
         <!--{/if}-->
 
-		<div class="orderBtn">
-			<p class="left"><span class="f-right"><a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_kakunin.gif" alt="ご注文情報の確認ページへ進む" name="next" id="next" class="swp" /></a></span>
-				<a href="<!--{$tpl_back_url|h}-->" onmouseover="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif','back03')" onmouseout="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif','back03')">
-				<img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" border="0" name="back03" id="back03" /></a>
-				</a>
-			</p>
+		<div class="wrapCoan">
+			<div class="orderBtn">
+				<p class="left">
+					<span class="f-right" style="width:600px;float:right;text-align:right;">
+					<a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_kakunin.gif" alt="ご注文情報の確認ページへ進む" name="next" id="next" class="swp" /></a>
+					</span>
+				<a href="<!--{$tpl_back_url|h}-->">
+				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back03" id="back03" /></a>
+				</p>
+			</div>
 		</div>
 
 </div>

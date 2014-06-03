@@ -15,7 +15,7 @@
 					</td>
 					<!--{if !$tpl_disable_logout}-->
 					<td class="cNumber">
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/logout.gif" onclick="fnFormModeSubmit('login_form', 'logout', '', ''); return false;" alt="ログアウト" class="swp" style="cursor:pointer;" />
+						<a href="javascript:void(0);" onclick="fnFormModeSubmit('login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" style="cursor:pointer;" /></a>
 						<!--{*お客様番号：<!--{$CustomerId}-->*}-->
 					</td>
 					<!--{/if}-->
@@ -36,47 +36,34 @@
 	</div>
 </div>
 <!--{else}-->
-<div class="wrapLogin">
-	<table cellspacing="0">
-		<tr>
-			<td class="dyn1">
-				<h2><img src="<!--{$TPL_URLPATH}-->img/rohto/head3_02.gif" width="390" height="44" alt="ログインまたはお客様情報の確認"></h2>
-
-				<div>
-					<table cellspacing="0" class="innr">
-						<tr>
-							<th><img src="<!--{$TPL_URLPATH}-->img/rohto/id.gif" width="85" height="25" alt="メールアドレス"></th>
-							<td><input type="text" name="login_email" class="box140" value="<!--{$tpl_login_email|h}-->" style="ime-mode: disabled;" /></td>
-						</tr>
-<!--{*
-						<tr>
-							<td colspan="2">
-								<input type="checkbox" name="login_memory" id="login_memory" value="1" style="width:auto;" <!--{$tpl_login_memory|sfGetChecked:1}--> />
-								<label for="login_memory" style="font-size:0.7em;"><span>メールアドレスをコンピューターに記憶させる</span></label>
-							</td>
-						</tr>
-*}-->
-						<tr>
-							<th><img src="<!--{$TPL_URLPATH}-->img/rohto/pw.gif" width="85" height="25" alt="パスワード"></th>
-							<td><input type="password" name="login_pass" class="box140" /></td>
-						</tr>
-					</table>
-					<p class="passFgtLink"><a href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" onclick="win01('<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->','forget','600','400'); return false;" target="_blank">パスワードを忘れた方はこちら</a></p>
-					<p class="btn">
-						<a href="javascript:void(0);" onclick="document.login_form.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/login.gif" alt="ログイン" /></a>
-					</p>
-				</div>
-			</td>
-			<td class="dyn2">
-				<h2><img src="<!--{$TPL_URLPATH}-->img/rohto/head2_02.gif" alt="初めての方" width="390" height="44"></h2>
-				<div>
-					<p class="nakedTop"><img src="<!--{$TPL_URLPATH}-->img/rohto/first.gif" alt="初めてロート通販オンラインショップをご利用になる方"></p>
-					<p class="naked">「ご注文主様・お届け情報の入力」をクリックして、次のページでお客様情報の登録をお願いします。
-					</p>
-				</div>
-			</td>
-		</tr>
-	</table>
+<div id="login-box">
+	<dl id="member-login">
+		<dt>Web会員の方</dt>
+		<dd>
+			<p id="id"><img src="<!--{$TPL_URLPATH}-->img/rohto/id.gif" width="85" height="25" alt="メールアドレス">
+				<input type="text" name="login_email" class="box140" value="<!--{$tpl_login_email|h}-->" style="ime-mode: disabled;" />
+			</p>
+			<p id="pass"><img src="<!--{$TPL_URLPATH}-->img/rohto/pw.gif" width="85" height="25" alt="パスワード">
+				<input type="password" name="login_pass" class="box140" /></td>
+			</p>
+			<p class="btn">
+				<a href="javascript:void(0);" onclick="document.login_form.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_login.gif" alt="ログイン" /></a>
+			</p>
+			<p id="login-help"><a href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" onclick="win01('<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->','forget','600','400'); return false;" target="_blank" class="link">パスワードを忘れた方はこちら</a></p>
+		</dd>
+	</dl>
+	<dl id="new-customer">
+		<dt>Web会員に登録されていない方</dt>
+		<dd>
+			<p class="exp">
+				<strong class="red">商品のご注文にはWeb会員登録が必要です。</strong>
+			</p>
+			<p class="exp">
+				Web会員登録がお済みでないお客様は、下記ボタンから登録フォームにお進みいただいて、必要事項をご入力のうえ、ご注文手続きを行ってください。
+				
+			</p>
+		</dd>
+	</dl>
 </div>
 <!--{/if}-->
 </form>

@@ -74,7 +74,7 @@ function fnCheckSubmit() {
             </table>
 
             <p class="btn">
-                    <a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" name="back02" id="back02" class="swp" /></a>
+                    <a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back02" id="back02" class="swp" /></a>
                     <a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_send.gif" alt="送信" name="send" id="send" class="swp" /></a>
             </p>
             </div><!--／wrapForm-->

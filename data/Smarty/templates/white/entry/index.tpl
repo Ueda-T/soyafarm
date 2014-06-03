@@ -7,24 +7,21 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 <!--▼CONTENTS-->
 <div id="undercolumn">
 	<div id="undercolumn_entry">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step1.gif" alt="購入手続き" /></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 
 		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品" /></h3>
 
 		<div class="cartList">
 			<table class="cartListTankaiTbl" summary="ご注文商品">
 				<tr>
-					<th>商品名</th>
-					<th nowrap>数量</th>
-					<th class="linern">お届け間隔</th>
+					<th class="alignC">商品名</th>
+					<th class="num alignC" nowrap>数量</th>
+					<th class="linern alignC">お届け間隔</th>
 				</tr>
 				<tbody>
 				<!--{foreach from=$arrCartItems item=item}-->
 					<tr>
-						<td>
-							<!--{$item.productsClass.name|h}--><br />
-							<!--{$item.productsClass.product_code|h}-->
-						</td>
+						<td><!--{$item.productsClass.name|h}--></td>
 						<td class="alignC"><!--{$item.quantity|number_format}--></td>
 						<td>
 						<!--{if $item.regular_flg == 1}-->
@@ -40,10 +37,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				<!--{if $tpl_include_product_flg}-->
 				<!--{foreach from=$arrIncludeProduct item=item}-->
 					<tr>
-						<td>
-							<!--{$item.product_name|h}--><br />
-							<!--{$item.product_code|h}-->
-						</td>
+						<td><!--{$item.product_name|h}--></td>
 						<td class="alignC"><!--{$item.quantity|number_format}--></td>
 						<td>プレゼント商品</td>
 					</tr>
@@ -61,14 +55,11 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 		</div>
 
 		<div class="wrapCoan">
-			<h2 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_hajimete.gif" width="820" height="41" alt="初めて<!--{$arrSiteInfo.shop_name}-->オンラインショップをご利用になる方" /></h2>
-			<p><!--{$arrSiteInfo.shop_name}-->オンラインショップでのお買い物が初めての方は、お客様情報等の登録が必要です。<br />
-	下記の項目にご入力の上、次のステップに進んでください。</p>
 
 			<table cellspacing="0" class="hanrei">
 				<tr>
-					<td><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須" /> 必須入力</td>
-					<td><img src="<!--{$TPL_URLPATH}-->img/rohto/option.gif" width="40" height="20" alt="任意" /> 任意入力</td>
+					<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" /> 必須入力</td>
+					<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/option.gif" alt="任意" /> 任意入力</td>
 				</tr>
 			</table>
 
@@ -79,8 +70,8 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 				<input type="hidden" name="mode" value="confirm" />
 				<div class="wrapCoanEle">
-					<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi01.gif" width="820" height="35" alt="お客様情報" /></h3>
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須" />氏名をご入力ください。</h4>
+					<h3 class="order">お客様情報</h3>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />氏名をご入力ください。</h4>
 					<table summary="ご氏名" class="tblOrder">
 						<tr>
 							<th><span>漢字氏名</span></th>
@@ -112,7 +103,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須">電話番号をご入力ください。※携帯電話番号でもご登録いただけます。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" width="40" height="20" alt="必須">電話番号をご入力ください。※携帯電話番号でもご登録いただけます。</h4>
 
 					<table summary="電話番号" class="tblOrder">
 					<tr>
@@ -128,7 +119,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須">ご自宅の住所を建物名・部屋番号までご入力ください。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" width="40" height="20" alt="必須">ご自宅の住所を建物名・部屋番号までご入力ください。</h4>
 
 					<table summary="住所" class="tblOrder" cellspacing="0">
 					<tr>
@@ -206,7 +197,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					*}-->
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須">メールアドレスをご入力ください。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" width="40" height="20" alt="必須">メールアドレスをご入力ください。</h4>
 
 					<table summary="メールアドレス" class="tblOrder">
 						<tr>
@@ -226,7 +217,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須">パスワードをご入力ください。マイページにアクセスする際に必要になります。。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" width="40" height="20" alt="必須">パスワードをご入力ください。マイページにアクセスする際に必要になります。</h4>
 
 					<table summary="パスワード" class="tblOrder">
 							<tr>
@@ -265,7 +256,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 							</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須" />性別をご指定ください。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />性別をご指定ください。</h4>
 
 					<table summary="性別" class="tblOrder">
 						<tr>
@@ -283,7 +274,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/option.gif" width="40" height="20" alt="任意" />生年月日をご入力ください。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />生年月日をご入力ください。</h4>
 
 					<table summary="生年月日" class="tblOrder">
 						<tr>
@@ -302,7 +293,6 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 								<!--{if $errBirth}-->
 									<p class="attention"><!--{$errBirth}--></p>
 								<!--{/if}-->
-								<span class="small">16歳未満のお客様は、必ず保護者様の同意の下にご注文いただくようお願いいたします。</span>
 							</td>
 						</tr>
 					<!--{*
@@ -370,7 +360,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					*}-->
 					</table>
 
-				<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi03.gif" width="820" height="35" alt="お届け先" /></h3>
+				<h3 class="order">お届け先</h3>
 
 					<table cellspacing="0" class="tblOrder">
 						<tr>
@@ -383,7 +373,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</table>
 
 				<div id="other_addr_box" style="display:<!--{if $arrForm[$key]}-->block;<!--{else}-->none;<!--{/if}-->">
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須" />お届け先の氏名をご入力ください。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />お届け先の氏名をご入力ください。</h4>
 
 					<table summary="お届け先：ご氏名" cellspacing="0" class="tblOrder">
 					<!--{assign var=prefix value="shipping_"}-->
@@ -415,7 +405,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須" />お届け先電話番号をご入力ください。※携帯電話番号でもご登録いただけます。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />お届け先電話番号をご入力ください。※携帯電話番号でもご登録いただけます。</h4>
 
 					<table summary="お届け先：電話番号" cellspacing="0" class="tblOrder">
 					<tr>
@@ -431,7 +421,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					</table>
 
-					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須" />お届け先住所を建物名・部屋番号までご入力ください。</h4>
+					<h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />お届け先住所を建物名・部屋番号までご入力ください。</h4>
 
 					<table summary="お届け先：住所" cellspacing="0" class="tblOrder">
 
@@ -499,17 +489,17 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				</div>
 
 
-				<h3 class="order" style="margin-bottom:0;"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi07.gif" width="820" height="35" alt="<!--{$arrSiteInfo.shop_name}-->オンラインショップご利用規約" /></h3>
+				<h3 class="order" style="margin-bottom:0;"><!--{$arrSiteInfo.shop_name}-->オンラインショップご利用規約</h3>
 				<div class="wrapKiyaku">
 					<div class="wrapCoanEle" style="padding-top:15px;">
-						<span class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" width="40" height="20" alt="必須"></span>
+						<span class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須"></span>
 						<!--{assign var=key value="agree"}-->
 						<!--{if $arrErr[$key]}-->
 							<p class="attention">利用規約へのご同意が必要です。</p>
 						<!--{/if}-->
 						<p>【重要】 会員登録をされる前に、下記ご利用規約をよくお読みください。</p>
 						<p>規約には、本サービスを使用するに当たってのあなたの権利と義務が規定されております。
-						<textarea name="textfield" readonly="readonly" style="width:770px;height:250px;margin-top:10px;"><!--{$tpl_kiyaku_text|h}--></textarea>
+						<textarea name="textfield" readonly="readonly" style="width:860px;height:250px;margin-top:10px;"><!--{$tpl_kiyaku_text|h}--></textarea>
 					</div>
 					<div class="wrapCoanAgre">
 						<label><input type="checkbox" name="<!--{$key}-->" id="<!--{$key}-->" value="1" <!--{if $arrForm[$key]}-->checked="checked"<!--{/if}--> />規約に同意する</label>
@@ -519,9 +509,9 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				<div class="orderBtn">
 					<p class="left">
 						<span class="f-right" style="width:600px;float:right;text-align:right;">
-							<a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_kakunin_c.gif" alt="確認ページへ" name="confirm" id="confirm" class="swp" /></a>
+							<a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_kakunin_c.gif" alt="確認ページへ" name="confirm" id="confirm" class="swp" /></a>
 						</span>
-						<a href="<!--{$smarty.const.CART_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" class="swp"></a>
+						<a href="<!--{$smarty.const.CART_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" class="swp"></a>
 					</p>
 				</div>
 			</form>

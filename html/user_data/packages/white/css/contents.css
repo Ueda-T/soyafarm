@@ -90,6 +90,15 @@ div#mypagecolumn h4 {
     font-size: 120%;
 }
 
+.myPageMenu ul.menu li {
+	float:left;
+	margin:0 10px 10px 0;
+}
+
+.myPageMenu ul.menu li:nth-child(3n) {
+	margin-right:0;
+}
+
 
 /* 購入履歴一覧/詳細
 ----------------------------------------------- */
@@ -206,6 +215,15 @@ div#undercolumn_error .message_area .error {
     padding: 120px 10px;
 }
 
+div#undercolumn_error {
+	background:#FFF;
+	padding:20px;
+}
+
+div#undercolumn_error > .error {
+    padding: 120px 10px;
+    text-align: center;
+}
 
 /* ==============================================
 ▼商品一覧
@@ -391,6 +409,14 @@ div.itemStP div.cartBtnList {
 }
 div.itemStP div.cartBtnList p.teikiBtn {
 	margin-bottom:10px;
+}
+
+.cartBtn {
+	text-align:center;
+}
+
+#undercolumn_cart .cartBtn {
+	margin:20px auto;
 }
 
 /* ==============================================
@@ -687,13 +713,33 @@ div.form_area {
 	margin-bottom:1px;
 }
 table.cartListTankaiTbl,
-table.cartListTeikiTbl {
+table.cartListTeikiTbl,
+table.cartListPresentTbl {
 	margin-bottom:20px;
+	width:100%;
+}
+
+table.cartListTankaiTbl th,
+table.cartListTeikiTbl th,
+table.cartListPresentTbl th,
+table.cartListTankaiTbl td,
+table.cartListTeikiTbl td,
+table.cartListPresentTbl td {
+	padding:10px;
+}
+
+table.cartListTankaiTbl td.thumb,
+table.cartListTeikiTbl td.thumb,
+table.regularItemList td.thumb,
+table.cartListPresentTbl td.thumb {
+	text-align:center;
+	width:120px;
 }
 
 table.cartListTankaiTbl th.num,
 table.cartListTeikiTbl th.num,
-table.regularItemList th.num {
+table.regularItemList th.num,
+table.cartListPresentTbl th.num {
 	width:52px;
 	text-align:center;
 }
@@ -727,12 +773,24 @@ table.cartListTankaiTbl th {
 table.cartListTeikiTbl,
 table.cartListTeikiTbl th,
 table.cartListTeikiTbl td {
-	border:1px solid #88C442;
+	border:1px solid #39C;
 }
 
 table.cartListTeikiTbl th {
-	background-color:#F9FFEB;
+	background-color:#F0FCFF;
 }
+
+/* プレゼント商品テーブル */
+table.cartListPresentTbl,
+table.cartListPresentTbl th,
+table.cartListPresentTbl td {
+	border:1px solid #F66;
+}
+
+table.cartListPresentTbl th {
+	background-color:#FFE6E6;
+}
+
 div.teikiAttentionBox {
 	margin-bottom:20px;
 }
@@ -768,7 +826,7 @@ table.cartListTeikiTbl td.promImg {
 
 /* 小計・送料・キャンペーンコード */
 div.cartTotalBox {
-	border:2px solid #FAEEC7;
+	border:2px solid #A9CF39;
 	font-size:0.8em;
 }
 
@@ -782,7 +840,7 @@ div.cartTotalBox ul.ptInput {
 }
 
 div.cartTotalBox p.subtotal {
-	border-bottom:1px solid #FAEEC7;
+	border-bottom:1px solid #A9CF39;
 	padding-bottom:10px;
 }
 
@@ -802,17 +860,17 @@ div.cartTotalBox ul.ptInput li.last {
 }
 
 div.cartTotalBox ul.ptInput li input {
-	border:1px solid #E77506;
+	border:1px solid #A9CF39;
 }
 
 div.cartTotalBox div.campaignCode {
-	background-color:#FAEEC7;
+	background-color:#EDFFBF;
 }
 
 div.cartTotalBox strong {
 	font-size:230%;
 	font-weight:bold;
-	color: #e77506;
+	color: #F33;
 	line-height:130%;
 	vertical-align:middle;
 }
@@ -837,6 +895,95 @@ div#undercolumn_customer {
 div#undercolumn_customer th em {
     color: #000;
     font-weight: bold;
+}
+
+h3.order {
+	background:#C96;
+	color:#FFF;
+	margin:20px auto;
+	padding:8px 12px;
+	border-radius: 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+	-ms-border-radius:3px;
+}
+
+h4.order {
+	font-size:100%;
+	font-weight:normal;
+	margin: 10px 0;
+	vertical-align: middle;
+}
+
+.wrapCoanEle h4.order img {
+	vertical-align:middle;
+	padding: 0 10px 0 0;
+}
+
+.tblOrder {
+	width: 100%;
+	border: 1px solid #C7B068;
+	margin-bottom:20px;
+}
+
+.tblOrder th {
+	font-weight: normal;
+	width: 180px;
+	background: #FFF8E0;
+	padding:10px;
+	text-align: left;
+	border-bottom: 1px dotted #C7B068;
+}
+
+.tblOrder td {
+	width: auto;
+	text-align: left;
+	padding: 10px;
+	border-bottom: 1px dotted #C7B068;
+}
+
+.tblOrder .tblOrderInnr th {
+	font-weight: normal;
+	padding: 10px 10px 10px 0;
+	vertical-align: top;
+	border-bottom: 1px dotted #CCC;
+	background: none;
+	width: auto;
+	white-space: nowrap;
+}
+
+.tblOrder .tblOrderInnr td {
+	padding: 10px 10px 10px 0;
+	vertical-align: top;
+	border-bottom: 1px dotted #CCC;
+}
+
+.tblOrder .tblOrderInnr th.btm, .tblOrder .tblOrderInnr td.btm {
+	border-bottom: none;
+	padding: 10px 10px 10px 0;
+}
+
+span.example {
+	color:#EA5E00;
+}
+
+.wrapCoanAgre {
+	background:#F33;
+	color:#FFF;
+	margin:10px auto;
+	padding:2px;
+	text-align:center;
+}
+
+.wrapCoanAgre label {
+	display:block;
+	border:1px solid #FFF;
+	padding:10px;
+}
+
+.orderBtn {
+	margin:20px auto;
 }
 
 /* お届け先の複数指定
@@ -1113,7 +1260,7 @@ a .cartCnt {
 	padding-top:1em;
 	font-weight:bold;
 	text-align:center;
-	color:#ea673b;
+	color:#EA5E00;
 }
 
 .password-container .labelBox {

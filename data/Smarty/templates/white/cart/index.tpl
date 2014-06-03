@@ -125,7 +125,7 @@ $(document).ready(function() {
 			<!--{if strlen($tpl_error) == 0}-->
 			<p class="cartBtn">
 				<input type="hidden" name="cartKey" value="<!--{$key}-->" />
-				<a href="javascript:void(0);" onclick="document.form<!--{$key}-->.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart_next.gif" alt="ご注文主様・お届け情報の入力" name="confirm" class="swp" /></a>
+				<a href="javascript:void(0);" onclick="document.form<!--{$key}-->.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart_next.gif" alt="ご注文主様・お届け情報の入力" name="confirm" class="swp" /></a>
 			</p>
 			<!--{/if}-->
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
             <input type="hidden" name="cart_no<!--{$item.cart_no}-->" value="<!--{$item.cart_no}-->" />
             <!--{if $item.regular_flg != $smarty.const.REGULAR_PURCHASE_FLG_ON}-->
                 <!--{if $tankai_flg == 0}-->
-            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_tankai.gif" alt="単回購入（今回のみお届け）" /></h1>
+            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_tankai.gif" alt="単回購入（今回のみお届け）" /></h1>
             <table class="cartListTankaiTbl" summary="単回商品">
                 <tr>
                     <th class="alignC" colspan="2">商品名</th>
@@ -148,7 +148,7 @@ $(document).ready(function() {
                 <!--{/if}-->
                 <tr style="<!--{if $item.error}-->background-color: <!--{$smarty.const.ERR_COLOR}-->;<!--{/if}-->">
 
-                    <td class="alignC">
+                    <td class="thumb">
                         <!--{*<a class="expansion" target="_blank"
                         <!--{if $item.productsClass.main_image|strlen >= 1}--> href="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$item.productsClass.main_image|sfNoImageMainList|h}-->"
                         <!--{/if}-->
@@ -159,12 +159,7 @@ $(document).ready(function() {
                         </a>
                     </td>
                     <td><!--{* 商品名 *}-->
-                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a><br />
-                        <!--{if $item.productsClass.product_code_min == $item.productsClass.product_code_max}-->
-                            <!--{$item.productsClass.product_code_min|h}-->
-                        <!--{else}-->
-                            <!--{$item.productsClass.product_code_min|h}-->～<!--{$item.productsClass.product_code_max|h}-->
-                        <!--{/if}-->
+                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a>
 
                         <!--{if $item.productsClass.classcategory_name1 != ""}-->
                             <!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
@@ -200,10 +195,10 @@ $(document).ready(function() {
                         <!--{assign var=tankai_flg value=2}-->
             </table>
                     <!--{/if}-->
-            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_teiki.gif" alt="定期購入" /></h1>
+            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_teiki.gif" alt="定期購入" /></h1>
             <table class="cartListTeikiTbl" summary="定期商品">
                 <tr>
-                    <td>
+                    <td colspan="5">
                         <!--{assign var=key1 value="course_cd`$item.cart_no`"}-->
                         <!--{assign var=key2 value="todoke_cycle`$item.cart_no`"}-->
                         <!--{assign var=key3 value="todoke_week_no`$item.cart_no`"}-->
@@ -234,7 +229,7 @@ $(document).ready(function() {
                 <!--{/if}-->
                 <tr style="<!--{if $item.error}-->background-color: <!--{$smarty.const.ERR_COLOR}-->;<!--{/if}-->">
 
-                    <td class="alignC">
+                    <td class="thumb">
                         <!--{*<a class="expansion" target="_blank"
                         <!--{if $item.productsClass.main_image|strlen >= 1}--> href="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$item.productsClass.main_image|sfNoImageMainList|h}-->"
                         <!--{/if}-->
@@ -245,12 +240,7 @@ $(document).ready(function() {
                         </a>
                     </td>
                     <td><!--{* 商品名 *}-->
-                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a><br />
-                        <!--{if $item.productsClass.product_code_min == $item.productsClass.product_code_max}-->
-                            <!--{$item.productsClass.product_code_min|h}-->
-                        <!--{else}-->
-                            <!--{$item.productsClass.product_code_min|h}-->～<!--{$item.productsClass.product_code_max|h}-->
-                        <!--{/if}-->
+                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a>
 
                         <!--{if $item.productsClass.classcategory_name1 != ""}-->
                             <!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
@@ -318,10 +308,11 @@ $(document).ready(function() {
             <!--{/if}-->
 
             <!--{* ▼定期専用のメッセージ表示 *}-->
+<!--{*
             <!--{if $tpl_regular_purchase_flg === true}-->
             <div class="teikiAttentionBox clearfix">
                 <div class="left">
-                    <img src="<!--{$TPL_URLPATH}-->img/rohto/tit_teiki_attention.gif" />
+                    <img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_teiki_attention.gif" />
                 </div>
                 <div class="right">
                     <p>
@@ -332,14 +323,15 @@ $(document).ready(function() {
                 </div>
             </div>
             <!--{/if}-->
+*}-->
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
             <!--{* ▼同梱品情報表示 *}-->
             <!--{if $tpl_include_product_flg}-->
             <!--{foreach from=$arrIncludeProduct item=item}-->
                 <!--{if $include_flg == 0}-->
-            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_tankai.gif" alt="プレゼント商品" /></h1>
-            <table class="cartListTankaiTbl" summary="プレゼント商品">
+            <h1 class="midashi01"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_present.gif" alt="プレゼント商品" /></h1>
+            <table class="cartListPresentTbl" summary="プレゼント商品">
                 <tr>
                     <th class="alignC" colspan="2">商品名</th>
                     <th class="num">数量</th>
@@ -348,13 +340,12 @@ $(document).ready(function() {
                 <!--{/if}-->
                 <tr>
 
-                    <td class="alignC">
+                    <td class="thumb">
                         <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$item.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$item.product_name|h}-->" width="65" />
                         </a>
                     </td>
                     <td><!--{* 商品名 *}-->
-                        <!--{$item.product_name|h}--><br />
-                        <!--{$item.product_code|h}-->
+                        <!--{$item.product_name|h}-->
                     </td>
                     <td class="alignC"><!--{$item.quantity}-->
                     </td>
@@ -377,13 +368,6 @@ $(document).ready(function() {
 			<strong><!--{$arrData[$key].deliv_fee|number_format}-->円</strong>
 		</p>
 		<ul class="ptInput">
-			<li>
-			ご使用ポイント
-			<!--{assign var=key1 value="use_point"}-->
-			<input type="text" size="10" name="<!--{$key1}-->" value="<!--{$arrForm[$key1].value|h}-->"/>
-			pt / <!--{$tpl_user_point|number_format}-->pt
-			</li>
-
       <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
 			<li class="last">
 			キャンペーンコード
@@ -398,7 +382,7 @@ $(document).ready(function() {
 			<p>
         <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
 				<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','re_calc','cart_no','<!--{$item.cart_no}-->'); return false">
-				<img src="<!--{$TPL_URLPATH}-->img/rohto/recalculate.gif" alt="再計算する" width="97" /></a>
+				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/recalculate.gif" alt="再計算する" width="97" /></a>
 			  <!--{/if}-->
 				お支払いの合計
 				<span class="price"><strong><!--{$arrData[$key].total|number_format}-->円</strong>
@@ -411,7 +395,7 @@ $(document).ready(function() {
                 <!--{if strlen($tpl_error) == 0}-->
 				<p class="cartBtn">
 					<input type="hidden" name="cartKey" value="<!--{$key}-->" />
-					<a href="javascript:void(0);" onclick="document.form<!--{$key}-->.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart_next.gif" alt="ご注文主様・お届け情報の入力" name="confirm" class="swp" /></a>
+					<a href="javascript:void(0);" onclick="document.form<!--{$key}-->.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart_next.gif" alt="ご注文主様・お届け情報の入力" name="confirm" class="swp" /></a>
 				</p>
 				<!--{/if}-->
 

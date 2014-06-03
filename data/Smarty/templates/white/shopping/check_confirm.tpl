@@ -26,7 +26,7 @@ $(document).ready(function() {
 <!--CONTENTS-->
 <div id="undercolumn">
     <div id="undercolumn_shopping">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step2.gif" width="960" height="70" alt="購入手続き：ご注文情報確認"></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step2.gif" width="960" height="70" alt="購入手続き：ご注文情報確認"></h1>
 
 		<p class="intro">現在、定期購入で使用されている<br />
 			クレジットカードを使用される場合は、「変更しない」ボタンをクリックしてください。<br />ご確認の上、画面下の「<!--{if $use_module}-->次へ<!--{else}-->注文する<!--{/if}-->」ボタンをクリックしてください。
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		<div class="wrapCoan">
 			<div class="orderBtn">
 				<p class="modoru">
-						<a href="./confirm.php" onmouseover="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif', 'back04-top')" onmouseout="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif', 'back04-top')"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" border="0" name="back04-top" id="back04-top" /></a>
+						<a href="./confirm.php" onmouseover="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif', 'back04-top')" onmouseout="chgImg('<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif', 'back04-top')"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back04-top" id="back04-top" /></a>
 				</p>
 					<a href="javascript:void(0);" onclick="return fnCheckSubmit('no_change');"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="変更しない" name="next-top" id="next-top" class="swp" /></a>
 					<a href="javascript:void(0);" onclick="return fnCheckSubmit('change');"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="変更する" name="next-top" id="next-top" class="swp" /></a>

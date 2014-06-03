@@ -39,16 +39,16 @@
 </div>
 <br />
 <div class="myPageMenu">
-	<ul class="menu">
+	<ul class="menu clearfix">
 		<!--{* 会員状態 *}-->
 		<!--{if $tpl_login}-->
-			<li><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn02.gif" alt="ご登録内容の変更" width="240" height="115" class="swp"></a></li>
+			<li><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn01.gif" alt="ご登録内容の変更" class="swp"></a></li>
 
-			<li><a href="change_basic.php" class="<!--{if $tpl_mypageno == 'change_basic'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn03.gif" alt="メールアドレス及びパスワードの変更" width="240" height="115" class="swp"></a></li>
+			<li><a href="change_basic.php" class="<!--{if $tpl_mypageno == 'change_basic'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn02.gif" alt="メールアドレス及びパスワードの変更" class="swp"></a></li>
 
-			<li><a href="history_list.php" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn04.gif" alt="ご注文履歴" width="240" height="115" class="swp"></a></li>
+			<li><a href="history_list.php" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn03.gif" alt="ご注文履歴" class="swp"></a></li>
 
-			<li><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn05.gif" alt="定期購入一覧" width="240" height="115" class="swp"></a></li>
+			<li><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn04.gif" alt="定期購入一覧" class="swp"></a></li>
 			<!--{*
 			<!--{if $smarty.const.OPTION_FAVOFITE_PRODUCT == 1}-->
 				<li><a href="favorite.php" class="<!--{if $tpl_mypageno == 'favorite'}--> selected<!--{/if}-->">
@@ -56,11 +56,11 @@
 			<!--{/if}-->
 			*}-->
 			<li><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}--> selected<!--{/if}-->">
-				<img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn06.gif" alt="アドレス（配送先）新規登録" width="240" height="115" class="swp"></a></li>
+				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn05.gif" alt="アドレス（配送先）新規登録" class="swp"></a></li>
 			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/">
-				<img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn07a.gif" alt="お問い合わせ" width="240" height="115" class="swp"></a></li>
+				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn06.gif" alt="お問い合わせ" class="swp"></a></li>
 			<!--{*
-			<li><a href="refusal.php" width="240" height="115" class="swp">退会手続き</a></li>
+			<li><a href="refusal.php" class="swp">退会手続き</a></li>
 			*}-->
 
 		<!--{* 退会状態 *}-->

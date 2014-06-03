@@ -8,7 +8,7 @@
 		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 		<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
 		<p class="logout">
-			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/logout.gif" alt="ログアウト" class="swp" /></a>
+			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" /></a>
 		</p>
 	</form>
 	<!--{/if}-->
@@ -76,8 +76,8 @@
 				<p class="naked" style="color:#999999;">---ご登録済みの配送先はありません。---</p>
 				<!--{/if}-->
 			</div>
-			<p class="withdrawal">
-				<a href="refusal.php"><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_btn08.gif" alt="登録削除" width="100" height="30" class="swp"></a>
+			<p class="alignR">
+				<a href="refusal.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_refusal.gif" alt="登録削除" class="swp"></a>
 			</p>
 		</div>
 	</div>

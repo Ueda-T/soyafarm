@@ -34,7 +34,7 @@
 			<a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/register.gif" alt="登録" name="complete" id="complete" class="swp" /></a>
 		</p>
 			<a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;">
-				<img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />
+				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />
 			</a>
 		</form>
 	</div>

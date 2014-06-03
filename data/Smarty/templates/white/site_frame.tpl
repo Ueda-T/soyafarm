@@ -33,7 +33,6 @@
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery.autotab-1.1b.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery-spin.js"></script>
-<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/rov.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery_topcatch.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery.colorbox.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/rollover.js"></script>

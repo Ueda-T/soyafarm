@@ -31,7 +31,7 @@
 		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 		<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
 		<p class="logout">
-			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/logout.gif" alt="ログアウト" class="swp" /></a>
+			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" /></a>
 		</p>
 	</form>
 	<!--{/if}-->
@@ -56,7 +56,7 @@
 		</div>
 
 		<a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/">
-			<img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />
+			<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />
 		</a>
 
 	<!--{*

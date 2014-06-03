@@ -14,7 +14,7 @@
 <!--{*
 <!--{if !$tpl_disable_logout}-->
 <p class="logout">
-	<input type="image" src="<!--{$TPL_URLPATH}-->img/rohto/logout.gif" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;" alt="ログアウト" class="swp" />
+	<input type="image" src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;" alt="ログアウト" class="swp" />
 </p>
 <!--{/if}-->
 *}-->
@@ -185,7 +185,7 @@
 <div class="wrapCoan">
     <div class="orderBtn">
 		<p class="modoru"><a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;">
-            <img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />
+            <img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />
         </a></p>
         <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/regular_change_btn04.gif" alt="変更を確定する" name="complete" id="complete" class="swp" /></a>
     </div>

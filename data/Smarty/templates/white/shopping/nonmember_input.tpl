@@ -39,7 +39,7 @@ $(document).ready(function() {
 <!--▼CONTENTS-->
 <div id="undercolumn">
 	<div id="undercolumn_customer">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step1.gif" alt="購入手続き" /></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 
 		<div class="wrapCoan">
 			<p>下記項目にご入力ください。「<span class="attention">※</span>」印は入力必須項目です。<br />

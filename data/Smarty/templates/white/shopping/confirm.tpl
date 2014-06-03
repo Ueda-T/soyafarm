@@ -25,7 +25,7 @@ $(document).ready(function() {
 <!--CONTENTS-->
 <div id="undercolumn">
     <div id="undercolumn_shopping">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step2.gif" width="960" height="70" alt="購入手続き：ご注文情報確認"></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step2.gif" alt="購入手続き：ご注文情報確認"></h1>
 
 		<p class="intro">ご注文はまだ完了していません。<br>
 			以下のご注文内容をご確認の上、画面下の「<!--{if $use_module}-->次へ<!--{else}-->注文する<!--{/if}-->」ボタンをクリックしてください。
@@ -38,21 +38,23 @@ $(document).ready(function() {
 
 		<div class="wrapCoan">
 			<div class="orderBtn">
-				<p class="modoru">
-						<a href="./payment.php" onmouseover="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif', 'back04-top')" onmouseout="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif', 'back04-top')"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" border="0" name="back04-top" id="back04-top" /></a>
-				</p>
-					<!--{if $use_module}-->
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="次へ" name="next-top" id="next-top" class="swp" /></a>
-					<!--{else}-->
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="注文する" name="next-top" id="next-top" class="swp" /></a>
+				<p class="left">
+					<span class="f-right" style="width:600px;float:right;text-align:right;">
+				<!--{if $use_module}-->
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
+				<!--{else}-->
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="注文する"  name="next" id="next" class="swp" /></a>
 				<!--{/if}-->
+					</span>
+				<a href="./payment.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back<!--{$key}-->" /></a>
+				</p>
 			</div>
 		</div>
 
 		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品"></h3>
 
 <div class="cartList">
-        <table summary="ご注文内容確認">
+        <table summary="ご注文内容確認" class="cartListTankaiTbl">
             <colgroup width="10%"></colgroup>
             <colgroup width="40%"></colgroup>
             <colgroup width="20%"></colgroup>
@@ -146,7 +148,7 @@ $(document).ready(function() {
         <!--{* 販売方法判定（ダウンロード販売のみの場合はお届け先を表示しない） *}-->
         <!--{if $cartKey != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
         <!--{foreach item=shippingItem from=$arrShipping name=shippingItem}-->
-        <h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi03.gif" width="820" height="35" alt="お届け先"><!--{if $is_multiple}--><br /><!--{$smarty.foreach.shippingItem.iteration}--><!--{/if}--></h3>
+        <h3 class="order">お届け先<!--{if $is_multiple}--><br /><!--{$smarty.foreach.shippingItem.iteration}--><!--{/if}--></h3>
         <!--{if $is_multiple}-->
             <table summary="ご注文内容確認" class="tblOrder">
                 <tr>
@@ -212,7 +214,7 @@ $(document).ready(function() {
         <!--{/if}-->
         <!--お届け先ここまで-->
 
-		<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi04.gif" width="820" height="35" alt="お届け方法"></h3>
+		<h3 class="order">お届け方法</h3>
         <table summary="配送方法" class="tblOrder">
             <tbody>
             <tr>
@@ -235,7 +237,7 @@ $(document).ready(function() {
             <!--{/if}-->
         </table>
 
-		<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi05.gif" width="820" height="35" alt="お支払方法"></h3>
+		<h3 class="order">お支払方法</h3>
         <table summary="お支払方法" class="tblOrder">
             <tr>
                 <th scope="row"><span>お支払方法</span></th>
@@ -247,7 +249,7 @@ $(document).ready(function() {
             </tr>
         </table>
 <!--{*
-		<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi11.gif" width="820" height="35" alt="その他お問い合わせ" /></h3>
+		<h3 class="order">その他お問い合わせ</h3>
         <table summary="お支払方法" class="tblOrder">
             <tr>
                 <th scope="row">その他お問い合わせ</th>
@@ -260,14 +262,16 @@ $(document).ready(function() {
 
 		<div class="wrapCoan">
 			<div class="orderBtn">
-				<p class="modoru">
-					<a href="./payment.php" onmouseover="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif','back<!--{$key}-->');" onmouseout="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif','back<!--{$key}-->');"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" name="back<!--{$key}-->" /></a>
-				</p>
+				<p class="left">
+					<span class="f-right" style="width:600px;float:right;text-align:right;">
 				<!--{if $use_module}-->
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
 				<!--{else}-->
 					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="注文する"  name="next" id="next" class="swp" /></a>
 				<!--{/if}-->
+					</span>
+				<a href="./payment.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back<!--{$key}-->" /></a>
+				</p>
 			</div>
 		</div>
 

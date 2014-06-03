@@ -22,7 +22,7 @@
 <!--▼CONTENTS-->
 <div id="undercolumn">
 	<div id="undercolumn_shopping">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step1.gif" width="960" height="70" alt="購入手続き：ご注文情報入力"></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" width="960" height="70" alt="購入手続き：ご注文情報入力"></h1>
 
 		<div class="wrapCoan">
 			<p>下記一覧よりお届け先住所を選択して、「選択したお届け先に送る」ボタンをクリックしてください。
@@ -106,8 +106,8 @@
 						<span class="f-right">
 						<a href="javascript:void(0)" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="次へ" name="send_button" id="send_button" class="swp" /></a>
 						</span>
-						<a href="<!--{$smarty.const.CART_URLPATH}-->" onmouseover="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif',back03)" onmouseout="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif',back03)">
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" border="0" name="back03" id="back03" /></a>
+						<a href="<!--{$smarty.const.CART_URLPATH}-->" onmouseover="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif',back03)" onmouseout="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif',back03)">
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back03" id="back03" /></a>
 					</p>
 			</div>
 			</form>

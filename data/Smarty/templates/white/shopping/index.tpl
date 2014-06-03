@@ -1,7 +1,7 @@
 <!--▼CONTENTS-->
 <div id="undercolumn">
 	<div id="undercolumn_login">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step1.gif" alt="購入手続き" /></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 
 		<div class="wrapLogin">
 			<table cellspacing="0">
@@ -38,7 +38,7 @@
 									</td>
 								</tr>
 							</table>
-							<input type="image" src="<!--{$TPL_URLPATH}-->img/rohto/login.gif" alt="ログイン" name="log" id="log" class="swp" />
+							<input type="image" src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_login.gif" alt="ログイン" name="log" id="log" class="swp" />
 							<p class="naked">
 								<a class="icon1" href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" onclick="win01('<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->','forget','600','460'); return false;" target="_blank">パスワードを忘れた方はこちら</a><br />
 								※メールアドレスを忘れた方は、お手数ですが、<a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/<!--{$smarty.const.DIR_INDEX_PATH}-->">お問い合わせページ</a>からお問い合わせください。

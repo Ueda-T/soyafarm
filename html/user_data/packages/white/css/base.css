@@ -44,8 +44,8 @@ body {
 #main {
 	float: left;
 	width: 655px;
-	margin: 10px auto 0;
-	padding: 0 22px 30px 23px;
+	margin: 0 auto;
+	padding: 10px 22px 30px 23px;
 	background: white;
 	border-radius:3px;
 	-moz-border-radius:3px;
@@ -55,8 +55,8 @@ body {
 }
 #one_maincolumn {
 	width:865px;
-	margin: 10px auto 0;
-	padding: 0 22px 30px 23px;
+	margin: 0 auto;
+	padding: 10px 22px 30px 23px;
 	background: white;
 	border-radius:3px;
 	-moz-border-radius:3px;
@@ -177,10 +177,12 @@ button#bt_mail { width: 191px; }
 	ログイン・ボックス
 ======================================================*/
 #login-box {
-	margin: 10px auto;
 	background: url(../img/soyafarm/bg_login.gif ) no-repeat 0 100%;
+	margin: 0 auto;
+	width:655px;
 }
-#login-box:after {
+#login-box:after,
+#login-box-s:after {
 	content: " ";
 	display: block;
 	clear: both;
@@ -188,11 +190,17 @@ button#bt_mail { width: 191px; }
 	height: 0;
 	font-size: 0;
 }
-#login-box { display: inline-block; }
+#login-box,#login-box-s { display: inline-block; }
 /* \*/
-* html #login-box { height: 1%; }
-#login-box { display: block; }
+* html #login-box,
+* html #login-box-s { height: 1%; }
+#login-box,#login-box-s { display: block; }
 /* */
+
+#login-box-s {
+	margin: 0 auto;
+	width:655px;
+}
 
 /* 会員／未登録の方　共通設定
 --------------------------------------------------------------------------------------*/
@@ -202,6 +210,17 @@ dl#new-customer {
 	padding: 11px;
 	border: 2px solid #A9CF39;
 	border-bottom: none;
+}
+
+#login-box-s dl#member-login {
+	width:100%;
+	border: 2px solid #A9CF39;
+}
+
+#login-box-s dl#member-login dt,
+#login-box-s dl#member-login dd {
+	margin:0 auto;
+	width:300px;
 }
 
 dl#member-login { float: left; }
@@ -235,7 +254,7 @@ dl#member-login p#pass {
 
 dl#member-login p#id input,
 dl#member-login p#pass input {
-	width: 206px;
+	width: 200px;
 	margin: 0;
 }
 dl#member-login p#login-help {

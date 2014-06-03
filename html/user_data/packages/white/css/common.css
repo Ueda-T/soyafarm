@@ -20,6 +20,17 @@ body {
 .floatLeft { float:left !important; }
 .floatRight { float:right !important; }
 
+table {
+	font-size:0.85em;
+}
+
+a:hover img,
+input[type="image"]:hover {
+	-ms-filter:"alpha(opacity=60)";
+	filter:alpha(opacity=60);
+	opacity:0.6;
+}
+
 /* ==============================================
  フレーム
 =============================================== */

@@ -15,9 +15,9 @@ function fnCheckSubmit() {
 <!--▼CONTENTS-->
 <div id="undercolumn">
     <div id="undercolumn_entry">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/order_title_step1.gif" alt="購入手続き" /></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 		<div class="wrapCoan">
-		<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi01.gif" width="820" height="35" alt="お客様情報" /></h3>
+		<h3 class="order">お客様情報</h3>
         <form name="form1" id="form1" method="post" action="?">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
         <input type="hidden" name="mode" value="complete">
@@ -183,9 +183,9 @@ function fnCheckSubmit() {
 			<div class="orderBtn">
 				<p class="left">
 					<span class="f-right" style="width:600px;float:right;text-align:right;">
-					<a href="javascript:void(0);" onclick="fnCheckSubmit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_otodoke.gif" alt="お届け情報を入力する" border="0" name="send" id="send" class="swp" /></a>
+					<a href="javascript:void(0);" onclick="fnCheckSubmit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart_next.gif" alt="お届け情報を入力する" border="0" name="send" id="send" class="swp" /></a>
 					</span>
-				<a href="?" onclick="fnModeSubmit('return', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_back.gif" alt="戻る" border="0" name="back" id="back" class="swp" /></a>
+				<a href="?" onclick="fnModeSubmit('return', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back" id="back" class="swp" /></a>
 				</p>
 			</div>
 		</div>
