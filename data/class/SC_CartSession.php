@@ -913,7 +913,7 @@ EOF;
 				$price = $item["productsClass"]["price01"];
 				$discount = $item["price"];
 				$quantity = $item["quantity"];
-				$chkPrice = $price - floor($price * $rate / 100);
+				$chkPrice = $price - ceil($price * $rate / 100);
 				if (intval($discount) > intval($chkPrice)) {
 					$this->cartSession[$productTypeId][$key]["price"] = $chkPrice;
 					$this->cartSession[$productTypeId][$key]["total_inctax"] = 
