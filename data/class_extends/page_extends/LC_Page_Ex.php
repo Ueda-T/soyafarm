@@ -29,7 +29,8 @@ class LC_Page_Ex extends LC_Page {
         if ($_SERVER['PHP_SELF'] !=  ROOT_URLPATH . "shopping/load_payment_module.php" && $_SERVER['PHP_SELF'] != ROOT_URLPATH . "resize_image.php" && !$this->page_mdl_smbc && isset($_SESSION['MDL_SMBC']['order_id']) && (empty($_POST['mode']) || $_POST['mode'] == 'return')){
             $temp_order_id = $_SESSION['order_id'];
             $objPurchase = new SC_Helper_Purchase_Ex();
-            $objPurchase->rollbackOrder($_SESSION['order_id'], ORDER_CANCEL, true);
+            $objPurchase->rollbackOrder($_SESSION['order_id'], ORDER_PENDING, true);
+            //$objPurchase->rollbackOrder($_SESSION['order_id'], ORDER_CANCEL, true);
             $_SESSION['order_id'] = $temp_order_id;
 
             unset($_SESSION['MDL_SMBC']);
