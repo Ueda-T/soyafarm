@@ -641,6 +641,11 @@ class SC_CartSession {
         $objDb = new SC_Helper_DB_Ex();
         $objCustomer = new SC_Customer_Ex();
 
+		// 定期顧客の場合送料無料チェック
+		if ($this->checkRegularCustomer($objCustomer->getValue('customer_id'))) {
+			return true;
+		}
+
         $subtotal = $this->getAllProductsTotal($productTypeId);
 		// 割引金額取得
         $discount = $this->getAllProductsDiscountTotal($productTypeId);
@@ -841,10 +846,8 @@ class SC_CartSession {
 		} else {
 			$res = $this->checkDiscountCampaign($productTypeId, $arrDelivData, $arrData);
 		}
-		if ($customer_id) {
-			// 顧客別割引確認
-			$this->checkCustomerDiscount($customer_id, $productTypeId);
-		}
+		// 顧客別割引確認
+		$this->checkCustomerDiscount($customer_id, $productTypeId);
 		return $res;
 	}
 
@@ -874,10 +877,14 @@ AND
     c.customer_id = ?
 EOF;
 
-		// 割引率取得
-		$arrRate = $objQuery->getAll($sql, array($customerId));
-		$rate = $arrRate[0]["cut_rate"];
-		$code = $arrRate[0]["customer_type_cd"];
+		$rate = DEFAULT_CUSTOMER_TYPE_CD;
+		// 顧客IDがある時割引率を顧客マスタより取得
+		if ($customerId) {
+			// 割引率取得
+			$arrRate = $objQuery->getAll($sql, array($customerId));
+			$rate = $arrRate[0]["cut_rate"];
+			$code = $arrRate[0]["customer_type_cd"];
+		}
 
 		// 割引率がない場合、今回購入内容から割引率取得
 		if (!$rate || $rate == DEFAULT_CUSTOMER_TYPE_CD) {
@@ -4401,6 +4408,41 @@ EOF;
 		$kikanOrderKbn = $objQuery->getOne($sql);
 
 		return $kikanOrderKbn;
+	}
+
+    /**
+     * 定期顧客確認
+     *
+     * @param integer 顧客ID
+     * @return boolean 定期会員の場合 true
+     */
+	function checkRegularCustomer($customerId)
+	{
+		$res = false;
+		if (!$customerId) {
+			return $res;
+		}
+
+		$objQuery =& SC_Query_Ex::getSingletonInstance();
+
+		$sql =<<<EOF
+SELECT
+	count(*)
+FROM
+	dtb_regular_order
+WHERE
+	customer_id = ?
+AND status != ?
+AND del_flg = ?
+EOF;
+
+		$chkCnt = $objQuery->getOne($sql
+			, array($customerId, REGULAR_ORDER_STATUS_CANCEL, INOS_DEL_FLG_OFF));
+
+		if ($chkCnt) {
+			$res = true;
+		}
+		return $res;
 	}
 
 }

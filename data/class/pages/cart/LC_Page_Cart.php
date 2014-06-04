@@ -823,6 +823,13 @@ EOF;
     {
 
 	$res = false;
+
+	// プロモーション適用がなければfalse
+	if (!isset($_SESSION["ORDER_PROMOTION_CD"]) 
+	    && !$_SESSION["ORDER_PROMOTION_CD"]) {
+	    return $res;
+	}
+
 	$objQuery =& SC_Query_Ex::getSingletonInstance();
 
 	$fmt =<<<EOF
