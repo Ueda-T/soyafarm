@@ -147,7 +147,7 @@
         <colgroup width="13%"></colgroup>
         <tr>
             <th class="id">商品コード</th>
-            <th class="name">商品名/規格1</th>
+            <th class="name">商品名</th>
             <th class="course">お届け間隔</th>
             <th class="price">単価</th>
             <th class="qty">数量</th>
@@ -161,7 +161,7 @@
                 <!--{$arrForm.product_code.value[$product_index]|h}-->
             </td>
             <td>
-                <!--{$arrForm.product_name.value[$product_index]|h}-->/<!--{$arrForm.classcategory_name1.value[$product_index]|default:"(なし)"|h}-->
+                <!--{$arrForm.product_name.value[$product_index]|h}-->
             </td>
             <td>
                 <!--{if $arrForm.course_cd.value[$product_index] > 0 && $arrForm.course_cd.value[$product_index] <= 3}-->
