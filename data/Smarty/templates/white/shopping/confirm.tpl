@@ -53,7 +53,6 @@ $(document).ready(function() {
 
 		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品"></h3>
 
-<div class="cartList">
         <table summary="ご注文内容確認" class="cartListTankaiTbl">
             <colgroup width="10%"></colgroup>
             <colgroup width="40%"></colgroup>
@@ -78,7 +77,7 @@ $(document).ready(function() {
                     </td>
                     <td>
                         <ul>
-                            <li><strong><!--{$item.productsClass.name|h}--></strong></li>
+                            <li><!--{$item.productsClass.name|h}--></li>
                             <!--{if $item.productsClass.classcategory_name1 != ""}-->
                             <li><!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--></li>
                             <!--{/if}-->
@@ -104,7 +103,7 @@ $(document).ready(function() {
                     <td>
                         <ul>
                             <li>プレゼント商品</li>
-                            <li><strong><!--{$item.product_name|h}--></strong></li>
+                            <li><!--{$item.product_name|h}--></li>
                         </ul>
                     </td>
                     <td class="alignR">&nbsp;</td>
@@ -140,7 +139,6 @@ $(document).ready(function() {
                 <td class="alignR"><span class="price"><!--{$arrForm.payment_total|number_format}-->円</span></td>
             </tr>
         </table>
-</div>
 
 <div class="wrapCoan">
 
@@ -169,7 +167,7 @@ $(document).ready(function() {
                             >
                                 <img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$item.productsClass.main_list_image|sfNoImageMainList|h}-->&amp;width=65&amp;height=65" alt="<!--{$item.productsClass.name|h}-->" /></a>
                         </td>
-                        <td><!--{* 商品名 *}--><strong><!--{$item.productsClass.name|h}--></strong><br />
+                        <td><!--{* 商品名 *}--><!--{$item.productsClass.name|h}--><br />
                             <!--{if $item.productsClass.classcategory_name1 != ""}-->
                                 <!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
                             <!--{/if}-->

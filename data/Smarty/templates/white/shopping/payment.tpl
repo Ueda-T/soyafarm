@@ -131,7 +131,6 @@
 
 		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品" /></h3>
 
-		<div class="cartList">
 			<table class="cartListTankaiTbl" summary="ご注文商品">
 				<tr>
 					<th class="alignC">商品名</th>
@@ -176,7 +175,6 @@
 				*}-->
 				</tfoot>
 			</table>
-		</div>
 
         <form name="form1" id="form1" method="post" action="?">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />

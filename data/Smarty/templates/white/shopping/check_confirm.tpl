@@ -26,13 +26,24 @@ $(document).ready(function() {
 <!--CONTENTS-->
 <div id="undercolumn">
     <div id="undercolumn_shopping">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step2.gif" width="960" height="70" alt="購入手続き：ご注文情報確認"></h1>
+		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step3.gif" alt="購入手続き：クレジットカード決済"></h1>
 
-		<p class="intro">現在、定期購入で使用されている<br />
-			クレジットカードを使用される場合は、「変更しない」ボタンをクリックしてください。<br />ご確認の上、画面下の「<!--{if $use_module}-->次へ<!--{else}-->注文する<!--{/if}-->」ボタンをクリックしてください。
-			クレジットカードを変更される場合は、「変更する」ボタンをクリックしてください。<br />
-			※現在、定期購入で使用されているクレジットカードも今回変更されるクレジットカードに変更となります。
+		<div class="attentionBox">
+			<p>お支払い手続きはまだ完了していません。</p>
+		</div>
+
+		<p class="intro">ご注文ありがとうございます。<br />
+		前回購入時に使用したクレジットカードで決済する場合は、「前回使用したカードで決済」ボタンをクリックしてください。<br />
+			別のクレジットカードで決済する場合は、「クレジットカードを変更する」ボタンをクリックしてください。
 		</p>
+		<div class="wrapResult mt10">
+			<div class="wrapResultEle">
+				<h3 class="attention">定期購入中のお客様</h3>
+				<p>
+				クレジットカードを変更すると、お申し込み中の定期購入に使用されているクレジットカードも変更されます。
+			</p>
+			</div>
+		</div>
 
         <form name="form1" id="form1" method="post" action="?">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
@@ -42,11 +53,13 @@ $(document).ready(function() {
 
 		<div class="wrapCoan">
 			<div class="orderBtn">
-				<p class="modoru">
-						<a href="./confirm.php" onmouseover="chgImg('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif', 'back04-top')" onmouseout="chgImg('<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif', 'back04-top')"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back04-top" id="back04-top" /></a>
+				<p class="left clearfix">
+					<span class="f-right" style="width:600px;float:right;text-align:right;">
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit('no_change');"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_nochange.gif" alt="変更しない" name="next-top" id="next-top" class="swp" /></a><br />
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit('change');"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_change.gif" alt="変更する" name="next-top" id="next-top" class="swp" style="margin-top:15px;" /></a>
+					</span>
+						<a href="./confirm.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back04-top" id="back04-top" /></a>
 				</p>
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit('no_change');"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="変更しない" name="next-top" id="next-top" class="swp" /></a>
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit('change');"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="変更する" name="next-top" id="next-top" class="swp" /></a>
 			</div>
 		</div>
 

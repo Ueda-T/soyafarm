@@ -5,10 +5,20 @@
 ************************************************ */
 /* 共通
 ----------------------------------------------- */
+body.popupPage {
+	background-image:none;
+}
+
 div#windowcolumn {
     height: 100%;
     margin: 15px;
+    padding:15px;
     background: #fff;
+    border-radius:3px;
+    -mozborder-radius:3px;
+    -webkit-border-radius:3px;
+    -ms-border-radius:3px;
+    -o-border-radius:3px;
 }
 
 div#windowcolumn h2 {

@@ -3,6 +3,12 @@
 /************************************************
  各ページコンテンツ用
 ************************************************ */
+
+p.btn {
+	margin:10px auto;
+	text-align:center;
+}
+
 /* ==============================================
 ▼TOP
 =============================================== */
@@ -45,6 +51,15 @@ div#undercolumn_contact {
 =============================================== */
 /* 共通設定
 ----------------------------------------------- */
+
+#mainMyPage img {
+	vertical-align:middle;
+}
+
+#mainMyPage .intro {
+	margin:10px;
+}
+
 div#mypagecolumn {
     width: 100%;
 }
@@ -99,6 +114,24 @@ div#mypagecolumn h4 {
 	margin-right:0;
 }
 
+#mainMyPageTop {
+	position:relative;
+}
+
+#mainMyPageTop .logout {
+	position:absolute;
+	top:-36px;
+	right:0;
+	z-index:10;
+}
+
+
+#mainMyPageTop .logout,
+#mainMyPage .logout {
+	margin-bottom:10px;
+	text-align:right;
+}
+
 
 /* 購入履歴一覧/詳細
 ----------------------------------------------- */
@@ -133,6 +166,34 @@ div#mycontents_area .message_area {
 
 div#mycontents_area .message_area p {
     margin-bottom: 20px;
+}
+
+.wrapResult {
+	background-color:#FFDBD6;
+	margin-bottom:20px;
+	padding:10px;
+}
+
+.wrapResultEle {
+	background-color:#FFF5F4;
+	border:1px solid #FFF;
+	padding:10px;
+}
+
+.finishedRegular h3 {
+	color:#C00;
+}
+
+.wrapResult .result,
+.finishedRegular h3 {
+	font-size:120%;
+	text-align:center;
+}
+
+.finishedRegular {
+	margin:10px;
+	padding:10px;
+	background:#FFF;
 }
 
 /* 定期購入
@@ -682,6 +743,25 @@ div#whobought_area h2 {
 	
 }
 
+div.hdrLoginBox {
+	background-color:#EDFFBF;
+	border:2px solid #A9CF39;
+	padding:10px 12px;
+}
+
+div.hdrLoginBox table.lay1 {
+	width:100%;
+}
+
+div.hdrLoginBox table.lay1 td.name strong {
+	font-size:140%;
+}
+
+div.hdrLoginBox table.lay1 td.cNumber {
+	text-align:right;
+	width:200px;
+}
+
 div#undercolumn_cart .point_announce {
     padding: 20px;
     margin-bottom: 20px;
@@ -921,10 +1001,38 @@ h4.order {
 	padding: 0 10px 0 0;
 }
 
-.tblOrder {
+.wrapForm table,
+.delivname {
+	width: 100%;
+	border-top: 1px solid #CCC;
+	margin-bottom:20px;
+	border-collapse: separate;
+}
+
+.wrapForm table th,
+.delivname th {
+	font-weight: normal;
+	background: #EEE;
+	padding:10px;
+	text-align: left;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+}
+
+.wrapForm table td,
+.delivname td {
+	width: auto;
+	text-align: left;
+	padding: 10px;
+	border-bottom: 1px solid #CCC;
+}
+
+.tblOrder,
+.cartList table {
 	width: 100%;
 	border: 1px solid #C7B068;
 	margin-bottom:20px;
+	border-collapse: collapse;
 }
 
 .tblOrder th {
@@ -933,10 +1041,27 @@ h4.order {
 	background: #FFF8E0;
 	padding:10px;
 	text-align: left;
+	border-top: 1px dotted #C7B068;
 	border-bottom: 1px dotted #C7B068;
 }
 
-.tblOrder td {
+.cartList table th {
+	font-weight: normal;
+	background: #FFF8E0;
+	padding:10px;
+	text-align: left;
+	border-top: 1px dotted #C7B068;
+	border-bottom: 1px dotted #C7B068;
+}
+
+.tblOrder th img,
+.delivname th img,
+.wrapForm table th img {
+	vertical-align:middle;
+}
+
+.tblOrder td,
+.cartList table td {
 	width: auto;
 	text-align: left;
 	padding: 10px;

@@ -31,7 +31,7 @@
 	</table>
 
     <p class="btn">
-        <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
+        <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
     </p>
     </form>
 	</div>

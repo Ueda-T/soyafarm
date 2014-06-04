@@ -31,6 +31,13 @@ input[type="image"]:hover {
 	opacity:0.6;
 }
 
+p#gototop a:hover img,
+a:hover .no_tr {
+	-ms-filter:"alpha(opacity=100)";
+	filter:alpha(opacity=100);
+	opacity:1;
+}
+
 /* ==============================================
  フレーム
 =============================================== */
@@ -617,12 +624,23 @@ dl#total-cost dd {
 	text-align: center;
 }
 
-
 .soya-navi { margin-bottom: 30px;}
 
 .input001_btn {
 	vertical-align: top;
 }
 
+.attentionBox {
+	background:url(../img/icon/icon_attention_48.png) no-repeat 8px 8px #FFC;
+	border:2px solid #FC0;
+	margin-bottom:20px;
+	padding:15px 15px 15px 65px;
+}
+
+.attentionBox p {
+	color:#C00;
+	font-size:150%;
+	font-weight:bold;
+}
 
 /*end*/

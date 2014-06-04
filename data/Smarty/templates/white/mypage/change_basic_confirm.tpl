@@ -2,7 +2,7 @@
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
 <div id="mainMyPage">
-	<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_title_sub2.gif" width="700" height="70" alt="ご登録内容の変更" /></h1>
+	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub2.gif"  alt="ご登録内容の変更" /></h1>
 	<p class="intro">以下のご登録内容をご確認いただき、よろしければ「登録」ボタンを押してください。</p>
 
 	<div class="wrapForm">
@@ -31,7 +31,7 @@
 		</table>
 
 		<p class="btn">
-			<a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/register.gif" alt="登録" name="complete" id="complete" class="swp" /></a>
+			<a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_register.gif" alt="登録" name="complete" id="complete" class="swp" /></a>
 		</p>
 			<a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;">
 				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back" id="back" class="swp" />

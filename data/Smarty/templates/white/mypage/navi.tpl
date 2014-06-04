@@ -1,17 +1,16 @@
 	<!--{strip}-->
 	<!--▼現在のポイント-->
 	<!--{if $point_disp !== false}-->
-	<div class="myPageNamae">
+	<div class="hdrLoginBox">
 		<table cellspacing="0" class="lay1">
 			<tr>
-				<td>
-					<dl class="stage">
-						<dt><strong><!--{$CustomerName|h}--></strong>&nbsp;様</dt>
-						<!--{*<dd>現在のお客様のステージは<a href="#">ブロンズ</a>ステージです。</dd>*}-->
-                                                <dd><!--{$tpl_discount.customer_type_name|h}--></dd>
-					</dl>
+				<td class="name">
+					<strong><!--{$CustomerName|h}--></strong>&nbsp;様
 				</td>
-				<td class="cNumber">お客様番号：<!--{$CustomerId}--></td>
+				<td class="cNumber">
+					割引率：<!--{$tpl_discount.customer_type_name|h}-->
+					<!--{*お客様番号：<!--{$CustomerId}-->*}-->
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -28,12 +27,6 @@
 		<p><!--{if $CustomerPointValidDate neq ""}--><!--{$CustomerPointValidDate|date_format:"%Y年%m月%d日"}-->で<!--{$CustomerPoint|number_format|default:"0"|h}-->ポイントが消滅します。<!--{/if}--></p>
 	</div>
 	<!--{/if}-->
-	<!--{*
-	<!--{if $smarty.const.USE_POINT !== false}-->&nbsp;<br>
-		現在の所持ポイントは&nbsp;<span class="point st"><!--{$CustomerPoint|number_format|default:"0"|h}-->pt</span><!--{if $CustomerPointValidDate neq ""}-->(<!--{$CustomerPointValidDate|date_format:"%Y/%m/%d"}-->まで有効)<!--{/if}-->、&nbsp;
-		お誕生日ポイントは&nbsp;<span class="point st"><!--{$CustomerBirthPoint|number_format|default:"0"|h}-->pt</span><!--{if $CustomerBirthPointValidDate neq ""}-->(<!--{$CustomerBirthPointValidDate|date_format:"%Y/%m/%d"}-->まで有効)<!--{/if}-->&nbsp;です。
-	<!--{/if}-->
-	*}-->
 	<!--{/if}-->
 	<!--▲現在のポイント-->
 </div>

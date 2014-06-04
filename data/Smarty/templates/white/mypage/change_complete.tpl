@@ -1,26 +1,3 @@
-<!--{*
-/*
- * This file is part of EC-CUBE
- *
- * Copyright(c) 2000-2011 LOCKON CO.,LTD. All Rights Reserved.
- *
- * http://www.lockon.co.jp/
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
-*}-->
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
@@ -48,8 +25,11 @@
 				<div class="finishedRegular">
 					<h3>定期購入中のお客様</h3>
 					<p class="naked">お届け先変更をされたお客様で、定期購入をお申し込み中のお客様は、お手数ですが、ご変更後は、<br>
-					フリーダイヤル0120-252-610（受付時間9:00～21:00）または、<a href="<!--{$TPL_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。<br>
-					（メールでのご連絡場合、内容記入欄に、定期購入お申し込み番号と、変更前／変更後のお届け先を明記してください）
+					<a href="<!--{$TPL_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。お電話・FAXでも承っております。
+					</p>
+					<p class="naked">
+						TEL：フリーダイヤル0120-39-3009（受付時間9:00～19:00、日・祝休み）<br />
+						FAX：フリーダイヤル0120-39-4090（24時間365日受付）
 					</p>
 				</div>
 			</div><!--／wrapResultEle-->

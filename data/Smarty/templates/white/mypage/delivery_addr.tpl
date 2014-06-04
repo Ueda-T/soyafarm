@@ -92,7 +92,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 
 			<p style="text-align:center;margin:10px auto;">
 				<a href="javascript:void(0);" onclick="form1.submit();">
-					<img src="<!--{$TPL_URLPATH}-->img/rohto/register.gif" alt="登録" class="swp" />
+					<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_register.gif" alt="登録" class="swp" />
 				</a>
 			</p>
 <!--{*

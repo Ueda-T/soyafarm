@@ -79,7 +79,6 @@ $(document).ready(function() {
     <!--{assign var=sub_total value=0}-->
     <!--{if count($cartItems) > 0}-->
     <!--{foreach from=$cartKeys item=key}-->
-    <div class="cartList">
         <form name="form<!--{$key}-->" id="form<!--{$key}-->" method="post" action="?">
             <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
             <input type="hidden" name="mode" value="confirm" />
@@ -217,6 +216,7 @@ $(document).ready(function() {
                         </div>
 					    <span class="attention"><!--{$arrErr[$key3]}--></span>
 					    <span class="attention"><!--{$arrErr[$key4]}--></span>
+					</td>
                 </tr>
                 <tr>
                     <th class="alignC" colspan="2">商品名</th>
@@ -342,7 +342,6 @@ $(document).ready(function() {
 
                     <td class="thumb">
                         <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$item.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$item.product_name|h}-->" width="65" />
-                        </a>
                     </td>
                     <td><!--{* 商品名 *}-->
                         <!--{$item.product_name|h}-->
@@ -400,7 +399,6 @@ $(document).ready(function() {
 				<!--{/if}-->
 
         </form>
-        </div>
     <!--{/foreach}-->
     <!--{else}-->
         <p class="cartNoData">現在、お買い物カゴには商品が入っておりません。</p>

@@ -104,7 +104,7 @@
 			<div class="orderBtn">
 					<p class="left">
 						<span class="f-right">
-						<a href="javascript:void(0)" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="次へ" name="send_button" id="send_button" class="swp" /></a>
+						<a href="javascript:void(0)" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="send_button" id="send_button" class="swp" /></a>
 						</span>
 						<a href="<!--{$smarty.const.CART_URLPATH}-->" onmouseover="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/rohto/btn_back_ov.gif',back03)" onmouseout="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif',back03)">
 						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" border="0" name="back03" id="back03" /></a>

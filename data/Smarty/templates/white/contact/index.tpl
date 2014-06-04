@@ -84,7 +84,7 @@
                 </tr>
             </table>
             <p class="btn">
-                    <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/kakunin02.gif" alt="確認ページへ" name="confirm" class="swp" /></a>
+                    <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_kakunin02.gif" alt="確認ページへ" name="confirm" class="swp" /></a>
             </p>
             </div><!--／wrapForm-->
 

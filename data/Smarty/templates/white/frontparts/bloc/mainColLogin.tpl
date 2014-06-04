@@ -3,37 +3,26 @@
 <input type="hidden" name="mode" value="login" />
 <input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
 <!--{if $tpl_login}-->
-<div class="wrapLoginOn">
-	<div class="myPagePersonal">
-		<div class="myPageNamae">
-			<table cellspacing="0" class="lay1">
-				<tr>
-					<td>
-						<dl class="stage">
-							<dt><strong><!--{$tpl_name|h}--> 様</strong></dt>
-						</dl>
-					</td>
-					<!--{if !$tpl_disable_logout}-->
-					<td class="cNumber">
-						<a href="javascript:void(0);" onclick="fnFormModeSubmit('login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" style="cursor:pointer;" /></a>
-						<!--{*お客様番号：<!--{$CustomerId}-->*}-->
-					</td>
-					<!--{/if}-->
-				</tr>
-			</table>
-		</div>
+<div class="hdrLoginBox">
+	<table cellspacing="0" class="lay1">
+		<tr>
+			<td class="name"><strong><!--{$tpl_name|h}--></strong>&nbsp;様</td>
+			<!--{if !$tpl_disable_logout}-->
+			<td class="cNumber">
+				<a href="javascript:void(0);" onclick="fnFormModeSubmit('login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" style="cursor:pointer;" /></a>
+			</td>
+			<!--{/if}-->
+		</tr>
+	</table>
 	<!--{if $smarty.const.USE_POINT !== false && $tpl_user_point}-->
-	<div class="myPageRotta">
-		<table cellspacing="0">
-			<tr>
-				<td style="vertical-align:middle;"><img src="<!--{$TPL_URLPATH}-->img/rohto/rotta_info.gif" width="265" height="30" alt="(現在のポイント残高" /></td>
-				<td><!--{$tpl_user_point|number_format|default:0}--></td>
-				<td style="vertical-align:middle;"><img src="<!--{$TPL_URLPATH}-->img/rohto/rotta.gif" width="52" height="30" alt="ポイント" /></td>
-			</tr>
-		</table>
-	</div>
+	<table cellspacing="0">
+		<tr>
+			<td style="vertical-align:middle;"><img src="<!--{$TPL_URLPATH}-->img/rohto/rotta_info.gif" width="265" height="30" alt="(現在のポイント残高" /></td>
+			<td><!--{$tpl_user_point|number_format|default:0}--></td>
+			<td style="vertical-align:middle;"><img src="<!--{$TPL_URLPATH}-->img/rohto/rotta.gif" width="52" height="30" alt="ポイント" /></td>
+		</tr>
+	</table>
 	<!--{/if}-->
-	</div>
 </div>
 <!--{else}-->
 <div id="login-box">

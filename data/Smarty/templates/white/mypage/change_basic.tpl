@@ -8,7 +8,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
 <div id="mainMyPage">
-	<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_title_sub2.gif" width="700" height="70" alt="ご登録内容の変更" /></h1>
+	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub2.gif"  alt="ご登録内容の変更" /></h1>
 
 	<!--{if !$tpl_disable_logout}-->
 	<form name="header_login_form" id="header_login_form" method="post" action="<!--{$smarty.const.ROOT_URLPATH}-->frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
@@ -76,7 +76,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </tr>
         </table>
         <p class="btn">
-            <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/kakunin02.gif" alt="確認" name="refusal" id="refusal" class="swp" /></a>
+            <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_kakunin02.gif" alt="確認" name="refusal" id="refusal" class="swp" /></a>
         </p>
         </form>
     </div>

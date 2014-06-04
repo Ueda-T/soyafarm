@@ -44,7 +44,7 @@
 				</td>
 			</tr>
 		</table>
-	    <p class="btn"><input type="image" src="<!--{$TPL_URLPATH}-->img/rohto/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></p>
+	    <p class="btn"><input type="image" src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></p>
     </div>
     </form>
 </div><!--/wrapCustomer-->

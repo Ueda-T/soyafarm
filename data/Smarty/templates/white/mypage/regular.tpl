@@ -16,7 +16,7 @@ function fnChangeRegular(regular_id, line_no, objForm) {
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
 <div id="mainMyPage">
-	<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/mypage_title_sub4.gif" alt="定期購入一覧" /></h1>
+	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub4.gif" alt="定期購入一覧" /></h1>
 
 	<p class="intro">
 		このページから、「お届けスケジュールのご確認」「定期購入内容のご変更」が行っていただけます。<br />
