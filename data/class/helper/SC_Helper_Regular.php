@@ -584,7 +584,7 @@ INSERT INTO
         {$arrDetail['todoke_week']},
         '{$arrDetail['course_cd']}',
         1,
-        '{$_SESSION['DISCOUNT_RATE']}',
+        '{$arrDetail['cut_rate']}',
         0,
         now(),
         now()

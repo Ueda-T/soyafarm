@@ -832,10 +832,8 @@ class SC_CartSession {
 
 		// 割引対象がない場合設定なし
 		if (!isset($arrDelivData[0]["promotion_cd"])) {
-			if ($customer_id) {
-				// 顧客別割引確認
-				$this->checkCustomerDiscount($customer_id, $productTypeId);
-			}
+			// 顧客別割引確認
+			$this->checkCustomerDiscount($customer_id, $productTypeId);
 			return false;
 		}
 
@@ -925,6 +923,7 @@ EOF;
 					$this->cartSession[$productTypeId][$key]["price"] = $chkPrice;
 					$this->cartSession[$productTypeId][$key]["total_inctax"] = 
 						$chkPrice * $quantity;
+					$this->cartSession[$productTypeId][$key]["cut_rate"] = $rate;
 				}
 			}
 		}
@@ -947,6 +946,7 @@ SELECT
 	OP.product_cd as product_cd,
 	DP.product_cd as discount_product_cd,
 	DP.sales_price as sales_price,
+	DP.cut_rate as cut_rate,
 	PR.*
 FROM 
 	dtb_promotion PR
@@ -1017,6 +1017,7 @@ SELECT
 	OP.product_cd as product_cd,
 	DP.product_cd as discount_product_cd,
 	DP.sales_price as sales_price,
+	DP.cut_rate as cut_rate,
 	PR.*
 FROM 
 	dtb_promotion PR
@@ -1395,6 +1396,8 @@ EOF;
 								$this->cartSession[$productTypeId][$key]["total_inctax"] = 
 											$arrPromotion[$i]["sales_price"] * 
 											$arrProduct[$spCnt]["quantity"];
+								$this->cartSession[$productTypeId][$key]["cut_rate"] = 
+											$arrPromotion[$i]["cut_rate"];
 							}
 						}
 					}

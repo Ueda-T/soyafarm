@@ -866,7 +866,7 @@ EOF;
             $arrDetail[$i]['price'] = $item['price'];
             $arrDetail[$i]['quantity'] = $item['quantity'];
             $arrDetail[$i]['sell_flg'] = 1;
-            $arrDetail[$i]['cut_rate'] = $_SESSION["DISCOUNT_RATE"];
+            $arrDetail[$i]['cut_rate'] = $item['cut_rate'];
 			$arrShip["shipping_area_code"] = $p["drop_shipment"];
 			$arrShip["deliv_kbn"] = $p["deliv_kbn1"];
 			$arrShip["cool_kbn"] = $p["deliv_kbn2"];
