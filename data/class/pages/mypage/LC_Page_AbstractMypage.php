@@ -61,9 +61,16 @@ class LC_Page_AbstractMypage extends LC_Page_Ex {
             }
              */
 
-            $this->tpl_title      = 'マイページ(ログイン)';
-            $this->tpl_mainpage   = 'mypage/login.tpl';
-            $this->tpl_column_num = 1;
+            //$this->tpl_title      = 'マイページ(ログイン)';
+            //$this->tpl_mainpage   = 'mypage/login.tpl';
+            //$this->tpl_column_num = 1;
+
+            $this->tpl_title      = '';
+            $this->tpl_subtitle   = '';
+            $layout = new SC_Helper_PageLayout_Ex();
+            $url = preg_replace('|^' . preg_quote(HTTPS_URL) . '|', '', URL_MYPAGE_TOP);
+            $layout->sfGetPageLayout($this, false, $url,
+                                 $this->objDisplay->detectDevice());
 
         } else {
             //マイページ会員情報表示用共通処理
