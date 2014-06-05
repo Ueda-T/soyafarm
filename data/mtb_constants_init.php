@@ -938,6 +938,16 @@ define('PROMOTION_COURSE_KBN_REGULAR', '1'); // 定期
 define('PROMOTION_COURSE_KBN_ALL', '9'); // 全体
 /** プロモーション受注区分 */
 define('PROMOTION_ORDER_KBN_WEB', '3'); // WEB
+/** プロモーション区分 */
+define('PROMOTION_KBN_DISCOUNT', '1'); // 値引き
+define('PROMOTION_KBN_SEND',     '2'); // 送料
+define('PROMOTION_KBN_INCLUDE',  '3'); // 同梱品
+/** プロモーション有効区分 */
+define('PROMOTION_VALID_KBN_OFF', '0'); // 無効
+define('PROMOTION_VALID_KBN_ON',  '1'); // 有効
+/** プロモーション送料区分 */
+define('PROMOTION_DELIV_FEE_KBN_FREE',    '0'); // 無料
+define('PROMOTION_DELIV_FEE_KBN_NO_FREE', '1'); // 有料
 /** 購入できる合計金額の上限 */
 define('PAYMENT_TOTAL_LIMIT', 100000);
 /** 初回購入時の振込可能な金額閾値 */
@@ -993,11 +1003,12 @@ define('REGULAR_FUTURE_MONTH', 3);
 define('DB_ERROR_MAIL_TO', "soyafarm@iqueve.co.jp");
 
 // 定期1ヶ月指定商品(「,」区切りにて指定)
-define('REGULAR_ONE_MONTH_PRODUCTS', "0001");
+define('REGULAR_ONE_MONTH_PRODUCTS', "000018");
 
 // 定期お届け日指定(「,」区切りにて指定)
 define('REGULAR_DELIV_PATTERN', "1,5,10,15,20,25");
 
 // 顧客マスタデフォルト割引コード
 define('DEFAULT_CUSTOMER_TYPE_CD', "1");
+
 ?>
