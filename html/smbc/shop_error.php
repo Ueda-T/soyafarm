@@ -2,5 +2,8 @@
 // {{{ requires PC
 require_once("../require.php");
 
-header('Location: ' . HTTP_URL);
+unset($_SESSION["MOVE_SMBC"]);
+
+//header('Location: ' . HTTP_URL);
+header('Location: ' . SHOPPING_CONFIRM_URLPATH);
 exit;

@@ -25,6 +25,10 @@ require_once CLASS_REALDIR . 'pages/LC_Page.php';
 
 class LC_Page_Ex extends LC_Page {
     function init() {
+        // SMBCページにて終了された場合
+        if (isset($_SESSION["MOVE_SMBC"])) {
+            unset($_SESSION["MDL_SMBC"]);
+        }
         // モジュール -> 本体のページへ移動
         if ($_SERVER['PHP_SELF'] !=  ROOT_URLPATH . "shopping/load_payment_module.php" && $_SERVER['PHP_SELF'] != ROOT_URLPATH . "resize_image.php" && !$this->page_mdl_smbc && isset($_SESSION['MDL_SMBC']['order_id']) && (empty($_POST['mode']) || $_POST['mode'] == 'return')){
             $temp_order_id = $_SESSION['order_id'];

@@ -46,6 +46,9 @@ class LC_Page_Shopping_LoadPaymentModule extends LC_Page_Ex {
                                       "モジュールファイルの取得に失敗しました。<br />この手続きは無効となりました。");
             return;
         }
+        // SMBC画面遷移用確認
+        $_SESSION["MOVE_SMBC"] = true;
+
         require_once $module_path;
     }
 

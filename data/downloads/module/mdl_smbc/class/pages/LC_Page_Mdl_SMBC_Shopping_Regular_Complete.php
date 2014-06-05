@@ -68,6 +68,7 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
         }else{
             $this->completeOrder();
             unset($_SESSION['regular_order_id']);
+            unset($_SESSION['MOVE_SMBC']);
 
             // 完了画面へリダイレクト
             SC_Response_Ex::sendRedirect(SHOPPING_COMPLETE_URLPATH);
