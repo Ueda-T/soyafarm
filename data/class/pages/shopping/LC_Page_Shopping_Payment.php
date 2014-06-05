@@ -31,6 +31,7 @@ class LC_Page_Shopping_Payment extends LC_Page_Ex {
     function init() {
         parent::init();
         $this->tpl_title = "お支払方法・お届け時間等の指定";
+        $this->tpl_page_category = 'shopping';
         $masterData = new SC_DB_MasterData();
         $objCustomer = new SC_Customer_Ex();
         $objPurchase = new SC_Helper_Purchase_Ex();

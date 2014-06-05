@@ -58,6 +58,7 @@ class LC_Page_Products_List extends LC_Page_Ex {
         $this->arrSEARCH_LINK =
             $masterData->getMasterData
             ("mtb_search_link", array('word', 'guidance'));
+        $this->tpl_page_category = 'products';
     }
 
     /**

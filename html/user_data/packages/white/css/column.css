@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	コラム共通
+
+///////////////////////////////////////////////////////////*/
+
+img {border: none;}
+
+/* 本文
+----------------------------------------------------------------*/
+#column {
+	padding: 5px 0px 25px 0px;
+}
+#column p {
+	padding-bottom: 1em;
+	font-size: 100%;
+}
+#column .graph {
+	width: auto;
+	padding: 0px 0px 10px 5px;
+	float: right;
+}
+
+
+/* ページナビ
+----------------------------------------------------------------*/
+#btmnavi {
+	background: url(../img/soyafarm/bg_navi.gif) repeat-y left;
+}
+#btmnavihd {
+	background: url(../img/soyafarm/hd_navi.gif) no-repeat left top;
+}
+#btmnavift {
+	background: url(../img/soyafarm/ft_navi.gif) no-repeat left bottom;
+}
+#btmnavift h2 {
+	width: 129px;
+	float: left;
+}
+#btmnavift ol {
+	width: 504px;
+	margin: 0px;
+	padding: 35px 0px 0px 0px;
+	float: right;
+}
+#btmnavift ol li {
+	width: 240px;
+	padding: 0px 0px 0.8em 12px;
+	background: url(../img/soyafarm/icon_link.gif) no-repeat 0px 0.2em;
+	font-size: 100%;
+	line-height: 1.1em;
+	list-style-type: none;
+	float: left;
+}
+
+
+/* クリアフィックス 
+----------------------------------------------------------------------------*/
+#column:after,
+#btmnavift:after,
+#btmnavift ol:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+#column,
+#btmnavift,
+#btmnavift ol { display: inline-block; }
+/* no ie-mac \*/
+* html #column,
+* html #btmnavift,
+* html #btmnavift ol { height: 1%; }
+#column,
+#btmnavift,
+#btmnavift ol { display: block; }
+/* clearfix END */

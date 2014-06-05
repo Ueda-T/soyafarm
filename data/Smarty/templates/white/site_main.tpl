@@ -55,11 +55,11 @@
     <!--{* ▲TOP COLUMN*}-->
 
 	<!--{if $tpl_page_category}-->
-		tit_<!--{$tpl_page_category}-->.gif
-	<!--{elseif $tpl_mypageno}-->
+		<img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_<!--{$tpl_page_category}-->.png" alt="<!--{$tpl_title}-->" />
+	<!--{elseif $tpl_mainno}-->
 		<img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_mypage.png" alt="<!--{$tpl_title}-->" />
 	<!--{else}-->
-		<!--{$tpl_title}-->
+		<!--{*$tpl_title*}-->
 	<!--{/if}-->
 
     <!--{* ▼CONTENTS *}-->

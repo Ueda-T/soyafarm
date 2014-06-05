@@ -15,12 +15,12 @@
 			</ul>
 			<ul id="sub-box">
 				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->links/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_links.gif" alt="リンク" width="200" height="44" class="btn"></a></li>
-				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->sitemap/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_sitemap.gif" alt="サイトマップ" width="200" height="44" class="btn"></a></li>
+				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->sitemaps/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_sitemap.gif" alt="サイトマップ" width="200" height="44" class="btn"></a></li>
 				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->info/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_info.gif" alt="利用規約" width="200" height="44" class="btn"></a></li>
 				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->order/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_tokusyo.gif" alt="特定商取引に関する法律に基づく表示" width="200" height="63" class="btn"></a></li>
-				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->privacy/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_privacy.gif" alt="プライバシーポリシー" width="200" height="44" class="btn"></a></li>
+				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->guide/privacy.php"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_privacy.gif" alt="プライバシーポリシー" width="200" height="44" class="btn"></a></li>
 				<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->about/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_about.gif" alt="このサイトについて" width="200" height="44" class="btn"></a></li>
-				<li><a href="https://www.soyafarm.com/contact/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_contact.gif" alt="お問い合わせ" width="200" height="44" class="btn"></a></li>
+				<li><a href="<!--{$smarty.const.HTTPS_URL}-->contact/"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_contact.gif" alt="お問い合わせ" width="200" height="44" class="btn"></a></li>
 			</ul>
 			<ul id="banner-box">
 				<li><a href="http://www.fujioil.co.jp/"><img src="<!--{$TPL_URLPATH}-->img/navi/bnr_fujiseiyu.gif" alt="不二製油株式会社" width="200" height="50"></a></li>

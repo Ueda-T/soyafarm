@@ -43,6 +43,7 @@ class LC_Page_Entry extends LC_Page_Ex {
                                      7 => '土');
 
         $this->httpCacheControl('nocache');
+        $this->tpl_page_category = 'entry';
     }
 
     /**

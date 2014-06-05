@@ -22,6 +22,7 @@ class LC_Page_Guide_Privacy extends LC_Page_Ex {
      */
     function init() {
         parent::init();
+        $this->tpl_page_category = 'privacy';
     }
 
     /**

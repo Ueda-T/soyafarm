@@ -13,14 +13,14 @@
 	<li><a href="<!--{$smarty.const.HTTPS_URL}-->contact/">お問い合わせ</a></li>
 	<li class="tocart"><a href="<!--{$smarty.const.CART_URLPATH}-->">買い物かごを見る</a></li>
 	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->flow/">商品ご購入の流れ</a></li>
-	<li class="edge"><a href="<!--{$smarty.const.HTTPS_URL}-->mypage/">ログイン/マイページ</a></li>
+	<li class="edge"><a href="<!--{$smarty.const.URL_MYPAGE_TOP}-->">ログイン/マイページ</a></li>
 </ul>
 <ul id="remote_ft" class="clearfix">
 	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->links/">リンク</a></li>
-	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->sitemap/">サイトマップ</a></li>
+	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->sitemaps/">サイトマップ</a></li>
 	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->info/">利用規約</a></li>
 	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->order/">特定商取引に関する法律に基づく表示</a></li>
-	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->privacy/">プライバシーポリシー</a></li>
+	<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->guide/privacy.php">プライバシーポリシー</a></li>
 	<li class="edge"><a href="<!--{$smarty.const.ROOT_URLPATH}-->about/">このサイトについて</a></li>
 </ul>
 <p id="logo_ft"><img src="<!--{$TPL_URLPATH}-->img/common/img_logo-s.gif" alt="SOYAFARM　大豆でいいこと" width="79" height="48"></p>

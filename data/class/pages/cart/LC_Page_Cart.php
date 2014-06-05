@@ -50,7 +50,7 @@ class LC_Page_Cart extends LC_Page_Ex {
                                      5 => '木',
                                      6 => '金',
                                      7 => '土');
-
+        $this->tpl_page_category = 'cart';
     }
 
     /**

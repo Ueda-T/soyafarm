@@ -2,7 +2,6 @@
 			<!-- パンくずリスト --><ul id="breadcrumb"><li><a href="<!--{$smarty.const.ROOT_URLPATH}-->">TOP</a></li>
 			<li>よくあるご質問</li>
 			</ul>
-			<!-- ページタイトル --><h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/h1_faq.gif" alt="よくあるご質問" width="655" height="30" /></h1>
 <h2>Web会員について</h2>
 			<dl id="faq">
 				<dt>Web会員に登録しないと注文できないの？</dt>
@@ -24,7 +23,7 @@
 			<dl id="faq">
 				<dt>定期お届けコースについて詳しく知りたい。</dt>
 				<dd><p>下記ページで定期お届けコースについて詳しくご説明しております。<br />	
-<a href="/teiki/" class="link">おトクな「定期購入」について</a></p></dd>
+<a href="<!--{$smarty.const.ROOT_URLPATH}-->teiki/" class="link">おトクな「定期購入」について</a></p></dd>
 				<dt>早めになくなってしまっても、次のお届け日まで待つの？</dt>
 				<dd><p>いいえ、ご連絡をいただければ、すぐにご希望の商品をお届けさせていただきます。また、この臨時のお届けの分につきましても、すべて定期お届けコースと同じ割引率でお買い求めいただけます。<br /><br />
 					ご連絡はマイページの「<a href="<!--{$smarty.const.HTTPS_URL}-->contact/" class="link">お問い合わせ</a>」、

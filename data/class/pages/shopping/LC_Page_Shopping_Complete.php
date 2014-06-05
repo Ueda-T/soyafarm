@@ -23,6 +23,7 @@ class LC_Page_Shopping_Complete extends LC_Page_Ex {
     function init() {
         parent::init();
         $this->tpl_title = "ご注文完了";
+        $this->tpl_page_category = 'shopping';
         // ▼2012.03.27 add takao
         $this->arrCompleteOrder = array();
         // ▲2012.03.27 end

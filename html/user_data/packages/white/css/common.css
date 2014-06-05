@@ -452,8 +452,6 @@ div#complete_area .shop_information .name {
 	color: #D26A4D;
 }
 
-
-@charset "utf-8";
 /*///////////////////////////////////////////////////////////
 
 	買い物かご
@@ -514,108 +512,6 @@ table#cart th#item-image				{width: 110px;}
 table#cart th#item-cost					{width: 110px;}
 table#cart th#item-quantity	{width: 90px;}
 table#cart th#item-price				{width: auto; padding-right: 2px;}
-
-/* 合計
-------------------------------------------------------------------------------------*/
-dl#total-cost {
-	padding: 5px;
-	margin-bottom: 10px;
-	border: 2px solid #A9CF39;
-	border-top: 1px solid #A9CF39;
-	background: #EDFFBF;
-}
-dl#total-cost:after{
-	content: " ";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	height: 0;
-	font-size: 0;
-}
-dl#total-cost { display: inline-block; }
-/* \*/
-* html dl#total-cost { height: 1%; }
-dl#total-cost { display: block; }
-/* */
-dl#total-cost dt {
-	float: left;
-	padding-left: 10px;
-}
-dl#total-cost dd {
-	float: right;
-	padding-right: 10px;
-}
-
-/*=================================================================
-	割引計算
-=================================================================*/
-#discount {
-	clear: both;
-	margin: 10px auto;
-	padding: 2px 2px 1px;
-	background: #A9CF39;
-}
-*html #discount {	padding: 2px;}
-*:first-child+html #discount {	padding: 2px;}
-#discount dl {
-	margin-bottom: 1px;
-	padding: 5px 10px;
-	border: 2px solid white;
-	background: #EDFFBF;
-}
-#discount dl:after {
-	content: " ";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	height: 0;
-	font-size: 0;
-}
-#discount dl { display: inline-block; }
-/* \*/
-* html #discount dl { height: 1%; }
-#discount dl { display: block; }
-/* */
-
-#discount dl dt {
-	float: left;
-}
-#discount dl dd {
-	float: right;
-}
-
-/*=================================================================
-	最終支払額
-=================================================================*/
-#price {
-	padding: 2px;
-	background: #F33;
-	margin-bottom: 10px;
-}
-#price dl {
-	padding: 5px 7px;
-	border: 2px solid white;
-	color: white;
-	font-size: 123.1%;
-	font-weight: bold;
-}
-#price dl:after {
-	content: " ";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	height: 0;
-	font-size: 0;
-}
-#price dl { display: inline-block; }
-/* \*/
-* html #price dl { height: 1%; }
-#price dl { display: block; }
-/* */
-
-#price dl dt { float: left; }
-#price dl dd { float: right; }
-
 
 /*次の画面へ進むボタン
 ------------------------------------------------------------------------------------*/

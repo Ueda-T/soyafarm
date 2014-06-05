@@ -1,16 +1,10 @@
 <!--▼CONTENTS-->
-<h1><!--{$tpl_title|h}--></h1>
-<h2 class="bsc">商品購入について</h2>
-ご注文画面にお進みになられた時点で、本契約の諸条件を承諾していただいたものとみなさせていただきます。</p>
-
 <!--{*
 <h2 class="bsc">購入手順について</h2>
 <p class="naked"><!--{$arrOrder.law_term02}--></p>
 *}-->
 
-<h2 class="bsc">販売店舗の名称等について</h2>
-
-<div class="wrapForm">
+<div class="wrapForm mt20">
         <table summary="特定商取引に関する法律に基づく表記" cellspacing="0" class="bsc">
             <colgroup width="20%"></colgroup>
             <colgroup width="80%"></colgroup>
