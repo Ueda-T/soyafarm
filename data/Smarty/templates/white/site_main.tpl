@@ -38,24 +38,32 @@
     <!--{* ▲HEADER *}-->
 
 
-        <!--{* ▼TOP COLUMN*}-->
-        <!--{if $arrPageLayout.TopNavi|@count > 0}-->
-            <!--{* ▼上ナビ *}-->
-            <!--{foreach key=TopNaviKey item=TopNaviItem from=$arrPageLayout.TopNavi}-->
-                <!-- ▼<!--{$TopNaviItem.bloc_name}--> -->
-                <!--{if $TopNaviItem.php_path != ""}-->
-                    <!--{include_php file=$TopNaviItem.php_path items=$TopNaviItem}-->
-                <!--{else}-->
-                    <!--{include file=$TopNaviItem.tpl_path items=$TopNaviItem}-->
-                <!--{/if}-->
-                <!-- ▲<!--{$TopNaviItem.bloc_name}--> -->
-            <!--{/foreach}-->
-            <!--{* ▲上ナビ *}-->
-        <!--{/if}-->
-        <!--{* ▲TOP COLUMN*}-->
+    <!--{* ▼TOP COLUMN*}-->
+    <!--{if $arrPageLayout.TopNavi|@count > 0}-->
+        <!--{* ▼上ナビ *}-->
+        <!--{foreach key=TopNaviKey item=TopNaviItem from=$arrPageLayout.TopNavi}-->
+            <!-- ▼<!--{$TopNaviItem.bloc_name}--> -->
+            <!--{if $TopNaviItem.php_path != ""}-->
+                <!--{include_php file=$TopNaviItem.php_path items=$TopNaviItem}-->
+            <!--{else}-->
+                <!--{include file=$TopNaviItem.tpl_path items=$TopNaviItem}-->
+            <!--{/if}-->
+            <!-- ▲<!--{$TopNaviItem.bloc_name}--> -->
+        <!--{/foreach}-->
+        <!--{* ▲上ナビ *}-->
+    <!--{/if}-->
+    <!--{* ▲TOP COLUMN*}-->
+
+	<!--{if $tpl_page_category}-->
+		tit_<!--{$tpl_page_category}-->.gif
+	<!--{elseif $tpl_mypageno}-->
+		<img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_mypage.png" alt="<!--{$tpl_title}-->" />
+	<!--{else}-->
+		<!--{$tpl_title}-->
+	<!--{/if}-->
 
     <!--{* ▼CONTENTS *}-->
-    <div id="contents">
+    <div id="content">
         <!--{* ▼LEFT COLUMN *}-->
         <!--{if $arrPageLayout.LeftNavi|@count > 0}-->
             <div id="leftcolumn" class="side_column heightLine">

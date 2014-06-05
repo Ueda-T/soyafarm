@@ -20,12 +20,12 @@ body {
 
 /* コンテンツ全体枠
 ----------------------------------------------------------------*/
-#contents {
+#content {
 	margin-bottom: 44px;
 /*	background: url(../img/soyafarm/bg_contents.gif) no-repeat 0 0;*/
 	font-size: 108%;
 }
-#contents:after {
+#content:after {
 	content: " ";
 	display: block;
 	clear: both;
@@ -33,10 +33,10 @@ body {
 	height: 0;
 	font-size: 0;
 }
-#contents { display: inline-block; }
+#content { display: inline-block; }
 /* \*/
-* html #contents { height: 1%;}
-#contents { display: block; }
+* html #content { height: 1%;}
+#content { display: block; }
 /* */
 
 /* メインコンテンツ
