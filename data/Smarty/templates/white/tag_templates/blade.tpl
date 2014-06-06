@@ -1,3 +1,4 @@
+<!--{*
 <!-- ▼ BLADE(PC) -->
 <script type="text/javascript">
 <!--
@@ -9,4 +10,4 @@ var blade_group_id='';
 </script>
 
 <!-- ▲ BLADE(PC) -->
-
+*}-->

@@ -164,6 +164,7 @@ __EOS__;
             ,sale_start_date
             ,sale_end_date
             ,teiki_flg
+            ,capacity
 __EOS__;
         $res = $objQuery->select($col, $this->alldtlSQL($objQuery->where),
                                  "", $arrVal);

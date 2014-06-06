@@ -1,3 +1,4 @@
+<!--{*
 <script>
   dataLayer = [];
 </script>
@@ -29,3 +30,4 @@
     });
 //]]>
 </script>
+*}-->

@@ -1,5 +1,6 @@
 <?php
 
+/*
 // TOPページ
 $CLICK_ANALYZER_TOP_TAG =<<<EOF
 <script type='text/javascript' charset='utf-8' src='//clickanalyzer.jp/ClickIndex.js' id='contents/20110921113710'></script>
@@ -365,4 +366,5 @@ $CLICK_ANALYZER_PRODUCTS["83"] =<<<EOF
 <noscript><img src='//clickanalyzer.jp/ClickIndex.php?mode=noscript&id=contents&pg=20140128113950' width='0' height='0' /></noscript>
 EOF;
 
+ */
 ?>
