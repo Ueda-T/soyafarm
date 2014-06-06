@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+野菜の時間ですよ
+
+///////////////////////////////////////////////////////////*/
+
+/* 商品特長
+----------------------------------------------------------------*/
+ol#merit li.fit h3 {
+	padding-bottom: 0px;
+}
+ol#merit li.fit p {
+	padding-top: 8px;
+}
+ol#merit li ul {
+	margin: 0px;
+	padding: 10px 10px 5px 10px;
+	background-color: #FFFFFF;
+	border: 1px solid #F0F0F0;
+}
+ol#merit li ul li {
+	margin: 0px 0px 0px 1em;
+	padding: 0px 0px 0.5em 0px;
+	font-size: 90%;
+	line-height: 1.1em;
+	text-indent: -1em;
+	border-bottom: none;
+}
+
+#contents span.offer {
+	font-size: 0.7em;
+	color: #333;
+	font-weight: normal;
+}
+
+#merit span {
+	color: #476b00;
+	font-weight: bold;
+}
+
+td {
+	vertical-align: top;
+	padding: 0px 10px;
+	font-size: 0.9em;
+}

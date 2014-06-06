@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+コレスメンテ
+
+///////////////////////////////////////////////////////////*/
+
+/* 商品特長
+----------------------------------------------------------------*/
+#merit .detail {
+	width: 393px;
+	float: left;
+}
+#merit .detail h4 {
+	padding: 12px 0px 5px 0px;
+}
+#merit .detail p {
+	padding-bottom: 0.7em;
+	font-size: 90% !important;
+}
+#merit .pict img {
+	margin-bottom: 7px;
+}

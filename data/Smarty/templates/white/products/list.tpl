@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/products.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/products_list.css" type="text/css" media="all" />
 <script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/products.js"></script>
 <script type="text/javascript">//<![CDATA[
 function fnSetClassCategories(form, classcat_id2_selected) {
@@ -182,6 +182,13 @@ function fnInCart(productForm) {
 						<!--★コメント★-->
 						<p><!--{$arrProduct.main_list_comment}--></p>
 
+						<!--{if $arrProduct.pc_comment2}-->
+						<h3><img src="<!--{$TPL_URLPATH}-->img/soyafarm/ttl_recommend.gif" alt="こんな方におすすめ" width="411" height="33"></h3>
+						<div class="listRecommend">
+							<!--{$arrProduct.pc_comment2}-->
+						</div>
+						<!--{/if}-->
+
 						<p class="shosai">
 							<a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_products_detail.gif" alt="商品の詳細はこちら" border="0" class="btn"></a>
 						</p>
@@ -196,7 +203,7 @@ function fnInCart(productForm) {
 								</li>
 								<!--{* ▼容量 *}-->
 								<!--{if $arrProduct.capacity|strlen >= 1}-->
-								<li><!--{$arrProduct.capacity|h}--></li>
+								<li class="spec"><!--{$arrProduct.capacity|h}--></li>
 								<!--{/if}-->
 								<!--{* ▲容量 *}-->
 							</ul>
@@ -207,6 +214,7 @@ function fnInCart(productForm) {
 
                     <!--{if $tpl_stock_find[$id]}-->
                         <!--{if $tpl_classcat_find1[$id]}-->
+                            <div class="classlist">
                                 <dl class="size01 clearfix">
                                         <!--▼規格1-->
                                         <dt><!--{$tpl_class_name1[$id]|h}-->：</dt>
@@ -234,31 +242,51 @@ function fnInCart(productForm) {
                                         <!--▲規格2-->
                                     </dl>
                                 <!--{/if}-->
+                            </div>
                         <!--{/if}-->
-                        
+                            <div class="cartBtnBody">
                                 <!--{if $arrErr.quantity != ""}-->
                                     <br /><span class="attention"><!--{$arrErr.quantity}--></span>
                                 <!--{/if}-->
 
-                                <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
-                                <div id="cartbtn_default">
-                                <!--★カゴに入れる★-->
+                                <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
                                     <!--{ * 数量はプルダウンで選択できるように* }-->
+                                    <!--
+                                    <input type="text" name="quantity" size="3" value="<!--{$arrProduct.quantity|default:1|h}-->" maxlength="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" />
+                                    -->
                                     <!--{assign var=class_id value=$tpl_product_class_id[$id]}-->
+                                    数量
                                     <select name="quantity" style="<!--{$arrErr.quantity|sfGetErrorColor}-->">
                                         <!--{html_options options=$tpl_arrQuantity[$class_id] }-->
                                     </select>
 
-                                    <div class="cartBtnList">
-                                        <!--★社員は定期購入不可★-->
-                                        <!--{if $arrProduct.teiki_flg != 0}-->
-                                        <p id="cartbtn_teiki_<!--{$id}-->" class="teikiBtn">
-                                        <a href="javascript:void(0);" onclick="fnAddProduct('1', document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/teiki_s.gif" alt="定期購入する" align="absmiddle" class="swp" /></a>
-                                        </p>
-                                        <!--{/if}-->
-                                        <p><a href="javascript:void(0);" onclick="fnInCart(document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart_s.gif" alt="カートに入れる" align="absmiddle" class="swp" /></a></p>
-                                </div>
+                                    <a href="javascript:void(0);" onclick="fnInCart(document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_yoyaku_s.gif" alt="予約する" align="absmiddle" class="swp" /></a>
+                                <!--{else}-->
+                                    <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
+                                    <div id="cartbtn_default">
+                                    <!--★カゴに入れる★-->
+                                        <!--{ * 数量はプルダウンで選択できるように* }-->
+                                        <!--
+                                        <input type="text" name="quantity" size="3" value="<!--{$arrProduct.quantity|default:1|h}-->" maxlength="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" />
+                                        -->
+                                        <!--{assign var=class_id value=$tpl_product_class_id[$id]}-->
+                                        数量
+                                        <select name="quantity" style="<!--{$arrErr.quantity|sfGetErrorColor}-->">
+                                            <!--{html_options options=$tpl_arrQuantity[$class_id] }-->
+                                        </select>
+
+                                        <div class="cartBtnList">
+	                                        <!--★社員は定期購入不可★-->
+	                                        <!--{if $arrProduct.teiki_flg != 0}-->
+	                                        <p id="cartbtn_teiki_<!--{$id}-->" class="teikiBtn">
+	                                        <a href="javascript:void(0);" onclick="fnAddProduct('1', document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_teiki_s.gif" alt="定期購入する" align="absmiddle" class="swp" /></a>
+	                                        </p>
+                                          <!--{/if}-->
+	                                        <a href="javascript:void(0);" onclick="fnInCart(document.product_form<!--{$id|h}-->); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart_s.gif" alt="カートに入れる" align="absmiddle" class="swp" /></a>
+                                    </div>
+                                    <!--{/if}-->
                                 <!--{/if}-->
+                                </div>
 
                                 <!--{* 在庫切れ時の表示切り替え *}-->
                                 <!--{foreach from=$tpl_stock_status_name key=key item=stock_status }-->

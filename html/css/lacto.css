@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+ラクトビオン酸＆カルシウム
+
+///////////////////////////////////////////////////////////*/
+
+/* 商品特長
+----------------------------------------------------------------*/
+h1 {
+	position: relative;
+}
+h1 #heiyou {
+	position: absolute;
+	top: -30px;
+	left: 330px;
+}
+#tablt {
+	padding: 15px 15px 0 15px;
+	background-color: #FFFFFF;
+	border: 1px solid #F0F0F0;
+	clear: both;
+	margin-top:20px;
+}
+
+
+
+#merit{
+}
+
+#merit h3{
+	margin-bottom:10px;
+}
+
+#merit h4{
+	margin-bottom:15px;
+}
+
+
+#merit p{
+	margin-bottom:15px;
+}
+
+#merit .fig{
+	margin-bottom:10px;
+}
+
+
+#merit_01{
+}
+
+#merit_01 #m_01_01.fig{
+	text-align:center;
+}
+
+#merit_01 #m_01_02.fig{
+	float:right;
+	margin-left:15px;
+}
+
+#merit_02 #m_02_01.fig{
+	float:right;
+	margin-left:15px;
+}
+
+#merit_03 #m_03_01.fig{
+	float:right;
+	margin:-60px 0 0 15px;
+}

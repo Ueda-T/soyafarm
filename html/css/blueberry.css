@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+黒大豆＆ブルーベリー
+
+///////////////////////////////////////////////////////////*/
+
+/* 商品特長
+----------------------------------------------------------------*/
+
+#tablt {
+	width:645px;
+	height:173px;
+	background-image:url(../img/blueberry/tablet_bg01.gif);
+	background-repeat:repeat-x;
+	clear: both;
+}
+
+#tablt .photo {
+	width: 96px;
+	float: left;
+}
+
+#tablt .contents {
+	width: 388px;
+	padding-top:30px;
+	font-size: 90%;
+	line-height: 1.3em;
+	float: left;
+}
+
+#tablt .illust {
+	width: 161px;
+	float: left;
+}
+
+
+#tablt .contents h4 {
+	font-size:120%;
+	color:#639;
+}
+
+#tablt .contents p {
+font-size: 110%;
+line-height: 130%;
+}
+
+#tablt .contents p.last-child {
+	margin-bottom:5px;
+}
+
+#tablt .contents p.footnote {
+font-size: 80%;
+line-height: 120%;
+margin-top:3px;
+}
+
+ /* クリアフィックス 
+----------------------------------------------------------------------------*/
+#tablt:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+#tablt { display: inline-block; }
+/* no ie-mac \*/
+* html #tablt { height: 1%; }
+#tablt { display: block; }
+/* clearfix END */
+

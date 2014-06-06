@@ -58,21 +58,21 @@ ul.sitemap ol a {
 			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->concept/">ソヤファームクラブとは？</a></li>
 			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php">商品ラインナップ</a>
 				<ul>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/coffee/">毎日飲みたいドリップコーヒー</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/soynobi/">ソイノビ</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/lacto/">ラクトビオン酸＆カルシウム</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/koragen/">コラーゲン&amp;ペプチド</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/koresumente/">コレスメンテ</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/isofla/">イソフラバランス</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/gurukosamin/">グルコサミン&amp;ペプチド</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/tonyu/">ハイ！調整豆乳</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/yasai/">野菜の時間ですよ</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/blueberry/">イソフラバランス</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/peptide4000/">ペプチドアスリエータ4000</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/peptide/">ザ・ペプチド（パウダー分包）</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/lipo/">リポスルー</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/gugu/">ぐーぐーナビ</a></li>
-					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->syohin/beautysoap/">イソフラボン石鹸</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=614">毎日飲みたいドリップコーヒー</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=612">ソイノビ</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=613">ラクトビオン酸＆カルシウム</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=610">コラーゲン&amp;ペプチド</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=603">コレスメンテ</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=602">イソフラバランス</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609">グルコサミン&amp;ペプチド</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=601">ハイ！調整豆乳</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=604">野菜の時間ですよ</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=605">イソフラバランス</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=606">ペプチドアスリエータ4000</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=607">ザ・ペプチド（パウダー分包）</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=611">リポスルー</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=608">ぐーぐーナビ</a></li>
+					<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=615">イソフラボン石鹸</a></li>
 				</ul>
 			</li>
 			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->teiki/">おトクな定期購入について</a></li>

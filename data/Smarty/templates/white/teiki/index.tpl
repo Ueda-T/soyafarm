@@ -19,38 +19,38 @@
 		<table width="582" cellspacing="6">
 			<tr>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/1202/ph_lineup14_new.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/coffee/">毎日飲みたいドリップコーヒー</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=614">毎日飲みたいドリップコーヒー</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup15.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/soynobi/">ソイノビ</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=612">ソイノビ</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup14.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/lacto/">ラクトビオン酸&amp;カルシウム</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=613">ラクトビオン酸&amp;カルシウム</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup03.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/isofla/">イソフラバランス</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=602">イソフラバランス</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup05.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/tonyu/">ハイ！調製豆乳</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=601">ハイ！調製豆乳</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup07.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/blueberry/">黒大豆＆ブルーベリー</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=605">黒大豆＆ブルーベリー</a></p></td>
 				</tr>
 			<tr>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup02.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/koresumente/">コレスメンテ</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=603">コレスメンテ</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup06.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/yasai/">野菜の時間ですよ</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=604">野菜の時間ですよ</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup01.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/koragen/">コラーゲン&amp;ペプチド</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=610">コラーゲン&amp;ペプチド</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup04.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/gurukosamin/">グルコサミン&amp;ペプチド</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609">グルコサミン&amp;ペプチド</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup08.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/peptide4000/">ペプチドアスリエータ4000</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=606">ペプチドアスリエータ4000</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup09.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/peptide/">ザ・ペプチド（パウダー分包）</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=607">ザ・ペプチド（パウダー分包）</a></p></td>
 			</tr>
 			<tr>
 
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup10.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/lipo/">リポスルー</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=611">リポスルー</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup11.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="../syohin/gugu/">ぐーぐーナビ</a></p></td>
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=608">ぐーぐーナビ</a></p></td>
 			</tr>
 		</table>
 	</div>
@@ -164,7 +164,7 @@
 <h2>ご注意</h2>
 <div>
 	<p>「定期お届けコース」は最低3回以上のご購入のお約束とさせていただいています。お休みや、中止のお申し出がない限り、ずっと継続して商品をお届けさせていただくシステムです。（お休み、中止される場合は、お届けご指定日の10日前までにご連絡ください。）（ご入金の確認ができない場合は、お届けを見合わせることもございますので、あらかじめご了承ください）。</p>
-	<p>定期コースのお申し込みは「<a href="../syohin/" class="link-s">商品ラインナップ</a>」、または<br />
+	<p>定期コースのお申し込みは「<a href="syohin/" class="link-s">商品ラインナップ</a>」、または<br />
 		TEL：フリーダイヤル0120-39-3009（受付時間9:00～19:00、日・祝休み）<br />
 		FAX：フリーダイヤル0120-39-4090（24時間365日受付）<br />
 		<a href="../flow/img/fax.pdf" target="_blank" class="link">注文用紙をダウンロード（PDF）</a></p>

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+コラーゲン＆ペプチド
+
+///////////////////////////////////////////////////////////*/
+
+/* 商品特長
+----------------------------------------------------------------*/
+.wbox {
+	padding: 15px 10px 3px 10px;
+	background-color: #FFFFFF;
+	border: 1px solid #F0F0F0;
+}
+.wbox .detail {
+	width: 294px;
+	padding-right: 10px;
+	border-right: 1px dashed #CCCCCC;
+	float: left;
+}
+.wbox .detail h4 {
+	padding-bottom: 5px;
+	text-align: center;
+}
+.wbox .detail p {
+	padding-bottom: 0.7em;
+	font-size: 90% !important;
+}
+
+
+
+
+/* クリアフィックス 
+----------------------------------------------------------------------------*/
+.wbox:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+.wbox { display: inline-block; }
+/* no ie-mac \*/
+* html .wbox { height: 1%; }
+.wbox { display: block; }
+/* clearfix END */
+
+
+/* 2013-06リリース　追記
+----------------------------------------------------------------------------*/
+
+#merit #m_01_02.fig{
+	float: right;
+	margin-left: 15px;
+}
+
+#merit p span {
+	background-color: #FFFF99;
+	font-weight: bold;
+	padding: 0 3px;
+}

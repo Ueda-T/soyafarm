@@ -44,15 +44,17 @@ ul#lineup li {
 	padding: 6px 0px;
 	text-align: right;
 }
-#lineup ul.recommend {
+#lineup ul.recommend,
+div.listRecommend ul {
 	padding: 12px 5px 3px 24px;
 	background: #DBFFF8 url(../img/soyafarm/ft_recommend.gif) no-repeat left bottom;
 }
-#lineup ul.recommend li {
-	margin: 0px;
-	padding: 0px 0px 0.4em 12px;
-	background: #DBFFF8 url(../img/soyafarm/maru_blue.gif) no-repeat 0px 0.2em;
-	line-height: 1.1em;
+#lineup ul.recommend li,
+div.listRecommend ul li {
+	margin: 0 !important;
+	padding: 0px 0px 0.4em 12px !important;
+	background: #DBFFF8 url(../img/soyafarm/maru_blue.gif) no-repeat 0px 0.2em !important;
+	line-height: 1.1em !important;
 }
 ul#lineup li .pinkBox {
 	padding: 5px 17px 10px 19px;
@@ -125,5 +127,7 @@ ul#lineup li,
 ul#lineup li .pinkBox { display: block; }
 /* clearfix END */
 
-
-
+.cartBtnBody {
+	float:right;
+	width:180px;
+}

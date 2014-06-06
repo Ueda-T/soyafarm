@@ -21,7 +21,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 	</form>
 	<!--{/if}-->
 
-	<p class="intro">ご登録内容の変更を行います。<img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須">印の箇所は、必ず入力してください。</p>
+	<p class="intro">ご登録内容の変更を行います。<img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須">印の箇所は、必ず入力してください。</p>
 
     <div class="wrapForm">
         <form name="form1" id="form1" method="post" action="?">
@@ -41,7 +41,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 			</td>
 		</tr>
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前</th>
 			<td>
 				<!--{assign var=key1 value="`$prefix`name"}-->
 				<!--{if $arrErr[$key1]}-->
@@ -51,7 +51,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 			</td>
 		</tr>
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前(フリガナ)</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前(フリガナ)</th>
 			<td>
 				<!--{assign var=key1 value="`$prefix`kana"}-->
 				<!--{if $arrErr[$key1]}-->
@@ -61,7 +61,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 			</td>
 		</tr>
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />電話番号</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />電話番号</th>
 			<td>
 				<!--{assign var=key1 value="`$prefix`tel"}-->
 				<!--{if $arrErr[$key1]}-->
@@ -71,7 +71,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 			</td>
 		</tr>
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />郵便番号</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />郵便番号</th>
 			<td>
 				<!--{assign var=key value="zip"}-->
 				<!--{assign var=key3 value="`$prefix`pref"}-->
@@ -90,7 +90,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 		</tr>
 
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />住所</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />住所</th>
 			<td>
 				<!--{if $arrErr[$key3] || $arrErr[$key4] || $arrErr[$key5]}-->
 					<div class="attention"><!--{$arrErr[$key3]}--><!--{$arrErr[$key4]}--><!--{$arrErr[$key5]}--></div>
@@ -117,7 +117,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				</td>
 			</tr>
 			<tr>
-				<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />性別</th>
+				<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />性別</th>
 				<td>
 					<!--{assign var=key1 value="`$prefix`sex"}-->
 					<!--{if $arrErr[$key1]}-->
@@ -130,7 +130,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				</td>
 			</tr>
 			<tr>
-				<th><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />生年月日</th>
+				<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="" width="31" height="13" />生年月日</th>
 				<td>
 					<!--{assign var=errBirth value="`$arrErr.year``$arrErr.month``$arrErr.day`"}-->
 					<!--{if $errBirth}-->
@@ -158,7 +158,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				<input type="hidden" name="password" value="<!--{$arrForm.password}-->" />
 				<input type="hidden" name="password02" value="<!--{$arrForm.password02}-->" />
 				<tr>
-					<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />メールのご案内</th>
+					<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />メールのご案内</th>
 					<td>
 						<!--{if $arrErr.mailmaga_flg}-->
 							<div class="attention"><!--{$arrErr.mailmaga_flg}--></div>

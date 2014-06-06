@@ -124,14 +124,15 @@ a:hover .no_tr {
 /* フロート回り込み解除
 ----------------------------------------------- */
 .clearfix:after {
-	display: block;
-	clear: both;
-	height: 0px;
-	line-height: 0px;
 	visibility: hidden;
-	content: ".";
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }
-
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
 
 /* リンク指定
 ----------------------------------------------- */
