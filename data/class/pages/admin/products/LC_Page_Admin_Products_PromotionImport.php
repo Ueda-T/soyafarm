@@ -79,7 +79,7 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
 
         // CSVファイルアップロード情報の初期化
         $objUpFile =
-            new SC_UploadFile_Ex(IMAGE_TEMP_REALDIR, IMAGE_SAVE_REALDIR);
+            new SC_UploadFile_Ex(CSV_TEMP_REALDIR, CSV_SAVE_REALDIR);
         $this->lfInitFile($objUpFile);
 
         // パラメーター情報の初期化
@@ -215,21 +215,30 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
                 break;
             }
 
+	    // プロモーションコード取得
+	    $this->setPromotionData;
+
             // プロモーションマスタ登録
-            $this->lfRegistPromotion($line_count, $objFormParam);
+            $this->lfRegistPromotion($line_count, $objFormParam, $arrKey);
             // プロモーションイベントマスタ登録
-            $this->lfRegistMedia($line_count, $objFormParam);
+            $this->lfRegistPromotionMedia($line_count, $objFormParam, $arrKey);
             // プロモーション受注区分マスタ登録
-            $this->lfRegistOrderKbn($line_count, $objFormParam);
+            //$this->lfRegistOrderKbn($line_count, $objFormParam, $arrKey);
             // プロモーション購入商品マスタ登録
             $this->lfRegistOrderProduct
-                ($line_count, $objFormParam);
+                ($line_count, $objFormParam, $arrKey);
             // プロモーション値引商品マスタ登録
             $this->lfRegistDiscountProduct
-                ($line_count, $objFormParam);
+                ($line_count, $objFormParam, $arrKey);
             // プロモーション同梱商品マスタ登録
             $this->lfRegistIncludeProduct
-                ($line_count, $objFormParam);
+                ($line_count, $objFormParam, $arrKey);
+	    // 広告媒体情報登録
+            $this->lfRegistMedia($line_count, $objFormParam, $arrKey);
+
+	    // 企画情報登録
+            $this->lfRegistPlanning($line_count, $objFormParam, $arrKey);
+
             // ログ出力
             if (($line_count % 100) == 0) {
                 GC_Utils_Ex::gfPrintLog($line_count. "件の登録が完了しました。");
@@ -353,48 +362,167 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
      *
      * @param SC_Query $objQuery SC_Queryインスタンス
      * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
      * @return void
      */
-    function lfRegistPromotion($line = "", &$objFormParam) {
+    function lfRegistPromotion($line = "", &$objFormParam, &$arrKey) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         // 登録データ対象取得
         $arrList = $objFormParam->getHashArray();
+
+	$arrKey = array();
 
         // プロモーションマスタ登録情報を生成する。
         // プロモーションマスタテーブルのカラムに存在しているものだけ採用する。
         $sqlval =
             SC_Utils_Ex::sfArrayIntersectKeys($arrList, $this->arrPromotionCol);
 
-        // 同じプロモーションコードがある場合は上書き、
-        // なければ追加する。
-        $where = "promotion_cd = ?";
-        $promotion_count = $objQuery->count
-            ("dtb_promotion", $where, array($sqlval['promotion_cd']));
-
+	$discountFlg = false;
+	$includeFlg = false;
+	// 値引きか同梱品チェック
+	if ($arrList["discount_products"]) {
+	    $arrProducts = explode(",", $arrList["discount_products"]);
+	    for ($i = 0; $i < count($arrProducts); $i++) {
+		$arrRate = explode("-", $arrProducts[$i]);
+		// 値引き有り
+		if ($arrRate[1] > 0) {
+		    $discountFlg = true;
+		    break;
+		}
+	    }
+	    //$sqlval["promotion_kbn"] = PROMOTION_KBN_DISCOUNT;
+	}
+	if ($arrList["include_products"]) {
+	    // 同梱品有り
+	    $includeFlg = true;
+	    //$sqlval["promotion_kbn"] = PROMOTION_KBN_INCLUDE;
+	}
+	// 有効区分
+	$sqlval["valid_kbn"] = PROMOTION_VALID_KBN_ON;
+	// 数量集計区分
+	$sqlval["quantity_kbn"] = PROMOTION_QUANTITY_KBN_DETAIL;
+	// コース区分
+	$sqlval["course_kbn"] = PROMOTION_COURSE_KBN_REGULAR;
+	// 送料区分
+	$sqlval["deliv_fee_kbn"] = PROMOTION_DELIV_FEE_KBN_NO_FREE;
         // 属性情報
         $sqlval['updator_id']  = $_SESSION['member_id'];
         $sqlval['update_date'] = 'NOW()';
 
-        if ($promotion_count > 0) {
-            // 更新
-            $objQuery->update("dtb_promotion", $sqlval,
-                              $where, array($sqlval['promotion_cd']));
-        } else {
-            // 追加
-            $sqlval['creator_id']  = $_SESSION['member_id'];
-            $sqlval['create_date'] = 'NOW()';
-            // INSERTの実行
-            $objQuery->insert("dtb_promotion", $sqlval);
-        }
+	// プロモーションコード取得
+	$sql =<<<EOF
+SELECT 
+    M.promotion_cd,
+    P.promotion_kbn
+FROM 
+    dtb_promotion P
+INNER JOIN dtb_promotion_media M
+    ON P.promotion_cd = M.promotion_cd
+WHERE M.media_code = ?
+EOF;
+	$arrChk = $objQuery->getAll($sql, array($arrList["media_code"]));
+	if (is_array($arrChk)) {
+	    for ($i = 0; $i < count($arrChk); $i++) {
+		$arrKey[$arrChk[$i]["promotion_kbn"]] = $arrChk[$i]["promotion_cd"];
+	    }
+	}
+
+        // 同じプロモーションコードがある場合は上書き、
+        // なければ追加する。
+	// 値引き
+	if ($discountFlg) {
+	    if (isset($arrKey[PROMOTION_KBN_DISCOUNT])) {
+		$where = "promotion_cd = ?";
+		// 更新
+		$objQuery->update("dtb_promotion", $sqlval,
+				  $where, array($arrKey[PROMOTION_KBN_DISCOUNT]));
+	    } else {
+		$promotion_cd = $objQuery->nextVal("dtb_promotion_promotion_cd");
+		$arrKey[PROMOTION_KBN_DISCOUNT] = $promotion_cd;
+		$sqlval['promotion_cd']  = $promotion_cd;
+		$sqlval['promotion_kbn'] = PROMOTION_KBN_DISCOUNT;
+
+		// 追加
+		$sqlval['creator_id']  = $_SESSION['member_id'];
+		$sqlval['create_date'] = 'NOW()';
+
+		// INSERTの実行
+		$objQuery->insert("dtb_promotion", $sqlval);
+
+		unset($sqlval['creator_id']);
+		unset($sqlval['create_date']);
+
+	    }
+	} else {
+	    if (isset($arrKey[PROMOTION_KBN_DISCOUNT])) {
+		// 不要情報のため削除
+		$this->allPromotionDelete($arrKey[PROMOTION_KBN_INCLUDE]);
+		unset($arrKey[PROMOTION_KBN_INCLUDE]);
+	    }
+	}
+
+	// 同梱品
+	if ($includeFlg) {
+	    if (isset($arrKey[PROMOTION_KBN_INCLUDE])) {
+		$where = "promotion_cd = ?";
+		// 更新
+		$objQuery->update("dtb_promotion", $sqlval,
+				  $where, array($arrKey[PROMOTION_KBN_INCLUDE]));
+	    } else {
+		$promotion_cd = $objQuery->nextVal("dtb_promotion_promotion_cd");
+		$arrKey[PROMOTION_KBN_INCLUDE] = $promotion_cd;
+		$sqlval['promotion_cd']  = $promotion_cd;
+		$sqlval['promotion_kbn'] = PROMOTION_KBN_INCLUDE;
+
+		// 追加
+		$sqlval['creator_id']  = $_SESSION['member_id'];
+		$sqlval['create_date'] = 'NOW()';
+
+		// INSERTの実行
+		$objQuery->insert("dtb_promotion", $sqlval);
+
+		unset($sqlval['creator_id']);
+		unset($sqlval['create_date']);
+
+	    }
+	} else {
+	    if (isset($arrKey[PROMOTION_KBN_INCLUDE])) {
+		// 不要情報のため削除
+		$this->allPromotionDelete($arrKey[PROMOTION_KBN_INCLUDE]);
+		unset($arrKey[PROMOTION_KBN_INCLUDE]);
+	    }
+	}
+
     }
 
-    function deleteMedia($strCd) {
+    /**
+     * プロモーション関連テーブルの削除を行う.
+     *
+     * @param string|integer $promotionCd プロモーションコード
+     * @return void
+     */
+    function allPromotionDelete($promotionCd) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
-	$sql =<<<__EOS
-delete from dtb_promotion_media where promotion_cd = "$strCd"
-__EOS;
 
-	$objQuery->exec($sql);
+	$where = "promotion_cd = ?";
+	// プロモーションマスタ削除
+	$objQuery->delete("dtb_promotion", $where, array($promotionCd));
+
+	// プロモーションイベントマスタ削除
+	$objQuery->delete("dtb_promotion_media", $where, array($promotionCd));
+
+	// プロモーション受注区分マスタ削除
+	$objQuery->delete("dtb_promotion_order_kbn", $where, array($promotionCd));
+
+	// プロモーション購入商品マスタ削除
+	$objQuery->delete("dtb_promotion_order_product", $where, array($promotionCd));
+
+	// プロモーション割引商品マスタ削除
+	$objQuery->delete("dtb_promotion_discount_product", $where, array($promotionCd));
+
+	// プロモーション同梱商品マスタ削除
+	$objQuery->delete("dtb_promotion_include_product", $where, array($promotionCd));
+
     }
 
     /**
@@ -402,50 +530,48 @@ __EOS;
      *
      * @param SC_Query $objQuery SC_Queryインスタンス
      * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
      * @return void
      */
-    function lfRegistMedia($line = "", &$objFormParam) {
+    function lfRegistPromotionMedia($line = "", &$objFormParam, $arrKey) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         // 登録データ対象取得
         $arrList = $objFormParam->getHashArray();
 
-	// プロモーションイベントマスタ削除
-	$this->deleteMedia($arrList['promotion_cd']);
-
         // イベントCDがない場合はここまで
-        if (empty($arrList['media_cds'])) {
+        if (empty($arrList['media_code'])) {
             return;
         }
 
-        // プロモーションコード
-        $sqlval['promotion_cd'] = $arrList['promotion_cd'];
+	$table = "dtb_promotion_media";
+	$where = "promotion_cd = ?";
+	// プロモーションコード分登録する
+	foreach ($arrKey as $key => $val) {
+	    $sqlval = array();
+	    // 登録確認
+	    $chkCnt = $objQuery->count($table, $where, array($val));
 
-        // 広告媒体コードはカンマ区切りで複数登録されているため、
-        // ループして登録処理を行う
-        $media_cds = explode(',', $arrList['media_cds']);
-	$length = count($media_cds);
+	    // 属性情報
+	    $sqlval['updator_id']  = $_SESSION['member_id'];
+	    $sqlval['update_date'] = 'NOW()';
+	    $sqlval['del_flg']  = $arrList['del_flg'];
+	    if ($chkCnt > 0) {
+		// 更新
+		$objQuery->update($table, $sqlval, $where, array($val));
+	    } else {
+		// 追加
+		// プロモーションコード
+		$sqlval['promotion_cd'] = $val;
+		// 広告媒体コード
+		$sqlval['media_code'] = $arrList["media_code"];
 
-        for ($i = 0; $i < $length; ++$i) {
-            // 広告媒体コード
-            $sqlval['media_code'] = $media_cds[$i];
-
-            // 属性情報
-            $sqlval['updator_id']  = $_SESSION['member_id'];
-            $sqlval['update_date'] = 'NOW()';
-	    $sqlval['creator_id']  = $_SESSION['member_id'];
-	    $sqlval['create_date'] = 'NOW()';
-	    // INSERTの実行
-	    $objQuery->insert("dtb_promotion_media", $sqlval);
-        }
-    }
-
-    function deleteOrderKbn($strCd) {
-        $objQuery =& SC_Query_Ex::getSingletonInstance();
-	$sql =<<<__EOS
-delete from dtb_promotion_order_kbn where promotion_cd = "$strCd"
-__EOS;
-
-	$objQuery->exec($sql);
+		// 属性情報
+		$sqlval['creator_id']  = $_SESSION['member_id'];
+		$sqlval['create_date'] = 'NOW()';
+		// INSERTの実行
+		$objQuery->insert($table, $sqlval);
+	    }
+	}
     }
 
     /**
@@ -455,6 +581,7 @@ __EOS;
      * @param string|integer $line 処理中の行数
      * @return void
      */
+    /* データが渡ってこないためコメントアウト
     function lfRegistOrderKbn($line = "", &$objFormParam) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         // 登録データ対象取得
@@ -489,65 +616,51 @@ __EOS;
 	    $objQuery->insert("dtb_promotion_order_kbn", $sqlval);
         }
     }
-
-    function deleteOrderProduct($strCd) {
-        $objQuery =& SC_Query_Ex::getSingletonInstance();
-	$sql =<<<__EOS
-delete from dtb_promotion_order_product where promotion_cd = "$strCd"
-__EOS;
-
-	$objQuery->exec($sql);
-    }
+     */
 
     /**
      * プロモーション購入商品マスタ登録を行う.
      *
      * @param SC_Query $objQuery SC_Queryインスタンス
      * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
      * @return void
      */
-    function lfRegistOrderProduct($line = "", &$objFormParam) {
+    function lfRegistOrderProduct($line = "", &$objFormParam, $arrKey) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         // 登録データ対象取得
         $arrList = $objFormParam->getHashArray();
 
-	// プロモーション購入商品マスタ削除
-	$this->deleteOrderProduct($arrList['promotion_cd']);
+	if (!empty($arrList['discount_products'])) {
+	    $arrProducts = explode(',', $arrList['discount_products']);
+	}
 
-        // 購入商品CDがない場合はここまで
-        if (empty($arrList['order_products'])) {
-            return;
-        }
+	$table = "dtb_promotion_order_product";
+	$where = "promotion_cd = ?";
+	foreach ($arrKey as $key => $val) {
+	    $objQuery->delete($table, $where, array($val));
+	    if (empty($arrList['discount_products'])) {
+		continue;
+	    }
 
-        // プロモーションコード
-        $sqlval['promotion_cd'] = $arrList['promotion_cd'];
+	    // プロモーションコード
+	    $sqlval['promotion_cd'] = $val;
 
-        // 購入商品コードはカンマ区切りで複数登録されているため、
-        // ループして登録処理を行う
-        $order_products = explode(',', $arrList['order_products']);
-	$length = count($order_products);
+	    for ($i = 0; $i < count($arrProducts); $i++) {
+		// 購入商品CD
+		$arrChk = explode("-", $arrProducts[$i]);
+		$sqlval['product_cd'] = $arrChk[0];
 
-        for ($i = 0; $i < $length; ++$i) {
-            // 購入商品CD
-            $sqlval['product_cd'] = $order_products[$i];
-
-            // 属性情報
-            $sqlval['updator_id']  = $_SESSION['member_id'];
-            $sqlval['update_date'] = 'NOW()';
-	    $sqlval['creator_id']  = $_SESSION['member_id'];
-	    $sqlval['create_date'] = 'NOW()';
-	    // INSERTの実行
-	    $objQuery->insert("dtb_promotion_order_product", $sqlval);
-        }
-    }
-
-    function deleteDiscountProduct($strCd) {
-        $objQuery =& SC_Query_Ex::getSingletonInstance();
-	$sql =<<<__EOS
-delete from dtb_promotion_discount_product where promotion_cd = "$strCd"
-__EOS;
-
-	$objQuery->exec($sql);
+		// 属性情報
+		$sqlval['updator_id']  = $_SESSION['member_id'];
+		$sqlval['update_date'] = 'NOW()';
+		$sqlval['creator_id']  = $_SESSION['member_id'];
+		$sqlval['create_date'] = 'NOW()';
+		$sqlval['del_flg'] = $arrList['del_flg'];
+		// INSERTの実行
+		$objQuery->insert($table, $sqlval);
+	    }
+	}
     }
 
     /**
@@ -555,36 +668,42 @@ __EOS;
      *
      * @param SC_Query $objQuery SC_Queryインスタンス
      * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
      * @return void
      */
-    function lfRegistDiscountProduct($line = "", &$objFormParam) {
+    function lfRegistDiscountProduct($line = "", &$objFormParam, $arrKey) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         // 登録データ対象取得
         $arrList = $objFormParam->getHashArray();
 
-	// プロモーション値引き商品マスタ削除
-	$this->deleteDiscountProduct($arrList['promotion_cd']);
+	if (!isset($arrKey[PROMOTION_KBN_DISCOUNT])) {
+	    // 値引商品CDがない場合はここまで
+	    return;
+	}
 
-        // 値引商品CDがない場合はここまで
-        if (empty($arrList['discount_products'])) {
-            return;
-        }
+	$table = "dtb_promotion_discount_product";
+	$where = "promotion_cd = ?";
+	// プロモーション値引き商品マスタ削除
+	$objQuery->delete($table, $where, array($arrKey[PROMOTION_KBN_DISCOUNT]));
 
         // プロモーションコード
-        $sqlval['promotion_cd'] = $arrList['promotion_cd'];
+        $sqlval['promotion_cd'] = $arrKey[PROMOTION_KBN_DISCOUNT];
+        $sqlval['del_flg'] = $arrList['del_flg'];
 
         // 値引商品CDはカンマ区切りで複数登録されているため、
         // ループして登録処理を行う
         $discount_products = explode(',', $arrList['discount_products']);
 	$length = count($discount_products);
 
-        for ($i = 0; $i < $length; ++$i) {
-            // 値引商品CD-税込単価 形式になっているので、さらに分解
+        for ($i = 0; $i < count($discount_products); $i++) {
+            // 値引商品CD-割引率-税込単価 形式になっているので、さらに分解
             $discount_product = explode('-', $discount_products[$i]);
             // 商品コード
             $sqlval['product_cd'] = $discount_product[0];
+            // 割引率
+            $sqlval['cut_rate'] = $discount_product[1];
             // 販売価格
-            $sqlval['sales_price'] = $discount_product[1];
+            $sqlval['sales_price'] = $discount_product[2];
 
             // 属性情報
             $sqlval['updator_id']  = $_SESSION['member_id'];
@@ -592,17 +711,8 @@ __EOS;
 	    $sqlval['creator_id']  = $_SESSION['member_id'];
 	    $sqlval['create_date'] = 'NOW()';
 	    // INSERTの実行
-	    $objQuery->insert("dtb_promotion_discount_product", $sqlval);
+	    $objQuery->insert($table, $sqlval);
         }
-    }
-
-    function deleteIncludeProduct($strCd) {
-        $objQuery =& SC_Query_Ex::getSingletonInstance();
-	$sql =<<<__EOS
-delete from dtb_promotion_include_product where promotion_cd = "$strCd"
-__EOS;
-
-	$objQuery->exec($sql);
     }
 
     /**
@@ -610,30 +720,33 @@ __EOS;
      *
      * @param SC_Query $objQuery SC_Queryインスタンス
      * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
      * @return void
      */
-    function lfRegistIncludeProduct($line = "", &$objFormParam) {
+    function lfRegistIncludeProduct($line = "", &$objFormParam, $arrKey) {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         // 登録データ対象取得
         $arrList = $objFormParam->getHashArray();
 
-	// プロモーション同梱商品マスタ削除
-	$this->deleteIncludeProduct($arrList['promotion_cd']);
+	if (!isset($arrKey[PROMOTION_KBN_INCLUDE])) {
+	    // 同梱商品CDがない場合はここまで
+	    return;
+	}
 
-        // 同梱商品CDがない場合はここまで
-        if (empty($arrList['include_products'])) {
-            return;
-        }
+	$table = "dtb_promotion_include_product";
+	$where = "promotion_cd = ?";
+	// プロモーション同梱商品マスタ削除
+	$objQuery->delete($table, $where, array($arrKey[PROMOTION_KBN_INCLUDE]));
 
         // プロモーションコード
-        $sqlval['promotion_cd'] = $arrList['promotion_cd'];
+        $sqlval['promotion_cd'] = $arrKey[PROMOTION_KBN_INCLUDE];
+        $sqlval['del_flg'] = $arrList['del_flg'];
 
         // 同梱商品CDはカンマ区切りで複数登録されているため、
         // ループして登録処理を行う
         $include_products = explode(',', $arrList['include_products']);
-	$length = count($include_products);
 
-        for ($i = 0; $i < $length; ++$i) {
+        for ($i = 0; $i < count($include_products); $i++) {
             // 同梱商品CD-数量 形式になっているので、さらに分解
             $include_product = explode('-', $include_products[$i]);
             // 商品コード
@@ -648,7 +761,113 @@ __EOS;
 	    $sqlval['create_date'] = 'NOW()';
 
 	    // INSERTの実行
-	    $objQuery->insert("dtb_promotion_include_product", $sqlval);
+	    $objQuery->insert($table, $sqlval);
+	}
+    }
+
+    /**
+     * 広告媒体情報登録を行う.
+     *
+     * @param SC_Query $objQuery SC_Queryインスタンス
+     * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
+     * @return void
+     */
+    function lfRegistMedia($line = "", &$objFormParam, $arrKey) {
+        $objQuery =& SC_Query_Ex::getSingletonInstance();
+        // 登録データ対象取得
+        $arrList = $objFormParam->getHashArray();
+
+        // イベントCDがない場合はここまで
+        if (empty($arrList['media_code'])) {
+            return;
+        }
+
+	$table = "dtb_media";
+	$where = "media_code = ?";
+
+	// 登録確認
+	$chkCnt = $objQuery->count($table, $where, array($arrList['media_code']));
+
+	$sqlval = array();
+	// 媒体名
+	$sqlval['media_name']  = $arrList['promotion_name'];
+	// 属性情報
+	$sqlval['update_id']  = $_SESSION['member_id'];
+	$sqlval['update_date'] = 'NOW()';
+	$sqlval['del_flg']  = $arrList['del_flg'];
+	if ($chkCnt > 0) {
+	    // 更新
+	    $objQuery->update($table, $sqlval, $where, array($val));
+	} else {
+	    // 追加
+	    $media_id = $objQuery->nextVal("dtb_media_media_id");
+	    // 広告ID
+	    $sqlval['media_id'] = $media_id;
+	    // 広告媒体コード
+	    $sqlval['media_code'] = $arrList["media_code"];
+
+	    // 属性情報
+	    $sqlval['creator_id']  = $_SESSION['member_id'];
+	    $sqlval['create_date'] = 'NOW()';
+	    // INSERTの実行
+	    $objQuery->insert($table, $sqlval);
+	}
+    }
+
+    /**
+     * 企画情報登録を行う.
+     *
+     * @param SC_Query $objQuery SC_Queryインスタンス
+     * @param string|integer $line 処理中の行数
+     * @param array $arrKey プロモーションKEY情報
+     * @return void
+     */
+    function lfRegistPlanning($line = "", &$objFormParam, $arrKey) {
+        $objQuery =& SC_Query_Ex::getSingletonInstance();
+        // 登録データ対象取得
+        $arrList = $objFormParam->getHashArray();
+
+        // イベントCDがない場合はここまで
+        if (empty($arrList['media_code'])) {
+            return;
+        }
+
+	$table = "dtb_planning";
+	$where = "media_code = ?";
+
+	// 登録確認
+	$chkCnt = $objQuery->count($table, $where, array($arrList['media_code']));
+
+	$sqlval = array();
+	// 企画名
+	$sqlval['planning_name']  = $arrList['promotion_name'];
+	// 企画タイプ
+	$sqlval['planning_type']  = PLANNING_TYPE_CAMPAIGN;
+	// 広告媒体コード
+	$sqlval['media_code']  = $arrList['media_code'];
+	// キャンペーンコード
+	$sqlval['campaign_code']  = $arrList['campaign_code'];
+	// 開始日
+	$sqlval['start_date']  = $arrList['valid_from'];
+	// 属性情報
+	$sqlval['update_id']  = $_SESSION['member_id'];
+	$sqlval['update_date'] = 'NOW()';
+	$sqlval['del_flg']  = $arrList['del_flg'];
+	if ($chkCnt > 0) {
+	    // 更新
+	    $objQuery->update($table, $sqlval, $where, array($val));
+	} else {
+	    // 追加
+	    $planning_id = $objQuery->nextVal("dtb_planning_planning_id");
+	    // 広告ID
+	    $sqlval['planning_id'] = $planning_id;
+
+	    // 属性情報
+	    $sqlval['creator_id']  = $_SESSION['member_id'];
+	    $sqlval['create_date'] = 'NOW()';
+	    // INSERTの実行
+	    $objQuery->insert($table, $sqlval);
 	}
     }
 

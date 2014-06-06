@@ -890,6 +890,26 @@ define('INOS_CUSTOMER_KASHIDAORE_KBN_KASHIDAORE', 1); // 貸倒顧客
 /** 宅配便CD 基幹連携 */
 define('INOS_DELIV_ID_YAMATO', 0); // ヤマト
 define('INOS_DELIV_ID_SAGAWA', 1); // 佐川
+/** 基幹連携用データフォルダ */
+define('INOS_DIR_SEND_BASE',   "/home/soyafarm/inos_send/"); // 送信用フォルダ
+define('INOS_DIR_SEND_CUSTOMER', INOS_DIR_SEND_BASE . "customer/"); // 顧客
+define('INOS_DIR_SEND_ORDER',    INOS_DIR_SEND_BASE . "order/");    // 受注
+define('INOS_DIR_SEND_REGULAR',  INOS_DIR_SEND_BASE . "regular/");  // 定期
+define('INOS_DIR_RECV_BASE',   "/home/soyafarm/inos_recv/"); // 取込用フォルダ
+define('INOS_DIR_RECV_CUSTOMER', INOS_DIR_SEND_BASE . "customer/"); // 顧客
+define('INOS_DIR_RECV_ORDER',    INOS_DIR_SEND_BASE . "order/");    // 受注
+define('INOS_DIR_REVC_REGULAR',  INOS_DIR_SEND_BASE . "regular/");  // 定期
+define('INOS_DIR_REVC_PRODUCT',  INOS_DIR_SEND_BASE . "product/");  // 商品
+define('INOS_DIR_REVC_PROMOTION',INOS_DIR_SEND_BASE . "promotion/"); // プロモーション
+/** 基幹連携用ファイル名 */
+define('INOS_FILE_SEND_CUSTOMER',   "customer.csv");  // 顧客
+define('INOS_FILE_SEND_ORDER',      "order.csv");     // 受注
+define('INOS_FILE_SEND_REGULAR',    "regular.csv");   // 定期
+define('INOS_FILE_RECV_CUSTOMER',   "customer.csv");  // 顧客
+define('INOS_FILE_RECV_ORDER',      "order.csv");     // 受注
+define('INOS_FILE_REVC_REGULAR',    "regular.csv");   // 定期
+define('INOS_FILE_REVC_PRODUCT',    "product.csv");   // 商品
+define('INOS_FILE_REVC_PROMOTION',  "promotion.csv"); // プロモーション
 /** 定期受注状況(0:受注中、1:購入中、6:休止、7:保留、9:解約)  */
 define('REGULAR_ORDER_STATUS_ORDER',    0);
 define('REGULAR_ORDER_STATUS_PURCHASE', 1);
@@ -946,8 +966,8 @@ define('PROMOTION_KBN_INCLUDE',  '3'); // 同梱品
 define('PROMOTION_VALID_KBN_OFF', '0'); // 無効
 define('PROMOTION_VALID_KBN_ON',  '1'); // 有効
 /** プロモーション送料区分 */
-define('PROMOTION_DELIV_FEE_KBN_FREE',    '0'); // 無料
-define('PROMOTION_DELIV_FEE_KBN_NO_FREE', '1'); // 有料
+define('PROMOTION_DELIV_FEE_KBN_FREE',    '1'); // 無料
+define('PROMOTION_DELIV_FEE_KBN_NO_FREE', '0'); // 有料
 /** 購入できる合計金額の上限 */
 define('PAYMENT_TOTAL_LIMIT', 100000);
 /** 初回購入時の振込可能な金額閾値 */
