@@ -83,7 +83,7 @@ class LC_Page_Admin_Products_ProductsImport extends LC_Page_Admin_Ex
 
             // バッチ処理履歴情報へデータ登録
             SC_Helper_DB_Ex::sfInsertBatchHistory
-                (INOS_DATA_TYPE_REVC_PRODUCT, $count, $r);
+                (INOS_DATA_TYPE_RECV_PRODUCT, $count, $r);
             break;
 
         default:

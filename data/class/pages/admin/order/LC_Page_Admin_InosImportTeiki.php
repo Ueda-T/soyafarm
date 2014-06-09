@@ -1022,7 +1022,7 @@ __EOS;
 
 	// バッチ処理履歴情報へデータ登録
 	SC_Helper_DB_Ex::sfInsertBatchHistory
-	    (INOS_DATA_TYPE_REVC_REGULAR, $count, $r);
+	    (INOS_DATA_TYPE_RECV_REGULAR, $count, $r);
 
     // 実行結果画面を表示
     $this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
