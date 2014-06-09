@@ -94,7 +94,7 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
             list($r, $count) = $this->doUploadCsv
 		($objFormParam, $objUpFile);
 	    SC_Helper_DB_Ex::sfInsertBatchHistory
-		(INOS_DATA_TYPE_REVC_PROMOTION, $count, $r);
+		(INOS_DATA_TYPE_RECV_PROMOTION, $count, $r);
             break;
 
         default:
@@ -141,6 +141,14 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
      * @return void
      */
     function doUploadCsv(&$objFormParam, &$objUpFile) {
+	// ファイル情報取得
+        $arrFile = SC_Utils_Ex::sfGetDirFile(INOS_DIR_RECV_PROMOTION);
+	if (!$arrFile[0]) {
+	    $this->arrErr["csv_file"] = "取込ファイルがセットされておりません";
+	    return;
+	}
+
+	/*
         // ファイルアップロードのチェック
         $objUpFile->makeTempFile('csv_file');
         $arrErr = $objUpFile->checkExists();
@@ -150,116 +158,135 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
         }
         // 一時ファイル名の取得
         $filepath = $objUpFile->getTempFilePath('csv_file');
-        // CSVファイルの文字コード変換
-        $enc_filepath =
-            SC_Utils_Ex::sfEncodeFile
-                ($filepath, CHAR_CODE, CSV_TEMP_REALDIR, 'cp932');
-        // CSVファイルのオープン
-        $fp = fopen($enc_filepath, 'r');
-        // 失敗した場合はエラー表示
-        if (!$fp) {
-             SC_Utils_Ex::sfDispError("");
-        }
+	 */
 
-        // 登録先テーブル カラム情報の初期化
-        $this->lfInitTableInfo();
+	$objQuery =& SC_Query_Ex::getSingletonInstance();
+	$objQuery->begin();
 
-        // 登録フォーム カラム情報
-        $this->arrFormKeyList = $objFormParam->getKeyList();
+	$all_count = 0;
+	// 取込ファイル数処理を行う
+	for ($i = 0; $i < count($arrFile); $i++) {
+	    // 取込ファイルパス
+	    $filepath = INOS_DIR_RECV_PROMOTION . $arrFile[$i];
 
-        // 登録対象の列数
-        $col_max_count = $objFormParam->getCount();
-        // 行数
-        $line_count = 0;
+	    // CSVファイルの文字コード変換
+	    $enc_filepath =
+		SC_Utils_Ex::sfEncodeFile
+		    ($filepath, CHAR_CODE, CSV_SAVE_REALDIR, 'cp932');
 
-        $objQuery =& SC_Query_Ex::getSingletonInstance();
-        $objQuery->begin();
+	    // CSVファイルのオープン
+	    $fp = fopen($enc_filepath, 'r');
+	    // 失敗した場合はエラー表示
+	    if (!$fp) {
+		 SC_Utils_Ex::sfDispError("");
+	    }
 
-        $errFlag = false;
+	    // 登録先テーブル カラム情報の初期化
+	    $this->lfInitTableInfo();
 
-        while (!feof($fp)) {
-            $arrCSV = fgetcsv($fp, CSV_LINE_MAX);
+	    // 登録フォーム カラム情報
+	    $this->arrFormKeyList = $objFormParam->getKeyList();
 
-            // 行カウント
-            $line_count++;
+	    // 登録対象の列数
+	    $col_max_count = $objFormParam->getCount();
+	    // 行数
+	    $line_count = 0;
 
-            // 空行はスキップ
-            if (empty($arrCSV)) {
-                continue;
-            }
-            // 列数が異なる場合はエラー
-            $col_count = count($arrCSV);
-            if ($col_max_count != $col_count) {
-                $this->addRowErr($line_count,
-                                 "※ 項目数が" . $col_count .
-                                 "個検出されました。項目数は" .
-                                 $col_max_count . "個になります。");
-                $errFlag = true;
-                break;
-            }
-            // シーケンス配列を格納する。
-            $objFormParam->setParam($arrCSV, true);
-            $arrRet = $objFormParam->getHashArray();
-            $objFormParam->setParam($arrRet);
-            // 入力値の変換
-            $objFormParam->convParam();
-            // <br>なしでエラー取得する。
-            $arrCSVErr = $this->lfCheckError($objFormParam);
+	    $errFlag = false;
 
-            // 入力エラーチェック
-            if (count($arrCSVErr) > 0) {
-                foreach ($arrCSVErr as $err) {
-                    $this->addRowErr($line_count, $err);
-                }
-                $errFlag = true;
-                break;
-            }
+	    while (!feof($fp)) {
+		$arrCSV = fgetcsv($fp, CSV_LINE_MAX);
 
-	    // プロモーションコード取得
-	    $this->setPromotionData;
+		// 行カウント
+		$line_count++;
 
-            // プロモーションマスタ登録
-            $this->lfRegistPromotion($line_count, $objFormParam, $arrKey);
-            // プロモーションイベントマスタ登録
-            $this->lfRegistPromotionMedia($line_count, $objFormParam, $arrKey);
-            // プロモーション受注区分マスタ登録
-            //$this->lfRegistOrderKbn($line_count, $objFormParam, $arrKey);
-            // プロモーション購入商品マスタ登録
-            $this->lfRegistOrderProduct
-                ($line_count, $objFormParam, $arrKey);
-            // プロモーション値引商品マスタ登録
-            $this->lfRegistDiscountProduct
-                ($line_count, $objFormParam, $arrKey);
-            // プロモーション同梱商品マスタ登録
-            $this->lfRegistIncludeProduct
-                ($line_count, $objFormParam, $arrKey);
-	    // 広告媒体情報登録
-            $this->lfRegistMedia($line_count, $objFormParam, $arrKey);
+		// 空行はスキップ
+		if (empty($arrCSV)) {
+		    continue;
+		}
+		// 列数が異なる場合はエラー
+		$col_count = count($arrCSV);
+		if ($col_max_count != $col_count) {
+		    $this->addRowErr($line_count,
+				     "※ 項目数が" . $col_count .
+				     "個検出されました。項目数は" .
+				     $col_max_count . "個になります。");
+		    $errFlag = true;
+		    break;
+		}
+		// シーケンス配列を格納する。
+		$objFormParam->setParam($arrCSV, true);
+		$arrRet = $objFormParam->getHashArray();
+		$objFormParam->setParam($arrRet);
+		// 入力値の変換
+		$objFormParam->convParam();
+		// <br>なしでエラー取得する。
+		$arrCSVErr = $this->lfCheckError($objFormParam);
 
-	    // 企画情報登録
-            $this->lfRegistPlanning($line_count, $objFormParam, $arrKey);
+		// 入力エラーチェック
+		if (count($arrCSVErr) > 0) {
+		    foreach ($arrCSVErr as $err) {
+			$this->addRowErr($line_count, $err);
+		    }
+		    $errFlag = true;
+		    break;
+		}
 
-            // ログ出力
-            if (($line_count % 100) == 0) {
-                GC_Utils_Ex::gfPrintLog($line_count. "件の登録が完了しました。");
-            }
+		// プロモーションコード取得
+		$this->setPromotionData;
+
+		// プロモーションマスタ登録
+		$this->lfRegistPromotion($line_count, $objFormParam, $arrKey);
+		// プロモーションイベントマスタ登録
+		$this->lfRegistPromotionMedia($line_count, $objFormParam, $arrKey);
+		// プロモーション受注区分マスタ登録
+		//$this->lfRegistOrderKbn($line_count, $objFormParam, $arrKey);
+		// プロモーション購入商品マスタ登録
+		$this->lfRegistOrderProduct
+		    ($line_count, $objFormParam, $arrKey);
+		// プロモーション値引商品マスタ登録
+		$this->lfRegistDiscountProduct
+		    ($line_count, $objFormParam, $arrKey);
+		// プロモーション同梱商品マスタ登録
+		$this->lfRegistIncludeProduct
+		    ($line_count, $objFormParam, $arrKey);
+		// 広告媒体情報登録
+		$this->lfRegistMedia($line_count, $objFormParam, $arrKey);
+
+		// 企画情報登録
+		$this->lfRegistPlanning($line_count, $objFormParam, $arrKey);
+
+		// ログ出力
+		if (($line_count % 100) == 0) {
+		    GC_Utils_Ex::gfPrintLog("[" . $arrFile[$i] . "]" . $line_count. "件の登録が完了しました。");
+		}
+	    }
+	    $msg = sprintf("[%s]%d", $arrFile[$i], ($line_count - 1));
+	    // 取込完了のメッセージを表示
+	    $this->addRowCompleteMsg($msg);
+	    $all_count += ($line_count - 1);
+	    fclose($fp);
         }
         // 取込完了のメッセージを表示
-        $this->addRowCompleteMsg($line_count - 1);
+        $this->addRowCompleteMsg("合計：" . $all_count);
 
         // 実行結果画面を表示
         $this->tpl_mainpage = 'products/promotion_import_complete.tpl';
 
-        fclose($fp);
 
         if ($errFlag) {
             $objQuery->rollback();
+	    // 取込ファイルを移動
+	    $this->lfImportFileMove($arrFile, INOS_NG_DIR);
             return array(INOS_ERROR_FLG_EXIST_ERROR, 0);
         }
 
         $objQuery->commit();
 
-        return array(INOS_ERROR_FLG_EXIST_NORMAL, $line_count - 1);
+	// 取込ファイルを移動
+	$this->lfImportFileMove($arrFile, INOS_OK_DIR);
+
+        return array(INOS_ERROR_FLG_EXIST_NORMAL, $all_count);
     }
 
     /**
@@ -899,5 +926,25 @@ EOF;
      */
     function lfCheckErrorDetail($item, $arrErr) {
         return $arrErr;
+    }
+
+    /**
+     * ファイルを移動させる
+     *
+     * @param array ファイル名
+     * @param string 移動先フォルダ
+     * @return void
+     */
+    function lfImportFileMove($arrFile, $moveDir) {
+
+	for ($i = 0; $i < count($arrFile); $i++) {
+	    $oldFile = sprintf("%s%s", INOS_DIR_RECV_PROMOTION, $arrFile[$i]);
+	    $newFile = sprintf("%s%s/%s", INOS_DIR_RECV_PROMOTION
+					, $moveDir, $arrFile[$i]);
+	    // ファイルを移動
+	    rename($oldFile, $newFile);
+	}
+
+        return;
     }
 }

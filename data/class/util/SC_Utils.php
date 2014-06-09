@@ -1234,6 +1234,29 @@ class SC_Utils {
         }
     }
 
+    // 指定したフォルダ内のファイルを全て取得する
+    function sfGetDirFile($dir){
+        $arrFile = array();
+        if(file_exists($dir)) {
+            $dh = opendir($dir);
+            // フォルダ内のファイルを取得
+            while($file = readdir($dh)){
+                if ($file == "." or $file == "..") continue;
+                $chk_file = $dir . "/" . $file;
+                if(is_file($chk_file)){
+                    $arrFile[] = $file;
+                }
+            }
+
+            // 閉じる
+            closedir($dh);
+
+        }
+	sort($arrFile);
+        // ファイル名
+        return $arrFile;
+    }
+
     /*
      * 関数名：sfWriteFile
      * 引数1 ：書き込むデータ

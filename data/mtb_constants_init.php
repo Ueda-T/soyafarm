@@ -869,9 +869,9 @@ define('INOS_DATA_TYPE_SEND_ORDER',      2); // 2：受注送信
 define('INOS_DATA_TYPE_SEND_REGULAR',    3); // 3：定期送信
 define('INOS_DATA_TYPE_RECV_CUSTOMER',   4); // 4：顧客取込
 define('INOS_DATA_TYPE_RECV_ORDER',      5); // 5：受注取込
-define('INOS_DATA_TYPE_REVC_REGULAR',    6); // 6：定期取込
-define('INOS_DATA_TYPE_REVC_PRODUCT',    7); // 7：商品取込
-define('INOS_DATA_TYPE_REVC_PROMOTION',  8); // 8：プロモーション取込
+define('INOS_DATA_TYPE_RECV_REGULAR',    6); // 6：定期取込
+define('INOS_DATA_TYPE_RECV_PRODUCT',    7); // 7：商品取込
+define('INOS_DATA_TYPE_RECV_PROMOTION',  8); // 8：プロモーション取込
 /** エラーフラグ 基幹連携 */
 define('INOS_ERROR_FLG_EXIST_NORMAL', 0); // 0:正常
 define('INOS_ERROR_FLG_EXIST_ERROR',  1); // 1:エラーあり
@@ -896,20 +896,22 @@ define('INOS_DIR_SEND_CUSTOMER', INOS_DIR_SEND_BASE . "customer/"); // 顧客
 define('INOS_DIR_SEND_ORDER',    INOS_DIR_SEND_BASE . "order/");    // 受注
 define('INOS_DIR_SEND_REGULAR',  INOS_DIR_SEND_BASE . "regular/");  // 定期
 define('INOS_DIR_RECV_BASE',   "/home/soyafarm/inos_recv/"); // 取込用フォルダ
-define('INOS_DIR_RECV_CUSTOMER', INOS_DIR_SEND_BASE . "customer/"); // 顧客
-define('INOS_DIR_RECV_ORDER',    INOS_DIR_SEND_BASE . "order/");    // 受注
-define('INOS_DIR_REVC_REGULAR',  INOS_DIR_SEND_BASE . "regular/");  // 定期
-define('INOS_DIR_REVC_PRODUCT',  INOS_DIR_SEND_BASE . "product/");  // 商品
-define('INOS_DIR_REVC_PROMOTION',INOS_DIR_SEND_BASE . "promotion/"); // プロモーション
+define('INOS_DIR_RECV_CUSTOMER', INOS_DIR_RECV_BASE . "customer/"); // 顧客
+define('INOS_DIR_RECV_ORDER',    INOS_DIR_RECV_BASE . "order/");    // 受注
+define('INOS_DIR_RECV_REGULAR',  INOS_DIR_RECV_BASE . "regular/");  // 定期
+define('INOS_DIR_RECV_PRODUCT',  INOS_DIR_RECV_BASE . "product/");  // 商品
+define('INOS_DIR_RECV_PROMOTION',INOS_DIR_RECV_BASE . "promotion/"); // プロモーション
+define('INOS_OK_DIR',   "ok"); // OKフォルダ
+define('INOS_NG_DIR',   "ng"); // NGフォルダ
 /** 基幹連携用ファイル名 */
 define('INOS_FILE_SEND_CUSTOMER',   "customer.csv");  // 顧客
 define('INOS_FILE_SEND_ORDER',      "order.csv");     // 受注
 define('INOS_FILE_SEND_REGULAR',    "regular.csv");   // 定期
 define('INOS_FILE_RECV_CUSTOMER',   "customer.csv");  // 顧客
 define('INOS_FILE_RECV_ORDER',      "order.csv");     // 受注
-define('INOS_FILE_REVC_REGULAR',    "regular.csv");   // 定期
-define('INOS_FILE_REVC_PRODUCT',    "product.csv");   // 商品
-define('INOS_FILE_REVC_PROMOTION',  "promotion.csv"); // プロモーション
+define('INOS_FILE_RECV_REGULAR',    "regular.csv");   // 定期
+define('INOS_FILE_RECV_PRODUCT',    "product.csv");   // 商品
+define('INOS_FILE_RECV_PROMOTION',  "promotion.csv"); // プロモーション
 /** 定期受注状況(0:受注中、1:購入中、6:休止、7:保留、9:解約)  */
 define('REGULAR_ORDER_STATUS_ORDER',    0);
 define('REGULAR_ORDER_STATUS_PURCHASE', 1);

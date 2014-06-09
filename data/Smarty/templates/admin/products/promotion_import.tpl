@@ -23,7 +23,10 @@
                 <!--{if $arrErr.csv_file}-->
                     <span class="attention"><!--{$arrErr.csv_file}--></span>
                 <!--{/if}-->
+		プロモーションマスタの取込を行います。
+		<!--{*
                 <input type="file" name="csv_file" size="40" /><span class="attention">(1行目タイトル行)</span>
+		*}-->
             </td>
         </tr>
         <tr>
