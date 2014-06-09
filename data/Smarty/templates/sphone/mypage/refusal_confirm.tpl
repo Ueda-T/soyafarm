@@ -11,10 +11,7 @@
      <!--★インフォメーション★-->
         <div class="refusetxt">
            <p>登録削除手続きを実行してもよろしいでしょうか？</p>
-                                            <ul class="btn_refuse">
-              <li><a class="btn" href="./refusal.php" rel="external">いいえ、登録削除しません</a></li>
-                       <li><input class="btn data-role-none" type="submit" value="はい、登録削除します" name="refuse_do" id="refuse_do" /></li>
-           </ul>
+			<p><input class="btn_back data-role-none" type="submit" value="登録削除" name="refuse_do" id="refuse_do" /></p>
         </div>
          </form>
 </section>

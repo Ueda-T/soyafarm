@@ -1,15 +1,11 @@
 <!--{if count($arrNews) > 0}-->
 <!--{* ▼新着情報 *}-->
-<h2 class="spInx"><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_news.gif" width="29" height="18">お知らせ</h2>
+<h2 class="spInx">お知らせ</h2>
 <div class="inxNews">
 	<table width="100%" cellspacing="0" cellpadding="1" border="0">
 		<!--{section name=data loop=$arrNews max=3}-->
 		<tr>
-			<!--{if $smarty.section.data.iteration%2 == 1}-->
-			<td bgcolor="#ffffff" bordercolor="#ffffff">
-			<!--{else}-->
-			<td bgcolor="#eaeaea" bordercolor="#eaeaea">
-			<!--{/if}-->
+			<td bgcolor="#ffffff" bordercolor="#ffffff" style="border-bottom:1px dotted #CCC;">
 				<font size="-1">
 					<!--{$arrNews[data].news_date_disp|date_format:"%Y/%m/%d"}--></span><br />
 					<!--{$arrNews[data].news_title|h}-->

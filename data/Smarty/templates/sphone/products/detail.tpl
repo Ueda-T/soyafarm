@@ -228,19 +228,12 @@ function fnAddProduct(regular_flg, objForm) {
                 
             <div class="goodsCart">
 		        <!--★通常価格★-->
-            <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
 		          <!--{if $arrProduct.price01_max > 0}-->
 		          <p class="price">
-		          <span><!--{$smarty.const.NORMAL_PRICE_TITLE}-->(税込)</span>
+		          <span><!--{$smarty.const.NORMAL_PRICE_TITLE}--></span>
 		                 ￥<!--{if $arrProduct.price01_min == $arrProduct.price01_max}--><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--><!--{else}--><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～\<!--{$arrProduct.price01_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--><!--{/if}-->
 		                      </p>
 		          <!--{/if}-->
-		        <!--{else}-->
-		        <!--★社員価格★-->
-		        <p class="price"><span><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)</span>
-		                ￥<!--{if $arrProduct.price02_min == $arrProduct.price02_max}--><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--><!--{else}--><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～￥<!--{$arrProduct.price02_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--><!--{/if}-->
-		                       </p>
-		        <!--{/if}-->
 
 
         <!--{* ▼コメント２ *}-->
@@ -250,11 +243,11 @@ function fnAddProduct(regular_flg, objForm) {
         <!--{* ▲コメント２ *}-->
 
 				<!--{*★数量★*}-->
-				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:auto;">
+				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:90%;">
 					<tr>
                         <!--{* #346 販売終了後は表示しない *}-->
                         <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
-						<td>
+						<td width="60">
                         <select name="quantity" style="<!--{$arrErr.quantity|sfGetErrorColor}-->">
                             <!--{html_options options=$tpl_arrQuantity[$tpl_product_class_id] }-->
                         </select>
@@ -284,18 +277,19 @@ function fnAddProduct(regular_flg, objForm) {
                             <!--{* 販売終了日過ぎていない場合 *}-->
                             <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
                             <td style="padding:0 0 0 5px;">
-                                <!--{* 社員は定期購入不可 *}-->
-                                <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE && $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
-                                <div id="cartbtn_default" style="margin-bottom:10px;">
-                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/rohto/teiki.gif" alt="定期購入する" style="width:192px; height:32px;" /></a>
-                                </div>
+                            	<ul class="cartBtn">
+                                <!--{if $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
+                                <li class="btnTeiki">
+                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));">定期購入する</a>
                                 <div class="attention" id="cartbtn_dynamic"></div>
+                                </li>
                                 <!--{/if}-->
 
-                                <div id="cartbtn_default">
-                                    <a rel="external" href="javascript:void(fnAddProduct('0', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart.gif" alt="カートに入れる" style="width:192px; height:32px;" /></a>
-                                </div>
+                                <li class="btnCart">
+                                    <a rel="external" href="javascript:void(fnAddProduct('0', document.form1));">カゴに入れる</a>
                                 <div class="attention" id="cartbtn_dynamic"></div>
+                                </li>
+                                </ul>
 
                             </td>
                             <!--{* 販売終了日過ぎた場合 *}-->
@@ -396,9 +390,9 @@ function fnAddProduct(regular_flg, objForm) {
                 
             <div class="goodsCart">
 				<!--{*★数量★*}-->
-				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:auto;">
+				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:90%;">
 					<tr>
-						<td>
+						<td width="60">
 <!--{*
 <input type="number" name="quantity" value="<!--{$arrForm.quantity.value|default:1|h}-->" max="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" data-role="none" />
 *}-->
@@ -418,10 +412,13 @@ function fnAddProduct(regular_flg, objForm) {
 
                         <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
 			        	<td style="padding:0 0 0 5px;">
+			        		<ul class="cartBtn">
                             <!--{* 予約ボタン *}-->
-				            <div id="cartbtn_default">
-				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/rohto/reserve.jpg" alt="予約する" style="width:192px; height:32px;" /></a>
-				            </div>
+				            <li class="btnCart">
+				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カートに入れる" width="18" height="16">
+				                予約する</a>
+				            </li>
+				            </ul>
 				            <div class="attention" id="cartbtn_dynamic"></div>
 			            </td>
 
@@ -429,17 +426,20 @@ function fnAddProduct(regular_flg, objForm) {
                             <!--{* 販売終了日過ぎていない場合 *}-->
                             <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
                             <td style="padding:0 0 0 5px;">
-                                <!--{* 社員は定期購入不可 *}-->
-                                <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE && $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
-                                <div id="cartbtn_default" style="margin-bottom:10px;">
-                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/rohto/teiki.gif" alt="定期購入する" style="width:192px; height:32px;" /></a>
-                                </div>
+			        		<ul class="cartBtn">
+                                <!--{if $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
+                                <li class="btnTeiki">
+                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_teiki.png" alt="定期購入する" width="18" height="16">
+                                    定期購入する</a>
                                 <div class="attention" id="cartbtn_dynamic"></div>
+                                </li>
                                 <!--{/if}-->
-                                <div id="cartbtn_default">
-                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart.gif" alt="カートに入れる" style="width:192px; height:32px;" /></a>
-                                </div>
+                                <li class="btnCart">
+                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カートに入れる" width="18" height="16">
+                                    カゴに入れる</a>
                                 <div class="attention" id="cartbtn_dynamic"></div>
+                                </li>
+                            </ul>
                             </td>
                             <!--{* 販売終了日過ぎた場合 *}-->
                             <!--{else}-->
@@ -481,6 +481,7 @@ function fnAddProduct(regular_flg, objForm) {
 				<th>商品名</th>
 				<td><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--></td>
 			</tr>
+<!--{*
 			<tr>
 				<th>商品番号</th>
 				<td><!--{if $arrProduct.product_code_min == $arrProduct.product_code_max}-->
@@ -489,16 +490,17 @@ function fnAddProduct(regular_flg, objForm) {
 		            <!--{$arrProduct.product_code_min|h}-->～<!--{$arrProduct.product_code_max|h}-->
 		        <!--{/if}--></td>
 			</tr>
-
+*}-->
 			<!--{* ▼ブランド名 *}-->
+<!--{*
 			<!--{if $arrProduct.brand_name|strlen >= 1}-->
 			<tr>
 				<th>ブランド名</th>
 				<td><!--{$arrProduct.brand_name|h}--></td>
 			</tr>
 			<!--{/if}-->
+*}-->
 			<!--{* ▲ブランド名 *}-->
-
 			<!--{* ▼容量 *}-->
 			<!--{if $arrProduct.capacity|strlen >= 1}-->
 			<tr>

@@ -42,7 +42,9 @@
     					<tr>
     						<th class="alignC">注文日<br />注文番号</th>
     						<th class="alignC" nowrap>お支払い<br />金額合計</th>
+<!--{*
     						<th class="alignC">お支払い方法</th>
+*}-->
     						<th class="alignC">処理状況</th>
     						<th class="alignC">商品名</th>
     					</tr>
@@ -53,7 +55,9 @@
     							<a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/history.php?order_id=<!--{$arrOrder[cnt].order_id}-->"><!--{$arrOrder[cnt].order_id}--></a></td>
     							<td class="alignR" nowrap><!--{$arrOrder[cnt].payment_total|number_format}-->円</td>
     							<!--{assign var=payment_id value="`$arrOrder[cnt].payment_id`"}-->
+<!--{*
     							<td class="alignC"><!--{$arrPayment[$payment_id]|h}--></td>
+*}-->
     							<td>
 <!--{assign var=i value=$arrOrder[cnt].status}-->
 <!--{$arrOrderStatus[$i].name}-->
@@ -76,7 +80,7 @@
     						</tr>
     					<!--{/section}-->
     				</table>
-                    <p class="nakedC" style="margin:30px 0;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" name="cart"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart.gif" alt="カートに入れる" class="swp" /></a></p>
+                    <p class="nakedC alignC" style="margin:30px auto;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" name="cart"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart.gif" alt="カートに入れる" class="swp" /></a></p>
     			<!--{else}-->
     				<p>購入履歴はありません。</p>
     			<!--{/if}-->

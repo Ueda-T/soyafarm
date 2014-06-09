@@ -134,7 +134,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </td>
     </tr>
     <tr>
-        <th>生年月日</th>
+        <th>生年月日 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
     </tr>
     <tr>
         <td>
@@ -172,7 +172,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
                     <div class="attention"><!--{$arrErr.mailmaga_flg}--></div>
                 <!--{/if}-->
                 <span style="<!--{$arrErr.mailmaga_flg|sfGetErrorColor}-->">
-                    <input type="radio" name="mailmaga_flg" value="1" id="mailmaga_flg_1" <!--{if $arrForm.mailmaga_flg eq '1'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_1">受け取る</label><input type="radio" name="mailmaga_flg" value="0" id="mailmaga_flg_0" <!--{if $arrForm.mailmaga_flg eq '0'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_0">受け取らない</label><div id="notReceive" style="display: none;" ><img width="100%" src="<!--{$TPL_URLPATH}-->img/rohto/mail_uketoru_up_s.gif" alt="受け取りませんか"></a></div>
+                    <input type="radio" name="mailmaga_flg" value="1" id="mailmaga_flg_1" <!--{if $arrForm.mailmaga_flg eq '1'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_1">受け取る</label><input type="radio" name="mailmaga_flg" value="0" id="mailmaga_flg_0" <!--{if $arrForm.mailmaga_flg eq '0'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_0">受け取らない</label><div id="notReceive" style="display: none;" ><img width="100%" src="<!--{$TPL_URLPATH}-->img/soyafarm/bnr_ml_merit.gif" alt="受け取りませんか"></a></div>
                 </span>
             </td>
         </tr>

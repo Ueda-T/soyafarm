@@ -1,12 +1,16 @@
 /*--------------------------------------------*/
 /*トップページ*/
+header h1 {
+	margin:2%;
+}
+
 /*上部ナビ*/
 #spInxNav{
 margin:10px 0 0;
 }
 #spInxNav table.ftBtn{
 width:100%;
-background:url(../img/rohto/foot_btn_back.gif) repeat-x top #082e7c;
+background:url(../img/soyafarm/bg_frtBtn.png) repeat-x top #349222;
 table-layout: fixed;
 }
 #spInxNav table.ftBtn td{
@@ -25,26 +29,23 @@ padding:40px 0 13px;
 padding:34px 0 7px;
 }
 #spInxNav table.ftBtn td.f01{
-background:url(../img/rohto/foot_btn_01.gif) no-repeat top;
+background:url(../img/soyafarm/btn_nav01.png) no-repeat top;
 }
 #spInxNav table.ftBtn td.f02{
-background:url(../img/rohto/foot_btn_02.gif) no-repeat top;
+background:url(../img/soyafarm/btn_nav02.png) no-repeat top;
 }
 #spInxNav table.ftBtn td.f03{
-background:url(../img/rohto/foot_btn_03.gif) no-repeat top;
+background:url(../img/soyafarm/btn_nav03.png) no-repeat top;
 }
 #spInxNav table.ftBtn td.f04{
-background:url(../img/rohto/foot_btn_04.gif) no-repeat top;
-}
-#spInxNav table.ftBtn td.f05{
-background:url(../img/rohto/foot_btn_05.gif) no-repeat top;
+background:url(../img/soyafarm/btn_nav04.png) no-repeat top;
 }
 /*-----------------*/
 /*キーワード検索*/
 .spInxKey{
 padding:10px;
 margin: 0;
-background:url(../img/rohto/keyword_back.gif);
+background:#FFFFDF;
 background-size: 2px 2px;
 	-webkit-background-size: 2px 2px;
 	-moz-background-size: 2px 2px;
@@ -55,7 +56,7 @@ text-align:left;
 .spInxKey h2{
 font-size:1em;
 line-height:1;
-color:#1064b1;
+color:#476B00;
 font-weight:bold;
 }
 /*-----------------*/
@@ -63,30 +64,25 @@ font-weight:bold;
 h2.spInx{
 margin:0;
 padding:7px 10px;
-background:#0c419a;
-color:#ffffff;
+background:#E3FF99;
+color:#6B9900;
 font-size:1em;
+font-weight:bold;
 line-height:1;
 vertical-align:middle;
+border-top:1px solid #C6E769;
+border-bottom:1px solid #C6E769;
+/*
 background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#0c419a), color-stop(2%,#3d67ae), color-stop(6%,#3d67ae), color-stop(7%,#0c419a), color-stop(100%,#0c419a));
 	background: -moz-gradient(linear, left top, left bottom, color-stop(1%,#0c419a), color-stop(2%,#3d67ae), color-stop(6%,#3d67ae), color-stop(7%,#0c419a), color-stop(100%,#0c419a));
 	background: -o-gradient(linear, left top, left bottom, color-stop(1%,#0c419a), color-stop(2%,#3d67ae), color-stop(6%,#3d67ae), color-stop(7%,#0c419a), color-stop(100%,#0c419a));
 background-color: #0c419a;
 box-shadow: 0 1px 3px rgba(214,211,209,1);
 	-webkit-box-shadow: 0 1px 3px rgba(214,211,209,1);
+*/
 }
 /*-----------------*/
-/*ポイント*/
-.spInxRohtta{
-margin:0 -10px;
-border-bottom:1px solid #cfcfcf;
-}
-.spInxRohtta .rohhta{
-padding:10px;
-display:block;
-}
-/*-----------------*/
-/*ロート通販おすすめ*/
+/*おすすめ*/
 .inxOsusume{
 margin:0;
 padding:0;
@@ -214,16 +210,16 @@ width:100%;
 text-align:left;
 border-radius: 3px;
 	-webkit-border-radius: 3px;
-background:url(../img/rohto/icon_link02.gif) right center no-repeat, -webkit-gradient(linear, left top, left bottom, from(#ff9700), to(#ff6600)) #ff6600;
-	background:url(../img/rohto/icon_link02.gif) right center no-repeat, -ms-linear-gradient(top, #ff9700, #ff6600);
-	background:url(../img/rohto/icon_link02.gif) right center no-repeat, -moz-linear-gradient(top, #ff9700, #ff6600) ;
-	background:url(../img/rohto/icon_link02.gif) right center no-repeat, -o-linear-gradient(top, #ff9700, #ff6600) ;
-	background-color: #ff6600;
+background:url(../img/soyafarm/icon_link02.png) right center no-repeat, -webkit-gradient(linear, left top, left bottom, from(#63C7E1), to(#2DB4D6)) #2DB4D6;
+	background:url(../img/soyafarm/icon_link02.png) right center no-repeat, -ms-linear-gradient(top, #63C7E1, #2DB4D6);
+	background:url(../img/soyafarm/icon_link02.png) right center no-repeat, -moz-linear-gradient(top, #63C7E1, #2DB4D6) ;
+	background:url(../img/soyafarm/icon_link02.png) right center no-repeat, -o-linear-gradient(top, #63C7E1, #2DB4D6) ;
+	background-color: #2DB4D6;
 	background-repeat: no-repeat;
 	background-position: right center;
 /*filter: progid:DXImageTransform.Microsoft.gradient(Enabled=1,GradientType=0,StartColorStr='#ff9700',EndColorStr='#ff6600');*/
 color:#ffffff;
-text-shadow: 0 0 4px #ff4e00;
+text-shadow: 0 0 4px #2DB4D6;
 border:none;
 font-weight:bold;
 font-size:0.875em;
@@ -396,6 +392,84 @@ padding:0 30px 0 0;
 }
 /*--------------------------------------------*/
 /*買い物カゴ*/
+.goodsList td.bg0 {
+	background:none !important;
+}
+.goodsList ul.cartBtn {
+	margin:0 auto 10px auto;
+}
+.goodsList ul.cartBtn li {
+	color:#FFF;
+	float:left;
+	font-size:0.85em;
+	font-weight:bold;
+	padding:10px 0;
+	text-align:center;
+	width:49%;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+.goodsList ul.cartBtn li,
+.goodsList ul.cartBtn li img {
+	vertical-align:middle;
+}
+.goodsList ul.cartBtn li:hover {
+	cursor:pointer;
+}
+.goodsList ul.cartBtn li:last-child {
+	float:right;
+}
+.goodsList ul.cartBtn li:first-child:last-child {
+	width:100%;
+}
+.goodsList ul.cartBtn li.btnTeiki,
+.goodsCart ul.cartBtn li.btnTeiki a {
+	background-image:-moz-linear-gradient(50% 0% -90deg,rgb(51,153,204) 0%,rgb(39,120,158) 100%); 
+	background-image:-webkit-gradient(linear,50% 0%,50% 100%,color-stop(0, rgb(51,153,204)),color-stop(1, rgb(39,120,158)));
+	background-image:-webkit-linear-gradient(-90deg,rgb(51,153,204) 0%,rgb(39,120,158) 100%);
+	background-image:-o-linear-gradient(-90deg,rgb(51,153,204) 0%,rgb(39,120,158) 100%);
+	background-image:-ms-linear-gradient(-90deg,rgb(51,153,204) 0%,rgb(39,120,158) 100%);
+	background-image:linear-gradient(180deg,rgb(51,153,204) 0%,rgb(39,120,158) 100%);
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff3399cc,endColorstr=#ff27789e,GradientType=0)";
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff3399cc,endColorstr=#ff27789e,GradientType=0);
+}
+
+.goodsList ul.cartBtn li.btnCart,
+.goodsCart ul.cartBtn li.btnCart a {
+	background-image:-moz-linear-gradient(50% 0% -90deg,rgb(234,92,95) 0%,rgb(227,41,42) 100%); 
+	background-image:-webkit-gradient(linear,50% 0%,50% 100%,color-stop(0, rgb(234,92,95)),color-stop(1, rgb(227,41,42)));
+	background-image:-webkit-linear-gradient(-90deg,rgb(234,92,95) 0%,rgb(227,41,42) 100%);
+	background-image:-o-linear-gradient(-90deg,rgb(234,92,95) 0%,rgb(227,41,42) 100%);
+	background-image:-ms-linear-gradient(-90deg,rgb(234,92,95) 0%,rgb(227,41,42) 100%);
+	background-image:linear-gradient(180deg,rgb(234,92,95) 0%,rgb(227,41,42) 100%);
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffea5c5f,endColorstr=#ffe3292a,GradientType=0)";
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffea5c5f,endColorstr=#ffe3292a,GradientType=0);
+}
+.goodsCart ul.cartBtn {
+}
+.goodsCart ul.cartBtn li a {
+	display:block;
+	font-size:0.85em;
+	font-weight:bold;
+	padding:10px 0;
+	text-align:center;
+	width:100%;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+.goodsCart ul.cartBtn li a {
+	color:#FFF;
+	text-decoration:none;
+}
+.goodsCart ul.cartBtn li,
+.goodsCart ul.cartBtn li img {
+	vertical-align:middle;
+}
+.goodsCart ul.cartBtn li:first-child {
+	margin-bottom:10px;
+}
 .cart{
 margin:0 10px;
 color:#464646;
@@ -464,13 +538,35 @@ color:#ffffff;
 text-align:center;
 }*/
 table.cartGoods02{
-margin:5px 0 0;
+margin:10px 0;
 width:100%;
+/*
 border-radius: 3px;
-	-webkit-border-radius: 3px;
-border: solid 1px #e0e0e0;
-background:#fff9d1;
+-webkit-border-radius: 3px;
+*/
+border: solid 2px #A9CF39;
+background:#EDFFBF;
 }
+table.cartGoods02 td.campaignCodeMsg {
+	background-color:#FFF;
+	border-top:none;
+	color:#F33;
+	font-size:0.75em;
+	padding:0 10px 10px 10px;
+	text-align:center;
+}
+
+table.cartGoods02 tr td {
+	border-top:1px dotted #A9CF39;
+}
+table.cartGoods02 tr:first-child td {
+	border-top:none;
+}
+
+table.cartGoods02 tr.bt0 td {
+	border-top:none;
+}
+
 /*--------------------------------------------*/
 #spContents .bdrGray{
 margin:10px 0 0;
@@ -486,7 +582,7 @@ font-weight:bold;
 }
 #spContents .bgYellow {
 padding:15px;
-background:#fff9d1;
+background:#FFFFDF;
 border-radius: 3px;
 	-webkit-border-radius: 3px;
 color:#606060;
@@ -1101,11 +1197,11 @@ border-radius: 3px;
 /*ブランド商品ページ*/
 #GoodsList{
 text-align:center;
-padding: 0 5px;
+padding: 0 10px;
 }
 #GoodsList .goodsList{
 border-collapse: separate;
-border-spacing: 5px 8px;
+border-spacing: 0 8px;
 width:100%;
 }
 #GoodsList .goodsList td{
@@ -1130,7 +1226,7 @@ margin: 0;
 padding:10px;
 }
 #GoodsList .goodsList td.goodsInfo dt{
-color:#1064b1;
+color:#476B00;
 font-weight:bold;
 font-size:0.85em;
 line-height:110%;
@@ -1158,8 +1254,12 @@ line-height:120%;
 }
 #GoodsList .goodsList td.goodsInfo dd.price{
 font-size:0.8em;
-font-weight:bold;
+font-weight:normal;
 margin: 5px 0 0;
+}
+#GoodsList .goodsList td.goodsInfo dd.price strong {
+color:#DE0000;
+font-weight:bold;
 }
 #GoodsList .goodsList td.goodsCart{
 vertical-align:middle;

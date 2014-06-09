@@ -10,9 +10,7 @@
       <!--★インフォメーション★-->
       <div class="refusetxt">
           <p>会員を登録削除された場合には、現在保存されている購入履歴や、お届け先などの情報は、すべて削除されますがよろしいでしょうか？</p>
-         <div class="btn_area">
-              <p><input class="btn data-role-none" type="submit" value="登録削除手続き手続きへ進む" name="refusal" id="refusal" /></p>
-         </div>
+              <p><input class="btn_back data-role-none" type="submit" value="登録削除" name="refusal" id="refusal" /></p>
       </div>
           </form>
 </section>

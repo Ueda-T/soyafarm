@@ -89,8 +89,7 @@ function fnInCart(productForm, regular_flg) {
     <!--{assign var=arrErr value=$arrProduct.arrErr}-->
     <!--▼商品-->
 	<tr>
-		<td class="none">&nbsp;</td>
-		<td class="goodsInfo">
+		<td class="goodsInfo" colspan="2">
 		<form name="product_form<!--{$id|h}-->" action="?" onsubmit="return false;">
 		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 		<input type="hidden" name="product_id" value="<!--{$id|h}-->" />
@@ -106,16 +105,10 @@ function fnInCart(productForm, regular_flg) {
 					<!--★商品価格★-->
 					<dd class="price">
 						<!--{* ★価格★ *}-->
-						<!--{if strlen($tpl_customer_kbn) == null || $tpl_customer_kbn == $smarty.const.CUSTOMER_KBN_NORMAL}-->
-							￥<!--{if $arrProduct.price01_min == $arrProduct.price01_max}--><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-							<!--{else}--><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～<!--{$arrProduct.price01_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-							<!--{/if}-->(税込)
-							<!--{* ★社員価格★ *}-->
-							<!--{elseif $tpl_customer_kbn == $smarty.const.CUSTOMER_KBN_EMPLOYEE }-->
-								￥<!--{if $arrProduct.price02_min == $arrProduct.price02_max}--><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-							<!--{else}--><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～<!--{$arrProduct.price02_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->
-							<!--{/if}-->(税込)
-						<!--{/if}-->
+						<strong><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></strong>円(税込)<br />
+						(税抜<strong><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></strong>円)
+						
+						
 					</dd>
 				</dl>
 				<p class="fullstory"><a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->" name="product<!--{$arrProduct.product_id}-->"><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->の詳細を見る</a></p>
@@ -123,45 +116,40 @@ function fnInCart(productForm, regular_flg) {
 			</div>
 			</form>
 		</td>
-
+	</tr>
+	<tr>
+		<td class="bg0 alignC">
         <!--{if $tpl_stock_find[$id]}-->
         <!--{* ▼在庫あり *}-->
 
             <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
             <!--{* ▼販売期間中 *}-->
-
-            <!--★カートに入れる★-->
-            <!--★定期購入★-->
-            <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE && $arrProduct.teiki_flg != 0}-->
-            <td class="goodsCart" style="border:1px solid #41A61E;" onclick="fnInCart(document.product_form<!--{$id|h}-->, '1'); return false;">
-                <div class="linkbox" style="color:#41A61E;">
-                    <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_teiki.png" alt="定期購入する" width="18" height="16"><br>
-                    定期購入<br>する<br><br>
-                </div>
-                <!--{* 定期フラグを保持 *}-->
-                <!--{foreach from=$tpl_teiki_flg key=key item=teiki_flg }-->
-                <input type="hidden" id="teiki_flg_<!--{$id}-->_<!--{$key}-->" value="<!--{$teiki_flg}-->" />
-                <!--{/foreach}-->
-            </td>
-            <!--{/if}-->
-
-            <td class="goodsCart" onclick="fnInCart(document.product_form<!--{$id|h}-->, ''); return false;"<!--{if $tpl_customer_kbn == $smarty.const.CUSTOMER_KBN_EMPLOYEE || $arrProduct.teiki_flg == 0}--> colspan="2"<!--{/if}-->>
-                <div class="linkbox">
-                    <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_cart.png" alt="カートに入れる" width="18" height="16"><br>
-                    <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
-                        予約する
-                    <!--{else if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
-                        カートに<br>入れる
-                    <!--{/if}-->
-                </div>
-            </td>
-
-            <td class="none">&nbsp;</td>
-
+			<ul class="cartBtn clearfix">
+	            <!--★カートに入れる★-->
+	            <!--{if $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
+	            <!--★定期購入★-->
+	            <li class="btnTeiki" onclick="fnInCart(document.product_form<!--{$id|h}-->, '1'); return false;">
+	                <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_teiki.png" alt="定期購入する" width="18" height="16">
+	                定期購入する
+	            </li>
+	            <!--{* 定期フラグを保持 *}-->
+	            <!--{foreach from=$tpl_teiki_flg key=key item=teiki_flg }-->
+	            <input type="hidden" id="teiki_flg_<!--{$id}-->_<!--{$key}-->" value="<!--{$teiki_flg}-->" />
+	            <!--{/foreach}-->
+				<!--{/if}-->
+	            <li class="btnCart" onclick="fnInCart(document.product_form<!--{$id|h}-->, ''); return false;">
+	                <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カートに入れる" width="18" height="16">
+	                <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
+	                    予約する
+	                <!--{else if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
+	                    カゴに入れる
+	                <!--{/if}-->
+	            </li>
+			</ul>
             <!--{* ▲販売期間中 *}-->
             <!--{else}-->
             <!--{* ▼販売終了 *}-->
-            <td class="goodsText" colspan="2" style="white-space:normal;">終了しました。</td>
+            <p class="goodsText" colspan="2" style="white-space:normal;">終了しました。</p>
             <!--{* ▲販売終了 *}-->
             <!--{/if}-->
 
@@ -169,13 +157,12 @@ function fnInCart(productForm, regular_flg) {
         <!--{else}-->
         <!--{* ▼在庫無し *}-->
 
-            <td class="goodsText" colspan="2" style="white-space:normal;">
-                <!--{foreach from=$tpl_stock_status_name key=key item=stock_status }-->
-                <div class="linkbox"><!--{$stock_status}--></div>
-                <!--{/foreach}-->
-            </td>
+            <!--{foreach from=$tpl_stock_status_name key=key item=stock_status }-->
+            <div class="linkbox"><!--{$stock_status}--></div>
+            <!--{/foreach}-->
         <!--{* ▲在庫無し *}-->
 		<!--{/if}-->
+		</td>
 	</tr>
     <!--▲商品-->
     

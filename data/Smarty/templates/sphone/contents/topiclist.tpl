@@ -3,7 +3,7 @@
 <!--{section name=data loop=$arrNews max=10}-->
 <!--{assign var="date_array" value="-"|explode:$arrNews[data].news_date_disp}-->
 <tr>
-<td bgcolor="#dfedf5" bordercolor="#dfedf5">
+<td bgcolor="#E3FF99" bordercolor="#E3FF99">
 <h2><font size="-1">
 <!--{$date_array[0]}-->/<!--{$date_array[1]}-->/<!--{$date_array[2]}-->
 <strong><!--{$arrNews[data].news_title|h|nl2br}--></strong>
@@ -24,12 +24,9 @@
 <!--{/section}-->
 </table>
 
-<hr color="#dfedf5">
+<hr color="#63C7E1">
 
-<font size="-1">
-直前の画面に戻る場合は､携帯電話の｢戻る｣ﾎﾞﾀﾝを押すか､数字の0ｷｰを押してﾄｯﾌﾟﾍﾟｰｼﾞにお戻りください｡
-</font>
 <div align="right"><font size="-1">
-<a href="#top"><font color="#003b9b">ﾍﾟｰｼﾞTOP▲</font></a>
+<a href="#top"><font color="#005aac">ﾍﾟｰｼﾞTOP▲</font></a>
 </font></div>
 <br>

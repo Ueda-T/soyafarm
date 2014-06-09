@@ -53,7 +53,7 @@
 <script src="<!--{$TPL_URLPATH}-->js/favorite.js"></script>
 
 <meta name="copyright" content="Rohto Pharmaceutical Co., Ltd.">
-<title><!--{if $tpl_subtitle|strlen >= 1}--><!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--><!--{$tpl_title|h}--><!--{/if}-->【ロート通販オンラインショップ】</title>
+<title><!--{if $tpl_subtitle|strlen >= 1}--><!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--><!--{$tpl_title|h}--><!--{/if}-->【ソヤファームクラブ】</title>
 <!--{* iPhone用アイコン画像 *}-->
 <link rel="apple-touch-icon" href="<!--{$TPL_URLPATH}-->img/common/apple-touch-icon.png" />
 

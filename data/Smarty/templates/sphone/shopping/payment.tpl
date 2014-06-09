@@ -122,7 +122,7 @@
 //]]>
 </script>
 <section id="undercolumn">
-<h2 class="spNaked"><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_cart.gif" width="23" height="16">お買い物カゴ<span>3 / 4</span></h2>
+<h2 class="spNaked">お買い物カゴ<span>3 / 4</span></h2>
 
         <form name="form1" id="form1" method="post" action="?">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
@@ -339,8 +339,8 @@
                 <tbody>
                     <!--{foreach from=$arrIncludeKbn item=str_include_kbn key=idx}-->
                     <tr class="inc_kbn_<!--{$idx}-->" style="<!--{if $arrForm.payment_id.value == $smarty.const.PAYMENT_ID_DAIBIKI && $idx == $smarty.const.INCLUDE_KBN_BESSOU}-->display:none;<!--{/if}-->">
-                        <td><p class="naked"><input type="radio" id="radio_inc_kbn_<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$idx}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$idx|sfGetChecked:$arrForm[$key].value}--> />
-                        <!--{$str_include_kbn}--></p></td>
+                        <td><p class="naked"><label><input type="radio" id="radio_inc_kbn_<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$idx}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$idx|sfGetChecked:$arrForm[$key].value}--> />
+                        <!--{$str_include_kbn}--></label></p></td>
                     </tr>
                     <!--{/foreach}-->
                 </tbody>

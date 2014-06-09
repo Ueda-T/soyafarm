@@ -70,7 +70,7 @@ $(document).ready(function() {
 <section>
 <!--▼CONTENTS-->
 <section id="undercolumn">
-<h2 class="spNaked"><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_cart.gif" width="23" height="16">お買い物カゴ</h2>
+<h2 class="spNaked">お買い物カゴ</h2>
 
     <!--{* カゴの中に商品がある場合にのみ表示 *}-->
     <!--{if count($cartKeys) > 1}-->
@@ -137,7 +137,7 @@ $(document).ready(function() {
       <!--▲login form-->
     <!--{/if}-->
     
-    <hr />
+    <hr color="#CCC" />
     <!--▲ログインフォーム-->
 
     <!--{assign var=sub_total value=0}-->
@@ -199,7 +199,7 @@ $(document).ready(function() {
             <input type="hidden" name="cart_no<!--{$item.cart_no}-->" value="<!--{$item.cart_no}-->" />
             <!--{if $item.regular_flg != $smarty.const.REGULAR_PURCHASE_FLG_ON}-->
                 <!--{if $tankai_flg == 0}-->
-            <h2 style="background-color:#C7B068;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">単回購入（今回のみお届け）</h2>
+            <h2 style="background-color:#C7B068;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">今回だけのお届け</h2>
 			<table cellpadding="0" cellspacing="0" class="cartGoods" style="margin-top:0;">
                 <!--{assign var=tankai_flg value=1}-->
                 <!--{/if}-->
@@ -210,12 +210,15 @@ $(document).ready(function() {
 					</td>
 					<td style="padding:10px 9px 0 0; width:100%;">
 						<!--{* 商品名 *}-->
-						<a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a><br />
+						<a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a>
+<!--{*
+						<br />
 						<!--{if $item.productsClass.product_code_min == $item.productsClass.product_code_max}-->
 						    <!--{$item.productsClass.product_code_min|h}-->
 						<!--{else}-->
 						    <!--{$item.productsClass.product_code_min|h}-->～<!--{$item.productsClass.product_code_max|h}-->
 						<!--{/if}-->
+*}-->
 
 						<!--{if $item.productsClass.classcategory_name1 != ""}-->
 						    <!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
@@ -227,7 +230,7 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 					<td style="padding:15px 9px 0 0; text-align:right;">
-						<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円
+						価格:<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円
                     </td>
 				</tr>
 				<tr>
@@ -271,7 +274,7 @@ $(document).ready(function() {
                         <!--{assign var=tankai_flg value=2}-->
             </table>
                     <!--{/if}-->
-            <h2 style="background-color:#88C442;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">定期購入</h2>
+            <h2 style="background-color:#39C;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">定期お届けコース</h2>
 			<table cellpadding="0" cellspacing="0" class="cartGoods" style="margin-top:0;">
                         <!--{assign var=key1 value="course_cd`$item.cart_no`"}-->
                         <!--{assign var=key2 value="todoke_cycle`$item.cart_no`"}-->
@@ -280,6 +283,8 @@ $(document).ready(function() {
                         <!--{assign var=key5 value="todoke_kbn`$item.cart_no`"}-->
 			<span class="attention"><!--{$arrErr[$key1]}--></span>
 			<span class="attention"><!--{$arrErr[$key2]}--></span>
+			        <tr>
+			            <td colspan="2" style="padding:2%;">
                         <div id="course_cd">お届け間隔
                         <input type="hidden" name="<!--{$key5}-->" id="<!--{$key5}-->" value="<!--{$arrForm[$key5]}-->" />
                             <select name="<!--{$key1}-->" id="<!--{$key1}-->" onchange="fnFormModeSubmit('form<!--{$key}-->','set_regular','cart_no','<!--{$item.cart_no}-->'); return false" style="<!--{$arrErr[$key1]|sfGetErrorColor}-->">
@@ -289,6 +294,8 @@ $(document).ready(function() {
                             <!--{html_options options=$arrTodokeKbn selected=$arrForm[$key2]|default:''}-->
                             </select>
                         </div>
+                        </td>
+                    </tr>
 
                      <!--{assign var=teiki_flg value=1}-->
                 <!--{/if}-->
@@ -299,12 +306,7 @@ $(document).ready(function() {
                     </td>
 					<td style="padding:10px 9px 0 0; width:100%;">
 						<!--{* 商品名 *}-->
-                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a><br />
-                        <!--{if $item.productsClass.product_code_min == $item.productsClass.product_code_max}-->
-                            <!--{$item.productsClass.product_code_min|h}-->
-                        <!--{else}-->
-                            <!--{$item.productsClass.product_code_min|h}-->～<!--{$item.productsClass.product_code_max|h}-->
-                        <!--{/if}-->
+                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$item.productsClass.product_id}-->"><!--{$item.productsClass.name|h}--></a>
 
                         <!--{if $item.productsClass.classcategory_name1 != ""}-->
                             <!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
@@ -316,7 +318,7 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 					<td style="padding:15px 9px 0 0; text-align:right;">
-                        価格：<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円
+                        価格:<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円
                     </td>
 				</tr>
 				<tr>
@@ -355,11 +357,23 @@ $(document).ready(function() {
                     </td>
 				</tr>
 				<tr>
-					<td style="padding:5px 9px 0 0; text-align:right;">
-                    <!--{$item.quantity}--><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="16" height="16" alt="-" /></a>
-                    <a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','up','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_plus.jpg" width="16" height="16" alt="＋" /></a>
+					<td style="padding:5px 9px 0 0; text-align:right;vertical-align:middle;">
+						<table style="width:auto;margin:0 0 0 auto;">
+							<tr>
+								<td style="vertical-align:middle;">
+									数量:<!--{$item.quantity}-->
+								</td>
+								<td style="vertical-align:middle;"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="20" height="20" alt="-" style="margin:0 1.5em;" /></a>
+								</td>
+								<td style="vertical-align:middle;padding-right:1em;">
+									<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','up','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_plus.jpg" width="20" height="20" alt="＋" style="margin:0 1.5em 0 0;" /></a>
+								</td>
+								<td style="vertical-align:middle;">
+			                        <a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$item.cart_no}-->'); return false;" class="btnGray02">削除</a>
+			                    </td>
+		                    </tr>
+	                    </table>
                     <!--{assign var=sub_total value=$sub_total+$item.total_inctax}-->
-                    <a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$item.cart_no}-->'); return false;" class="btnGray02">削除</a>
                     </td>
                 </tr>
                 <tr>
@@ -385,6 +399,7 @@ $(document).ready(function() {
             <!--{/if}-->
 
             <!--{* ▼定期専用のメッセージ表示 *}-->
+            <!--{*
             <!--{if $tpl_regular_purchase_flg === true}-->
             <h3 class="subtitle">定期購入に関する注意事項</h3>
             <div class="cart" style="margin:20px 0 0">
@@ -395,13 +410,14 @@ $(document).ready(function() {
                     </p>
             </div>
             <!--{/if}-->
+            *}-->
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
             <!--{* ▼同梱品情報表示 *}-->
             <!--{if $tpl_include_product_flg}-->
             <!--{foreach from=$arrIncludeProduct item=item}-->
                 <!--{if $include_flg == 0}-->
-            <h2 style="background-color:#C7B068;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">プレゼント商品</h2>
+            <h2 style="background-color:#F66;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:13px 10px;font-weight:bold;font-size:1em;">プレゼント商品</h2>
 			<table cellpadding="0" cellspacing="0" class="cartGoods" style="margin-top:0;">
                 <!--{assign var=include_flg value=1}-->
                 <!--{/if}-->
@@ -412,7 +428,6 @@ $(document).ready(function() {
 					<td style="padding:10px 9px 0 0; width:100%;">
 						<!--{* 商品名 *}-->
 						<!--{$item.product_name|h}--><br />
-						<!--{$item.product_code|h}--><br />
 						数量:<!--{$item.quantity}-->
 					</td>
 				</tr>
@@ -426,14 +441,15 @@ $(document).ready(function() {
             <!--{* ▲商品情報 *}-->
 			<table cellpadding="0" cellspacing="0" class="cartGoods02">
 				<tr>
-					<td colspan="2" style="background-color:#FFF;padding:15px 9px;color:#464646; font-weight:bold; vertical-align:middle; text-align:center;">
+					<td colspan="2" style="background-color:#FFF;padding:15px 9px 0 9px;color:#464646; font-weight:bold; vertical-align:middle; text-align:center;">
 						小計
-						<span style="font-size:1.125em;color:#ff8f00;font-weight:bold;"><!--{$sub_total|number_format}-->円</span>
+						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$sub_total|number_format}-->円</span>
 						＋
 						送料
-						<span style="font-size:1.125em;color:#ff8f00;font-weight:bold;"><!--{$arrData[$key].deliv_fee|number_format}-->円</span>
+						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$arrData[$key].deliv_fee|number_format}-->円</span>
 					</td>
 				</tr>
+<!--{*
 				<tr>
 					<td style="background-color:#FFF; padding:0 0 0 9px; font-size:0.75em; color:#464646; font-weight:bold; vertical-align:middle;">
 ご使用ポイント</td>
@@ -443,35 +459,37 @@ $(document).ready(function() {
 						pt / <!--{$tpl_user_point|number_format}-->pt
 					</td>
 				</tr>
+*}-->
 
-<!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
-				<tr>
+				<tr class="bt0">
 					<td style="background-color:#FFF; padding:0 0 0 9px; font-size:0.75em; color:#464646; font-weight:bold; vertical-align:middle;">
 キャンペーンコード</td>
-<td style="background-color:#FFF; padding:15px 9px 15px 0; font-size:1.125em; color:#ff8f00; font-weight:bold; text-align:right">
+<td style="background-color:#FFF; padding:15px 9px 15px 0; font-size:1.125em; color:#F33; font-weight:bold; text-align:right">
 		<input type="text" size="15" name="campaign_code" value="<!--{$tpl_campaign_code}-->" maxlength="<!--{$smarty.const.CAMPAIGN_CODE_LEN}-->" />
 					</td>
 				</tr>
-<!--{/if}-->
-			</table>
-
-			<!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
-			<p><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','re_calc','cart_no','<!--{$item.cart_no}-->'); return false" class="btn">再計算する</a></p>
-			<!--{/if}-->
-
-<!--{if $tpl_input_campaign_ok_flg}-->キャンペーンコードが適用されました<!--{/if}-->
-			<table cellpadding="0" cellspacing="0" class="cartGoods02">
 				<tr>
-					<td style="padding:0 0 0 9px; font-size:0.75em; color:#464646; font-weight:bold; vertical-align:middle;">
-
-						お支払いの合計
-					</td>
-					<td style="padding:15px 9px 15px 0; font-size:1.125em; color:#ff8f00; font-weight:bold; text-align:right">
-						<!--{$arrData[$key].total|number_format}-->円
-			(税込)</span>
+					<td colspan="2" style="padding:10px;background:#FFF;border-top:1px dotted #A9CF39;">
+						<p><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','re_calc','cart_no','<!--{$item.cart_no}-->'); return false" class="btn">再計算する</a></p>
 					</td>
 				</tr>
-			</table>
+			<!--{if $tpl_input_campaign_ok_flg}-->
+			<tr>
+				<td colspan="2" class="campaignCodeMsg">
+					<p>キャンペーンコードが適用されました</p>
+				</td>
+			</tr>
+			<!--{/if}-->
+			<tr>
+				<td style="padding:0 0 0 9px; font-size:0.75em; color:#464646; font-weight:bold; vertical-align:middle;">
+
+					お支払いの合計
+				</td>
+				<td style="padding:15px 9px 15px 0; font-size:1.125em; color:#F33; font-weight:bold; text-align:right">
+					<!--{$arrData[$key].total|number_format}-->円<span style="color:#333;font-size:0.65em;">(税込)</span>
+				</td>
+			</tr>
+		</table>
 
             <!--{if strlen($tpl_error) == 0}-->
 			<p class="cartBtn">

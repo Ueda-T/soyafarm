@@ -21,12 +21,4 @@
 			<!--{/if}-->
 		</div>
 	</div>
-
-	<div style="margin:10px auto;">
-		<p class="naked">「旬穀旬菜」と「ロート通販」は同じお買物カゴでお買物ができます。</p>
-		<ul style="text-align:center;">
-			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php?category_id=31"><img src="<!--{$TPL_URLPATH}-->img/rohto/bnr_shun.gif" width="100%" /></a></li>
-			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/bnr_rohto.gif" width="100%" /></a></li>
-		</ul>
-	</div>
 </section>

@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 <!--CONTENTS-->
 <section id="undercolumn">
-<h2 class="spNaked"><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_cart.gif" width="23" height="16">お買い物カゴ<span>4 / 4</span></h2>
+<h2 class="spNaked">お買い物カゴ<span>4 / 4</span></h2>
 		<div class="estimate">ご注文はまだ完了していません。</div>
 		<p class="naked">
 			以下のご注文内容をご確認の上、画面下の「<!--{if $use_module}-->次へ<!--{else}-->注文する<!--{/if}-->」ボタンをクリックしてください。

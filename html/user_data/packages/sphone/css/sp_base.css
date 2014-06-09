@@ -4,7 +4,7 @@ body {
 margin:0;
 padding:0;
 font-family:"ヒラギノ角ゴ Pro W3";
-color:#3e3e3e;
+color:#333;
 background:#ffffff;
 font-size: 1em!important;
 -webkit-text-size-adjust : none;
@@ -29,7 +29,7 @@ font-weight:normal;
 h2.spNaked{
 margin:0 0 10px;
 padding:7px 0;
-background:#0c419a;
+background:#4EA03D;
 color:#ffffff;
 text-align:center;
 font-size:1em;
@@ -69,6 +69,7 @@ height: 0;
 display: block;
 visibility: hidden;
 }
+.alignC { text-align:center !important; }
 /*--------------------------------------------*/	
 #spHeader{
 height:51px;
@@ -165,7 +166,7 @@ background:-webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#e4
 #spFooter table.ftSubbtn td a{
 display:block;
 padding:10px 0;
-color:#1064b1;
+color:#005aac;
 text-decoration:none;
 }
 #spFooter table.ftSubbtn td a.conL{
@@ -182,10 +183,10 @@ margin:20px 0;
 }
 #spFooter .copy{
 padding:10px 0;
-font-size:0.5em;
+font-size:0.6em;
 line-height:1em;
 text-align:center;
-background:#606060;
+background:#A9CF39;
 color:#ffffff;
 }
 /*--------------------------------------------*/	
