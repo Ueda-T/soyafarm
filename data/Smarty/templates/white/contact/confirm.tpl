@@ -16,8 +16,8 @@ function fnCheckSubmit() {
 <!--▼CONTENTS-->
 <div id="undercolumn">
     <div id="undercolumn_contact">
-		<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_title.gif" alt="お問い合わせ"></h1>
 
+<!--{*
 		<!--{if $smarty.session.customer}-->
 		<p class="pankuzu">
 			<a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/">マイページ</a>
@@ -25,6 +25,7 @@ function fnCheckSubmit() {
 			お問い合わせ
 		</p>
 		<!--{/if}-->
+*}-->
 
         <p class="nakedC" style="margin-bottom:20px;">下記入力内容で送信してもよろしいでしょうか？<br />
             よろしければ、一番下の「送信」ボタンをクリックしてください。</p>
@@ -75,7 +76,7 @@ function fnCheckSubmit() {
 
             <p class="btn">
                     <a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back02" id="back02" class="swp" /></a>
-                    <a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_send.gif" alt="送信" name="send" id="send" class="swp" /></a>
+                    <a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_send.gif" alt="送信" name="send" id="send" class="swp" /></a>
             </p>
             </div><!--／wrapForm-->
 

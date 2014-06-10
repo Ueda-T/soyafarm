@@ -29,7 +29,7 @@
 
         <p class="btn">
                     <!--{if $return_top}-->
-                        <a href="<!--{$smarty.const.TOP_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_toppage.gif" alt="トップページへ" border="0" name="b_toppage" class="swp" /></a>
+                        <a href="<!--{$smarty.const.TOP_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_toppage.gif" alt="トップページへ" border="0" name="b_toppage" class="swp" /></a>
                     <!--{else}-->
                         <a href="javascript:history.back()"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="b_back" id="b_back" class="swp" /></a>
                     <!--{/if}-->

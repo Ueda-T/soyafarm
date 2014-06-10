@@ -10,11 +10,13 @@
 			お問い合わせ
 		</p>
 		<!--{/if}-->
+*}-->
 
         <form name="form1" method="post" action="?">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
         <input type="hidden" name="mode" value="confirm" />
 
+<!--{*
         <!--▼お問い合わせフォーム-->
         <!--{if $smarty.session.customer}-->
         <div class="wrapCustomer">
@@ -34,6 +36,7 @@
         </div>
         <!--{/if}-->
 *}-->
+
             <p class="nakedC">下記の項目を入力の上、送信してください。</p>
 
             <div class="wrapForm">

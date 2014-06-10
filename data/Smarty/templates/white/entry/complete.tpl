@@ -41,7 +41,7 @@
             <div class="btn_area">
                 <ul>
                     <li>
-                        <a href="<!--{$smarty.const.TOP_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_toppage.gif" alt="トップページへ" border="0" name="b_toppage" class="swp" /></a>
+                        <a href="<!--{$smarty.const.TOP_URLPATH}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_toppage.gif" alt="トップページへ" border="0" name="b_toppage" class="swp" /></a>
                     </li>
                 </ul>
             </div>
