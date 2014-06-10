@@ -1,6 +1,7 @@
 	<!--{strip}-->
 	<!--▼現在のポイント-->
 	<!--{if $point_disp !== false}-->
+<!--{*
 		<p>
 			<!--{$CustomerName|h}--></strong>&nbsp;様<br />
                         <!--{$tpl_discount.customer_type_name|h}--><br />
@@ -21,6 +22,7 @@
 		</table>
 	</div>
 	<!--{/if}-->
+*}-->
 	<!--{*
 	<!--{if $smarty.const.USE_POINT !== false}-->&nbsp;<br>
 		現在の所持ポイントは&nbsp;<span class="point st"><!--{$CustomerPoint|number_format|default:"0"|h}-->pt</span><!--{if $CustomerPointValidDate neq ""}-->(<!--{$CustomerPointValidDate|date_format:"%Y/%m/%d"}-->まで有効)<!--{/if}-->、&nbsp;
@@ -31,36 +33,39 @@
 	<!--▲現在のポイント-->
 </div>
 <div class="myPageMenu">
-	<table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#b9d0dc">
-		<tr bgcolor="#dfedf5">
-			<th align="left"><h2><font size="3">マイページメニュー</font></h2></th>
-		</tr>
-	</table>
 
-	<ul class="myPageMenu">
+	<ul class="myPageMenu clearfix">
 		<!--{* 会員状態 *}-->
 		<!--{if $tpl_login}-->
+<!--{*
 			<li><a href="<!--{$smarty.const.CART_URLPATH}-->">お買い物カゴを見る</a></li>
+*}-->
+			<li class="mp_nav_idx"><a href="index.php" class="<!--{if $tpl_mypageno == 'index'}-->selected<!--{elseif $tpl_mypageno == 'regular'}-->bgNone<!--{/if}-->"><span>購入履歴</span></a></li>
 
+			<li class="mp_nav_regular"><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}-->selected<!--{/if}-->"><span>定期購入一覧</span></a></li>
 
-			<li><a href="history_list.php" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->">購入履歴
-			<span class="dsc">現在のご注文完了された商品の配送手続き状況及び、注文内容を確認できます。</span></a></li>
+			<li class="mp_nav_chg_b"><a href="change_basic.php" class="<!--{if $tpl_mypageno == 'change_basic'}--> selected<!--{/if}-->"><span>メールアドレスとパスワードの変更</span></a></li>
 
-			<li><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}--> selected<!--{/if}-->">定期購入履歴</a></li>
+			<li class="mp_nav_chg"><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}-->selected<!--{/if}-->"><span>登録情報変更</span></a></li>
 
-			<li><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->">ご登録内容の変更
-			<span class="dsc">お客様情報を変更できます。</span></a></li>
-			<li><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}--> selected<!--{/if}-->">配送先新規登録
-			<span class="dsc">配送先の情報を登録できます。</span></a></li>
-
-			<li><a href="change_basic.php" class="<!--{if $tpl_mypageno == 'change_basic'}--> selected<!--{/if}-->">メールアドレスとパスワードの変更
-			<span class="dsc">現在使用しているメールアドレスとパスワードの変更ができます。</span></a></li>
-
+			<li class="mp_nav_deliv"><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}-->selected<!--{/if}-->"><span>お届け先変更</span></a></li>
+			<li class="mp_nav_contact"><a href="<!--{$smarty.const.HTTPS_URL}-->"><span>お問い合わせ</span></a></li>
+<!--{*
 			<li><a href="refusal.php" width="240" height="115" class="swp">登録削除
 			<span class="dsc">ご登録内容､注文履歴を削除します。</span></a></li>
-
+*}-->
 		<!--{else}-->
 		<!--{/if}-->
 	</ul>
+	<!--{if !$tpl_disable_logout}-->
+	<form name="header_login_form" id="header_login_form" method="post" action="<!--{$smarty.const.ROOT_URLPATH}-->frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
+		<input type="hidden" name="mode" value="login" />
+		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
+		<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
+		<p class="mt20 mb20" style="text-align:right;">
+			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;" class="btnGray">ログアウト</a>
+		</p>
+	</form>
+	<!--{/if}-->
 	<!--{/strip}-->
 <!--▲NAVI-->

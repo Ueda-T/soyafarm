@@ -6,10 +6,16 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 <script src="<!--{$TPL_URLPATH}-->js/pschecker.js" type="text/javascript"></script>
 <script src="<!--{$smarty.const.ROOT_URLPATH}-->js/mypage_basic.js" type="text/javascript"></script>
 
-<section id="mainMyPage">
+<div id="mainMyPage">
 	<h2 class="spNaked"><!--{$tpl_title}--></h2>
 
-	<p class="naked">メールアドレスとパスワードの変更を行います。<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"> 印の箇所は、必ず入力してください。</p>
+	<!--{if $tpl_navi != ""}-->
+		<!--{include file=$tpl_navi}-->
+	<!--{else}-->
+		<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+	<!--{/if}-->
+
+	<p class="naked mb10">メールアドレスとパスワードの変更を行います。<br /><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"> 印の箇所は、必ず入力してください。</p>
 
     <div class="wrapForm">
         <form name="form1" id="form1" method="post" action="?">
@@ -47,7 +53,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
                         <p><span class="attention mini">確認のため、もう一度入力ください。</span></p>
                         <input class="strong-password" type="password" name="password02" value="<!--{$arrForm.password02|h}-->" maxlength="<!--{$smarty.const.PASSWORD_MAX_LEN}-->" style="<!--{$arrErr.password|cat:$arrErr.password02|sfGetErrorColor}-->" class="box120" />
                     </div>
-                    <div class="chkIndicatorBox">
+                    <div class="chkIndicatorBox ml0">
                         <p class="tit">パスワードの安全性</p>
                         <div class="password-container">
                             <div class="strength-indicator clearfix">
@@ -65,5 +71,5 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </p>
         </form>
     </div>
-</section>
+</div>
 <!--▲CONTENTS-->

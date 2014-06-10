@@ -1,7 +1,11 @@
-<section id="mypagecolumn">
+<div id="mainMyPage">
 	<h2 class="spNaked"><!--{$tpl_title}--></h2>
 
-  <h3 class="title_mypage">定期購入一覧</h3>
+	<!--{if $tpl_navi != ""}-->
+		<!--{include file=$tpl_navi}-->
+	<!--{else}-->
+		<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+	<!--{/if}-->
 
    <form name="form1" id="form1" method="post" action="?">
       <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
@@ -85,4 +89,4 @@
 <!--{/if}-->
                 </form>
 
-</section>
+</div>

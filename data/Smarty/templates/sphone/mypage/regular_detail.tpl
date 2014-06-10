@@ -79,9 +79,14 @@ $(function() {
 
 </script>
 
-<section id="mypagecolumn">
+<div id="mainMyPage">
   <h2 class="spNaked">マイページ</h2>
-  <h3 class="title_mypage">定期購入詳細</h3>
+	<!--{if $tpl_navi != ""}-->
+		<!--{include file=$tpl_navi}-->
+	<!--{else}-->
+		<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+	<!--{/if}-->
+
 
 <!--{* 選択済みの商品エラーメッセージ *}-->
 <!--{if $tpl_message}-->
@@ -179,7 +184,7 @@ $(function() {
             </td>
         </tr>
       </table>
-      <h2 style="background-color:#88C442;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:10px;font-weight:bold;font-size:0.85em;">定期購入 変更商品</h2>
+      <h2 style="background-color:#88C442;color:#FFF;border-radius:4px 4px 0 0;margin-top:10px;padding:10px;font-weight:bold;font-size:0.85em;">定期購入商品</h2>
 			<table cellpadding="0" cellspacing="0" class="cartGoods" style="margin-top:0;">
 			<!--{foreach from=$arrCartKeys item=key}-->
 			<!--{foreach from=$arrCart[$key] item=item}-->
@@ -192,12 +197,13 @@ $(function() {
 					<td style="padding:10px 9px; width:100%;">
 						<!--{* 商品名 *}-->
 						<!--{$item.productsClass.name|h}--><br />
+<!--{*
 						<!--{if $item.productsClass.product_code_min == $item.productsClass.product_code_max}-->
 						    <!--{$item.productsClass.product_code_min|h}-->
 						<!--{else}-->
 						    <!--{$item.productsClass.product_code_min|h}-->～<!--{$item.productsClass.product_code_max|h}-->
 						<!--{/if}-->
-
+*}-->
 						<!--{if $item.productsClass.classcategory_name1 != ""}-->
 						    <!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
 						<!--{/if}-->
@@ -253,10 +259,10 @@ $(function() {
 				<tr>
 					<td colspan="2" style="background-color:#FFF;padding:15px 9px;color:#464646; font-weight:bold; vertical-align:middle; text-align:center;">
 						小計
-						<span style="font-size:1.125em;color:#ff8f00;font-weight:bold;"><!--{$sub_total|number_format}-->円</span>
+						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$sub_total|number_format}-->円</span>
 						＋
 						送料
-						<span style="font-size:1.125em;color:#ff8f00;font-weight:bold;"><!--{$arrData.deliv_fee|number_format}-->円</span>
+						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$arrData.deliv_fee|number_format}-->円</span>
 					</td>
 				</tr>
 			</table>
@@ -304,7 +310,8 @@ $(function() {
                                 *}-->
     <div class="wrapCoan">
         <div class="orderBtn">
-            <p class="left"><a href="./regular.php" class="btnGray03">一覧へ戻る</a></p>
+            <p class="left mt20"><a href="./regular.php" class="btnGray03">一覧へ戻る</a></p>
         </div>
     </div>
     </form>
+</div>

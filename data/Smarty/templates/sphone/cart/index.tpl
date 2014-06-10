@@ -240,10 +240,10 @@ $(document).ready(function() {
 								<td style="vertical-align:middle;">
 									数量:<!--{$item.quantity}-->
 								</td>
-								<td style="vertical-align:middle;"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="20" height="20" alt="-" style="margin:0 1.5em;" /></a>
+								<td style="vertical-align:middle;"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="20" height="20" alt="-" style="margin:0 1em;" /></a>
 								</td>
 								<td style="vertical-align:middle;padding-right:1em;">
-									<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','up','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_plus.jpg" width="20" height="20" alt="＋" style="margin:0 1.5em 0 0;" /></a>
+									<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','up','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_plus.jpg" width="20" height="20" alt="＋" style="margin:0 1em 0 0;" /></a>
 								</td>
 								<td style="vertical-align:middle;">
 			                        <a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$item.cart_no}-->'); return false;" class="btnGray02">削除</a>
@@ -363,10 +363,10 @@ $(document).ready(function() {
 								<td style="vertical-align:middle;">
 									数量:<!--{$item.quantity}-->
 								</td>
-								<td style="vertical-align:middle;"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="20" height="20" alt="-" style="margin:0 1.5em;" /></a>
+								<td style="vertical-align:middle;"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','down','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.jpg" width="20" height="20" alt="-" style="margin:0 1em;" /></a>
 								</td>
 								<td style="vertical-align:middle;padding-right:1em;">
-									<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','up','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_plus.jpg" width="20" height="20" alt="＋" style="margin:0 1.5em 0 0;" /></a>
+									<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','up','cart_no','<!--{$item.cart_no}-->'); return false"><img src="<!--{$TPL_URLPATH}-->img/button/btn_plus.jpg" width="20" height="20" alt="＋" style="margin:0 1em 0 0;" /></a>
 								</td>
 								<td style="vertical-align:middle;">
 			                        <a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$item.cart_no}-->'); return false;" class="btnGray02">削除</a>

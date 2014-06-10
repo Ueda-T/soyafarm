@@ -1,6 +1,12 @@
 <!--▼CONTENTS-->
 <div id="mainMyPage">
-	<h2 class="spNaked">配送先の登録・修正</h2>
+	<h2 class="spNaked"><!--{$tpl_title}--></h2>
+
+	<!--{if $tpl_navi != ""}-->
+		<!--{include file=$tpl_navi}-->
+	<!--{else}-->
+		<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+	<!--{/if}-->
 
     <div id="mycontents_area">
         <p class="naked">登録住所以外への住所へ送付される場合等にご利用いただくことができます。<br />

@@ -226,13 +226,13 @@ function fnAddProduct(regular_flg, objForm) {
                   </div>
             <!--{/if}-->
                 
-            <div class="goodsCart">
+            <div class="goodsCart mb20">
 		        <!--★通常価格★-->
 		          <!--{if $arrProduct.price01_max > 0}-->
 		          <p class="price">
-		          <span><!--{$smarty.const.NORMAL_PRICE_TITLE}--></span>
-		                 ￥<!--{if $arrProduct.price01_min == $arrProduct.price01_max}--><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--><!--{else}--><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}-->～\<!--{$arrProduct.price01_max|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--><!--{/if}-->
-		                      </p>
+		          <span>税込</span><strong><!--{$arrProduct.price01_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></strong><span>円</span><br />
+		          <span>（税抜<strong><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></strong>円）</span>
+		          </p>
 		          <!--{/if}-->
 
 
@@ -258,7 +258,7 @@ function fnAddProduct(regular_flg, objForm) {
                         <!--{/if}-->
 
         <!--{else}-->
-            <div class="goodsCart">
+            <div class="goodsCart mb20">
         <!--{/if}-->
 
 			        <!--★カートに入れる★-->
@@ -266,10 +266,13 @@ function fnAddProduct(regular_flg, objForm) {
 
                         <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
 			        	<td style="padding:0 0 0 5px;">
+                            <ul class="cartBtn">
                             <!--{* 予約ボタン *}-->
-				            <div id="cartbtn_default">
-				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/rohto/reserve.jpg" alt="予約する" style="width:192px; height:32px;" /></a>
-				            </div>
+                                <li class="btnCart">
+				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="予約する" width="18" height="16">
+				                予約する</a>
+                                </li>
+                            </ul>
 				            <div class="attention" id="cartbtn_dynamic"></div>
 			            </td>
 
@@ -280,16 +283,18 @@ function fnAddProduct(regular_flg, objForm) {
                             	<ul class="cartBtn">
                                 <!--{if $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
                                 <li class="btnTeiki">
-                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));">定期購入する</a>
-                                <div class="attention" id="cartbtn_dynamic"></div>
+                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_teiki.png" alt="定期購入する" width="18" height="16">
+                                    定期購入する</a>
                                 </li>
+                                <div class="attention" id="cartbtn_dynamic"></div>
                                 <!--{/if}-->
 
                                 <li class="btnCart">
-                                    <a rel="external" href="javascript:void(fnAddProduct('0', document.form1));">カゴに入れる</a>
-                                <div class="attention" id="cartbtn_dynamic"></div>
+                                    <a rel="external" href="javascript:void(fnAddProduct('0', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
+                                    カゴに入れる</a>
                                 </li>
                                 </ul>
+                                <div class="attention" id="cartbtn_dynamic"></div>
 
                             </td>
                             <!--{* 販売終了日過ぎた場合 *}-->
@@ -345,7 +350,6 @@ function fnAddProduct(regular_flg, objForm) {
         <!--{if $arrProduct.sp_comment4}-->
         <div><!--{$arrProduct.sp_comment4}--></div>
         <!--{/if}-->
-        <br /><br />
         <!--{* ▲コメント４ *}-->
 
         <!--{* ▼カートボタン表示４ *}-->
@@ -388,7 +392,7 @@ function fnAddProduct(regular_flg, objForm) {
                   </div>
             <!--{/if}-->
                 
-            <div class="goodsCart">
+            <div class="goodsCart mb20">
 				<!--{*★数量★*}-->
 				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:90%;">
 					<tr>
@@ -415,7 +419,7 @@ function fnAddProduct(regular_flg, objForm) {
 			        		<ul class="cartBtn">
                             <!--{* 予約ボタン *}-->
 				            <li class="btnCart">
-				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カートに入れる" width="18" height="16">
+				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="予約する" width="18" height="16">
 				                予約する</a>
 				            </li>
 				            </ul>
@@ -435,7 +439,7 @@ function fnAddProduct(regular_flg, objForm) {
                                 </li>
                                 <!--{/if}-->
                                 <li class="btnCart">
-                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カートに入れる" width="18" height="16">
+                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
                                     カゴに入れる</a>
                                 <div class="attention" id="cartbtn_dynamic"></div>
                                 </li>
@@ -509,6 +513,7 @@ function fnAddProduct(regular_flg, objForm) {
 			</tr>
 			<!--{/if}-->
 			<!--{* ▲容量 *}-->
+<!--{*
 			<tr>
 				<th>価格(税込)</th>
 				<td>￥
@@ -519,6 +524,7 @@ function fnAddProduct(regular_flg, objForm) {
         <!--{/if}-->
       </td>
 			</tr>
+*}-->
 		</table>
 
 <!--詳細ここまで-->
@@ -679,9 +685,9 @@ function fnAddProduct(regular_flg, objForm) {
             <div class="goodsCart">
 
 				<!--{*★数量★*}-->
-				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:auto;">
+				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:90%;">
 					<tr>
-						<td>
+						<td width="60">
 <!--{*
 <input type="number" name="quantity" value="<!--{$arrForm.quantity.value|default:1|h}-->" max="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" data-role="none" />
 *}-->
@@ -701,10 +707,13 @@ function fnAddProduct(regular_flg, objForm) {
 
                         <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
 			        	<td style="padding:0 0 0 5px;">
+                            <ul class="cartBtn">
                             <!--{* 予約ボタン *}-->
-				            <div id="cartbtn_default">
-				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/rohto/reserve.jpg" alt="予約する" style="width:192px; height:32px;" /></a>
-				            </div>
+                                <li class="btnCart">
+				                <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="予約する" width="18" height="16">
+				                予約する</a>
+                                </li>
+                            </ul>
 				            <div class="attention" id="cartbtn_dynamic"></div>
 			            </td>
 
@@ -712,16 +721,20 @@ function fnAddProduct(regular_flg, objForm) {
                             <!--{* 販売終了日過ぎていない場合 *}-->
                             <!--{if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->
                             <td style="padding:0 0 0 5px;">
+                            <ul class="cartBtn">
                                 <!--{* 社員は定期購入不可 *}-->
-                                <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE && $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
-                                <div id="cartbtn_default" style="margin-bottom:10px;">
-                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/rohto/teiki.gif" alt="定期購入する" style="width:192px; height:32px;" /></a>
-                                </div>
+                                <!--{if $arrProduct.teiki_flg == $smarty.const.REGULAR_PURCHASE_FLG_ON }-->
+                                <li class="btnTeiki">
+                                    <a rel="external" href="javascript:void(fnAddProduct('1', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_teiki.png" alt="定期購入する" width="18" height="16">
+                                    定期購入する</a>
+                                </li>
                                 <div class="attention" id="cartbtn_dynamic"></div>
                                 <!--{/if}-->
-                                <div id="cartbtn_default">
-                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart.gif" alt="カートに入れる" style="width:192px; height:32px;" /></a>
-                                </div>
+                                <li class="btnCart">
+                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
+                                    カゴに入れる</a>
+                                </li>
+                                </ul>
                                 <div class="attention" id="cartbtn_dynamic"></div>
 
                             </td>
@@ -756,9 +769,11 @@ function fnAddProduct(regular_flg, objForm) {
         <!--{/if}-->
         <!--{* ▲カートボタン表示５ *}-->
 
+<!--{*
 <p class="mail">
 	<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_mail.gif" /><a href="mailto:@?subject=<!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->&amp;body=<!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->%0d%0a<!--{$smarty.const.HTTP_URL}-->detail.php?product_id=<!--{$tpl_product_id}-->">この商品を友達に教える</a>
 </p>
+*}-->
 
 <!--{*
 <div class="goodsBtm">
