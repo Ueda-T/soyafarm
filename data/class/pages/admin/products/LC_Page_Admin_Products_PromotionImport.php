@@ -277,14 +277,16 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
         if ($errFlag) {
             $objQuery->rollback();
 	    // 取込ファイルを移動
-	    $this->lfImportFileMove($arrFile, INOS_NG_DIR);
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_PROMOTION, $arrFile
+					, INOS_NG_DIR);
             return array(INOS_ERROR_FLG_EXIST_ERROR, 0);
         }
 
         $objQuery->commit();
 
 	// 取込ファイルを移動
-	$this->lfImportFileMove($arrFile, INOS_OK_DIR);
+	SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_PROMOTION, $arrFile
+				    , INOS_OK_DIR);
 
         return array(INOS_ERROR_FLG_EXIST_NORMAL, $all_count);
     }
@@ -429,7 +431,7 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
 	// 数量集計区分
 	$sqlval["quantity_kbn"] = PROMOTION_QUANTITY_KBN_DETAIL;
 	// コース区分
-	$sqlval["course_kbn"] = PROMOTION_COURSE_KBN_REGULAR;
+	$sqlval["course_kbn"] = PROMOTION_COURSE_KBN_ALL;
 	// 送料区分
 	$sqlval["deliv_fee_kbn"] = PROMOTION_DELIV_FEE_KBN_NO_FREE;
         // 属性情報
@@ -825,7 +827,7 @@ EOF;
 	$sqlval['del_flg']  = $arrList['del_flg'];
 	if ($chkCnt > 0) {
 	    // 更新
-	    $objQuery->update($table, $sqlval, $where, array($val));
+	    $objQuery->update($table, $sqlval, $where, array($arrList['media_code']));
 	} else {
 	    // 追加
 	    $media_id = $objQuery->nextVal("dtb_media_media_id");
@@ -883,7 +885,7 @@ EOF;
 	$sqlval['del_flg']  = $arrList['del_flg'];
 	if ($chkCnt > 0) {
 	    // 更新
-	    $objQuery->update($table, $sqlval, $where, array($val));
+	    $objQuery->update($table, $sqlval, $where, array($arrList['media_code']));
 	} else {
 	    // 追加
 	    $planning_id = $objQuery->nextVal("dtb_planning_planning_id");
@@ -928,23 +930,4 @@ EOF;
         return $arrErr;
     }
 
-    /**
-     * ファイルを移動させる
-     *
-     * @param array ファイル名
-     * @param string 移動先フォルダ
-     * @return void
-     */
-    function lfImportFileMove($arrFile, $moveDir) {
-
-	for ($i = 0; $i < count($arrFile); $i++) {
-	    $oldFile = sprintf("%s%s", INOS_DIR_RECV_PROMOTION, $arrFile[$i]);
-	    $newFile = sprintf("%s%s/%s", INOS_DIR_RECV_PROMOTION
-					, $moveDir, $arrFile[$i]);
-	    // ファイルを移動
-	    rename($oldFile, $newFile);
-	}
-
-        return;
-    }
 }
