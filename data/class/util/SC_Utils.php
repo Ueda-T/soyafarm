@@ -2534,5 +2534,26 @@ __EOS;
         $path_diff = implode("/",array_diff_assoc($arrPath, $arrBasePath));
         return file_exists(realpath(str_replace('..','',$base_path . $path_diff))) ? true : false;
     }
+
+    /**
+     * ファイルを移動させる
+     *
+     * @param string ベースフォルダ
+     * @param array ファイル名
+     * @param string 移動先フォルダ
+     * @return void
+     */
+    function sfImportFileMove($baseDir, $arrFile, $moveDir) {
+
+	for ($i = 0; $i < count($arrFile); $i++) {
+	    $oldFile = sprintf("%s%s", $baseDir, $arrFile[$i]);
+	    $newFile = sprintf("%s%s/%s", $baseDir
+					, $moveDir, $arrFile[$i]);
+	    // ファイルを移動
+	    rename($oldFile, $newFile);
+	}
+
+        return;
+    }
 }
 ?>
