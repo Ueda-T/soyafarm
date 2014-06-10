@@ -77,6 +77,8 @@ class LC_Page_MyPage extends LC_Page_AbstractMypage_Ex {
         $this->arrOrder = $this->lfGetOrderHistory
 	    ($customer_id, $this->objNavi->start_row);
 
+        $this->arrOrderMs = $this->lfGetOrderHistoryMs($customer_id, $this->arrOrder);
+
         switch ($this->getMode()) {
 	case "getList":
 	    echo SC_Utils_Ex::jsonEncode($this->arrOrder);
@@ -292,5 +294,110 @@ EOF;
             }
         }
         return $arrOtherDeliv;
+    }
+
+    /**
+     * 受注履歴（明細）を返す
+     *
+     * @param mixed $customer_id
+     * @param mixed $startno 0以上の場合は受注履歴を返却する -1の場合は件数を返す
+     * @access private
+     * @return void
+     */
+    function lfGetOrderHistoryMs($customer_id, &$arrOrder) {
+        $objQuery = SC_Query_Ex::getSingletonInstance();
+        $pending = ORDER_PENDING;
+	$ids = "";
+	$nOrder = count($arrOrder);
+
+	if ($nOrder == 0) {
+	    return array();
+	}
+
+	for ($i = 0; $i < $nOrder; ++$i) {
+	    $ids .= $arrOrder[$i]['order_id'];
+	    if ($i < ($nOrder - 1)) {
+		$ids .= ",";
+	    }
+	}
+
+        $sql = <<<EOF
+select
+    dtb_order_detail.order_id,
+    dtb_order_detail.product_id,
+    dtb_order_detail.product_class_id,
+    dtb_order_detail.product_name,
+    dtb_order_detail.course_cd,
+    dtb_order_detail.classcategory_name1,
+    dtb_order_detail.classcategory_name2,
+    dtb_products_class.sample_flg,
+    dtb_products_class.present_flg,
+    dtb_products_class.sell_flg,
+    dtb_products_class.product_class_id as product_class_product_class_id,
+    date_format(dtb_products.sale_start_date, '%Y%m%d') as sale_start_date,
+    date_format(dtb_products.sale_end_date, '%Y%m%d') as sale_end_date,
+    1 as product_valid_flg,
+    dtb_products.status,
+    date_format(dtb_products.disp_start_date, '%Y%m%d') as disp_start_date
+from
+    dtb_order_detail
+inner join dtb_order
+  on dtb_order_detail.order_id = dtb_order.order_id
+  and dtb_order.order_id in ({$ids})
+left outer join dtb_products
+  on dtb_order_detail.product_id = dtb_products.product_id
+left outer join dtb_products_class
+  on dtb_order_detail.product_class_id = dtb_products_class.product_class_id
+  and dtb_products_class.del_flg = 0
+where
+    dtb_order.del_flg = 0
+    and dtb_order.status != {$pending}
+    and dtb_order.customer_id = '{$customer_id}'
+    and dtb_order_detail.sell_flg = 1
+order by
+    dtb_order_detail.product_id asc
+EOF;
+
+        //購入履歴の取得
+        $arrOrderMs = $objQuery->getAll($sql);
+
+        // 販売可否を判断
+        foreach($arrOrderMs as $orderMs_index => $orderMsData) {
+            foreach($orderMsData as $key => $val) {
+                // 販売可否フラグ（1:有効 0:無効）
+                $product_valid_flg = 1;
+
+                // 規格IDが存在しないものは販売不可能
+                if ($arrOrderMs[$orderMs_index]['product_class_product_class_id'] == null) {
+                    $product_valid_flg = 0;
+                }
+                // 販売期間外は販売不可能
+                if (!(empty($arrOrderMs[$orderMs_index]['sale_start_date'])) &&
+                    $arrOrderMs[$orderMs_index]['sale_start_date'] > date("Ymd")) {
+                    $product_valid_flg = 0;
+                }
+                if (!(empty($arrOrderMs[$orderMs_index]['sale_end_date'])) &&
+                    $arrOrderMs[$orderMs_index]['sale_end_date'] < date("Ymd")) {
+                    $product_valid_flg = 0;
+                }
+                // #227 販売対象フラグの判定追加
+                if ($arrOrderMs[$orderMs_index]['sell_flg'] != SELL_FLG_ON) {
+                    $product_valid_flg = 0;
+                }
+                // #227 公開・非公開の判定追加
+                if ($arrOrderMs[$orderMs_index]['status'] ==
+                    DEFAULT_PRODUCT_DISP) {
+                        $product_valid_flg = 0;
+                }
+                // #227 掲載開始日の判定追加
+                if (!(empty($arrOrderMs[$orderMs_index]['disp_start_date']))
+                    && $arrOrderMs[$orderMs_index]['disp_start_date'] > date("Ymd")) {
+                    $product_valid_flg = 0;
+                }
+
+                $arrOrderMs[$orderMs_index]['product_valid_flg'] = $product_valid_flg;
+            }
+        }
+	return $arrOrderMs;
     }
 }
