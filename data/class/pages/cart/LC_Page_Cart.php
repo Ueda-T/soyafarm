@@ -387,12 +387,9 @@ class LC_Page_Cart extends LC_Page_Ex {
         $this->tpl_regular_purchase_flg =
             $objRegular->checkRegularPurchase($this->cartItems);
 
-	// 定期商品にお届け間隔が1ヶ月指定が含まれているかチェック
-	if ($this->lfCheckRegularOneMonth($this->cartItems)) {
-	    // 定期間隔を1ヶ月以外除外する
-	    unset($this->arrCourseCd[3]);
-	    unset($this->arrCourseCd[2]);
-	}
+	// 定期商品にお届け間隔が1ヶ月指定が含まれているかチェックし
+	// 定期間隔を再生成する
+	$this->lfSetRegularCourse($this->cartItems);
 
 	$this->tpl_order_promotion_err = false;
 	$this->tpl_input_campaign_ok_flg = false;
@@ -864,13 +861,14 @@ EOF;
     }
 
     /**
-     * カート内に定期商品が含まれるか判定
+     * カート内に定期商品が含まれている場合
+     * 定期間隔を再設定する
      *
      * @param $arrCartItems カートセッション情報の連想配列
      * @param  integer $cartKey 登録を行うカート情報のキー
-     * @param boolean true:定期商品あり false:定期商品なし
+     * @param void
      */
-    function lfCheckRegularOneMonth($arrCartItems, $cartKey=1) {
+    function lfSetRegularCourse($arrCartItems, $cartKey=1) {
 
 	// 1ヶ月指定商品を配列にセット
 	$chkProduct = explode(",", REGULAR_ONE_MONTH_PRODUCTS);
@@ -880,10 +878,22 @@ EOF;
 		if ($item['regular_flg'] == REGULAR_PURCHASE_FLG_ON) {
 		    if (array_search($item['productsClass']['product_code']
 				    , $chkProduct) !== false) {
+			// 定期間隔を1ヶ月以外除外する
+			unset($this->arrCourseCd[3]);
+			unset($this->arrCourseCd[2]);
 			return true;
 		    }
+		    $chkQuantity = $item['quantity'];
 		}
 	    }
+	}
+	if ($chkQuantity == 1) {
+	    // 定期間隔を1ヶ月以外除外する
+	    unset($this->arrCourseCd[3]);
+	    unset($this->arrCourseCd[2]);
+	} else if ($chkQuantity == 2) {
+	    // 定期間隔3ヶ月を除外する
+	    unset($this->arrCourseCd[3]);
 	}
 	return false;
     }
