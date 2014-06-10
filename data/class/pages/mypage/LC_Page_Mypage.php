@@ -61,6 +61,29 @@ class LC_Page_MyPage extends LC_Page_AbstractMypage_Ex {
 
 	$_SESSION["MYPAGENO"] = $this->tpl_mypageno;
 
+        $objCartSess = new SC_CartSession_Ex();
+        // 商品チェック時はカート画面に遷移
+        if (isset($_POST["post_flg"])) {
+	    for ($i = 0; $i < $_POST["product_cnt"]; ++$i) {
+                if (isset($_POST["chk_product_".$i])) {
+                    $product_class_id = $_POST["chk_product_".$i];
+                    // 購入区分 単回:0 定期:1
+            	    $how = $_POST["course_cd_".$i];
+                    if ($how != 0) {
+                        $how = 1;
+                    }
+
+            	    $objCartSess->addProduct($product_class_id, 1, $how);
+            	    $redirect = true;
+                }
+	    }
+
+	    if ($redirect == true) {
+		SC_Response_Ex::sendRedirect(CART_URLPATH);
+		exit;
+	    }
+        }
+
         $objCustomer = new SC_Customer_Ex();
         $customer_id = $objCustomer->getvalue('customer_id');
 
