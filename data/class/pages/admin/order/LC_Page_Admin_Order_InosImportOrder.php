@@ -1157,50 +1157,94 @@ __EOS;
 
     // インポートファイル取込処理
     function importCsvFile(&$objFormParam, &$objUpFile) {
-    // ファイルのアップロード
-    $file = $this->uploadCsvFile($objFormParam, $objUpFile);
-    if (empty($file)) {
-        return;
-    }
 
-    // 一時テーブルへのローディング
-    if (!$this->loadCsvFile($file)) {
-        $this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
-        return;
-    }
+	// ファイル情報取得
+        $arrFile = SC_Utils_Ex::sfGetDirFile(INOS_DIR_RECV_ORDER);
+	if (!$arrFile[0]) {
+	    $this->arrErr["csv_file"] = "取込ファイルがセットされておりません";
+	    return;
+	}
 
-    $objQuery =& SC_Query_Ex::getSingletonInstance();
-    // インポート初期処理
-    $this->prepareImport($objFormParam);
+	$arrNgFile = array();
+	$arrOkFile = array();
+	$arrEncFile = array();
+	// 複数ファイルを１ファイルにまとめる
+	for ($i = 0; $i < count($arrFile); $i++) {
 
-    $objQuery->begin();
+	    // ファイルの文字コード変換
+	    $file = $this->uploadCsvFile($objFormParam, $arrFile[$i]);
+	    if (empty($file)) {
+		$arrNgFile[] = $arrFile[$i];
+		continue;
+	    }
+	    $arrOkFile[] = $arrFile[$i];
+	    $arrEncFile[] = $file;
+	}
 
-    // インポート実行
-    list($count, $r) = $this->doImport();
-    if ($r != INOS_ERROR_FLG_EXIST_NORMAL) {
-        $objQuery->rollback();
-    } else {
-        $objQuery->commit();
-    }
+	// 文字コード変換ファイルがない場合終了
+	if (!$arrEncFile[0]) {
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_ORDER
+					, $arrNgFile, INOS_NG_DIR);
+	    return;
+	}
 
-    // エラーデータがある場合は更新履歴情報をエラー判定に
-    $this->tpl_err_count = $objQuery->count
-        ('dtb_order_inos_import', 'error_flg = ?', 1);
-    if ($this->tpl_err_count > 0) {
-        $r = INOS_ERROR_FLG_EXIST_ERROR;
-    }
+	// 複数ファイルを１ファイルに変換
+	$impFileName = date("YmdHis") . ".csv";
+	$impFile = INOS_DIR_RECV_ORDER . $impFileName;
+	$cmd = sprintf("cat %s > %s", implode(" ", $arrEncFile), $impFile);
+	system($cmd);
 
-    // バッチ処理履歴情報へデータ登録
-    SC_Helper_DB_Ex::sfInsertBatchHistory
-        (INOS_DATA_TYPE_RECV_ORDER, $count, $r);
+	// 一時テーブルへのローディング
+	if (!$this->loadCsvFile($impFile)) {
+	    $this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
+	    $arrFile[] = $impFileName;
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_ORDER
+					, $arrFile, INOS_NG_DIR);
+	    return;
+	}
 
-    // 実行結果画面を表示
-    $this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
-    $this->addRowCompleteMsg($count);
+	$objQuery =& SC_Query_Ex::getSingletonInstance();
+	// インポート初期処理
+	$this->prepareImport($objFormParam);
 
-    // 出荷済みに更新したデータについて出荷済みメールを送信する
-    // TODO 2014.3.20 takao 一旦コメントアウト
-     //$this->doSendMail();
+	$objQuery->begin();
+
+	// インポート実行
+	list($count, $r) = $this->doImport();
+	if ($r != INOS_ERROR_FLG_EXIST_NORMAL) {
+	    $objQuery->rollback();
+	    $arrFile[] = $impFileName;
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_ORDER
+					, $arrFile, INOS_NG_DIR);
+	} else {
+	    $objQuery->commit();
+	    $arrOkFile[] = $impFileName;
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_ORDER
+					, $arrOkFile, INOS_OK_DIR);
+	    if ($arrNgFile[0]) {
+		SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_ORDER
+					    , $arrNgFile, INOS_NG_DIR);
+	    }
+	}
+
+	// エラーデータがある場合は更新履歴情報をエラー判定に
+	$this->tpl_err_count = $objQuery->count
+	    ('dtb_order_inos_import', 'error_flg = ?', 1);
+	if ($this->tpl_err_count > 0) {
+	    $r = INOS_ERROR_FLG_EXIST_ERROR;
+	}
+
+	// バッチ処理履歴情報へデータ登録
+	SC_Helper_DB_Ex::sfInsertBatchHistory
+	    (INOS_DATA_TYPE_RECV_ORDER, $count, $r);
+
+	// 実行結果画面を表示
+	$this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
+	$this->addRowCompleteMsg($count);
+
+	// 出荷済みに更新したデータについて出荷済みメールを送信する
+	// TODO 2014.3.20 takao 一旦コメントアウト
+	//$this->doSendMail();
     }
 
     /**
@@ -1220,7 +1264,8 @@ __EOS;
      *
      * @return void
      */
-    function uploadCsvFile(&$objFormParam, &$objUpFile) {
+    function uploadCsvFile(&$objFormParam, $fileName) {
+	/*
         // ファイルアップロードのチェック
         $objUpFile->makeTempFile('csv_file');
         $this->arrErr = $objUpFile->checkExists();
@@ -1230,11 +1275,15 @@ __EOS;
 
         // 一時ファイル名の取得
         $filepath = $objUpFile->getTempFilePath('csv_file');
+	 */
+
+	// 取込ファイルパス
+	$filepath = INOS_DIR_RECV_ORDER . $fileName;
 
         // CSVファイルの文字コード変換
         $enc_filepath = 
             SC_Utils_Ex::sfEncodeFile($filepath, CHAR_CODE,
-                                      CSV_TEMP_REALDIR, 'cp932');
+                                      CSV_SAVE_REALDIR, 'cp932');
         // 登録対象の列数
         $col_max_count = $objFormParam->getCount();
         // 行数
@@ -1254,7 +1303,7 @@ __EOS;
             // 列数が異なる場合はエラー
             $col_count = count($arrCSV);
             if ($col_max_count != $col_count) {
-                $this->addRowErr($line_count,
+                $this->addRowErr($fileName, $line_count,
                                  "※ 項目数が" . $col_count .
                                  "個検出されました。項目数は" .
                                  $col_max_count . "個になります。");
@@ -1508,12 +1557,14 @@ __EOS;
     /**
      * 登録/編集結果のエラーメッセージをプロパティへ追加する
      *
+     * @param string $file_name ファイル名
      * @param integer $line_count 行数
      * @param stirng $message メッセージ
      * @return void
      */
-    function addRowErr($line_count, $message) {
-        $this->arrRowErr[] = $line_count . "行目：" . $message;
+    function addRowErr($file_name, $line_count, $message) {
+	$this->arrRowErr[] = sprintf("[%s]%d行目：%s", $file_name, $line_count
+				    , $message);
     }
 
     /**
