@@ -18,6 +18,8 @@
 	<div id="lineup">
 		<table width="582" cellspacing="6">
 			<tr>
+				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_teiki609.jpg" alt="" width="90" height="86" /><br />
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609">おいしく食べるグルコサミン</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/1202/ph_lineup14_new.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=614">毎日飲みたいドリップコーヒー</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup15.jpg" alt="" width="90" height="86" /><br />
@@ -28,10 +30,10 @@
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=602">イソフラバランス</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup05.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=601">ハイ！調製豆乳</a></p></td>
+			</tr>
+			<tr>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup07.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=605">黒大豆＆ブルーベリー</a></p></td>
-				</tr>
-			<tr>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup02.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=603">コレスメンテ</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup06.jpg" alt="" width="90" height="86" /><br />
@@ -42,10 +44,10 @@
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609">グルコサミン&amp;ペプチド</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup08.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=606">ペプチドアスリエータ4000</a></p></td>
-				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup09.jpg" alt="" width="90" height="86" /><br />
-					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=607">ザ・ペプチド（パウダー分包）</a></p></td>
 			</tr>
 			<tr>
+				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup09.jpg" alt="" width="90" height="86" /><br />
+					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=607">ザ・ペプチド（パウダー分包）</a></p></td>
 
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup10.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=611">リポスルー</a></p></td>

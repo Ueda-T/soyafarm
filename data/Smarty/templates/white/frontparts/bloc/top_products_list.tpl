@@ -1,6 +1,15 @@
 <div class="box">
 				<h2><img src="<!--{$TPL_URLPATH}-->img/soyafarm/top_h1_lineup.gif" alt="商品ラインナップ" width="576" height="43"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_lineup.gif" alt="一覧はこちら" width="124" height="43"></a></h2>
 				<ul id="lineup">
+					<!-- product15 -->
+					<li>
+						<dl>
+							<dt><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_pro609.gif" alt="おいしく食べるグルコサミン" width="203" height="24"></a></dt>
+							<dd><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/txt_pro609.gif" alt="シニア女性の立場になって作られた新しいタイプのグルコサミン 税込2,916円（税抜2,700円）" width="203" height="54"></a></dd>
+						</dl>
+						<div class="photo"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_pro609.jpg" alt="おいしく食べるグルコサミン" width="101" height="92"></a></div>
+					</li>
+
 					<!-- product14 -->
 					<li>
 						<dl>
