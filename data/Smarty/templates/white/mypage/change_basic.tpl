@@ -45,7 +45,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 
             <tr id="passwordSection">
                 <th>新しいパスワード</th>
-                <td>
+                <td style="border-right:none;">
                     <div class="password-container">
                         <p><span class="attention mini">半角<!--{$smarty.const.PASSWORD_MIN_LEN}-->～<!--{$smarty.const.PASSWORD_MAX_LEN}-->文字でお願いします。</span></p>
 					    <!--{if $arrErr.password}-->
@@ -59,7 +59,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
                         <input class="strong-password" type="password" name="password02" value="<!--{$arrForm.password02|h}-->" maxlength="<!--{$smarty.const.PASSWORD_MAX_LEN}-->" style="<!--{$arrErr.password|cat:$arrErr.password02|sfGetErrorColor}-->" class="box120" />
                     </div>
                 </td>
-                <td>
+                <td style="border-left:none;">
                     <div class="chkIndicatorBox">
                         <p class="tit">パスワードの安全性</p>
                         <div class="password-container">
