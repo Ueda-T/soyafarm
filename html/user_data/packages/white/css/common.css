@@ -201,13 +201,13 @@ h1,h2,h3,h4,h5 {
 /* 行揃え
 ----------------------------------------------- */
 .alignC {
-	text-align: center;
+	text-align: center !important;
 }
 .alignR {
-	text-align: right;
+	text-align: right !important;
 }
 .alignL {
-	text-align: left;
+	text-align: left !important;
 }
 .pricetd em {
 	font-weight: bold;

@@ -1,17 +1,14 @@
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
+
 <div id="mainMyPageTop">
-	<!--{if !$tpl_disable_logout}-->
-	<form name="header_login_form" id="header_login_form" method="post" action="<!--{$smarty.const.ROOT_URLPATH}-->frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
-		<input type="hidden" name="mode" value="login" />
-		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
-		<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
-		<p class="logout">
-			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" /></a>
-		</p>
-	</form>
-	<!--{/if}-->
+
 
 	<div class="wrapCustomer">
 		<div class="wrapResult">

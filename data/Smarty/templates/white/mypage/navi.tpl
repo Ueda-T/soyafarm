@@ -1,5 +1,6 @@
 	<!--{strip}-->
 	<!--▼現在のポイント-->
+<!--{*
 	<!--{if $point_disp !== false}-->
 	<div class="hdrLoginBox">
 		<table cellspacing="0" class="lay1">
@@ -9,7 +10,6 @@
 				</td>
 				<td class="cNumber">
 					割引率：<!--{$tpl_discount.customer_type_name|h}-->
-					<!--{*お客様番号：<!--{$CustomerId}-->*}-->
 				</td>
 			</tr>
 		</table>
@@ -29,32 +29,33 @@
 	<!--{/if}-->
 	<!--{/if}-->
 	<!--▲現在のポイント-->
-</div>
-<br />
-<div class="myPageMenu">
-	<ul class="menu clearfix">
-		<!--{* 会員状態 *}-->
-		<!--{if $tpl_login}-->
-			<li><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn01.gif" alt="ご登録内容の変更" class="swp"></a></li>
+*}-->
+	<ul id="mypage-menu" class="clearfix">
+	<!--{* 会員状態 *}-->
+	<!--{if $tpl_login}-->
+		<li><a href="index.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn01<!--{if $tpl_mypageno == 'index'}-->_on<!--{/if}-->.gif" alt="購入履歴" class="swp"></a></li>
 
-			<li><a href="change_basic.php" class="<!--{if $tpl_mypageno == 'change_basic'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn02.gif" alt="メールアドレス及びパスワードの変更" class="swp"></a></li>
+		<li><a href="change.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn02<!--{if $tpl_mypageno == 'change'}-->_on<!--{/if}-->.gif" alt="ご登録内容の変更" class="swp"></a></li>
 
-			<li><a href="history_list.php" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn03.gif" alt="ご注文履歴" class="swp"></a></li>
+		<li><a href="change_basic.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn03<!--{if $tpl_mypageno == 'change_basic'}-->_on<!--{/if}-->.gif" alt="メールアドレス及びパスワードの変更" class="swp"></a></li>
+<!--{*
+		<li><a href="history_list.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn03<!--{if $tpl_mypageno == 'index'}-->_on<!--{/if}-->.gif" alt="ご注文履歴" class="swp"></a></li>
+*}-->
 
-			<li><a href="regular.php" class="<!--{if $tpl_mypageno == 'regular'}--> selected<!--{/if}-->"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn04.gif" alt="定期購入一覧" class="swp"></a></li>
-			<!--{*
-			<!--{if $smarty.const.OPTION_FAVOFITE_PRODUCT == 1}-->
-				<li><a href="favorite.php" class="<!--{if $tpl_mypageno == 'favorite'}--> selected<!--{/if}-->">
-					お気に入り一覧</a></li>
-			<!--{/if}-->
-			*}-->
-			<li><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}--> selected<!--{/if}-->">
-				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn05.gif" alt="アドレス（配送先）新規登録" class="swp"></a></li>
-			<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/">
-				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn06.gif" alt="お問い合わせ" class="swp"></a></li>
-			<!--{*
-			<li><a href="refusal.php" class="swp">退会手続き</a></li>
-			*}-->
+		<li><a href="regular.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn04<!--{if $tpl_mypageno == 'regular'}-->_on<!--{/if}-->.gif" alt="定期購入一覧" class="swp"></a></li>
+		<!--{*
+		<!--{if $smarty.const.OPTION_FAVOFITE_PRODUCT == 1}-->
+			<li><a href="favorite.php" class="<!--{if $tpl_mypageno == 'favorite'}--> selected<!--{/if}-->">
+				お気に入り一覧</a></li>
+		<!--{/if}-->
+		*}-->
+		<li><a href="delivery.php" class="">
+			<img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn05<!--{if $tpl_mypageno == 'delivery'}-->_on<!--{/if}-->.gif" alt="お届け先情報変更" class="swp"></a></li>
+		<li><a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/">
+			<img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn06.gif" alt="お問い合わせ" class="swp"></a></li>
+		<!--{*
+		<li><a href="refusal.php" class="swp">退会手続き</a></li>
+		*}-->
 
 		<!--{* 退会状態 *}-->
 		<!--{else}-->

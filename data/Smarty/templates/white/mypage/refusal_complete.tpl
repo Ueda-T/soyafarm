@@ -1,6 +1,12 @@
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
+
 <div class="wrapCustomer">
         <div class="wrapResult">
             <div class="wrapResultEle">

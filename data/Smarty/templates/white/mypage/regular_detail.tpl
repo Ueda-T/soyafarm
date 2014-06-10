@@ -224,11 +224,13 @@ $(function() {
 	<!--{$tpl_subtitle}-->
 </p>
 
-<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/regular_change_title.gif" alt="定期変更手続き" /></h1>
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
 
-<div class="wrapCoan">
-	<p>変更したい箇所を修正いただき、「変更確認ページへ進む」ボタンをクリックしてください。</p>
-</div>
+<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/regular_change_title.gif" alt="定期購入詳細" /></h1>
 
 	<form name="form1" method="post" action="?">
 	<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
@@ -267,7 +269,7 @@ $(function() {
     <!--{/foreach}-->
 
 <div class="wrapCoan">
-	<h2 style="margin:30px 0 20px 0;"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_r05.gif" width="820" height="35" alt="お届け間隔"></h2>
+	<h3 class="order">お届け間隔</h3>
 
     <!--{* ▼お届け日情報 *}-->
 	<table summary="定期購入一覧" style="margin-top:15px;" class="tblOrder">
@@ -338,7 +340,7 @@ $(function() {
 
 <div class="cartList">
 <p id="container">
-	<h2 style="margin:30px 0 20px 0;"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi_r04.gif" width="820" height="35" alt="定期購入変更商品" /></h2>
+	<h3 class="order">定期購入商品</h3>
 
 	<!--{if $tpl_message}-->
 	<p class="error"><!--{$tpl_message|h|nl2br}--></p>
@@ -404,7 +406,7 @@ $(function() {
     *}-->
 		<div class="cartTotalBox">
 			<div class="inner">
-				<p class="subtotal">
+				<p>
 					小計
 					<strong><!--{$sub_total|number_format}-->円
 					＋</strong>
@@ -418,7 +420,7 @@ $(function() {
 </div>
 
 <div class="wrapCoan">
-	<h2 style="margin:30px 0 20px 0;"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi05.gif" width="820" height="35" alt="お支払方法"></h2>
+	<h3 class="order">お支払方法</h3>
     <!--{* ▼お届け先情報 *}-->
     <table style="margin-top:15px;" class="tblOrder">
         <colgroup width="20%"></colgroup>
@@ -432,46 +434,11 @@ $(function() {
 		</tr>
     </table>
 </div>
-
-<div style="width: 820px;margin: 30px 70px;">
-	<div style="background:#DEF1FA; padding:20px; margin-bottom:20px;">
-		<h2 style="font-size:1.4em; color:#3e8dd5; font-weight:bold;">定期購入用のお客様情報</h2>
-		<p class="naked">以下のご登録情報は、マイページからご変更いただくことができません。<br>
-		定期購入専用ダイヤルまたは <a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>をご利用ください。</p>
-
-		<div class="wrapForm">
-			<table cellspacing="0" class="typ2">
-				<tr>
-					<th rowspan="2">【1】</th>
-					<th rowspan="2">お届け先情報</th>
-					<th><span>お届け先住所</span></th>
-					<td>
-		                <input type="hidden" name="order_name" value="<!--{$arrForm.order_name.value}-->" id="order_name" />
-		                <input type="hidden" name="order_zip" value="<!--{$arrForm.order_zip.value}-->" id="order_zip" />
-		                <input type="hidden" name="order_pref" value="<!--{$arrForm.order_pref.value}-->" id="order_pref" />
-		                <input type="hidden" name="order_addr01" value="<!--{$arrForm.order_addr01.value}-->" id="order_addr01" />
-		                <input type="hidden" name="order_addr02" value="<!--{$arrForm.order_addr02.value}-->" id="order_addr02" />
-		                <input type="hidden" name="order_tel" value="<!--{$arrForm.order_tel.value}-->" id="order_tel" />
-						〒<!--{$arrForm.order_zip.value|h}-->
-						<!--{$arrPref[$arrForm.order_pref.value]|h}--><!--{$arrForm.order_addr01.value|h}--><!--{$arrForm.order_addr02.value|h}--><br />
-						<!--{$arrForm.order_name.value|h}--> 様
-						
-					</td>
-				</tr>
-				<tr>
-					<th>お届け先お電話番号</th>
-					<td><!--{$arrForm.order_tel.value|h}--></td>
-				</tr>
-			</table>
-		</div><!--／wrapForm-->
-	</div>
-</div>
 <!--{* ▲お届け先情報 *}-->
 
-<!--{* 確認ページへ進む *}-->
 <div class="wrapCoan">
     <div class="orderBtn">
-		<p class="left"><a href="./regular.php" ><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_modoru_list.gif" alt="一覧へ戻る" class="swp" /></a></p>
+		<p class="left"><a href="./regular.php" ><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="一覧へ戻る" class="swp" /></a></p>
 		<span class="f-right" style="width:600px;float:right;text-align:right;">
             <!--{*
             <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/regular_change_btn03.gif" alt="確認ページへ進む" name="refusal" id="refusal" class="swp" /></a>

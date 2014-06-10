@@ -7,19 +7,17 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
+
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
+
 <div id="mainMyPage">
 	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub1.gif" alt="ご登録内容の変更" /></h1>
 
-	<!--{if !$tpl_disable_logout}-->
-	<form name="header_login_form" id="header_login_form" method="post" action="<!--{$smarty.const.ROOT_URLPATH}-->frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
-		<input type="hidden" name="mode" value="login" />
-		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
-		<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
-		<p class="logout">
-			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" /></a>
-		</p>
-	</form>
-	<!--{/if}-->
+
 
 	<p class="intro">ご登録内容の変更を行います。<img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須">印の箇所は、必ず入力してください。</p>
 
@@ -83,7 +81,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					<div class="attention"><!--{$arrErr[$key]}--></div>
 				<!--{/if}-->
 
-				<p class="top">〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/rohto/zip.gif" alt="住所自動入力" id="easy" /></p>
+				<p class="top">〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/soyafarm/zip.gif" alt="住所自動入力" id="easy" /></p>
 				郵便番号をご入力後、ボタンを押してください。ご住所が自動で入力されます。<br />
 				[<a href="http://search.post.japanpost.jp/zipcode/" target="_blank"><span class="mini">郵便番号検索ページヘ</span></a>]
 			</td>

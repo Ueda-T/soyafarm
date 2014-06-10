@@ -1,6 +1,12 @@
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
+
 <div id="mainMyPage">
 	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub6.gif"  alt="登録削除" /></h1>
 

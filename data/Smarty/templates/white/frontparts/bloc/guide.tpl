@@ -2,6 +2,14 @@
 	<p id="bt_cart" class="tocart"><a href="<!--{$smarty.const.CART_URLPATH}-->"><img src="http://www.soyafarm.com/common/img/navi/bt_cart.gif" alt="買い物かごの中を見る" width="182" height="59" class="btn"></a></p>
 	<p id="link_nagare"><a href="<!--{$smarty.const.ROOT_URLPATH}-->flow/"><img src="<!--{$TPL_URLPATH}-->img/navi/txt_nagare.gif" alt="商品ご購入の流れ" width="146" height="20" class="btn"></a></p>
 	<p id="bt_mypage" style="margin-bottom:10px;padding-top:10px;"><a href="<!--{$smarty.const.HTTPS_URL}-->mypage/"><img src="http://www.soyafarm.com/common/img/navi/bt_mypage.gif" alt="【Web会員専用】マイページ" width="180" height="49" class="btn"></a></p>
+<!--{if $tpl_login && !$tpl_disable_logout}-->
+	<form name="header_login_form" id="header_login_form" method="post" action="<!--{$smarty.const.ROOT_URLPATH}-->frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
+	<input type="hidden" name="mode" value="login" />
+	<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
+	<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
+	<p id="link_logout"><a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/navi/bt_logout.gif" alt="Web会員に新規登録する" width="166" height="31" border="0" class="btn"></a></p>
+	</form>
+<!--{/if}-->
 </div>
 
 			<ul id="global-box">

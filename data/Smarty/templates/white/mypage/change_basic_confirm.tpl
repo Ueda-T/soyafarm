@@ -1,6 +1,12 @@
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
 
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
+
 <div id="mainMyPage">
 	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub2.gif"  alt="ご登録内容の変更" /></h1>
 	<p class="intro">以下のご登録内容をご確認いただき、よろしければ「登録」ボタンを押してください。</p>

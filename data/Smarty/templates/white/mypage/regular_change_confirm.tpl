@@ -9,6 +9,12 @@
 	<!--{$tpl_subtitle}-->
 </p>
 
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
+
 <h1><img src="<!--{$TPL_URLPATH}-->img/rohto/regular_change_title.gif" alt="定期購入変更手続き" /></h1>
 
 <!--{*

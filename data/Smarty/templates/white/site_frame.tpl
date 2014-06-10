@@ -16,6 +16,9 @@
 <!--{if $smarty.server.PHP_SELF == $top}-->
 <link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/index.css" type="text/css" media="all" />
 <!--{/if}-->
+<!--{if $tpl_mainno}-->
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/mypage.css" type="text/css" media="all" />
+<!--{/if}-->
 <!--{*  ダイアログ用 *}-->
 <link rel="stylesheet" href="<!--{$smarty.const.ROOT_URLPATH}-->css/superTables.css" type="text/css" media="all" />
 

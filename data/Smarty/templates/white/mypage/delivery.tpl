@@ -1,19 +1,18 @@
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/mypage_index.css" type="text/css" media="all" />
+
 <!--▼CONTENTS-->
 <!--{include file="`$smarty.const.TEMPLATE_REALDIR`mypage/pankuzu.tpl"}-->
+
+<!--{if $tpl_navi != ""}-->
+	<!--{include file=$tpl_navi}-->
+<!--{else}-->
+	<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
+<!--{/if}-->
 
 <div id="mainMyPage">
 	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub5.gif"  alt="配送先の登録・修正" /></h1>
 
-	<!--{if !$tpl_disable_logout}-->
-	<form name="header_login_form" id="header_login_form" method="post" action="<!--{$smarty.const.ROOT_URLPATH}-->frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
-		<input type="hidden" name="mode" value="login" />
-		<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
-		<input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
-		<p class="logout">
-			<a href="javascript:void(0);" onclick="fnFormModeSubmit('header_login_form', 'logout', '', ''); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/logout.gif" alt="ログアウト" class="swp" /></a>
-		</p>
-	</form>
-	<!--{/if}-->
+
 
     <div id="mycontents_area">
         <p class="naked">登録住所以外への住所へ送付される場合等にご利用いただくことができます。<br />
@@ -35,22 +34,21 @@
             <input type="hidden" name="other_deliv_id" value="" />
             <input type="hidden" name="pageno" value="<!--{$tpl_pageno}-->" />
 
-			<div class="cartList">
-            <table summary="お届け先">
+            <table summary="お届け先" class="cart">
             <colgroup width="5%"></colgroup>
             <colgroup width="25%"></colgroup>
             <colgroup width="50%"></colgroup>
             <colgroup width="10%"></colgroup>
             <colgroup width="10%"></colgroup>
                 <tr>
-                    <th colspan="5">お届け先</th>
+                    <th colspan="5" style="padding:2px 2px 0 2px;"><p>お届け先</p></th>
                 </tr>
                 <!--{section name=cnt loop=$arrOtherDeliv}-->
                     <!--{assign var=OtherPref value="`$arrOtherDeliv[cnt].pref`"}-->
                     <tr>
                         <td class="alignC"><!--{$smarty.section.cnt.iteration}--></td>
                         <td><label for="add<!--{$smarty.section.cnt.iteration}-->">お届け先住所</label></td>
-                        <td>
+                        <td class="alignL">
                             〒<!--{$arrOtherDeliv[cnt].zip}--><br />
                             <!--{$arrPref[$OtherPref]|h}--><!--{$arrOtherDeliv[cnt].addr01|h}--><!--{$arrOtherDeliv[cnt].addr02|h}--><br />
                             <!--{$arrOtherDeliv[cnt].name|h}-->
@@ -64,7 +62,6 @@
                     </tr>
                 <!--{/section}-->
             </table>
-			</div>
         </form>
         <!--{else}-->
         <p class="delivempty"><strong>新しいお届け先はありません。</strong></p>

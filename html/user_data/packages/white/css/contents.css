@@ -1004,19 +1004,18 @@ h4.order {
 .wrapForm table,
 .delivname {
 	width: 100%;
-	border-top: 1px solid #CCC;
+	border: 1px solid #CCC;
 	margin-bottom:20px;
-	border-collapse: separate;
+	border-collapse: collapse;
 }
 
 .wrapForm table th,
 .delivname th {
 	font-weight: normal;
-	background: #EEE;
+	background: #F4F4F4;
 	padding:10px;
 	text-align: left;
-	border-top: 1px solid #FFF;
-	border-bottom: 1px solid #CCC;
+	border: 1px solid #CCC;
 }
 
 .wrapForm table td,
@@ -1024,7 +1023,7 @@ h4.order {
 	width: auto;
 	text-align: left;
 	padding: 10px;
-	border-bottom: 1px solid #CCC;
+	border: 1px solid #CCC;
 }
 
 .tblOrder,
@@ -1041,8 +1040,7 @@ h4.order {
 	background: #FFF8E0;
 	padding:10px;
 	text-align: left;
-	border-top: 1px dotted #C7B068;
-	border-bottom: 1px dotted #C7B068;
+	border: 1px solid #C7B068;
 }
 
 .cartList table th {
@@ -1050,8 +1048,7 @@ h4.order {
 	background: #FFF8E0;
 	padding:10px;
 	text-align: left;
-	border-top: 1px dotted #C7B068;
-	border-bottom: 1px dotted #C7B068;
+	border: 1px solid #C7B068;
 }
 
 .tblOrder th img,
@@ -1065,7 +1062,7 @@ h4.order {
 	width: auto;
 	text-align: left;
 	padding: 10px;
-	border-bottom: 1px dotted #C7B068;
+	border: 1px solid #C7B068;
 }
 
 .tblOrder .tblOrderInnr th {
@@ -1397,4 +1394,8 @@ a .cartCnt {
 img#easy {
 	vertical-align:middle;
 	margin-bottom:4px;
+}
+
+img#easy:hover {
+	cursor:pointer;
 }
