@@ -50,7 +50,7 @@ table.cart th p {
 }
 table.cart td {
 	padding: 5px;
-	text-align: center;
+/*	text-align: center;*/
 	border-bottom: 1px solid #A9CF39;
 	border-right: 1px solid #A9CF39;
 }

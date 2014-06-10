@@ -75,7 +75,7 @@
                                         <!--{/if}-->
                                     <!--{/foreach}-->
                                 </td>
-    							<td nowrap><strong>￥<!--{$arrOrder[cnt].payment_total|number_format}--></strong></td>
+    							<td nowrap class="alignC"><strong>￥<!--{$arrOrder[cnt].payment_total|number_format}--></strong></td>
     						</tr>
     					<!--{/section}-->
     				</table>

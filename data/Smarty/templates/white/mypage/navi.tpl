@@ -33,6 +33,8 @@
 	<!--{if $tpl_login}-->
 		<li><a href="index.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn01<!--{if $tpl_mypageno == 'index'}-->_on<!--{/if}-->.gif" alt="購入履歴" class="swp"></a></li>
 
+		<li><a href="regular.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn04<!--{if $tpl_mypageno == 'regular'}-->_on<!--{/if}-->.gif" alt="定期購入一覧" class="swp"></a></li>
+
 		<li><a href="change.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn02<!--{if $tpl_mypageno == 'change'}-->_on<!--{/if}-->.gif" alt="ご登録内容の変更" class="swp"></a></li>
 
 		<li><a href="change_basic.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn03<!--{if $tpl_mypageno == 'change_basic'}-->_on<!--{/if}-->.gif" alt="メールアドレス及びパスワードの変更" class="swp"></a></li>
@@ -40,7 +42,6 @@
 		<li><a href="history_list.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn03<!--{if $tpl_mypageno == 'index'}-->_on<!--{/if}-->.gif" alt="ご注文履歴" class="swp"></a></li>
 *}-->
 
-		<li><a href="regular.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_btn04<!--{if $tpl_mypageno == 'regular'}-->_on<!--{/if}-->.gif" alt="定期購入一覧" class="swp"></a></li>
 		<!--{*
 		<!--{if $smarty.const.OPTION_FAVOFITE_PRODUCT == 1}-->
 			<li><a href="favorite.php" class="<!--{if $tpl_mypageno == 'favorite'}--> selected<!--{/if}-->">
