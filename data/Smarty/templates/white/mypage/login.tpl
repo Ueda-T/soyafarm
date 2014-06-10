@@ -11,7 +11,7 @@
 				<dd>
 					<!--{assign var=key value="login_email"}-->
 					<span class="attention"><!--{$arrErr[$key]}--></span>
-					<p id="id"><img src="<!--{$TPL_URLPATH}-->img/rohto/id.gif" width="85" height="25" alt="メールアドレス">
+					<p id="id"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/id.gif" width="85" height="25" alt="メールアドレス">
 						<input type="text" name="<!--{$key}-->" value="<!--{$tpl_login_email|h}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" />
 					</p>
 <!--{*
@@ -22,7 +22,7 @@
 *}-->
 					<!--{assign var=key value="login_pass"}-->
 					<span class="attention"><!--{$arrErr[$key]}--></span>
-					<p id="pass"><img src="<!--{$TPL_URLPATH}-->img/rohto/pw.gif" width="85" height="25" alt="パスワード">
+					<p id="pass"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/pw.gif" width="85" height="25" alt="パスワード">
 						<input type="password" name="<!--{$key}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" class="box300" />
 					</p>
 					<input type="image" src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_login.gif" alt="ログイン" name="log" id="log" class="swp" />

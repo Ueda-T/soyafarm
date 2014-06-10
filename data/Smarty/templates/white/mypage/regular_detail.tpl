@@ -388,7 +388,7 @@ $(function() {
 			<!--{$item.total_inctax|number_format}-->円
 			</td>
                         <!--{*
-			<td class="alignC"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$item.cart_no}-->'); return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/delete.gif" alt="取消" /></a>
+			<td class="alignC"><a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$item.cart_no}-->'); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/delete.gif" alt="取消" /></a>
 			</td>
                         *}-->
 		</tr>

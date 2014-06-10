@@ -182,10 +182,12 @@
         </table>
         </div>
 
+<!--{*
         <!-- お問い合わせ -->
         <p class="btn">
             <a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/"><img src="<!--{$TPL_URLPATH}-->img/rohto/contact_pastorder.gif" alt="このご注文へのお問い合わせ" class="swp" /></a>
         </p>
+*}-->
 
 <!--{*
         <div class="btn_area">

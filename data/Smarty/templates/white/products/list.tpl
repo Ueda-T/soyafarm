@@ -313,7 +313,7 @@ function fnInCart(productForm) {
     <!--{foreachelse}-->
         <!--{include file="frontparts/search_zero.tpl"}-->
 
-
+<!--{*
 		<form name="search_form2" id="search_form2" method="get" action="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php">
 			<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 			<input type="hidden" name="mode" value="search" />
@@ -363,6 +363,7 @@ function fnInCart(productForm) {
 				<p class="btn"><a href="javascript:void(0);" onclick="document.search_form2.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/rohto/search.gif" class="swp" /></a></p>
 			</div><!--／wrapKensaku-->
 		</form>
+*}-->
 
     <!--{/foreach}-->
     </ul>

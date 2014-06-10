@@ -731,6 +731,53 @@ div#whobought_area h2 {
 }
 */
 
+.itemGStT {
+	clear: both;
+	padding: 0 0 0 30px;
+}
+.itemGStT dl {
+	float: left;
+	width: 130px;
+	height:180px;
+	color: #3e3e3e;
+	margin: 0 20px 0 0;
+}
+.itemGStT dl:after {
+	content: "";
+	clear: both;
+	height: 0;
+	display: block;
+	visibility: hidden;
+}
+.itemGStT dd.thum {
+	margin: 20px 0 0 0;
+}
+.itemGStT dd.thum a {
+	display: block;
+	padding: 2px 0;
+	text-decoration: none;
+	text-align: center;
+}
+.itemGStT dt {
+	font-size: 0.8em;
+	line-height: 120%;
+	padding: 4px 0;
+}
+.itemGStT dt a {
+	color: #4c88d2;
+	line-height: 140%;
+}
+.itemGStT dt a:hover {
+	color: #273865;
+}
+.itemGStT dd.price {
+	font-size: 0.8em;
+	line-height: 140%;
+}
+.itemGStT dd.price span.small {
+	font-size: 80%;
+}
+
 /* ***********************************************
 ▼カートの中
 /*********************************************** */

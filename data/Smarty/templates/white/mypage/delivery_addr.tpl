@@ -22,7 +22,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				<colgroup width="30%"></colgroup>
 				<colgroup width="70%"></colgroup>
 				<tr>
-					<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前</th>
+					<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前</th>
 					<td>
 						<!--{assign var=key1 value="`$prefix`name"}-->
 						<!--{if $arrErr[$key1]}-->
@@ -32,7 +32,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</td>
 				</tr>
 				<tr>
-					<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前(フリガナ)</th>
+					<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前(フリガナ)</th>
 					<td>
 						<!--{assign var=key1 value="`$prefix`kana"}-->
 						<!--{if $arrErr[$key1]}-->
@@ -42,7 +42,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</td>
 				</tr>
 				<tr>
-					<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />郵便番号</th>
+					<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />郵便番号</th>
 					<td>
 						<!--{assign var=key value="zip"}-->
 						<!--{assign var=key3 value="`$prefix`pref"}-->
@@ -60,7 +60,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				</tr>
 
 				<tr>
-					<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />住所</th>
+					<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />住所</th>
 					<td>
 						<!--{if $arrErr[$key3] || $arrErr[$key4] || $arrErr[$key5]}-->
 							<div class="attention"><!--{$arrErr[$key3]}--><!--{$arrErr[$key4]}--><!--{$arrErr[$key5]}--></div>
@@ -79,7 +79,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</td>
 				</tr>
 				<tr>
-					<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />電話番号</th>
+					<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />電話番号</th>
 					<td>
 						<!--{assign var=key1 value="`$prefix`tel"}-->
 						<!--{if $arrErr[$key1]}-->

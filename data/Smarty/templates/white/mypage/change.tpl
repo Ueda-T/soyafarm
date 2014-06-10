@@ -32,7 +32,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 		<colgroup width="30%"></colgroup>
 		<colgroup width="70%"></colgroup>
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />顧客番号</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />顧客番号</th>
 			<td>
 			  <!--{assign var=key value="customer_id"}-->
 			  <!--{$arrForm[$key]|h}-->
@@ -109,7 +109,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 			<input type="hidden" name="email" value="<!--{$arrForm.email}-->" />
 			<input type="hidden" name="email02" value="<!--{$arrForm.email02}-->" />
 			<tr>
-				<th><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />メールアドレス</th>
+				<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />メールアドレス</th>
 				<td>
 				<!--{$arrForm.email}--><p class="mini"><span class="attention">※メールアドレスとパスワードの変更は<a href="change_basic.php">こちら</a>から</span></p>
 				</td>

@@ -129,7 +129,7 @@
     <div id="undercolumn_shopping">
         <h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 
-		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品" /></h3>
+		<h3 class="order">ご注文商品</h3>
 
 			<table class="cartListTankaiTbl" summary="ご注文商品">
 				<tr>
@@ -186,7 +186,7 @@
         <div class="wrapCoanEle">
 			<h3 class="order">お客様情報</h3>
 			<!--{*
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />お支払方法をご選択ください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />お支払方法をご選択ください。</h4>
             <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
             <!--{assign var=key value="payment_id"}-->
             <!--{if $arrErr[$key] != ""}-->
@@ -199,15 +199,15 @@
                 <tbody>
                     <tr>
                         <th><span>漢字氏名</span></th>
-                        <td class="alignC"><!--{$tpl_arrCustomer.name|h}--> 様</td>
+                        <td><!--{$tpl_arrCustomer.name|h}--> 様</td>
                     </tr>
                     <tr>
                         <th><span>電話番号</span></th>
-                        <td class="alignC"><!--{$tpl_arrCustomer.tel|h}--></td>
+                        <td><!--{$tpl_arrCustomer.tel|h}--></td>
                     </tr>
                     <tr>
                         <th><span>住所</span></th>
-                        <td class="alignC">〒<!--{$tpl_arrCustomer.zip|h}--> <!--{$arrPref[$tpl_arrCustomer.pref]|h}--><!--{$tpl_arrCustomer.addr01|h}--><!--{$tpl_arrCustomer.addr02|h}--></td>
+                        <td>〒<!--{$tpl_arrCustomer.zip|h}--> <!--{$arrPref[$tpl_arrCustomer.pref]|h}--><!--{$tpl_arrCustomer.addr01|h}--><!--{$tpl_arrCustomer.addr02|h}--></td>
                     </tr>
                 </tbody>
             </table>
@@ -222,7 +222,6 @@
 			<table summary="お届け先の指定" class="tblOrder">
 				<colgroup width="5%"></colgroup>
 				<colgroup width="15%"></colgroup>
-				<colgroup width="15%"></colgroup>
 				<colgroup width="50%"></colgroup>
 				<colgroup width="15%"></colgroup>
 				<!--{section name=cnt loop=$arrAddr}-->
@@ -234,17 +233,15 @@
 							<input type="radio" name="deliv_check" id="chk_id_<!--{$smarty.section.cnt.iteration}-->" value="<!--{$arrAddr[cnt].other_deliv_id}-->"<!--{if $arrForm.deliv_check.value == $arrAddr[cnt].other_deliv_id}--> checked="checked"<!--{/if}--> />
 						<!--{/if}-->
 					</td>
-					<td class="alignC">
+					<td>
 						<label for="chk_id_<!--{$smarty.section.cnt.iteration}-->">
 						<!--{$arrAddr[cnt].name|h}-->
 						</label>
 					</td>
-					<td class="alignC">
+					<td>
 						<label for="chk_id_<!--{$smarty.section.cnt.iteration}-->">
 						〒<!--{$arrAddr[cnt].zip|h}-->
 						</label>
-					</td>
-					<td>
 						<!--{assign var=key value=$arrAddr[cnt].pref}-->
 						<!--{$arrPref[$key]}--><!--{$arrAddr[cnt].addr01|h}--><!--{$arrAddr[cnt].addr02|h}-->
 					</td>
@@ -273,7 +270,7 @@
             <input type="hidden" name="<!--{$key}-->" value="<!--{$arrForm[$key].value|h}-->" id="deliv_id" />
         <!--{else}-->
 		<div class="wrapCoanEle">
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />配送方法をご選択ください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />配送方法をご選択ください。</h4>
 
             <!--{if $arrErr[$key] != ""}-->
             <p class="attention"><!--{$arrErr[$key]}--></p>
@@ -301,7 +298,7 @@
         <!--{if $cartKey != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
         <div class="wrapCoanEle">
         <!--{if $mail_deliv_flg === false}--><!--{* ▼メール便判定 *}-->
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/option.gif" alt="任意" />お届け希望日時、その他ご要望をお選びください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/option.gif" alt="任意" />お届け希望日時、その他ご要望をお選びください。</h4>
             <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
             <!--{foreach item=shippingItem name=shippingItem from=$arrShipping}-->
             <!--{assign var=index value=$shippingItem.shipping_id}-->
@@ -382,7 +379,7 @@
 
         <div class="wrapCoanEle">
 			<h3 class="order">お支払方法</h3>
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />お支払方法をご選択ください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />お支払方法をご選択ください。</h4>
             <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
             <!--{assign var=key value="payment_id"}-->
             <!--{if $arrErr[$key] != ""}-->
@@ -416,7 +413,7 @@
                 </tbody>
             </table>
 
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />請求書(明細書)のご送付方法をご指定ください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />請求書(明細書)のご送付方法をご指定ください。</h4>
             <!--{assign var=key value="include_kbn"}-->
             <!--{if $arrErr[$key] != ""}-->
             <p class="attention"><!--{$arrErr[$key]}--></p>
@@ -439,7 +436,7 @@
         <!--{if $tpl_campaign_code|default:''|strlen == 0 && $customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
         <div class="wrapCoanEle">
 			    <h3 class="order">アンケート</h3>
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />アンケートにご協力ください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check.gif" alt="必須" />アンケートにご協力ください。</h4>
             <!--{assign var=key value="event_code"}-->
             <!--{if $arrErr[$key] != ""}-->
             <p class="attention"><!--{$arrErr[$key]}--></p>

@@ -29,10 +29,10 @@
 	<dl id="member-login">
 		<dt>Web会員の方</dt>
 		<dd>
-			<p id="id"><img src="<!--{$TPL_URLPATH}-->img/rohto/id.gif" width="85" height="25" alt="メールアドレス">
+			<p id="id"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/id.gif" width="85" height="25" alt="メールアドレス">
 				<input type="text" name="login_email" class="box140" value="<!--{$tpl_login_email|h}-->" style="ime-mode: disabled;" />
 			</p>
-			<p id="pass"><img src="<!--{$TPL_URLPATH}-->img/rohto/pw.gif" width="85" height="25" alt="パスワード">
+			<p id="pass"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/pw.gif" width="85" height="25" alt="パスワード">
 				<input type="password" name="login_pass" class="box140" /></td>
 			</p>
 			<p class="btn">

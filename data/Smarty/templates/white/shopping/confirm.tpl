@@ -43,15 +43,13 @@ $(document).ready(function() {
 				<!--{if $use_module}-->
 					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
 				<!--{else}-->
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="注文する"  name="next" id="next" class="swp" /></a>
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_order.gif" alt="注文する"  name="next" id="next" class="swp" /></a>
 				<!--{/if}-->
 					</span>
 				<a href="./payment.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back<!--{$key}-->" /></a>
 				</p>
 			</div>
 		</div>
-
-		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品"></h3>
 
         <table summary="ご注文内容確認" class="cartListTankaiTbl">
             <colgroup width="10%"></colgroup>
@@ -265,7 +263,7 @@ $(document).ready(function() {
 				<!--{if $use_module}-->
 					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="次へ" name="next" id="next" class="swp" /></a>
 				<!--{else}-->
-					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/rohto/btn_buy.gif" alt="注文する"  name="next" id="next" class="swp" /></a>
+					<a href="javascript:void(0);" onclick="return fnCheckSubmit();"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_next.gif" alt="注文する"  name="next" id="next" class="swp" /></a>
 				<!--{/if}-->
 					</span>
 				<a href="./payment.php"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_back.gif" alt="戻る" name="back<!--{$key}-->" /></a>

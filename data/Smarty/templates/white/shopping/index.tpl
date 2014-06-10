@@ -15,7 +15,7 @@
 							<table cellspacing="0" class="innr">
 								<tr>
 									<!--{assign var=key value="login_email"}-->
-									<th><img src="<!--{$TPL_URLPATH}-->img/rohto/id.gif" width="85" height="25" alt="メールアドレス"></th>
+									<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/id.gif" width="85" height="25" alt="メールアドレス"></th>
 									<td><!--{if strlen($arrErr[$key]) >= 1}--><span class="attention"><!--{$arrErr[$key]}--></span><br /><!--{/if}-->
 								<input type="text" name="<!--{$key}-->" value="<!--{$tpl_login_email|h}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box300" />
 									</td>
@@ -31,7 +31,7 @@
 								</tr>
 								<tr>
 									<!--{assign var=key value="login_pass"}-->
-									<th><img src="<!--{$TPL_URLPATH}-->img/rohto/pw.gif" width="85" height="25" alt="パスワード"></th>
+									<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/pw.gif" width="85" height="25" alt="パスワード"></th>
 									<td>
 										<input type="password" name="<!--{$key}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" class="box300" />
 										<span class="attention"><!--{$arrErr[$key]}--></span>

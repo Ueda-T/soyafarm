@@ -9,7 +9,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 	<div id="undercolumn_entry">
 		<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/order_title_step1.gif" alt="購入手続き" /></h1>
 
-		<h3 class="cartListTitle"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_cart_title.gif" width="820" height="31" alt="ご注文商品" /></h3>
+		<h3 class="order">ご注文商品</h3>
 
 		<div class="cartList">
 			<table class="cartListTankaiTbl" summary="ご注文商品">
@@ -185,7 +185,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 
 					<!--{*
 						<tr>
-							<th><span><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
+							<th><span><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
 							<td>
 								<!--{assign var=key1 value="`$prefix`fax"}-->
 								<!--{if $arrErr[$key1]}-->
@@ -321,7 +321,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 									<!--{/if}-->
 									<p><strong>お得な特別セール</strong>や<strong>健康に関する情報</strong>をお届けするお知らせメールを受け取りますか？</p>
 									<span style="<!--{$arrErr.mailmaga_flg|sfGetErrorColor}-->">
-										<input type="radio" name="mailmaga_flg" value="1" id="mailmaga_flg_1" <!--{if $arrForm.mailmaga_flg eq '1'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_1">受け取る</label><input type="radio" name="mailmaga_flg" value="0" id="mailmaga_flg_0" <!--{if $arrForm.mailmaga_flg eq '0'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_0">受け取らない</label><div id="notReceive" style="display: none;" ><img width="495" height="97" src="<!--{$TPL_URLPATH}-->img/rohto/mail_uketoru_up_s.gif" alt="受け取りませんか"></a></div>
+										<input type="radio" name="mailmaga_flg" value="1" id="mailmaga_flg_1" <!--{if $arrForm.mailmaga_flg eq '1'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_1">受け取る</label><input type="radio" name="mailmaga_flg" value="0" id="mailmaga_flg_0" <!--{if $arrForm.mailmaga_flg eq '0'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_0">受け取らない</label><div id="notReceive" style="display: none;" ><img width="495" height="97" src="<!--{$TPL_URLPATH}-->img/soyafarm/bnr_ml_merit.gif" alt="受け取りませんか"></a></div>
 									</span>
 								</td>
 							</tr>

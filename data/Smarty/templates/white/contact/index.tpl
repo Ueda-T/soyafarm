@@ -43,7 +43,7 @@
 
             <table summary="お問い合わせ">
                 <tr>
-                    <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />件名</th>
+                    <th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />件名</th>
                     <td>
                         <span class="attention"><!--{$arrErr.subject}--></span>
                         <select name="subject" id="subject" style="<!--{$arrErr.subject|sfGetErrorColor}-->">
@@ -53,14 +53,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前</th>
+                    <th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前</th>
                     <td>
                         <span class="attention"><!--{$arrErr.name}--></span>
                         <input type="text" class="box150" name="name" value="<!--{$arrForm.name.value|h|default:$arrData.name|h}-->" maxlength="<!--{$smarty.const.STEXT_LEN}-->" style="<!--{$arrErr.name|sfGetErrorColor}-->; ime-mode: auto;" /><span>&nbsp;（全角で入力してください）</span>
                     </td>
                 </tr>
                 <tr>
-                    <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />メールアドレス</th>
+                    <th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />メールアドレス</th>
                     <td>
                         <span class="attention"><!--{$arrErr.email}--><!--{$arrErr.email02}--></span>
                         <input type="text" class="box380 top" name="email" value="<!--{$arrForm.email.value|h|default:$arrData.email|h}-->" style="<!--{$arrErr.email|sfGetErrorColor}-->; ime-mode: disabled;" /><br />
@@ -71,14 +71,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />電話番号</th>
+                    <th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />電話番号</th>
                     <td>
                         <span class="attention"><!--{$arrErr.tel}--></span>
                         <input type="text" class="box180" name="tel" value="<!--{$arrForm.tel.value|h|default:$arrData.tel|h}-->" maxlength="<!--{$smarty.const.TEL_ITEM_LEN*3}-->" style="<!--{$arrErr.tel|sfGetErrorColor}-->; ime-mode: disabled;" /><span>&nbsp;例：06-6575-1231</span>
                     </td>
                 </tr>
                 <tr>
-                    <th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />内容</th>
+                    <th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />内容</th>
                     <td>
                         <span class="attention"><!--{$arrErr.contents}--></span>
                         <textarea name="contents" id="contents" class="box380" cols="60" rows="20" style="<!--{$arrErr.contents.value|h|sfGetErrorColor}-->; ime-mode: auto;"><!--{$arrForm.contents.value|h}--></textarea><br />

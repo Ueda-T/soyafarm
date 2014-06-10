@@ -55,7 +55,7 @@ function fnCheckSubmit() {
             </tr>
 <!--{*
             <tr>
-                <th><span><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
+                <th><span><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
                 <td>
                     <!--{if strlen($arrForm.fax) > 0}-->
                         <!--{$arrForm.fax|h}-->
@@ -147,7 +147,7 @@ function fnCheckSubmit() {
 
 <!--{*お届け先指定がある場合表示*}-->
 <!--{if $arrForm.other_addr_flg}-->
-		<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi03.gif" width="820" height="35" alt="お届け先" /></h3>
+		<h3 class="order">お届け先</h3>
 
         <table summary="お届け先入力内容確認" class="tblOrder">
             <tr>

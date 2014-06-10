@@ -86,12 +86,14 @@ $(document).ready(function() {
 
 			<p><!--{$arrProduct.pc_comment3}--></p>
 
+<!--{*
 			<!--★メール便案内★-->
 			<!--{if $arrProduct.deliv_judgment < $smarty.const.DELIV_JUDGMENT_DEFAULT_VALUE}-->
 			<div>
-				<img src="<!--{$TPL_URLPATH}-->img/rohto/regular_info.gif" alt="この商品単体でのご注文は、メール便（送料無料）でのお届けとなります。代引き・お届け日はご指定いただけません。メール便のため、お届けにお時間をいただく場合がございます。" width="360" height="95" style="display:block; margin: 0 0 20px 0;" />
+				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/regular_info.gif" alt="この商品単体でのご注文は、メール便（送料無料）でのお届けとなります。代引き・お届け日はご指定いただけません。メール便のため、お届けにお時間をいただく場合がございます。" width="360" height="95" style="display:block; margin: 0 0 20px 0;" />
 			</div>
 			<!--{/if}-->
+*}-->
 
 		</div><!-- /#detail -->
 
@@ -640,7 +642,7 @@ $(document).ready(function() {
 
 	<!--▼関連商品-->
 	<!--{if $arrRecommend}-->
-			<h2><img src="<!--{$TPL_URLPATH}-->img/rohto/recommend_title_goods.gif" alt="その他のオススメ商品" /></h2>
+			<h2><img src="<!--{$TPL_URLPATH}-->img/soyafarm/tit_recommend.gif" alt="その他のオススメ商品" /></h2>
 
 			<div class="itemGStT">
 			<!--{section name=cnt loop=$arrRecommend}-->

@@ -12,14 +12,14 @@
 
 	<table cellspacing="0">
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />メールアドレス</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />メールアドレス</th>
 			<td>
 				<p class="attention"><!--{$arrErr.email}--></p>
 				<input type="text" name="email" value="<!--{$arrForm.email|default:$tpl_login_email|h}-->" class="box240" style="<!--{$arrErr.email|sfGetErrorColor}-->; ime-mode: disabled;" />
 			</td>
 		</tr>
 		<tr>
-			<th><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前</th>
+			<th><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前</th>
 			<td>
                 <p class="attention">
                     <!--{$arrErr.name}-->
