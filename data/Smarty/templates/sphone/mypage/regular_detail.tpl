@@ -260,9 +260,11 @@ $(function() {
 					<td colspan="2" style="background-color:#FFF;padding:15px 9px;color:#464646; font-weight:bold; vertical-align:middle; text-align:center;">
 						小計
 						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$sub_total|number_format}-->円</span>
+<!--{*
 						＋
 						送料
 						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$arrData.deliv_fee|number_format}-->円</span>
+*}-->
 					</td>
 				</tr>
 			</table>
