@@ -1,8 +1,7 @@
 	<!--{strip}-->
 	<!--▼現在のポイント-->
-<!--{*
 	<!--{if $point_disp !== false}-->
-	<div class="hdrLoginBox">
+	<div class="hdrLoginBox mb10">
 		<table cellspacing="0" class="lay1">
 			<tr>
 				<td class="name">
@@ -27,7 +26,6 @@
 	<!--{/if}-->
 	<!--{/if}-->
 	<!--▲現在のポイント-->
-*}-->
 	<ul id="mypage-menu" class="clearfix">
 	<!--{* 会員状態 *}-->
 	<!--{if $tpl_login}-->
