@@ -29,11 +29,16 @@ padding:10px;
 margin-bottom:0.5em;
 }
 .formBox{
+font-size:0.75em;
+line-height:1.5;
 margin-bottom:20px;
 border:#A9ABAD solid 1px;
 border-radius:7px;
 -moz-border-radius:7px;
 -webkit-border-radius:7px;
+}
+.formBox em {
+	font-weight:bold;
 }
 .innerBox{
 padding:10px;

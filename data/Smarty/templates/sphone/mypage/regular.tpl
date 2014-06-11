@@ -29,7 +29,7 @@
 
            <!--{section name=cnt loop=$arrRegularDetail max=$dispNumber}-->
              <!--▼商品 -->
-             <div class="arrowBox">
+             <div class="<!--{if $arrRegularDetail[cnt].next_arrival_date == ""}-->innerBox<!--{else}-->arrowBox<!--{/if}-->">
               <p>
                  <em>商品名：</em><span class="product_name"><!--{$arrRegularDetail[cnt].product_name}--></span><br />
                  <em>数量：</em><span class="quantity"><!--{$arrRegularDetail[cnt].quantity}--></span><br />
@@ -47,20 +47,20 @@
                     <span class="regular_change">
                     <!--{** 次回お届け日が未定は変更不可 **}-->
 					<!--{if $arrRegularDetail[cnt].next_arrival_date == ""}-->
-					次回お届け日が未定のため<br />確認できません。
+					<span class="attention">次回お届け日が未定のため<br />お届けスケジュールを確認できません。</span>
 
 					<!--{** 次回お届け日の1週間以内は変更不可 **}-->
 <!--{*
 					<!--{elseif !$arrRegularDetail[cnt].disp_flg}-->
-					只今、出荷準備中のため<br />確認できません。
+					<span class="attention">只今、出荷準備中のため<br />確認できません。</span>
 *}-->
 					<!--{** 「6：休止中」は変更不可 **}-->
 <!--{*
 					<!--{elseif $arrRegularDetail[cnt].status == $smarty.const.REGULAR_ORDER_STATUS_PAUSE}-->
-					休止中のため<br />確認できません。
+					<span class="attention">休止中のため<br />確認できません。</span>
 *}-->
 					<!--{else}-->
-                             <a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/regular_detail.php?regular_id=<!--{$arrRegularDetail[cnt].regular_id}-->&line_no=<!--{$arrRegularDetail[cnt].line_no}-->">お届けスケジュールの確認</a>
+                             <a href="<!--{$smarty.const.ROOT_URLPATH}-->mypage/regular_detail.php?regular_id=<!--{$arrRegularDetail[cnt].regular_id}-->&line_no=<!--{$arrRegularDetail[cnt].line_no}-->" class="btn">お届けスケジュールの確認</a>
 					<!--{/if}-->
                     </span>
               </p>
