@@ -1,12 +1,11 @@
 	<!--{strip}-->
 	<!--▼現在のポイント-->
 	<!--{if $point_disp !== false}-->
-<!--{*
-		<p>
-			<!--{$CustomerName|h}--></strong>&nbsp;様<br />
-                        <!--{$tpl_discount.customer_type_name|h}--><br />
-			お客様番号：<!--{$CustomerId}-->
-		</p>
+	<ul class="myPageName clearfix">
+		<li><strong><!--{$CustomerName|h}--></strong>様</li>
+		<li>割引率：<!--{$tpl_discount.customer_type_name|h}--></li>
+		<!--{*<br />お客様番号：<!--{$CustomerId}-->*}-->
+	</ul>
 
 	<!--{if $smarty.const.USE_POINT !== false && $CustomerPoint}-->
 	<div class="myPageRotta">
@@ -22,7 +21,7 @@
 		</table>
 	</div>
 	<!--{/if}-->
-*}-->
+
 	<!--{*
 	<!--{if $smarty.const.USE_POINT !== false}-->&nbsp;<br>
 		現在の所持ポイントは&nbsp;<span class="point st"><!--{$CustomerPoint|number_format|default:"0"|h}-->pt</span><!--{if $CustomerPointValidDate neq ""}-->(<!--{$CustomerPointValidDate|date_format:"%Y/%m/%d"}-->まで有効)<!--{/if}-->、&nbsp;

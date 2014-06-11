@@ -799,6 +799,32 @@ padding:20px;
 }
 
 /* -----------------------------------------------
+マイページ
+----------------------------------------------- */
+.myPageName {
+/*	background-color:#EDFFBF;
+	border:2px solid #A9CF39;*/
+	font-size:0.75em;
+	padding:10px;
+}
+
+.myPageName strong {
+	font-weight:bold;
+	padding-right:0.2em;
+}
+
+.myPageName li:first-child {
+	float:left;
+	width:40%;
+}
+
+.myPageName li:last-child {
+	float:left;
+	text-align:right;
+	width:60%;
+}
+
+/* -----------------------------------------------
 マイページ ナビ
 ----------------------------------------------- */
 /*
@@ -869,7 +895,7 @@ ul.myPageMenu li a span {
 	display:block;
 	border-top:1px solid #FFF;
 	border-bottom:1px solid #FFF;
-	padding:10px 0;
+	padding:6px 0;
 }
 ul.myPageMenu li a.selected {
 	background-image:-moz-linear-gradient(50% 0% -90deg,rgb(117,205,221) 0%,rgb(117,205,221) 100%) !important; 
