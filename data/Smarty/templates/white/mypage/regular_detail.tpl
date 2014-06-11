@@ -359,13 +359,13 @@ $(function() {
 		<!--{foreach from=$arrCart[$key] item=item}-->
 		<tr>
 			<td>
-			<!--{$item.productsClass.name|h}--><br />
+			<!--{$item.productsClass.name|h}--><!--{*<br />
 			<!--{if $item.productsClass.product_code_min == $item.productsClass.product_code_max}-->
 				<!--{$item.productsClass.product_code_min|h}-->
 			<!--{else}-->
 				<!--{$item.productsClass.product_code_min|h}-->～<!--{$item.productsClass.product_code_max|h}-->
 			<!--{/if}-->
-
+*}-->
 			<!--{if $item.productsClass.classcategory_name1 != ""}-->
 				<!--{$item.productsClass.class_name1}-->：<!--{$item.productsClass.classcategory_name1}--><br />
 			<!--{/if}-->
@@ -392,6 +392,10 @@ $(function() {
 			</td>
                         *}-->
 		</tr>
+		<tr>
+			<th colspan="2" class="alignR">小計</th>
+			<td class="alignR"><strong class="cartTotalPrice"><!--{$sub_total|number_format}-->円</strong></td>
+		</tr>
 		<!--{/foreach}-->
 		<!--{/foreach}-->
 	</table>
@@ -403,24 +407,22 @@ $(function() {
             <a class="btn-normal" href="javascript:;" onclick="openDialogSearchProducts('<!--{$arrForm.brand_id.value}-->', 'add');"><img src="<!--{$TPL_URLPATH}-->img/rohto/regular_change_btn_add.gif" alt="商品の追加" class="swp" /></a>
         </p>
     <!--{/if}-->
-    *}-->
 		<div class="cartTotalBox">
 			<div class="inner">
 				<p>
 					小計
 					<strong><!--{$sub_total|number_format}-->円
 					＋</strong>
-					
 					送料
 					<strong><!--{$arrData.deliv_fee|number_format}-->円</strong>
 				</p>
 			</div>
 		</div>
-
+    *}-->
 </div>
 
 <div class="wrapCoan">
-	<h3 class="order">お支払方法</h3>
+	<h3 class="order">お支払方法・お届け先情報</h3>
     <!--{* ▼お届け先情報 *}-->
     <table style="margin-top:15px;" class="tblOrder">
         <colgroup width="20%"></colgroup>
@@ -432,8 +434,28 @@ $(function() {
                 <!--{$arrPayment[$arrForm.payment_id.value]|h}-->
             </td>
 		</tr>
+		<tr>
+			<th><span>お届け先住所</span></th>
+			<td>
+                <input type="hidden" name="order_name" value="<!--{$arrForm.order_name.value}-->" id="order_name" />
+                <input type="hidden" name="order_zip" value="<!--{$arrForm.order_zip.value}-->" id="order_zip" />
+                <input type="hidden" name="order_pref" value="<!--{$arrForm.order_pref.value}-->" id="order_pref" />
+                <input type="hidden" name="order_addr01" value="<!--{$arrForm.order_addr01.value}-->" id="order_addr01" />
+                <input type="hidden" name="order_addr02" value="<!--{$arrForm.order_addr02.value}-->" id="order_addr02" />
+                <input type="hidden" name="order_tel" value="<!--{$arrForm.order_tel.value}-->" id="order_tel" />
+				〒<!--{$arrForm.order_zip.value|h}--><br />
+				<!--{$arrPref[$arrForm.order_pref.value]|h}--><!--{$arrForm.order_addr01.value|h}--><!--{$arrForm.order_addr02.value|h}--><br />
+				<!--{$arrForm.order_name.value|h}--> 様
+			</td>
+		</tr>
+		<tr>
+			<th>お届け先お電話番号</th>
+			<td><!--{$arrForm.order_tel.value|h}--></td>
+		</tr>
     </table>
 </div>
+
+
 <!--{* ▲お届け先情報 *}-->
 
 <div class="wrapCoan">

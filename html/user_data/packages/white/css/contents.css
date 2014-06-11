@@ -994,12 +994,19 @@ div.cartTotalBox div.campaignCode {
 	background-color:#EDFFBF;
 }
 
-div.cartTotalBox strong {
-	font-size:230%;
+div.cartTotalBox strong,
+strong.cartTotalPrice {
 	font-weight:bold;
 	color: #F33;
 	line-height:130%;
 	vertical-align:middle;
+}
+div.cartTotalBox strong {
+	font-size:230%;
+}
+
+strong.cartTotalPrice {
+	font-size:150%;
 }
 
 div.campaignCode p img {
