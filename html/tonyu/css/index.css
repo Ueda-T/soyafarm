@@ -1,0 +1,57 @@
+body {
+	margin: 0;
+	padding: 0 0 30px;
+	background: url(../img/bg_body.gif) repeat-y center 0;
+	text-align: center;
+	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
+	font-size: 0.80em;
+}
+a {
+	color:#2c8da3;
+}
+a:hover {
+	color: #00c0f0;
+}
+h1,p {
+	margin: 0 0 25px;
+	padding: 0;
+}
+li {list-style: none;}
+#wrapper {
+	width: 900px;
+	margin: 0 auto 0;
+	padding: 0 0 15px;
+}
+.cv_btn {
+	width: 868px;
+	height: 109px;
+	margin: 0 auto 5px;
+	background: url(../img/bt_cp.gif) no-repeat 0 0;
+	text-indent: -9999px;
+	border: none;
+	cursor: pointer;
+}
+.cv_btn:hover {
+	background: url(../img/bt_cp.gif) no-repeat 0 -111px;
+}
+#remote_navi {
+	margin: -15px 10px 0;
+	padding: 0;
+}
+#remote_navi li {
+	float: left;
+	margin-right: 10px;
+}
+#remote_navi li a {
+	background: url("../../user_data/packages/white/img/footer/icon_link_ft.gif") no-repeat scroll 6px 0.25em transparent;
+	display: block;
+	padding-left: 15px;
+}
+#footer {
+	margin: 25px auto 0;
+	padding-top: 15px;
+	border-top: 1px dotted #CCCCCC;
+	width: 880px;
+	color: #333333;
+	text-align: right;
+}

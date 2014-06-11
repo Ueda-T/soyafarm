@@ -1,0 +1,104 @@
+﻿body {
+	margin: 0;
+	padding: 0 0 30px;
+	background: url(../img/bg_body.jpg) repeat-y center 0;
+	text-align: center;
+	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
+	font-size: 0.80em;
+}
+a {
+	color:#2c8da3;
+}
+a:hover {
+	color: #00c0f0;
+}
+h1,p {
+	margin: 0;
+	padding: 0;
+}
+li {list-style: none;}
+img { vertical-align: top;}
+#wrapper {
+	width: 900px;
+	margin: 0 auto 0;
+	padding: 0 0 15px;
+}
+
+.cp_area {
+	width: 868px;
+	margin: 0 auto;
+	background:url(../img/bg_bt.gif) no-repeat 0 0;
+	min-height:124px;
+	height: auto !important;
+	height: 124px;
+	text-align: left;
+	position: relative;
+}
+.cp_area .cp_input {
+	width: 120px;
+	height: 20px;
+	position: relative;
+	left: 415px;
+	top: 8px;
+	
+}
+.cp_area .cp_offer {
+	position: relative;
+	top: 8px;
+	*top: 4px;
+	left: 425px;
+	color: #FFF;
+	font-weight: bold;
+}
+.cp_area .cp_btn {
+	background: url(../img/bt_cp.jpg) no-repeat 0 0;
+	width:563px;
+	height: 72px;
+	text-indent: -9999px;
+	margin: 5px 0 0;
+	border: 0;
+	cursor: pointer;
+	zoom: 1;
+	display: block;
+	position: relative;
+	left: 294px;
+	top: 12px;
+	*top: 10px;
+}
+.cp_area .cp_btn:hover {
+	background: url(../img/bt_cp.jpg) no-repeat 0 -72px;
+}
+.to_howto {
+	text-align: right;
+	padding: 20px;
+}
+.arrow {
+	background: url("../user_data/packages/white/img/soyafarm/icon_link_down.gif") no-repeat scroll 6px 0.25em transparent;
+	padding-left: 15px;
+}
+
+#howto {
+	margin:0 2px;
+}
+
+#remote_navi {
+	margin: -15px 10px 0;
+	padding: 0;
+}
+#remote_navi li {
+	float: left;
+	margin-right: 10px;
+}
+#remote_navi li a {
+	background: url("../user_data/packages/white/img/footer/icon_link_ft.gif") no-repeat scroll 6px 0.25em transparent;
+	display: block;
+	padding-left: 15px;
+}
+#footer {
+	margin: 25px auto 0;
+	padding-top: 15px;
+	border-top: 1px dotted #CCCCCC;
+	width: 880px;
+	color: #333333;
+	text-align: right;
+}
