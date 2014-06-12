@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$smarty.const.CHAR_CODE}-->" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="copyright" content="Rohto Pharmaceutical Co., Ltd.">
 <title><!--{if $tpl_subtitle|strlen >= 1}--><!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--><!--{$tpl_title|h}--><!--{/if}-->【<!--{$arrSiteInfo.shop_name|h}-->】</title>
 <link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/import.css" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="<!--{$TPL_URLPATH}-->css/fontsize-m.css" media="screen,tv,projection,print" />
@@ -31,7 +30,6 @@
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery.autotab-1.1b.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery-spin.js"></script>
-<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery_topcatch.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/jquery.colorbox.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/rollover.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/scroll.js"></script>

@@ -14,9 +14,6 @@ p.btn {
 =============================================== */
 /* メインイメージ
 ----------------------------------------------- */
-#wrapContent.topCol {
-	background: url(../img/rohto/bg_mainvisual.gif) no-repeat 50% 0;
-}
 
 /* ==============================================
 ▼下層
@@ -314,7 +311,7 @@ div#undercolumn_error > .error {
 .pagenumber_area {
 	margin: 20px 0;
 	padding: 10px 15px;
-	background: url(../img/rohto/back_ptn2.gif);
+	background: url(../img/soyafarm/back_ptn2.gif);
 	font-size: 0.75em;
 	line-height: 120%;
 }
@@ -945,10 +942,8 @@ table.cartListTeikiTbl td.promImg img {
 	max-height:300px;
 }
 table.cartListTankaiTbl td.promImg {
-	background-image:url(../img/rohto/bg_prm_tankai.gif);
 }
 table.cartListTeikiTbl td.promImg {
-	background-image:url(../img/rohto/bg_prm_teiki.gif);
 }
 
 /* 小計・送料・キャンペーンコード */
@@ -1341,7 +1336,7 @@ a .cartCnt {
 	display: block;
 	width: 151px;
 	height: 18px;
-	background-image:url(../img/rohto/img_password_indicator.gif);
+	background-image:url(../img/soyafarm/img_password_indicator.gif);
 }
 #passwordSection .strong
 {

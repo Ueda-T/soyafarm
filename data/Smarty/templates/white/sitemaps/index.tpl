@@ -37,7 +37,7 @@ ul.sitemap ol li {
 ul.sitemap ul a,
 ul.sitemap ol a {
 	padding-left: 15px;
-	background: url(<!--{$TPL_URLPATH}-->img/soyafarm/footer/icon_link_ft.gif) no-repeat scroll 6px 0.25em;
+	background: url(<!--{$TPL_URLPATH}-->img/footer/icon_link_ft.gif) no-repeat scroll 6px 0.25em;
 }
 
 #sitemap-box {

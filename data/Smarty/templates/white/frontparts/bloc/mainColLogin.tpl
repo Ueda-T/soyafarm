@@ -17,9 +17,9 @@
 	<!--{if $smarty.const.USE_POINT !== false && $tpl_user_point}-->
 	<table cellspacing="0">
 		<tr>
-			<td style="vertical-align:middle;"><img src="<!--{$TPL_URLPATH}-->img/rohto/rotta_info.gif" width="265" height="30" alt="(現在のポイント残高" /></td>
+			<td style="vertical-align:middle;">現在のポイント残高</td>
 			<td><!--{$tpl_user_point|number_format|default:0}--></td>
-			<td style="vertical-align:middle;"><img src="<!--{$TPL_URLPATH}-->img/rohto/rotta.gif" width="52" height="30" alt="ポイント" /></td>
+			<td style="vertical-align:middle;">ポイント</td>
 		</tr>
 	</table>
 	<!--{/if}-->

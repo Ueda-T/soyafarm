@@ -8,7 +8,7 @@
 
 	<!--{if $smarty.const.USE_POINT !== false && $CustomerPoint}-->
 	<div class="rottaInfo">
-		<h2><img src="<!--{$TPL_URLPATH}-->img/rohto/sub_rotta_title.gif" alt="ポイント（通販ポイント）残高" width="210" height="40"></h2>
+		<h2><img src="ポイント（通販ポイント）残高</h2>
 		<div class="rottaInfoEle">
 			<dl>
 				<dt>現在の保有ポイント</dt>

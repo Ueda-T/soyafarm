@@ -51,7 +51,7 @@ img {border: none;}
 	width: 90px;
 	height: 137px;
 	padding-bottom: 7px;
-	background: #F4FFD6 url(../img/soyafarm/bg_lineup3.gif) no-repeat left bottom;
+	background: #F4FFD6/* url(../img/soyafarm/bg_lineup3.gif) no-repeat left bottom*/;
 	vertical-align: top;
 }
 #lineup table td.non {

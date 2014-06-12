@@ -968,3 +968,71 @@ ul.myPageMenu li.mp_nav_contact a {
 	color:#333;
 	border-radius:3px;
 }
+
+#kiyakuPage h3,
+#teikiPage h3,
+#faqPage h3 {
+color:#476B00;
+font-weight:bold;
+margin:10px 0;
+padding:0 0 10px;
+border-bottom: 1px dashed #A6CE39;
+}
+
+#teikiPage #discount {
+	margin:0 10px;
+}
+
+#teikiPage #sample h4 {
+	background-color:#216e0f;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-ms-border-radius:3px;
+	-o-border-radius:3px;
+	color:#FFF;
+	font-size:0.85em;
+	font-weight:bold;
+	margin:10px;
+	padding:5px;
+	text-align:center;
+}
+
+dl#faq {
+	font-size:0.85em;
+	margin:10px 0;
+}
+
+dl#faq dt {
+	background-color:#E3FF99;
+	padding:0 10px;
+}
+
+dl#faq dd {
+	margin:10px 0;
+	padding:0 10px;
+}
+
+#kiyakuPage ol,
+#privacyPage ol {
+	font-size:0.75em;
+	margin:0 10px;
+}
+
+#kiyakuPage ol li,
+#privacyPage ol li {
+	list-style:decimal;
+	margin:0 0 20px 1.5em;
+}
+
+#privacyPage ol li strong {
+	font-weight:bold;
+}
+
+#privacyPage ol li ol li {
+	font-size:1.3em;
+}
+
+#privacyPage ol li ol {
+	margin-top:10px;
+}
