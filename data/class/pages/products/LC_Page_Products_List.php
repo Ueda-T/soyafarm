@@ -91,7 +91,7 @@ class LC_Page_Products_List extends LC_Page_Ex {
 	global $CLICK_ANALYZER_STATIC;
 
 	// キャンペーンコードが指定されている場合はセッションに保持
-	if ($_GET[CAMPAIGN_PARAM_STR]) {
+	if ($_REQUEST[CAMPAIGN_PARAM_STR]) {
 	    $_SESSION["CAMPAIGN_CODE"] = $_GET[CAMPAIGN_PARAM_STR];
 	}
 
