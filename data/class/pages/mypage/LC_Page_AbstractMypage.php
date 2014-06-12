@@ -81,10 +81,29 @@ class LC_Page_AbstractMypage extends LC_Page_Ex {
             $this->CustomerBirthPoint = $objCustomer->getvalue('birth_point');
             $this->CustomerBirthPointValidDate = $objCustomer->getvalue('birth_point_valid_date');
             $this->CustomerId = $objCustomer->getvalue('customer_id');
+
+            // 割引率を取得する
+            $typeCode = $_SESSION['customer']['customer_type_cd'];
+            $this->tpl_discount = $this->getDiscountRate($typeCode);
+
             $this->action();
 //            print_r($this);
         }
         $this->sendResponse();
+    }
+
+    function getDiscountRate($typeCode) {
+        $objQuery = SC_Query_Ex::getSingletonInstance();
+        $sql =<<<__EOS
+select *
+  from dtb_customer_type
+ where customer_type_cd = {$typeCode}
+   and del_flg = 0
+__EOS;
+
+        $result = $objQuery->getAll($sql);
+
+        return $result[0];
     }
 
     /**
