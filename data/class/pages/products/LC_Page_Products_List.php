@@ -39,6 +39,10 @@ class LC_Page_Products_List extends LC_Page_Ex {
      */
     var $guidance = '';
 
+    function doValidToken($is_admin = false) {
+	// Nothing to do.
+    }
+
     /**
      * Page を初期化する.
      *

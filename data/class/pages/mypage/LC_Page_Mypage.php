@@ -162,23 +162,6 @@ class LC_Page_MyPage extends LC_Page_AbstractMypage_Ex {
         //お届け先登録数
         $this->tpl_linemax = count($this->arrOtherDeliv);
 
-	// 割引率を取得する
-	$typeCode = $_SESSION['customer']['customer_type_cd'];
-	$this->tpl_discount = $this->getDiscountRate($typeCode);
-    }
-
-    function getDiscountRate($typeCode) {
-        $objQuery = SC_Query_Ex::getSingletonInstance();
-	$sql =<<<__EOS
-select *
-  from dtb_customer_type
- where customer_type_cd = {$typeCode}
-   and del_flg = 0
-__EOS;
-
-        $result = $objQuery->getAll($sql);
-
-        return $result[0];
     }
 
     /**
