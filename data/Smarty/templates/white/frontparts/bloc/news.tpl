@@ -5,7 +5,7 @@
 	<!--{section name=data loop=$arrNews max=3}-->
 	<!--{assign var="date_array" value="-"|explode:$arrNews[data].news_date_disp}-->
 	<li>
-	<h2><!--{$date_array[0]}-->年<!--{$date_array[1]}-->月<!--{$date_array[2]}-->日</h2>
+	<h2 id="newsID<!--{$arrNews[data].news_id}-->"><!--{$date_array[0]}-->年<!--{$date_array[1]}-->月<!--{$date_array[2]}-->日</h2>
 	<h3 class="mb10">
 		<!--{if $arrNews[data].news_url}-->
 		<a href="<!--{$arrNews[data].news_url}-->"<!--{if $arrNews[data].link_method eq "2"}--> target="_blank"<!--{/if}-->><!--{$arrNews[data].news_title|h|nl2br}--></a>

@@ -11,11 +11,6 @@
 <link rel="alternate stylesheet" type="text/css" href="<!--{$TPL_URLPATH}-->css/fontsize-s.css" media="screen,tv,projection,print" title="s" />
 <link rel="alternate stylesheet" type="text/css" href="<!--{$TPL_URLPATH}-->css/fontsize-l.css" media="screen,tv,projection,print" title="l" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="<!--{$smarty.const.HTTP_URL}-->rss/<!--{$smarty.const.DIR_INDEX_PATH}-->" />
-
-<!--{assign var=top value="`$smarty.const.ROOT_URLPATH`index.php"}-->
-<!--{if $smarty.server.PHP_SELF == $top}-->
-<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/index.css" type="text/css" media="all" />
-<!--{/if}-->
 <!--{if $tpl_mainno}-->
 <link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/mypage.css" type="text/css" media="all" />
 <!--{/if}-->
@@ -44,6 +39,13 @@
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/onload.js"></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/AC_RunActiveContent.js" ></script>
 <script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/common.js"></script>
+<!--{assign var=top value="`$smarty.const.ROOT_URLPATH`index.php"}-->
+<!--{if $smarty.server.PHP_SELF == $top}-->
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/index.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<!--{$TPL_URLPATH}-->css/main_img.css" type="text/css" media="all" />
+<script type="text/javascript" src="<!--{$TPL_URLPATH}-->js/main_img.js"></script>
+<!--{/if}-->
+
 <!--{*  ダイアログ用 *}-->
 <script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/dialogs.js"></script>
 <script type="text/javascript" src="<!--{$smarty.const.ROOT_URLPATH}-->js/superTables.js"></script>

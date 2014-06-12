@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/*///////////////////////////////////////////////////////////
+
+	メインイメージ
+
+///////////////////////////////////////////////////////////*/
+
+/* 初期表示（表示の操作はjQueryにて） */
+ul.descriptionImgList,#soyaFamName {
+	display:none;
+}
+
+#mainImg {
+	position:relative;
+	height:300px;
+}
+
+#soyamaru {
+	background:url(../img/soyafarm/img_soyamaru.png) 0 0 no-repeat;
+	position:absolute;
+/*	top:150px;
+	left:440px;*/
+	top:-200px;
+	left:440px;
+	width:100px;
+	height:122px;
+	z-index:2000;
+}
+
+#soyaFamName {
+	background:url(../img/soyafarm/img_mainimg_name.png) 0 0 no-repeat;
+	position:absolute;
+	top:230px;
+	left:482px;
+	width:320px;
+	height:66px;
+}
+
+ul.descriptionImgList {
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:840px;
+}
+
+ul.descriptionImgList li {
+	margin-bottom:6px;
+}
+
+ul.descriptionImgList li#img1 {
+	margin-top:50px;
+}
+
+ul.descriptionImgList li#img2 {
+	margin-bottom:20px;
+}
+
+ul.descriptionImgList li#bnrProductsBox {
+	position:absolute;
+	top:0;
+	left:400px;
+	width:494px;
+	height:286px;
+	background:url(../img/soyafarm/bg_mainimg_products.png) no-repeat;
+}
+
+ul.descriptionImgList li#bnrProductsBox div.innr {
+	margin:60px 60px;
+}

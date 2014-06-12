@@ -1,3 +1,20 @@
+<div id="mainImg">
+	<ul class="descriptionImgList">
+		<li id="img1"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_01.png" alt="自然の恵み、" /></li>
+		<li id="img2"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_02.png" alt="大豆をもっと暮らしの中へ" /></li>
+		<li id="img3"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_03.png" alt="ソヤファームクラブの全ての商品は、" /></li>
+		<li id="img4"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_04.png" alt="大豆の栄養をたっぷりと詰め込んでいます。" /></li>
+		<li id="img5"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_05.png" alt="健康生活のお役に立てる商品を通信販売でお届けしています。" /></li>
+		<li id="bnrProductsBox">
+			<div class="innr"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=614"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_products_614.png" /></a></div>
+		</li>
+	</ul>
+	<div id="soyaFamName"></div>
+	<div id="soyamaru"></div>
+</div>
+
+
+<!--{* 旧コンテンツ
 	<div id="mainimg">
 		<p>
 			<script type="text/javascript">
@@ -11,3 +28,4 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </noscript>
 		</p>
 	</div>
+*}-->
