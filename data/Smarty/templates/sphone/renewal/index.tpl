@@ -1,6 +1,6 @@
 <h2 class="spNaked">パスワードの再発行</h2>
-<p class="naked">いつも、ロート通販をご利用いただきまして、誠にありがとうございます。<br>
-2014年3月17日のシステムリニューアルに伴い、以前ご利用のお客さまには、初回ログイン時にパスワードの再設定を行っていただく必要がございます。<br>
+<p class="naked">いつもソヤファームクラブオンラインショップをご利用いただきまして、誠にありがとうございます。<br>
+2014年7月1日のシステムリニューアルに伴い、以前ご利用のお客さまには、初回ログイン時にパスワードの再設定を行っていただく必要がございます。<br>
 大変お手数ですが、ご登録時のメールアドレスとご登録されたお名前を入力して「次へ」ボタンをクリックしてください。</p>
 <div class="alert2">
 <p class="nakedRed" style="padding:10px; font-weight:bold;">初回ログイン用のパスワードをメールにて発行いたします。</p>
@@ -42,7 +42,7 @@
 			<tr>
 				<td>
 					<div>
-	                    <input type="text" class="box240" name="name" value="<!--{$arrForm.name|default:''|h}-->" maxlength="<!--{$smarty.const.STEXT_LEN*2}-->" style="<!--{$arrErr.name|sfGetErrorColor}-->; ime-mode: auto;" />&nbsp;&nbsp;<span style="color:#ea673b;">例：呂登 太郎</span>
+	                    <input type="text" class="box240" name="name" value="<!--{$arrForm.name|default:''|h}-->" maxlength="<!--{$smarty.const.STEXT_LEN*2}-->" style="<!--{$arrErr.name|sfGetErrorColor}-->; ime-mode: auto;" />&nbsp;&nbsp;<span style="color:#ea673b;">例：曽谷 丸男</span>
 	                </div>
 				</td>
 			</tr>

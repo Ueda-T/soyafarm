@@ -55,7 +55,6 @@ $(document).ready(function() {
                 <!--{if $tpl_login}-->
                     <span class="user_name"><!--{$tpl_name|h}--> 様</span>の、現在の所持ポイントは「<span class="point"><!--{$tpl_user_point|number_format|default:0}--> pt</span><!--{if $tpl_user_point_valid_date neq ""}-->(<!--{$tpl_user_point_valid_date|date_format:"%Y/%m/%d"}-->まで有効)<!--{/if}-->」、<br>お誕生日ポイントは「<span class="point"><!--{$tpl_user_birth_point|number_format|default:0}--> pt</span><!--{if $tpl_user_birth_point_valid_date neq ""}-->(<!--{$tpl_user_birth_point_valid_date|date_format:"%Y/%m/%d"}-->まで有効)<!--{/if}-->」です。<br />
                 <!--{else}-->
-                    <p>ロート製薬 オンラインショップからのご注文の場合は、WEBで会員登録いただいた後、ポイントサービス付与の対象となります。</p>
                 <!--{/if}-->
             </div>
         <!--{/if}-->

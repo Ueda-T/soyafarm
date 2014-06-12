@@ -1,8 +1,8 @@
 <!--▼CONTENTS-->
 <section id="undercolumn">
        <h2 class="spNaked"><!--{$tpl_title|h}--></h2>
-         <p class="naked">ロート通販オンラインショップをご利用いただきありがとうございます。<br />
-お支払・お届け・返品・交換、個人情報の取扱等に関するご注意をお読みいただき、同意の上、ショッピングをお楽しみください。</p>
+         <p class="naked">ソヤファームオンラインショップをご利用いただきありがとうございます。<br />
+利用規約をお読みいただき、同意の上、ショッピングをお楽しみください。</p>
 
           <div class="btn">
               <p style="margin:10px;"><a href="<!--{$smarty.const.ENTRY_URL}-->" class="btnOrange" rel="external">同意して会員登録へ</a></p>

@@ -35,8 +35,6 @@
 	$("#goods5").on("blur", {id: "goodsname5", relative: "how-div5"}, _lookup);
     });
 </script>
-<h1><img src="<!--{$TPL_URLPATH}-->img/rohto/cform_title.gif" width="700" height="70" alt="商品番号から注文"></h1>
-<p class="intro">商品番号を入力して「買物カゴに入れる」ボタンを押してください。<br>個数は「買物カゴ」（次の画面）で指定出来ます。</p>
 <form name="form1" id="form1" method="post" action="?">
 <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 <table width="700" cellspacing="0">
@@ -68,7 +66,6 @@
         <!--{/section}-->
       </table>
     </td>
-    <td width="350"><img src="<!--{$TPL_URLPATH}-->img/rohto/cform_image.gif" alt="カタログの商品番号で直接注文することができます。" width="350" height="400"></td>
   </tr>
 </table>
 <p class="nakedC" style="margin:30px 0;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" name="cart"><img src="<!--{$TPL_URLPATH}-->img/rohto/cart.gif" alt="カートに入れる" class="swp" /></a></p>
