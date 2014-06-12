@@ -190,12 +190,14 @@ class SC_SMBC_Page extends SC_SMBC {
         $arrParam['shop_mail_hyoji_kbn'] = '0';      
                
         //　請求金額（初回）
-        $arrParam['seikyuu_kingaku1'] = $arrOrderTemp['payment_total'];
+        //$arrParam['seikyuu_kingaku1'] = $arrOrderTemp['payment_total'];
         
         //　請求金額（2 回目以降）
         //$arrParam['seikyuu_kingaku2'] = $arrOrderTemp['payment_total'];
         
-               
+        //　請求金額（変額）
+        $arrParam['seikyuu_kin_hengaku'] = '0';
+
         return $arrParam;
     }
 
