@@ -92,7 +92,7 @@ class LC_Page_Products_List extends LC_Page_Ex {
 
 	// キャンペーンコードが指定されている場合はセッションに保持
 	if ($_REQUEST[CAMPAIGN_PARAM_STR]) {
-	    $_SESSION["CAMPAIGN_CODE"] = $_GET[CAMPAIGN_PARAM_STR];
+	    $_SESSION["CAMPAIGN_CODE"] = $_REQUEST[CAMPAIGN_PARAM_STR];
 	}
 
 	// コードからID変換
