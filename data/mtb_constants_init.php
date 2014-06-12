@@ -340,7 +340,7 @@ define('INT_LEN', 9);
 /** クレジットカードの文字数 */
 define('CREDIT_NO_LEN', 4);
 /** キャンペーンコードコードの文字数 */
-define('CAMPAIGN_CODE_LEN', 4);
+define('CAMPAIGN_CODE_LEN', 6);
 /** 検索カテゴリ最大表示文字数(byte) */
 define('SEARCH_CATEGORY_LEN', 18);
 /** ファイル名表示文字数 */
@@ -903,10 +903,10 @@ define('INOS_DIR_RECV_PRODUCT',  INOS_DIR_RECV_BASE . "product/");  // 商品
 define('INOS_DIR_RECV_PROMOTION',INOS_DIR_RECV_BASE . "promotion/"); // プロモーション
 define('INOS_OK_DIR',   "ok"); // OKフォルダ
 define('INOS_NG_DIR',   "ng"); // NGフォルダ
-/** 基幹連携用ファイル名 */
-define('INOS_FILE_SEND_CUSTOMER',   "customer.csv");  // 顧客
-define('INOS_FILE_SEND_ORDER',      "order.csv");     // 受注
-define('INOS_FILE_SEND_REGULAR',    "regular.csv");   // 定期
+/** 基幹連携用ファイル名(%sはYmdHis) */
+define('INOS_FILE_SEND_CUSTOMER',   "customer_%s.csv");  // 顧客
+define('INOS_FILE_SEND_ORDER',      "order_%s.csv");     // 受注
+define('INOS_FILE_SEND_REGULAR',    "regular_%s.csv");   // 定期
 define('INOS_FILE_RECV_CUSTOMER',   "customer.csv");  // 顧客
 define('INOS_FILE_RECV_ORDER',      "order.csv");     // 受注
 define('INOS_FILE_RECV_REGULAR',    "regular.csv");   // 定期
