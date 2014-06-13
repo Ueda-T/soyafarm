@@ -258,7 +258,7 @@ $(function() {
 			<table cellpadding="0" cellspacing="0" class="cartGoods02" style="margin-bottom:10px;">
 				<tr>
 					<td colspan="2" style="background-color:#FFF;padding:15px 9px;color:#464646; font-weight:bold; vertical-align:middle; text-align:center;">
-						小計
+						合計
 						<span style="font-size:1.125em;color:#F33;font-weight:bold;"><!--{$sub_total|number_format}-->円</span>
 <!--{*
 						＋

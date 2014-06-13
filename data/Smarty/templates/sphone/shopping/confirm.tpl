@@ -56,7 +56,7 @@ $(document).ready(function() {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" style="text-align:right;">
                         数量:<!--{$item.quantity|number_format}-->　<!--{$item.price|sfCalcIncTax:$arrInfo.tax:$arrInfo.tax_rule|number_format}-->円</td>
                 </tr>
             <!--{/foreach}-->
@@ -83,6 +83,9 @@ $(document).ready(function() {
                 </tr>
             <!--{/foreach}-->
             <!--{/if}-->
+            <tr>
+            	<td colspan="2" class="line">&nbsp;</td>
+            </tr>
             <tr>
                 <th style="text-align:right;">小計</th>
                 <td style="text-align:right;"><!--{$tpl_total_inctax[$cartKey]|number_format}-->円</td>
@@ -119,7 +122,7 @@ $(document).ready(function() {
         <!--{* 販売方法判定（ダウンロード販売のみの場合はお届け先を表示しない） *}-->
         <!--{if $cartKey != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
         <!--{foreach item=shippingItem from=$arrShipping name=shippingItem}-->
-        <h3 style="margin:20px 0 7px;">お届け先<!--{if $is_multiple}--><br /><!--{$smarty.foreach.shippingItem.iteration}--><!--{/if}--></h3>
+        <h3 style="margin:0 0 7px;">お届け先<!--{if $is_multiple}--><br /><!--{$smarty.foreach.shippingItem.iteration}--><!--{/if}--></h3>
         <!--{if $is_multiple}-->
             <table summary="ご注文内容確認" class="bgYellow">
                 <tr>
@@ -173,28 +176,22 @@ $(document).ready(function() {
         <table summary="お届け先確認" class="bgYellow">
             <tbody>
                 <tr>
-                    <th scope="row"><span>お届け先：漢字氏名</span></th>
-                </tr>
-                <tr>
+                    <th scope="row"><span>漢字氏名</span></th>
                     <td><!--{$shippingItem.shipping_name|h}--> 様</td>
                 </tr>
                 <tr>
-                    <th scope="row"><span>お届け先：ｶﾀｶﾅ氏名</span></th>
-                </tr>
-                <tr>
+                    <th scope="row"><span>ｶﾀｶﾅ氏名</span></th>
                     <td><!--{$shippingItem.shipping_kana|h}--></td>
                 </tr>
                 <tr>
-                    <th scope="row"><span>お届け先：電話番号</span></th>
-                </tr>
-                <tr>
+                    <th scope="row"><span>電話番号</span></th>
                     <td><!--{$shippingItem.shipping_tel}--></td>
                 </tr>
                 <tr>
-                    <th scope="row"><span>お届け先：住所</span></th>
+                    <th scope="row" colspan="2"><span>住所</span></th>
                 </tr>
                 <tr>
-                    <td>〒<!--{$shippingItem.shipping_zip|h}--><br />
+                    <td colspan="2">〒<!--{$shippingItem.shipping_zip|h}--><br />
                     <!--{$arrPref[$shippingItem.shipping_pref]}--><!--{$shippingItem.shipping_addr01|h}--><!--{$shippingItem.shipping_addr02|h}--></td>
                 </tr>
             </tbody>
@@ -207,7 +204,7 @@ $(document).ready(function() {
 		</div>
 		<div class="bdrGray">
 
-		<h3 style="margin:20px 0 7px;">配送情報</h3>
+		<h3 style="margin:0 0 7px;">配送情報</h3>
 
 		<div>
         <table summary="配送方法" class="bgYellow">
@@ -234,21 +231,19 @@ $(document).ready(function() {
 
 		</div>
 		<div class="bdrGray">
-		<h3 style="margin:20px 0 7px;">お支払方法</h3>
+		<h3 style="margin:0 0 7px;">お支払方法</h3>
 
 		<div>
         <table summary="お支払方法" class="bgYellow">
             <tr>
                 <th scope="row"><span>お支払方法</span></th>
-            </tr>
-            <tr>
                 <td><!--{$arrForm.payment_method|h}--></td>
             </tr>
             <tr>
-                <th scope="row"><span>請求書送付方法</span></th>
+                <th scope="row" colspan="2"><span>請求書送付方法</span></th>
             </tr>
             <tr>
-                <td><!--{$arrIncludeKbn[$arrForm.include_kbn]|h}--></td>
+                <td colspan="2"><!--{$arrIncludeKbn[$arrForm.include_kbn]|h}--></td>
             </tr>
         </table>
 		</div>

@@ -48,7 +48,7 @@
 			<li class="mp_nav_chg"><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}-->selected<!--{/if}-->"><span>登録情報変更</span></a></li>
 
 			<li class="mp_nav_deliv"><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}-->selected<!--{/if}-->"><span>お届け先変更</span></a></li>
-			<li class="mp_nav_contact"><a href="<!--{$smarty.const.HTTPS_URL}-->"><span>お問い合わせ</span></a></li>
+			<li class="mp_nav_contact"><a href="<!--{$smarty.const.HTTPS_URL}-->contact/"><span>お問い合わせ</span></a></li>
 <!--{*
 			<li><a href="refusal.php" width="240" height="115" class="swp">登録削除
 			<span class="dsc">ご登録内容､注文履歴を削除します。</span></a></li>

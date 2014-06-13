@@ -546,16 +546,19 @@ padding:15px;
 background:#FFFFDF;
 border-radius: 3px;
 	-webkit-border-radius: 3px;
-color:#606060;
+color:#333;
 font-size:0.875em;
 /*font-weight:bold;*/
+}
+#spContents .bgYellow td.line {
+	background:url(../img/soyafarm/bg_line01.gif) repeat-x center;
 }
 #spContents .bgGray {
 padding:15px;
 background:#f2f2f2;
 border-radius: 3px;
 	-webkit-border-radius: 3px;
-color:#606060;
+color:#333;
 }
 #spContents .bgGray h3{
 font-size:0.75em;
@@ -576,7 +579,7 @@ margin:0 0 10px;
 background:#fff9d1;
 border-radius: 3px;
 	-webkit-border-radius: 3px;
-color:#606060;
+color:#333;
 font-size:0.875em;
 font-weight:bold;
 }

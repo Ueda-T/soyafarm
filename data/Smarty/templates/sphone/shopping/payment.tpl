@@ -300,7 +300,8 @@
         <!--{/if}-->
 
         <div class="bdrGray">
-            <h3>お支払方法</h3>
+            <h3>お支払方法
+            <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></h3>
             <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
             <!--{assign var=key value="payment_id"}-->
             <!--{if $arrErr[$key] != ""}-->
@@ -310,8 +311,7 @@
                 <tbody>
                     <!--{section name=cnt loop=$arrPayment}-->
                         <tr>
-                        <td class="alignC"><input type="radio" id="pay_<!--{$smarty.section.cnt.iteration}-->" name="<!--{$key}-->"  value="<!--{$arrPayment[cnt].payment_id}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrPayment[cnt].payment_id|sfGetChecked:$arrForm[$key].value}--> /></td>
-                        <td>
+                        <td><input type="radio" id="pay_<!--{$smarty.section.cnt.iteration}-->" name="<!--{$key}-->"  value="<!--{$arrPayment[cnt].payment_id}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrPayment[cnt].payment_id|sfGetChecked:$arrForm[$key].value}--> />
                             <label for="pay_<!--{$smarty.section.cnt.iteration}-->"><!--{$arrPayment[cnt].payment_method|h}--><!--{if $arrPayment[cnt].note != ""}--><!--{/if}--></label>
                         </td>
                         <!--{if $img_show}-->
@@ -334,13 +334,13 @@
             <!--{if $arrErr[$key] != ""}-->
             <p class="attention"><!--{$arrErr[$key]}--></p>
             <!--{/if}-->
-            <div class="bgYellow">
-            <table summary="請求書(明細書)の送付" id="">
+            <div>
+            <table summary="請求書(明細書)の送付" id="" class="bgYellow" style="font-size:0.78em;">
                 <tbody>
                     <!--{foreach from=$arrIncludeKbn item=str_include_kbn key=idx}-->
                     <tr class="inc_kbn_<!--{$idx}-->" style="<!--{if $arrForm.payment_id.value == $smarty.const.PAYMENT_ID_DAIBIKI && $idx == $smarty.const.INCLUDE_KBN_BESSOU}-->display:none;<!--{/if}-->">
-                        <td><p class="naked"><label><input type="radio" id="radio_inc_kbn_<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$idx}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$idx|sfGetChecked:$arrForm[$key].value}--> />
-                        <!--{$str_include_kbn}--></label></p></td>
+                        <td><label><input type="radio" id="radio_inc_kbn_<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$idx}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$idx|sfGetChecked:$arrForm[$key].value}--> />
+                        <!--{$str_include_kbn}--></label></td>
                     </tr>
                     <!--{/foreach}-->
                 </tbody>
@@ -361,7 +361,7 @@
             <table summary="アンケート選択" id="enquete" class="bgYellow">
                 <tbody>
                         <tr>
-                        <td class="alignC">
+                        <td>
                         <!--{foreach from=$arrPlanningData item=arrRecord key=idx}-->
                         <input type="radio" id="event_code_<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$arrRecord.media_code}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrRecord.media_code|sfGetChecked:$arrForm[$key].value}--> /><label for="event_code_<!--{$idx}-->"><!--{$arrRecord.planning_name|h}--></label>
                         <!--{/foreach}-->

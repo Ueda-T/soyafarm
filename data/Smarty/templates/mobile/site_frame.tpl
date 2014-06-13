@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
 <meta name="copyright" content="Rohto Pharmaceutical Co., Ltd.">
-<title><!--{if $tpl_subtitle|strlen >= 1}--><!--{$tpl_subtitle|h}-->|<!--{elseif $tpl_title|strlen >= 1}--><!--{$tpl_title|h}-->|<!--{/if}-->ロート通販モバイル</title>
+<title><!--{if $tpl_subtitle|strlen >= 1}--><!--{$tpl_subtitle|h}-->|<!--{elseif $tpl_title|strlen >= 1}--><!--{$tpl_title|h}-->|<!--{/if}--></title>
 <!--{* ▼Head COLUMN*}-->
 <!--{if $arrPageLayout.HeadNavi|@count > 0}-->
 <!--{* ▼上ナビ *}-->

@@ -9,11 +9,11 @@
 			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->info/" class="conR">利用規約</a></td>
 		</tr>
 		<tr>
-			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->guide/privacy.php" class="conL">ﾌﾟﾗｲﾊﾞｼｰﾎﾟﾘｼｰ</a></td>
-			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->order/" class="conR">特定商取引法に基づく表示</a></td>
+			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->order/" class="conL">特定商取引法に基づく表示</a></td>
+			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->guide/privacy.php" class="conR">ﾌﾟﾗｲﾊﾞｼｰﾎﾟﾘｼｰ</a></td>
 		</tr>
 		<tr>
-			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->faq/" class="conL">FAQ(よくある質問)</a></td>
+			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->faq/" class="conL">よくあるご質問</a></td>
 			<td><a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/" class="conR">お問い合わせ</a></td>
 		</tr>
 	</table>
