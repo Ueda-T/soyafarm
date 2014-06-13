@@ -5,6 +5,18 @@
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
         <input type="hidden" name="mode" value="login" />
         <input type="hidden" name="url" value="<!--{$smarty.server.REQUEST_URI|h}-->" />
+
+		<div class="attentionBox02 mb20">
+			<h2>重要なお知らせ</h2>
+			<div class="innr">
+				<p>
+					2014年7月1日のシステムリニューアルに伴い、以前ご利用のお客様には初回ログイン時にパスワードの再発行が必要になります。<br />
+					お手数をおかけいたしますが、下記のリンクからパスワード再発行手続きを行ってください。
+				</p>
+				<p class="alignC mt10"><a href="<!--{$smarty.const.HTTPS_URL}-->renewal/"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_forgot.gif" alt="パスワードを再発行する" /></a></p>
+			</div>
+		</div>
+
 		<div id="login-box-s">
 			<dl id="member-login">
 				<dt>Web会員の方</dt>
@@ -32,6 +44,7 @@
 				</dd>
 			</dl>
 		</div>
+		
     </div>
 </div>
 

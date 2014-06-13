@@ -32,11 +32,18 @@
 <h2 class="spNaked"><!--{$tpl_title|h}--></h2>
 	<p class="naked" style="margin-bottom:10px;">ここから先はﾛｸﾞｲﾝ､または会員登録が必要です｡</p>
 
-		<p class="naked" style="margin-bottom:10px;">
-		*過去にPCｻｲﾄから登録をされている場合､PCｻｲﾄで登録したﾒｰﾙｱﾄﾞﾚｽをご入力ください｡<br>
-		*ご注文確認時に送られるﾒｰﾙ等は､登録されているﾒｰﾙｱﾄﾞﾚｽにご送付されますので､ご注意ください｡ﾒｰﾙｱﾄﾞﾚｽはﾛｸﾞｲﾝ後の｢ﾏｲﾍﾟｰｼﾞ｣より変更を承っています｡
-		</p>
-
+<div class="attentionBox">
+	<h3 class="tit">重要なお知らせ</h3>
+	<p>
+		2014年7月1日のシステムリニューアルに伴い、以前ご利用のお客様には初回ログイン時にパスワードの再発行が必要になります。<br />
+		お手数をおかけいたしますが、下記のリンクからパスワード再発行手続きを行ってください。
+	</p>
+	<p class="alignC">
+		<a href="<!--{$smarty.const.HTTPS_URL}-->renewal/" class="btn imp">
+			パスワードを再発行する
+		</a>
+	</p>
+</div>
 
      <form name="login_mypage" id="login_mypage" method="post" action="javascript:;" onsubmit="return ajaxLogin();">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />

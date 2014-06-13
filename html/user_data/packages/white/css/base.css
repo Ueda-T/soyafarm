@@ -88,7 +88,8 @@ h1 { margin-bottom: 16px; }
 /* 見出し
 ----------------------------------------------------------------------------------*/
 
-#main h2.ttl {
+#main h2.ttl,
+#one_maincolumn h2.ttl {
 	margin: 0 0 0.7em;
 	padding: 0 0 0.3em 30px;
 	background: url(../img/soyafarm/icon_leaf.gif) no-repeat 0 0.1em;
@@ -96,6 +97,9 @@ h1 { margin-bottom: 16px; }
 	color: #476B00;
 	font-size: 120%;
 	line-height: 1.1em;
+}
+#one_maincolumn h2.ttl {
+	margin-top:10px;
 }
 #main h2.ttl01 {
 	margin: 0 0 10px;
@@ -214,6 +218,7 @@ dl#new-customer {
 
 #login-box-s dl#member-login {
 	width:100%;
+	padding:11px 0;
 	border: 2px solid #A9CF39;
 }
 
