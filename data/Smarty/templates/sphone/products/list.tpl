@@ -97,7 +97,7 @@ function fnInCart(productForm, regular_flg) {
 			<div class="linkbox clearfix">
 				<dl>
 					<!--★商品名★-->
-					<dt><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_link08.png" alt="" width="11" height="11"></dt>
+					<dt><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--></dt>
 					<!--★画像★-->
 					<dd class="img"><img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$arrProduct.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$arrProduct.name|h}-->" class="picture" width="65" /></dd>
 					<!--★商品コメント★-->

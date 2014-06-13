@@ -56,7 +56,7 @@
 
 </div><!--▲loginBox -->
         <div style="margin:10px 0;">
-                                       <input type="submit" value="ログイン" name="log" id="log" class="btnOrange" />
+                                       <input type="submit" value="ログイン" name="log" id="log" class="btnBlue" />
         </div>
 
 		<p style="display:block; margin:18px 0; text-align:right;"><a rel="external" href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" class="btnGray">パスワードを忘れた方はこちら</a></p>

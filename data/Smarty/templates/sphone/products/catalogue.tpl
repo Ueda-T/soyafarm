@@ -70,5 +70,5 @@
 <!--{/section}-->
 </table>
 
-<p class="nakedC" style="margin-top:2em;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" name="cart" class="btnOrange">買い物かごへ</a></p>
+<p class="nakedC" style="margin-top:2em;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" name="cart" class="btnBlue">買い物かごへ</a></p>
 </form>

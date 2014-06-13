@@ -22,6 +22,7 @@
 			<tr>
 				<td><!--{$tpl_arrOrderData.order_id}--></td>
 			</tr>
+<!--{*
 			<tr>
 				<th>処理状況</th>
 			</tr>
@@ -30,10 +31,12 @@
                 <!--{assign var=i value=$tpl_arrOrderData.status}-->
                 <!--{if $arrOrderStatus[$i].image_l}-->
                 <div align="center">
-                <img src="<!--{$TPL_URLPATH}-->img/rohto/<!--{$arrOrderStatus[$i].image_l}-->" width="250" />
+                <img src="<!--{$TPL_URLPATH}-->img/soyafarm/<!--{$arrOrderStatus[$i].image_l}-->" width="250" />
                 </div>
                 <!--{else}-->&nbsp;<!--{$arrOrderStatus[$i].name}--><br /><!--{/if}-->
 				</td>
+			</tr>
+*}-->
 			<tr>
 				<th>送り主</th>
 			</tr>

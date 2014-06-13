@@ -82,7 +82,7 @@
             <td>
                 <input type="hidden" id="select_product_class_id" name="select_product_class_id" value="<!--{$arrProductList[cnt].product_class_id|h}-->" />
                 <p><!--{$arrProductList[cnt].product_name|h}-->　<!--{$arrProductList[cnt].product_class_name|h}--></p>
-                <input type="submit" name="product_select_<!--{$arrProductList[cnt].product_class_id|h}-->" value="選択" class="btnOrange03" style="padding:10px 30px 10px 10px;">
+                <input type="submit" name="product_select_<!--{$arrProductList[cnt].product_class_id|h}-->" value="選択" class="btnBlue03" style="padding:10px 30px 10px 10px;">
             </td>
         </tr>
         <!--{/section}-->

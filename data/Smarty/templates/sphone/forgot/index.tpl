@@ -25,7 +25,7 @@
 
    </div>
 
-        <p class="btn"><input class="btnOrange" type="submit" value="次へ" /></p>
+        <p class="btn"><input class="btnBlue" type="submit" value="次へ" /></p>
      </form>
 </section>
 

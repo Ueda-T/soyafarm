@@ -73,7 +73,6 @@ visibility: hidden;
 /*--------------------------------------------*/	
 #spHeader{
 height:51px;
-background:url(../img/rohto/head_back.gif) repeat-x;
 text-align:center;
 }
 .rohtta{
@@ -102,45 +101,6 @@ p.copy{
 	text-align:center;
 }
 /*--------------------------------------------*/		
-#spFooterNavi{
-margin:0;
-border-bottom:1px solid #262626;
-}
-#spFooterNavi table.ftBtn{
-width:100%;
-background:url(../img/rohto/foot_btn_back.gif) repeat-x top #082e7c;
-table-layout: fixed;
-}
-#spFooterNavi table.ftBtn td{
-font-size:0.563em;
-color:#ffffff;
-text-align:center;
-vertical-align:middle;
-}
-#spFooterNavi table.ftBtn td a{
-color:#ffffff;
-text-decoration:none;
-display:block;
-padding:40px 0 13px;
-}
-#spFooterNavi table.ftBtn td.f04 a{
-padding:34px 0 7px;
-}
-#spFooterNavi table.ftBtn td.f01{
-background:url(../img/rohto/foot_btn_01.gif) no-repeat top;
-}
-#spFooterNavi table.ftBtn td.f02{
-background:url(../img/rohto/foot_btn_02.gif) no-repeat top;
-}
-#spFooterNavi table.ftBtn td.f03{
-background:url(../img/rohto/foot_btn_03.gif) no-repeat top;
-}
-#spFooterNavi table.ftBtn td.f04{
-background:url(../img/rohto/foot_btn_04.gif) no-repeat top;
-}
-#spFooterNavi table.ftBtn td.f05{
-background:url(../img/rohto/foot_btn_05.gif) no-repeat top;
-}
 #spFooter{
 margin:1px 0 0;
 }
@@ -174,12 +134,6 @@ border-right: solid 1px #e3e3e3;
 }
 #spFooter table.ftSubbtn td a.conR{
 border-left: solid 1px #ffffff;
-}
-#spFooter .rohto{
-font-size:0.75em;
-line-height:130%;
-text-align:center;
-margin:20px 0;
 }
 #spFooter .copy{
 padding:10px 0;
@@ -217,32 +171,6 @@ border-bottom: 3px solid #0c419a;
 border-top: 1px solid #ffffff;
 border-bottom: none;
 }
-#spContents #search ul.category {
-margin:0;
-color:#1064b1;
-font-size:0.75em;
-font-weight:bold;
-}
-#spContents #search .category li a{
-padding:7px 10px;
-color:#1064b1;
-border-bottom: 1px solid #e3e3e3;
-text-decoration:none;
-display:block;
-
-background:url(../img/rohto/icon_link05.png) right center no-repeat, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3)) #092e7e;
-	background:url(../img/rohto/icon_link05.png) right center no-repeat, -moz-linear-gradient(top, #ffffff, #f3f3f3);
-	background:url(../img/rohto/icon_link05.png) right center no-repeat, -o-linear-gradient(top, #ffffff, #f3f3f3);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#092e7e')";
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#092e7e');
-	background-color: #f3f3f3;
-	background-repeat: no-repeat;
-	background-position: right center;
-}
-#spContents #search .brand{
-background:#f9f6f3;
-margin:0;
-}
 #spContents #search h4{
 margin:0;
 padding:7px 10px;
@@ -257,48 +185,6 @@ font-size:0.875em;
 font-weight:bold;
 position:relative;
 text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-}
-#spContents #search .brand h4 span a{
-margin:0;
-padding:7px 20px 7px 5px;
-color:#404040;
-background: url(../img/rohto/icon_link06.gif) right center no-repeat, -webkit-gradient(linear, left top, left bottom, from(#fffefd), to(#f9f6f3)) #f9f6f3;
-	background: url(../img/rohto/icon_link06.gif) right center no-repeat, -moz-gradient(linear, left top, left bottom, from(#fffefd), to(#f9f6f3)) #f9f6f3;
-	background: url(../img/rohto/icon_link06.gif) right center no-repeat, -o-gradient(linear, left top, left bottom, from(#fffefd), to(#f9f6f3)) #f9f6f3;
-	background-color:#f9f6f3;
-	background-repeat: no-repeat;
-	background-position: right center;
-box-shadow: 0 2px 2px rgba(214,211,209,1) inset;
-	-webkit-box-shadow: 0 2px 2px rgba(214,211,209,1) inset;
-font-size:0.71em;
-font-weight:bold;
-display:block-inline;
-position:absolute;
-right:10px;
-bottom:-3px;
-border-radius: 5px 5px 0 0;
-	-webkit-border-radius: 5px 5px 0 0;
-text-decoration:none;
-text-shadow: none;
-}
-#spContents #search .brand table{
-width:100%;
-table-layout:fixed;
-margin:5px 0;
-}
-#spContents #search .brand table a{
-padding:3px 0;
-display:block;
-background: -webkit-gradient(linear, left top, left bottom, color-stop(33%,#ffffff), color-stop(75%,#ededed), color-stop(100%,#f9f9f9));
-	background: -moz-gradient(linear, left top, left bottom, color-stop(33%,#ffffff), color-stop(75%,#ededed), color-stop(100%,#f9f9f9));
-	background: -o-gradient(linear, left top, left bottom, color-stop(33%,#ffffff), color-stop(75%,#ededed), color-stop(100%,#f9f9f9));
-	background-color:#f9f9f9;
-box-shadow: 0 0 0 1px #e1e1e1, 0 2px 2px #d4d1cf;
-	-webkit-box-shadow: 0 0 0 1px #e1e1e1, 0 2px 2px #d4d1cf;
-border-radius:5px;
-	-webkit-border-radius: 5px;
-border: 1px solid #ffffff;
-text-align:center;
 }
 #spContents #search .keyword,
 .spInxKey{
@@ -384,12 +270,6 @@ text-align:center;
 #pankuzu img{
 	display:block;
 	float:left;
-}
-#pankuzu span{
-	background:url(../img/rohto/pannkuzu_list.gif) left center no-repeat;
-	display:block;
-	float:left;
-	padding:0 0 0 16px;
 }
 #pankuzu a,
 #pankuzu a:visited{

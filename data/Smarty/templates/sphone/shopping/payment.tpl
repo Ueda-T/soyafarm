@@ -185,7 +185,7 @@
             <input type="hidden" name="<!--{$key}-->" value="<!--{$arrForm[$key].value|h}-->" id="deliv_id" />
         <!--{else}-->
 		<div class="wrapCoanEle">
-            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/check.gif" alt="必須" />配送方法をご選択ください。</h4>
+            <h4 class="order"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />配送方法をご選択ください。</h4>
 
             <!--{if $arrErr[$key] != ""}-->
             <p class="attention"><!--{$arrErr[$key]}--></p>
@@ -329,7 +329,7 @@
 
 		<div class="bdrGray">
             <h3>請求書(明細書)送付方法
-            <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></h3>
+            <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></h3>
             <!--{assign var=key value="include_kbn"}-->
             <!--{if $arrErr[$key] != ""}-->
             <p class="attention"><!--{$arrErr[$key]}--></p>
@@ -352,7 +352,7 @@
         <!--{if $tpl_campaign_code|default:''|strlen == 0 && $customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
 		<div class="bdrGray">
 			    <h3>アンケート
-            <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></h3>
+            <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></h3>
             <p style="margin:10px 0;" class="naked">今回お買い求めいただいたきっかけをお聞かせください｡</p>
             <!--{assign var=key value="event_code"}-->
             <!--{if $arrErr[$key] != ""}-->
@@ -373,7 +373,7 @@
         <!--{/if}-->
 
 		<p style="margin:10px auto;">
-			<a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnOrange" style="width:auto;text-decoration:none;">ご注文情報の確認ページへ進む</a>
+			<a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnBlue" style="width:auto;text-decoration:none;">ご注文情報の確認ページへ進む</a>
 		</p>
 		<p style="margin:10px auto 20px auto;">
 			<a href="<!--{$tpl_back_url|h}-->" class="btnGray02">戻る</a>

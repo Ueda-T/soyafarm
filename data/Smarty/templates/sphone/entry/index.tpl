@@ -71,7 +71,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					<table summary="ご氏名" class="tblOrder">
 						<tr>
 							<th><span>漢字氏名
-							<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+							<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 						</tr>
 						<tr>
 							<td>
@@ -86,7 +86,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 						<tr>
 							<th><span>ｶﾀｶﾅ氏名
-							<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+							<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 						</tr>
 						<tr>
 							<td>
@@ -101,7 +101,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 						<tr>
 							<th><span>電話番号
-							<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+							<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 						</tr>
 						<tr>
 							<td>
@@ -115,7 +115,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 					<tr>
 						<th><span>郵便番号
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 					<tr>
 						<td>
@@ -124,7 +124,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 							<!--{assign var=key4 value="`$prefix`addr01"}-->
 							<!--{assign var=key5 value="`$prefix`addr02"}-->
 							<!--{assign var=key6 value="`$prefix`house_no"}-->
-							<p>〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/rohto/zip.gif" alt="住所自動入力" id="easy" />
+							<p>〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/soyafarm/zip.gif" alt="住所自動入力" id="easy" />
 							<span class="example"><!--{$smarty.const.SAMPLE_ZIP}--></span></p>
 							郵便番号をご入力後、ボタンを押してください。ご住所が自動で入力されます。<br />
 							[<a href="http://search.post.japanpost.jp/zipcode/" target="_blank"><span class="mini">郵便番号検索ページヘ</span></a>]
@@ -135,7 +135,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					<tr>
 						<th><span>住所
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 					<tr>
 						<td>
@@ -165,7 +165,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 
 					<!--{*
 						<tr>
-							<th><span><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
+							<th><span><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
 							<td>
 								<!--{assign var=key1 value="`$prefix`fax"}-->
 								<!--{if $arrErr[$key1]}-->
@@ -177,7 +177,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					*}-->
 						<tr>
 							<th><span>メールアドレス
-							<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+							<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 						</tr>
 						<tr>
 							<td>
@@ -197,7 +197,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</tr>
 							<tr>
 								<th><span>マイページパスワード
-								<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+								<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 							</tr>
 							<tr>
 								<td id="passwordSection">
@@ -236,7 +236,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 							</tr>
 							<tr>
 								<th><span>性別
-								<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+								<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 							</tr>
 							<tr>
 								<td>
@@ -300,7 +300,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 									<!--{/if}-->
 									<p><strong>お得な特別セール</strong>や<strong>健康に関する情報</strong>をお届けするお知らせメールを受け取りますか？</p>
 									<span style="<!--{$arrErr.mailmaga_flg|sfGetErrorColor}-->">
-										<input type="radio" name="mailmaga_flg" value="1" id="mailmaga_flg_1" <!--{if $arrForm.mailmaga_flg eq '1'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_1">受け取る</label><input type="radio" name="mailmaga_flg" value="0" id="mailmaga_flg_0" <!--{if $arrForm.mailmaga_flg eq '0'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_0">受け取らない</label><div id="notReceive" style="display: none;" ><img width="495" height="97" src="<!--{$TPL_URLPATH}-->img/rohto/mail_uketoru_up_s.gif" alt="受け取りませんか"></a></div>
+										<input type="radio" name="mailmaga_flg" value="1" id="mailmaga_flg_1" <!--{if $arrForm.mailmaga_flg eq '1'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_1">受け取る</label><input type="radio" name="mailmaga_flg" value="0" id="mailmaga_flg_0" <!--{if $arrForm.mailmaga_flg eq '0'}--> checked="checked" <!--{/if}--> /><label for="mailmaga_flg_0">受け取らない</label><div id="notReceive" style="display: none;" ><img width="495" height="97" src="<!--{$TPL_URLPATH}-->img/soyafarm/bnr_ml_merit.gif" alt="受け取りませんか"></a></div>
 									</span>
 								</td>
 							</tr>
@@ -359,7 +359,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					<!--{assign var=prefix value="shipping_"}-->
 					<tr>
 						<th><span>お届け先：漢字氏名
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 					<tr>
 						<td>
@@ -376,7 +376,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					<tr>
 						<th><span>お届け先：カタカナ氏名
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 					<tr>
 						<td>
@@ -393,7 +393,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					<tr>
 						<th><span>お届け先：電話番号
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 					<tr>
 						<td>
@@ -407,7 +407,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</tr>
 					<tr>
 						<th><span>お届け先：郵便番号
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 					<tr>
 						<td>
@@ -416,7 +416,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 							<!--{assign var=key4 value="`$prefix`addr01"}-->
 							<!--{assign var=key5 value="`$prefix`addr02"}-->
 							<!--{assign var=key6 value="`$prefix`house_no"}-->
-							〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/rohto/zip.gif" alt="住所自動入力" id="shipping_easy" />
+							〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/soyafarm/zip.gif" alt="住所自動入力" id="shipping_easy" />
 							<span class="example"><!--{$smarty.const.SAMPLE_ZIP}--></span></span></p>
 							郵便番号をご入力後、ボタンを押してください。ご住所が自動で入力されます。<br />
 							[<a href="http://search.post.japanpost.jp/zipcode/" target="_blank"><span class="mini">郵便番号検索ページヘ</span></a>]
@@ -426,7 +426,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 						</td>
 					<tr>
 						<th><span>お届け先：住所
-						<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"></span></th>
+						<img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"></span></th>
 					</tr>
 						<td>
 							<select name="<!--{$key3}-->" id="<!--{$key3}-->" style="<!--{$arrErr[$key3]|sfGetErrorColor}-->">
@@ -458,7 +458,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 				<input type="hidden" name="<!--{$key}-->" value="1" />
 
 				<div class="btn">
-					<p style="margin:10px 0;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnOrange">確認ページへ</a></p>
+					<p style="margin:10px 0;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnBlue">確認ページへ</a></p>
 					<p style="margin:10px 0;"><a href="<!--{$smarty.const.CART_URLPATH}-->" class="btnGray02">戻る</a></p>
 				</div>
 			</form>

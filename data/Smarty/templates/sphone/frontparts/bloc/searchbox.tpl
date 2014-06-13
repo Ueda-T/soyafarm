@@ -2,7 +2,7 @@
 <!--{assign var=top value="`$smarty.const.ROOT_URLPATH`index.php"}-->
 <!--{if $smarty.server.PHP_SELF == $top}-->
 <section class="spInxKey">
-	<h2><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_keyword.png" width="15" height="13">商品名で検索</h2>
+	<h2>商品名で検索</h2>
 <!--{else}-->
 <h3 class="line">ｷｰﾜｰﾄﾞで探す</h3>
 <!--{/if}-->

@@ -15,7 +15,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 		<!--{include file=`$smarty.const.TEMPLATE_REALDIR`mypage/navi.tpl}-->
 	<!--{/if}-->
 
-	<p class="naked mb10">メールアドレスとパスワードの変更を行います。<br /><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須"> 印の箇所は、必ず入力してください。</p>
+	<p class="naked mb10">メールアドレスとパスワードの変更を行います。<br /><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須"> 印の箇所は、必ず入力してください。</p>
 
     <div class="wrapForm">
         <form name="form1" id="form1" method="post" action="?">
@@ -24,7 +24,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         <input type="hidden" name="customer_id" value="<!--{$arrForm.customer_id|h}-->" />
         <table summary="メールアドレスとパスワード変更" class="tblOrder delivname" style="width:100%;">
             <tr>
-                <th>メールアドレス <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+                <th>メールアドレス <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
             </tr>
             <tr>
                 <td>
@@ -40,7 +40,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
             </tr>
 
             <tr id="passwordSection">
-                <th>パスワード <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+                <th>パスワード <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
             </tr>
             <tr id="passwordSection">
                 <td>
@@ -67,7 +67,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </table>
 
         <p style="margin:10px auto;">
-            <a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnOrange">確認</a>
+            <a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnBlue">確認</a>
         </p>
         </form>
     </div>

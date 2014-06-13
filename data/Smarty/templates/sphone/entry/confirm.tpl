@@ -62,7 +62,7 @@ function fnCheckSubmit() {
             </tr>
 <!--{*
             <tr>
-                <th><span><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
+                <th><span><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />FAX</span></th>
             </tr>
             <tr>
                 <td>
@@ -212,7 +212,7 @@ function fnCheckSubmit() {
 		</div>
 
 				<div class="btn">
-					<p style="margin:10px;"><a href="javascript:void(0);" onclick="fnCheckSubmit();return false;" class="btnOrange">お届け情報を入力する</a></p>
+					<p style="margin:10px;"><a href="javascript:void(0);" onclick="fnCheckSubmit();return false;" class="btnBlue">お届け情報を入力する</a></p>
 					<p style="margin:10px;"><a href="?" onclick="fnModeSubmit('return', '', ''); return false;" class="btnGray02">戻る</a></p>
 				</div>
 

@@ -14,7 +14,7 @@
 		</tr>
 		<!--{/section}-->
 	</table>
-	<p class="btn"><a class="btnGray" href="<!--{$smarty.const.ROOT_URLPATH}-->contents/topiclist.php">お知らせ一覧を見る</a></p>
+	<p class="btn mr10"><a class="btnGray" href="<!--{$smarty.const.ROOT_URLPATH}-->contents/topiclist.php">お知らせ一覧を見る</a></p>
 </div>
 <!--{* ▲新着情報 *}-->
 <!--{/if}-->

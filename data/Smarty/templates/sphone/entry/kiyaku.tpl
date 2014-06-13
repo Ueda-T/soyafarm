@@ -5,7 +5,7 @@
 利用規約をお読みいただき、同意の上、ショッピングをお楽しみください。</p>
 
           <div class="btn">
-              <p style="margin:10px;"><a href="<!--{$smarty.const.ENTRY_URL}-->" class="btnOrange" rel="external">同意して会員登録へ</a></p>
+              <p style="margin:10px;"><a href="<!--{$smarty.const.ENTRY_URL}-->" class="btnBlue" rel="external">同意して会員登録へ</a></p>
               <p style="margin:20px 10px;"><a href="<!--{$smarty.const.TOP_URLPATH}-->" class="btnGray02" rel="external">同意しない</a></p>
               </ul>
           </div>
@@ -15,7 +15,7 @@
           </div>
 
           <div class="btn">
-              <p style="margin:10px;"><a href="<!--{$smarty.const.ENTRY_URL}-->" class="btnOrange" rel="external">同意して会員登録へ</a></p>
+              <p style="margin:10px;"><a href="<!--{$smarty.const.ENTRY_URL}-->" class="btnBlue" rel="external">同意して会員登録へ</a></p>
               <p style="margin:20px 10px;"><a href="<!--{$smarty.const.TOP_URLPATH}-->" class="btnGray02" rel="external">同意しない</a></p>
               </ul>
           </div>

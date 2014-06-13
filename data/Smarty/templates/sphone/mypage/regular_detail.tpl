@@ -307,7 +307,7 @@ $(function() {
     <!--{* 確認ページへ進む *}-->
                                 <!--{*
         <p style="margin:10px auto;">
-            <a href="javascript:void(0);" onclick="fnSetVal('mode', 'confirm'); document.form1.submit();return false;" class="btnOrange">確認</a>
+            <a href="javascript:void(0);" onclick="fnSetVal('mode', 'confirm'); document.form1.submit();return false;" class="btnBlue">確認</a>
         </p>
                                 *}-->
     <div class="wrapCoan">

@@ -87,7 +87,7 @@
 		</table>
 
 		<p class="btn" style="margin-top:1em;">
-			<a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnOrange">登録</a>
+			<a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnBlue">登録</a>
 		</p>
 		<p style="margin:1em 0;">
 			<a href="javascript:void(0);" onclick="fnModeSubmit('return', '', ''); return false;" class="btnGray03">戻る</a>

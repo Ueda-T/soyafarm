@@ -172,6 +172,15 @@ function fnAddProduct(regular_flg, objForm) {
         <!--{/if}-->
 *}-->
 
+        <!--{* ▼コメント２ *}-->
+        <!--{if $arrProduct.sp_comment2}-->
+        <div class="recommendCmt">
+			<h2>こんな方におすすめ</h2>
+			<!--{$arrProduct.sp_comment2}-->
+        </div>
+        <!--{/if}-->
+        <!--{* ▲コメント２ *}-->
+
         <!--▼メーカーURL-->
         <!--{if $arrProduct.comment1|strlen >= 1}-->
         <p class="sale_price"><span class="mini">メーカーURL：</span><span>
@@ -225,7 +234,7 @@ function fnAddProduct(regular_flg, objForm) {
                      </dl>
                   </div>
             <!--{/if}-->
-                
+
             <div class="goodsCart mb20">
 		        <!--★通常価格★-->
 		          <!--{if $arrProduct.price01_max > 0}-->
@@ -234,13 +243,6 @@ function fnAddProduct(regular_flg, objForm) {
 		          <span>（税抜<strong><!--{$arrProduct.price02_min|sfCalcIncTax:$arrSiteInfo.tax:$arrSiteInfo.tax_rule|number_format}--></strong>円）</span>
 		          </p>
 		          <!--{/if}-->
-
-
-        <!--{* ▼コメント２ *}-->
-        <!--{if $arrProduct.sp_comment2}-->
-        <p><!--{$arrProduct.sp_comment2}--></p>
-        <!--{/if}-->
-        <!--{* ▲コメント２ *}-->
 
 				<!--{*★数量★*}-->
 				<table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;width:90%;">
@@ -339,6 +341,10 @@ function fnAddProduct(regular_flg, objForm) {
             <!--{/if}-->
         <!--{/if}-->
 *}-->
+
+		<div>
+			<p class="naked mb20"><!--{$arrProduct.main_comment}--></p>
+		</div>
 
         <!--{* ▼コメント３ *}-->
         <!--{if $arrProduct.sp_comment3}-->
@@ -586,7 +592,7 @@ function fnAddProduct(regular_flg, objForm) {
           <td id="mainImage1<!--{$smarty.section.cnt.index}-->" class="goodsInfo">
           <div class="linkbox clearfix">
           <dl>
-          <dt><!--{$arrRecommend[cnt].name|h}--></a><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_link08.png" /></dt>
+          <dt><!--{$arrRecommend[cnt].name|h}--></a></dt>
           <dd class="img"><img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$arrRecommend[cnt].main_list_image|sfNoImageMainList|h}-->" alt="<!--{$arrRecommend[cnt].name|h}-->" width="65" /></dd>
           <dd class="text"><!--{$arrRecommend[cnt].main_list_comment}--></dd>
           <dd class="price">
@@ -634,7 +640,6 @@ function fnAddProduct(regular_flg, objForm) {
 
         <!--{* ▼コメント５ *}-->
         <!--{if $arrProduct.sp_comment5}-->
-        <h2 class="title">商品概要</h2>
         <div>
         <!--{$arrProduct.sp_comment5}-->
         </div>
@@ -770,8 +775,7 @@ function fnAddProduct(regular_flg, objForm) {
         <!--{* ▲カートボタン表示５ *}-->
 
 <!--{*
-<p class="mail">
-	<img src="<!--{$TPL_URLPATH}-->img/rohto/icon_mail.gif" /><a href="mailto:@?subject=<!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->&amp;body=<!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->%0d%0a<!--{$smarty.const.HTTP_URL}-->detail.php?product_id=<!--{$tpl_product_id}-->">この商品を友達に教える</a>
+<p class="mail"><a href="mailto:@?subject=<!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->&amp;body=<!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}-->%0d%0a<!--{$smarty.const.HTTP_URL}-->detail.php?product_id=<!--{$tpl_product_id}-->">この商品を友達に教える</a>
 </p>
 *}-->
 

@@ -130,7 +130,7 @@ $(document).ready(function() {
       <p style="display:block; margin:18px 0; text-align:right;"><a rel="external" href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" class="btnGray">パスワードを忘れた方はこちら</a></p>
       
               <div style="margin:10px 0;">
-                                             <input type="submit" value="ログイン" name="log" id="log" class="btnOrange" />
+                                             <input type="submit" value="ログイン" name="log" id="log" class="btnBlue" />
               </div>
            </div><!--▲loginarea -->
           </form>
@@ -188,7 +188,7 @@ $(document).ready(function() {
 			<!--{if strlen($tpl_error) == 0}-->
 			<p class="cartBtn">
 				<input type="hidden" name="cartKey" value="<!--{$key}-->" />
-				<input type="button" onclick="document.form<!--{$key}-->.submit();return false;" class="btnOrange" value="次へ(購入手続きへ)" /></a>
+				<input type="button" onclick="document.form<!--{$key}-->.submit();return false;" class="btnBlue" value="次へ(購入手続きへ)" /></a>
 			</p>
 			<!--{/if}-->
 
@@ -494,7 +494,7 @@ $(document).ready(function() {
             <!--{if strlen($tpl_error) == 0}-->
 			<p class="cartBtn">
 				<input type="hidden" name="cartKey" value="<!--{$key}-->" />
-				<input type="button" onclick="document.form<!--{$key}-->.submit();return false;" class="btnOrange" value="次へ(購入手続きへ)" />
+				<input type="button" onclick="document.form<!--{$key}-->.submit();return false;" class="btnBlue" value="次へ(購入手続きへ)" />
 			</p>
 			<!--{/if}-->
 

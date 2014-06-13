@@ -52,7 +52,7 @@ function fnCheckSubmit() {
 
        <div class="btn_area">
            <ul class="btn_btm">
-             <li><input type="button" value="送信" class="btnOrange" name="send" id="send" onclick="fnCheckSubmit();" /></li>
+             <li><input type="button" value="送信" class="btnBlue" name="send" id="send" onclick="fnCheckSubmit();" /></li>
              <li><a class="btnGray02" href="javascript:fnModeSubmit('return', '', '');">戻る</a></li>
            </ul>
        </div> 

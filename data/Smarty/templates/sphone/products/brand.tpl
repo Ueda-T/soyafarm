@@ -104,7 +104,7 @@ function fnInCart(productForm, regular_flg) {
 			<div class="linkbox clearfix">
 				<dl>
 					<!--★商品名★-->
-					<dt><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--><img src="<!--{$TPL_URLPATH}-->img/rohto/icon_link08.png" alt="" width="11" height="11"></dt>
+					<dt><!--{if isset($arrProduct.disp_name)}--><!--{$arrProduct.disp_name|h}--><!--{else}--><!--{$arrProduct.name|h}--><!--{/if}--></dt>
 					<!--★画像★-->
 					<dd class="img"><img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$arrProduct.main_list_image|sfNoImageMainList|h}-->&amp;width=80&amp;height=80"  alt="<!--{$arrProduct.name|h}-->" width="50" /></dd>
 					<!--★商品コメント★-->
@@ -140,7 +140,7 @@ function fnInCart(productForm, regular_flg) {
             <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE && $arrProduct.teiki_flg != 0}-->
             <td class="goodsCart" style="border:1px solid #41A61E;" onclick="fnInCart(document.product_form<!--{$id|h}-->, '1'); return false;">
                 <div class="linkbox" style="color:#41A61E;">
-                    <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_teiki.png" alt="カートに入れる" width="18" height="16"><br>
+                    <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_teiki.png" alt="カートに入れる" width="18" height="16"><br>
                     定期購入<br>する<br><br>
                 </div>
                 <!--{* 定期フラグを保持 *}-->
@@ -153,7 +153,7 @@ function fnInCart(productForm, regular_flg) {
             <!--★カートに入れる★-->
             <td class="goodsCart" onclick="fnInCart(document.product_form<!--{$id|h}-->, ''); return false;"<!--{if $tpl_customer_kbn == $smarty.const.CUSTOMER_KBN_EMPLOYEE || $arrProduct.teiki_flg == 0}--> colspan="2"<!--{/if}-->>
                 <div class="linkbox">
-                    <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_cart.png" alt="カートに入れる" width="18" height="16"><br>
+                    <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カートに入れる" width="18" height="16"><br>
                     <!--{if $arrProduct.sale_start_date && $arrProduct.sale_start_date > $smarty.now|date_format:"%Y-%m-%d 00:00:00"}-->
                         予約する
                     <!--{else if strlen($arrProduct.sale_end_date) == 0 || $arrProduct.sale_end_date >= $smarty.now|date_format:"%Y-%m-%d"}-->

@@ -256,7 +256,7 @@ $(document).ready(function() {
 		</div>
 
 <!--{*
-		<h3 class="order"><img src="<!--{$TPL_URLPATH}-->img/rohto/method_midashi11.gif" width="820" height="35" alt="その他お問い合わせ" /></h3>
+		<h3 class="order">その他お問い合わせ</h3>
         <table summary="お支払方法" class="bgYellow">
             <tr>
                 <th scope="row">その他お問い合わせ</th>
@@ -267,9 +267,9 @@ $(document).ready(function() {
 
 		<p style="margin:10px auto;">
 			<!--{if $use_module}-->
-				<a href="javascript:void(0);" onclick="return fnCheckSubmit();"class="btnOrange" style="width:auto;text-decoration:none;">次へ</a>
+				<a href="javascript:void(0);" onclick="return fnCheckSubmit();"class="btnBlue" style="width:auto;text-decoration:none;">次へ</a>
 			<!--{else}-->
-				<a href="javascript:void(0);" onclick="return fnCheckSubmit();" class="btnOrange" style="width:auto;text-decoration:none;">注文する</a>
+				<a href="javascript:void(0);" onclick="return fnCheckSubmit();" class="btnBlue" style="width:auto;text-decoration:none;">注文する</a>
 			<!--{/if}-->
 		</p>
 		<p style="margin:10px auto 20px auto;">

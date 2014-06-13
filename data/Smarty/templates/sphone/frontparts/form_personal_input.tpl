@@ -1,4 +1,4 @@
- <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前&nbsp;</dt>
+ <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前&nbsp;</dt>
   <dd>
   <!--{assign var=key1 value="`$prefix`name"}-->
     <!--{if $arrErr[$key1]}-->
@@ -7,7 +7,7 @@
     <input type="text" id="userName" name="<!--{$key1}-->" value="<!--{$arrForm[$key1]|h}-->" maxlength="<!--{$smarty.const.STEXT_LEN}-->" class="boxLong text data-role-none" placeholder="お名前" />
   </dd>
 
- <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />お名前(フリガナ)&nbsp;</dt>
+ <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />お名前(フリガナ)&nbsp;</dt>
   <dd>
   <!--{assign var=key1 value="`$prefix`kana"}-->
     <!--{if $arrErr[$key1]}-->
@@ -16,7 +16,7 @@
     <input type="text"id="userFurigana" name="<!--{$key1}-->" value="<!--{$arrForm[$key1]|h}-->" maxlength="<!--{$smarty.const.STEXT_LEN}-->" class="boxLong text data-role-none" placeholder="お名前(フリガナ)"/>
   </dd>
 
- <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />郵便番号&nbsp;</dt>
+ <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />郵便番号&nbsp;</dt>
    <dd>
   <!--{assign var=key value="`$prefix`zip"}-->
      <!--{assign var=key3 value="`$prefix`pref"}-->
@@ -26,12 +26,12 @@
      <div class="attention"><!--{$arrErr[$key]}--></div>
      <!--{/if}-->
 
-     <p class="top">〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN+2}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/rohto/zip.gif" alt="住所自動入力" id="easy" /></p>
+     <p class="top">〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN+2}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/soyafarm/zip.gif" alt="住所自動入力" id="easy" /></p>
         <p>郵便番号をご入力後、ボタンを押してください。ご住所が自動で入力されます。<br />
         [<a href="http://search.post.japanpost.jp/zipcode/" target="_blank"><span class="mini">郵便番号検索ページヘ</span></a>]</p>
    </dd>
 
- <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />住所&nbsp;</dt>
+ <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />住所&nbsp;</dt>
    <dd>
   <!--{if $arrErr[$key3] || $arrErr[$key4] || $arrErr[$key5]}-->
      <div class="attention"><!--{$arrErr[$key3]}--><!--{$arrErr[$key4]}--><!--{$arrErr[$key5]}--></div>
@@ -49,7 +49,7 @@
         <p>番地が必要のないご住所の場合、「番地なし」にチェックを付けてください。</p>
    </dd>
   
-  <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />電話番号&nbsp;</dt>
+  <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />電話番号&nbsp;</dt>
    <dd>
     <!--{assign var=key1 value="`$prefix`tel"}-->
      <!--{if $arrErr[$key1]}-->
@@ -59,7 +59,7 @@
    </dd>
  <!--{if $flgFields > 1}-->
 
-<dt><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />FAX</dt>
+<dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />FAX</dt>
    <dd>
    <!--{assign var=key1 value="`$prefix`fax"}-->
      <!--{if $arrErr[$key1]}-->
@@ -68,7 +68,7 @@
        <input type="tel" name="<!--{$key1}-->" value="<!--{$arrForm[$key1]|h}-->" maxlength="<!--{$smarty.const.TEL_LEN}-->" class="boxLong text data-role-none" />
    </dd>
 
-  <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />メールアドレス&nbsp;</dt>
+  <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />メールアドレス&nbsp;</dt>
    <dd>
   <!--{assign var=key1 value="`$prefix`email"}-->
      <!--{assign var=key2 value="`$prefix`email02"}-->
@@ -79,7 +79,7 @@
        <input type="email" name="<!--{$key2}-->" value="<!--{$arrForm[$key2]|h}-->" class="boxLong text data-role-none" placeholder="確認のため2回入力してください" />
     </dd>
 
-  <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />性別&nbsp;</dt>
+  <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />性別&nbsp;</dt>
    <dd>
    <!--{assign var=key1 value="`$prefix`sex"}-->
      <!--{if $arrErr[$key1]}-->
@@ -91,7 +91,7 @@
    </dd>
      </span>
  
-  <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/spacer.gif" alt="" width="31" height="13" />生年月日</dt>
+  <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/spacer.gif" alt="" width="31" height="13" />生年月日</dt>
    <dd>
    <!--{assign var=errBirth value="`$arrErr.year``$arrErr.month``$arrErr.day`"}-->
      <!--{if $errBirth}-->
@@ -109,7 +109,7 @@
    </dd>
 <!--{if $flgFields > 2}-->
   
-<dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />希望するパスワード&nbsp;</dt>
+<dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />希望するパスワード&nbsp;</dt>
    <dd>
   <!--{if $arrErr.password || $arrErr.password02}-->
      <div class="attention"><!--{$arrErr.password}--><!--{$arrErr.password02}--></div>
@@ -119,7 +119,7 @@
      <p class="attention mini">半角<!--{$smarty.const.PASSWORD_MIN_LEN}-->～<!--{$smarty.const.PASSWORD_MAX_LEN}-->文字</p>
    </dd>
 
-  <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />パスワードを忘れた時のヒント&nbsp;</dt>
+  <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />パスワードを忘れた時のヒント&nbsp;</dt>
    <dd>
    <!--{if $arrErr.reminder || $arrErr.reminder_answer}-->
      <div class="attention"><!--{$arrErr.reminder}--><!--{$arrErr.reminder_answer}--></div>
@@ -132,7 +132,7 @@
       <input type="text" name="reminder_answer" value="<!--{$arrForm.reminder_answer|h}-->" class="boxLong text data-role-none" placeholder="質問の答えを入力してください" />
    </dd>
 
-   <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />メールマガジン&nbsp;</dt>
+   <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />メールマガジン&nbsp;</dt>
     <dd>
    <ul>
    <!--{if $arrErr.mailmaga_flg}-->
@@ -145,7 +145,7 @@
      </ul>
     </dd>
 
-   <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />DM送付について&nbsp;</dt>
+   <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />DM送付について&nbsp;</dt>
    <dd>
    <ul>
        <!--{if $arrErr.dm_flg}-->
@@ -158,7 +158,7 @@
    </ul>
    </dd>
 
-   <dt><img src="<!--{$TPL_URLPATH}-->img/rohto/check02.gif" alt="必須" />アンケートについて&nbsp;</dt>
+   <dt><img src="<!--{$TPL_URLPATH}-->img/soyafarm/check02.gif" alt="必須" />アンケートについて&nbsp;</dt>
    <dd>
    <ul>
                 当サイトをどこで知りましたか？

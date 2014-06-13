@@ -20,7 +20,7 @@
      </div>
 *}-->
      <p style="margin:10px;">
-       <a rel="external" href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/mypage/login.php" class="btnOrange">ログイン画面へ</a>
+       <a rel="external" href="<!--{$smarty.const.HTTPS_URL|sfTrimURL}-->/mypage/login.php" class="btnBlue">ログイン画面へ</a>
      </p>
      </form>    
   </section>

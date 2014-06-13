@@ -35,7 +35,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
     </td>
 </tr>
 <tr>
-    <th>お名前 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+    <th>お名前 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
     <td>
@@ -47,7 +47,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
     </td>
 </tr>
 <tr>
-    <th>お名前(フリガナ) <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+    <th>お名前(フリガナ) <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
     <td>
@@ -59,7 +59,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
     </td>
 </tr>
 <tr>
-    <th>電話番号 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+    <th>電話番号 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
     <td>
@@ -71,7 +71,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
     </td>
 </tr>
 <tr>
-    <th>郵便番号 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+    <th>郵便番号 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
     <td>
@@ -84,14 +84,14 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
             <div class="attention"><!--{$arrErr[$key]}--></div>
         <!--{/if}-->
 
-        <p class="top">〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN+2}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/rohto/zip.gif" alt="住所自動入力" id="easy" /></p>
+        <p class="top">〒&nbsp;<input type="text" name="<!--{$key}-->" id="<!--{$key}-->" value="<!--{$arrForm[$key]|h}-->" maxlength="<!--{math equation="a+b" a=$smarty.const.ZIP_LEN b=1}-->" size="<!--{$smarty.const.ZIP_LEN+2}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box60" />&nbsp;<img src="<!--{$TPL_URLPATH}-->img/soyafarm/zip.gif" alt="住所自動入力" id="easy" /></p>
         <p>郵便番号をご入力後、ボタンを押してください。ご住所が自動で入力されます。<br />
         [<a href="http://search.post.japanpost.jp/zipcode/" target="_blank"><span class="mini">郵便番号検索ページヘ</span></a>]</p>
     </td>
 </tr>
 
 <tr>
-    <th>住所 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+    <th>住所 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
     <td>
@@ -123,7 +123,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </td>
     </tr>
     <tr>
-        <th>性別 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+        <th>性別 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
         <td>
@@ -138,7 +138,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </td>
     </tr>
     <tr>
-        <th>生年月日 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+        <th>生年月日 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
     </tr>
     <tr>
         <td>
@@ -168,7 +168,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         <input type="hidden" name="password" value="<!--{$arrForm.password}-->" />
         <input type="hidden" name="password02" value="<!--{$arrForm.password02}-->" />
         <tr>
-            <th>メールのご案内 <img src="<!--{$TPL_URLPATH}-->img/rohto/icon_hisu.gif" alt="必須" /></th>
+            <th>メールのご案内 <img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_hisu.gif" alt="必須" /></th>
 </tr>
 <tr>
             <td>
@@ -182,7 +182,7 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
         </tr>
         </table>
         <p style="margin:10px auto;">
-            <a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnOrange">確認</a>
+            <a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnBlue">確認</a>
         </p>
         </form>
     </div>

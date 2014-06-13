@@ -694,7 +694,7 @@ padding:20px;
 	display: block;
 	width: 151px;
 	height: 18px;
-	background-image:url(../img/rohto/img_password_indicator.gif);
+	background-image:url(../img/soyafarm/img_password_indicator.gif);
 }
 #passwordSection .strong
 {
@@ -968,6 +968,75 @@ ul.myPageMenu li.mp_nav_contact a {
 	color:#333;
 	border-radius:3px;
 }
+
+/* -----------------------------------------------
+商品詳細
+----------------------------------------------- */
+.recommendCmt {
+	background:#dbfff8;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-ms-border-radius:3px;
+	-o-border-radius:3px;
+	font-size:0.75em;
+	margin-bottom:20px;
+	padding:10px;
+}
+
+.recommendCmt h2 {
+	background:#FFF;
+	border-radius:20px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-ms-border-radius:20px;
+	-o-border-radius:20px;
+	font-size:1em;
+	font-weight:bold;
+	margin-bottom:10px;
+	padding:5px;
+	text-align:center;
+}
+
+.recommendCmt ul {
+	margin:0 10px;
+}
+
+.recommendCmt ul li {
+	padding-left:16px;
+	background:url(../img/soyafarm/maru_blue.gif) no-repeat left 2px;
+}
+
+ul#ingre {
+	font-size:0.75em;
+	margin:10px;
+}
+
+ul#ingre li h4 {
+	background:#a9cf39;
+	border-radius:20px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-ms-border-radius:20px;
+	-o-border-radius:20px;
+	color:#FFF;
+	font-weight:bold;
+	margin-bottom:10px;
+	padding:5px;
+	text-align:center;
+}
+
+ul#ingre li p,ul#ingre li#nutri ul {
+	margin:0 10px 10px 10px;
+}
+
+ul#ingre li#nutri ul li.bold {
+	font-weight:bold;
+}
+
+/* -----------------------------------------------
+静的ページ
+----------------------------------------------- */
 
 #kiyakuPage h3,
 #teikiPage h3,

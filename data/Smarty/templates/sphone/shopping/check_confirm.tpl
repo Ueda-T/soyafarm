@@ -43,10 +43,10 @@ $(document).ready(function() {
         <input type="hidden" name="uniqid" value="<!--{$tpl_uniqid}-->" />
 
 		<p style="margin:10px auto;">
-				<a href="javascript:void(0);" onclick="return fnCheckSubmit('no_change');"class="btnOrange" style="width:auto;text-decoration:none;">前回使用したカードで決済</a>
+				<a href="javascript:void(0);" onclick="return fnCheckSubmit('no_change');"class="btnBlue" style="width:auto;text-decoration:none;">前回使用したカードで決済</a>
 		</p>
 		<p style="margin:10px auto;">
-				<a href="javascript:void(0);" onclick="return fnCheckSubmit('change');" class="btnOrange" style="width:auto;text-decoration:none;">クレジットカードを変更する</a>
+				<a href="javascript:void(0);" onclick="return fnCheckSubmit('change');" class="btnBlue" style="width:auto;text-decoration:none;">クレジットカードを変更する</a>
 		</p>
 		<p style="margin:10px auto 20px auto;">
 			<a href="./confirm.php" class="btnGray02">戻る</a>

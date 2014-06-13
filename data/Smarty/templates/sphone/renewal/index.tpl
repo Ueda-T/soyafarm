@@ -48,5 +48,5 @@
 			</tr>
 		</table>
     </div>
-	<p class="btn" style="margin:10px 0;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnOrange">次へ</a></p>
+	<p class="btn" style="margin:10px 0;"><a href="javascript:void(0);" onclick="document.form1.submit();return false;" class="btnBlue">次へ</a></p>
     </form>
