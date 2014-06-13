@@ -10,8 +10,11 @@
 
 	<p class="attention naked">定期購入中のお客様</p>
 	<p class="naked">お届け先変更をされたお客様で、定期購入をお申し込み中のお客様は、お手数ですが、ご変更後は、<br>
-	フリーダイヤル0120-252-610（受付時間9:00～21:00）または、<a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。<br>
-	（メールでのご連絡場合、内容記入欄に、定期購入お申し込み番号と、変更前／変更後のお届け先を明記してください）
+	<a href="<!--{$TPL_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。お電話・FAXでも承っております。
+	</p>
+	<p class="naked">
+		TEL：フリーダイヤル0120-39-3009（受付時間9:00～19:00、日・祝休み）<br />
+		FAX：フリーダイヤル0120-39-4090（24時間365日受付）
 	</p>
 
 	<div style="margin:1em auto;text-align:center;">

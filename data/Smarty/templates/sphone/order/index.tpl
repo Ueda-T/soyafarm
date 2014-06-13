@@ -1,70 +1,26 @@
 <h2 class="spNaked"><!--{$tpl_title}--></h2>
 <table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
 <tr>
-<th align="left"><h2><font size="-1">販売価格</font></h2></th>
-</tr>
-</table>
-<font size="-1">
-各商品ごとに掲載<br><br>
-</font>
-
-<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
-<tr>
-<th align="left"><h2><font size="-1">送料</font></h2></th>
-</tr>
-</table>
-<font size="-1">
-<!--{$arrOrder.law_term01}--><br><br>
-</font>
-
-<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
-<tr>
-<th align="left"><h2><font size="-1">代金の支払時期</font></h2></th>
-</tr>
-</table>
-<font size="-1">
-<!--{$arrOrder.law_term04}--><br><br>
-</font>
-
-<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
-<tr>
-<th align="left"><h2><font size="-1">商品の引渡時期</font></h2></th>
-</tr>
-</table>
-<font size="-1">
-<!--{$arrOrder.law_term05}--><br><br>
-</font>
-
-<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
-<tr>
-<th align="left"><h2><font size="-1">代金の支払方法</font></h2></th>
-</tr>
-</table>
-<font size="-1">
-<!--{$arrOrder.law_term03}--><br><br>
-</font>
-
-<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
-<tr>
-<th align="left"><h2><font size="-1">返品・交換・返金</font></h2></th>
-</tr>
-</table>
-<font size="-1">
-<!--{$arrOrder.law_term06}--><br><br>
-</font>
-
-<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
-<tr>
-<th align="left"><h2><font size="-1">販売業者</font></h2></th>
+<th align="left"><h2><font size="-1">販売会社名</font></h2></th>
 </tr>
 </table>
 <font size="-1">
 <!--{$arrOrder.law_company|h}--><br><br>
 </font>
 
+
 <table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
 <tr>
-<th align="left"><h2><font size="-1">販売事業者　住所</font></h2></th>
+<th align="left"><h2><font size="-1">運営責任者</font></h2></th>
+</tr>
+</table>
+<font size="-1">
+<!--{$arrOrder.law_manager|h}--><br><br>
+</font>
+
+<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
+<tr>
+<th align="left"><h2><font size="-1">所在地</font></h2></th>
 </tr>
 </table>
 <font size="-1">
@@ -112,11 +68,57 @@
 </font>
 *}-->
 
+
 <table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
 <tr>
-<th align="left"><h2><font size="-1">運営責任者</font></h2></th>
+<th align="left"><h2><font size="-1">販売価格</font></h2></th>
 </tr>
 </table>
 <font size="-1">
-<!--{$arrOrder.law_manager|h}--><br><br>
+各商品ごとに掲載<br><br>
+</font>
+
+<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
+<tr>
+<th align="left"><h2><font size="-1">代金の支払方法</font></h2></th>
+</tr>
+</table>
+<font size="-1">
+<!--{$arrOrder.law_term03}--><br><br>
+</font>
+
+<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
+<tr>
+<th align="left"><h2><font size="-1">代金の支払時期</font></h2></th>
+</tr>
+</table>
+<font size="-1">
+<!--{$arrOrder.law_term04}--><br><br>
+</font>
+
+<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
+<tr>
+<th align="left"><h2><font size="-1">送料</font></h2></th>
+</tr>
+</table>
+<font size="-1">
+<!--{$arrOrder.law_term01}--><br><br>
+</font>
+
+<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
+<tr>
+<th align="left"><h2><font size="-1">商品の引渡時期</font></h2></th>
+</tr>
+</table>
+<font size="-1">
+<!--{$arrOrder.law_term05}--><br><br>
+</font>
+
+<table width="100%" cellspacing="0" cellpadding="1" bordercolor="#E3FF99" border="0" bgcolor="#E3FF99">
+<tr>
+<th align="left"><h2><font size="-1">返品・交換・返金</font></h2></th>
+</tr>
+</table>
+<font size="-1">
+<!--{$arrOrder.law_term06}--><br><br>
 </font>
