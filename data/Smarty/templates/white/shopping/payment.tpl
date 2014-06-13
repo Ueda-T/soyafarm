@@ -450,7 +450,7 @@
                 </thead>
                 <tbody>
                         <tr>
-                        <td class="alignC">
+                        <td>
                         <!--{foreach from=$arrPlanningData item=arrRecord key=idx}-->
                         <input type="radio" id="event_code_<!--{$idx}-->" name="<!--{$key}-->"  value="<!--{$arrRecord.media_code}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrRecord.media_code|sfGetChecked:$arrForm[$key].value}--> /><label for="event_code_<!--{$idx}-->"><!--{$arrRecord.planning_name|h}--></label>
                         <!--{/foreach}-->
