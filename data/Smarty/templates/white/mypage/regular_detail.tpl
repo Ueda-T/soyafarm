@@ -392,11 +392,11 @@ $(function() {
 			</td>
                         *}-->
 		</tr>
+		<!--{/foreach}-->
 		<tr>
-			<th colspan="2" class="alignR">小計</th>
+			<th colspan="2" class="alignR">合計</th>
 			<td class="alignR"><strong class="cartTotalPrice"><!--{$sub_total|number_format}-->円</strong></td>
 		</tr>
-		<!--{/foreach}-->
 		<!--{/foreach}-->
 	</table>
 
