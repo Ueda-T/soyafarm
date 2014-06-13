@@ -131,7 +131,7 @@ class LC_Page_Admin_Products_Planning extends LC_Page_Admin_Ex
             ("広告媒体", "media_code", INT_LEN, 'n',
              array("EXIST_CHECK", "NUM_CHECK", "MAX_LENGTH_CHECK"));
         $objFormParam->addParam
-            ("キャンペーン", 'campaign_code', 4, 'a',
+            ("キャンペーン", 'campaign_code', CAMPAIGN_CODE_LEN, 'a',
              array("SPTAB_CHECK", "MAX_LENGTH_CHECK"));
         $objFormParam->addParam
             ("並び順", 'rank', INT_LEN, 'n',
