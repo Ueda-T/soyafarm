@@ -233,7 +233,7 @@ $(function() {
             </td>
         </tr>
         <tr>
-            <th>詳細拡大画像</th>
+            <th>商品一覧ページ用画像</th>
             <td>
                 <!--{assign var=key value="main_large_image"}-->
                 <!--{if $arrForm.arrFile[$key].filepath != ""}-->

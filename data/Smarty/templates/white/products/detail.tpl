@@ -40,6 +40,7 @@ $(document).ready(function() {
 			<div class="photo">
 				<!--{assign var=key value="main_image"}-->
 				<!--★画像★-->
+<!--{*
 				<!--{if $arrProduct.main_large_image|strlen >= 1}-->
 					<a
 						href="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$arrProduct.main_large_image|h}-->"
@@ -47,11 +48,15 @@ $(document).ready(function() {
 						target="_blank"
 					>
 				<!--{/if}-->
+*}-->
 					<img src="<!--{$arrFile[$key].filepath|h}-->" width="<!--{$arrFile[$key].width}-->" height="<!--{$arrFile[$key].height}-->" alt="<!--{$arrProduct.name|h}-->" class="goodsPht" />
+<!--{*
 				<!--{if $arrProduct.main_large_image|strlen >= 1}-->
 					</a>
 				<!--{/if}-->
+*}-->
 			</div>
+<!--{*
 			<!--{if $arrProduct.main_large_image|strlen >= 1}-->
 				<span class="mini">
 						<!--★拡大する★-->
@@ -63,6 +68,7 @@ $(document).ready(function() {
 							画像を拡大する</a>
 				</span>
 			<!--{/if}-->
+*}-->
 
 <!--{*
 			<!--▼商品ステータス-->

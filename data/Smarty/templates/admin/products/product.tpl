@@ -541,7 +541,7 @@ $(function() {
 		</tr>
 		<tr>
 			<!--{assign var=key value="main_large_image"}-->
-			<th>詳細拡大画像<br />[<!--{$smarty.const.LARGE_IMAGE_WIDTH}-->×<!--{$smarty.const.LARGE_IMAGE_HEIGHT}-->]</th>
+			<th>商品一覧ページ用画像<br />[<!--{$smarty.const.LARGE_IMAGE_WIDTH}-->×<!--{$smarty.const.LARGE_IMAGE_HEIGHT}-->]</th>
 			<td>
 				<span class="attention"><!--{$arrErr[$key]}--></span>
 				<!--{if $arrForm.arrFile[$key].filepath != ""}-->

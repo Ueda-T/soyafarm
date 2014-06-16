@@ -151,9 +151,9 @@ define('LINE_LIMIT_SIZE', 60);
 /** 誕生日月ポイント */
 define('BIRTH_MONTH_POINT', 0);
 /** 拡大画像横 */
-define('LARGE_IMAGE_WIDTH', 500);
+define('LARGE_IMAGE_WIDTH', 240);
 /** 拡大画像縦 */
-define('LARGE_IMAGE_HEIGHT', 500);
+define('LARGE_IMAGE_HEIGHT', 240);
 /** 案内画像横 */
 define('GUIDE_IMAGE_WIDTH', 780);
 /** 案内画像縦 */
