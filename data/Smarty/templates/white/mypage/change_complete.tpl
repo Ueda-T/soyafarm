@@ -12,7 +12,7 @@
 
 	<div class="wrapCustomer">
 		<div class="wrapResult">
-			<div class="wrapResultEle">
+			<div class="wrapResultEle innr">
 				<h2 class="result">お客様情報の変更を受付ました。</h2>
 				<ul class="note">
 					<li>※既にいただいています（準備中も含む）ご注文の注文者ならびに配送先の情報は変更されませんので、変更が必要な場合は、<br>

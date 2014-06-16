@@ -12,8 +12,8 @@
 
 	<div class="wrapCustomer">
 		<div class="wrapResult">
-			<div class="wrapResultEle">
-				<h2 class="result">お客様情報の変更を受付ました。</h2>
+			<div class="wrapResultEle innr">
+				<h2 class="result none">お客様情報の変更を受付ました。</h2>
 			</div><!--／wrapResultEle-->
 		</div>
 

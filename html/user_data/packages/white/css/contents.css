@@ -166,14 +166,14 @@ div#mycontents_area .message_area p {
 }
 
 .wrapResult {
-	background-color:#FFDBD6;
+/*	background-color:#FFDBD6;*/
 	margin-bottom:20px;
-	padding:10px;
+/*	padding:10px;*/
 }
 
 .wrapResultEle {
 	background-color:#FFF5F4;
-	border:1px solid #FFF;
+	border:6px solid #FFDBD6;
 	padding:10px;
 }
 

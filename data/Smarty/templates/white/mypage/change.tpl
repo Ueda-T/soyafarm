@@ -167,6 +167,30 @@ var get_zip_addr = "<!--{$smarty.const.INPUT_ZIP_URLPATH}-->";
 					</td>
 				</tr>
         </table>
+
+		<div class="wrapResult">
+			<div class="wrapResultEle">
+				<div class="finishedRegular">
+				<h3 class="result">ご注文後のお客様</h3>
+				<ul class="note">
+					<li>※既にいただいていますご注文の注文者ならびに配送先の情報は変更されませんので、変更が必要な場合は、<br>
+					<a href="<!--{$TPL_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。お電話・FAXでも承っております。</li>
+				</ul>
+				</div>
+
+				<div class="finishedRegular mt20">
+					<h3>定期購入中のお客様</h3>
+					<p class="naked">お届け先変更をされたお客様で、定期購入をお申し込み中のお客様は、お手数ですが、ご変更後は、<br>
+					<a href="<!--{$TPL_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。お電話・FAXでも承っております。
+					</p>
+					<p class="naked">
+						TEL：フリーダイヤル0120-39-3009（受付時間9:00～19:00、日・祝休み）<br />
+						FAX：フリーダイヤル0120-39-4090（24時間365日受付）
+					</p>
+				</div>
+			</div><!--／wrapResultEle-->
+		</div>
+
         <p class="btn">
             <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_kakunin02.gif" alt="確認" name="refusal" id="refusal" class="swp" /></a>
         </p>

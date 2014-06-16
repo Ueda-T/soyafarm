@@ -25,6 +25,15 @@ function fnChangeRegular(regular_id, line_no, objForm) {
 <div id="mainMyPage">
 	<h1><img src="<!--{$TPL_URLPATH}-->img/soyafarm/mypage_title_sub4.gif" alt="定期購入一覧" /></h1>
 
+	<p>このページでは、「次回お届け日時の確認」のみ行なっていただけます。<br />
+	なお、お届け先および定期購入商品・数量のご変更、お支払い方法のご変更につきましては、<br />
+	<a href="<!--{$TPL_URLPATH}-->contact/" class="link">お問い合わせフォーム</a>までご連絡ください。お電話・FAXでも承っております。
+	</p>
+	<p class="naked">
+		TEL：フリーダイヤル0120-39-3009（受付時間9:00～19:00、日・祝休み）<br />
+		FAX：フリーダイヤル0120-39-4090（24時間365日受付）
+	</p>
+
 	<form name="form1" id="form1" method="post" action="?">
 	<input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 	<input type="hidden" name="regular_id" value="" />
@@ -97,7 +106,7 @@ function fnChangeRegular(regular_id, line_no, objForm) {
 		</table>
 		<!--{* ▲定期購入一覧 *}-->
 <!--{else}-->
-	<p>定期購入情報はありません。</p>
+	<p class="naked mt30 alignC">定期購入情報はありません。</p>
 <!--{/if}-->
 </form>
 </div><!--/#mainMyPage-->
