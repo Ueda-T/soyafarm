@@ -116,7 +116,13 @@ h1 { margin-bottom: 16px; }
 #attention {
 	margin-bottom: 20px;
 	padding-bottom: 3px;
-	background: url(../img/soyafarm/bg_attention-foot.gif) no-repeat 0 100%;
+/*	background: url(../img/soyafarm/bg_attention-foot.gif) no-repeat 0 100%;*/
+	background:#FFDBD6;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-ms-border-radius:3px;
+	-o-border-radius:3px;
 }
 
 #attention h3 {

@@ -120,6 +120,19 @@ $(document).ready(function() {
 				<p class="error">「キ ャ ン ペ ー ン コ ー ド」に入力いただいた内容が正しくありません。</p>
 			<!--{/if}-->
 
+			<div style="text-align: left;" id="attention">
+				<h3>お支払い方法／配送方法について</h3>
+				<div>
+					<p class="mb5">本サイトからのご注文では、「<strong class="red">代引き</strong>」または「<strong class="red">郵便振込/コンビニ決済</strong>」によるお支払い、「<strong class="red">メール便</strong>」によるお届けをご利用いただくことができません。<br />
+					（<strong>クレジットカード決済・宅配便</strong>によるお届けのみご利用いただけます）</p>
+					<p>大変お手数ですが、上記お支払い方法・配送方法をご希望のお客様は、<br />
+						<strong class="red">ご注文手続きを進められる前に</strong>下記フリーダイヤルからお電話にてお問い合わせください。</p>
+					<ul style="border-top: 1px dotted #CCCCCC;" class="pb0 pt10">
+						<li class="alignC"><img width="431" height="14" alt="フリーダイヤル：0120-39-3009（受付時間9:00～19:00、日・祝休み）" src="<!--{$TPL_URLPATH}-->img/soyafarm/img_tel.gif"></li>
+					</ul>
+				</div>
+			</div>
+
 			<!--{if strlen($tpl_error) == 0}-->
 			<p class="cartBtn">
 				<input type="hidden" name="cartKey" value="<!--{$key}-->" />
@@ -307,7 +320,6 @@ $(document).ready(function() {
             <!--{/if}-->
 
             <!--{* ▼定期専用のメッセージ表示 *}-->
-<!--{*
             <!--{if $tpl_regular_purchase_flg === true}-->
             <div class="teikiAttentionBox clearfix">
                 <div class="left">
@@ -315,14 +327,13 @@ $(document).ready(function() {
                 </div>
                 <div class="right">
                     <p>
-                        お届け間隔は、「日ごと」「ヶ月ごと」の指定をしていただけます。（お届け間隔は最大3ヶ月または90日まで）<br />
-                        お届け間隔で「1ヶ月ごと」「2ヶ月ごと」「3ヶ月ごと」のいずれかを選択した場合のみ、お届け曜日のご指定が可能です。<br />
-                        定期購入は、原則として最低3回以上の継続をお願いします。
+※「2ヵ月毎のお届け」は2個以上、「3ヶ月毎のお届け」は、3個以上からの受付とさせていただきます。<br />
+※「ハイ！調製豆乳」は、商品の性質上「毎月お届け」コースのみとさせていただきます。<br />
+※「イソフラボン石鹸」は、定期お届けコースの対象商品ではありません。
                     </p>
                 </div>
             </div>
             <!--{/if}-->
-*}-->
             <!--{* ▲定期専用のメッセージ表示 *}-->
 
             <!--{* ▼同梱品情報表示 *}-->
@@ -355,47 +366,52 @@ $(document).ready(function() {
 
 
             <!--{* ▲商品情報 *}-->
-<div class="cartTotalBox">
-	<div class="inner">
-		<p class="subtotal">
-			小計
-			<strong><!--{$sub_total|number_format}-->円
-			＋</strong>
-			
-			送料
-			<strong><!--{$arrData[$key].deliv_fee|number_format}-->円</strong>
-		</p>
-		<ul class="ptInput">
-      <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
-			<li class="last">
-			キャンペーンコード
-			<input type="text" size="15" name="campaign_code" value="<!--{$tpl_campaign_code}-->" maxlength="<!--{$smarty.const.CAMPAIGN_CODE_LEN}-->" />
-			</li>
-      <!--{/if}-->
-		</ul>
-	</div>
-	<div class="campaignCode">
-		<div class="inner">
-			<p class="codeApp"><!--{if $tpl_input_campaign_ok_flg}-->キャンペーンコードが適用されました<!--{/if}--></p>
-			<p>
-        <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
-				<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','re_calc','cart_no','<!--{$item.cart_no}-->'); return false">
-				<img src="<!--{$TPL_URLPATH}-->img/soyafarm/recalculate.gif" alt="再計算する" width="97" /></a>
-			  <!--{/if}-->
-				お支払いの合計
-				<span class="price"><strong><!--{$arrData[$key].total|number_format}-->円</strong>
-				(税込)</span>
-			</p>
-		</div>
-	</div>
-</div>
+			<div class="cartTotalBox">
+				<div class="inner">
+					<p class="subtotal">
+						小計
+						<strong><!--{$sub_total|number_format}-->円
+						＋</strong>
+						
+						送料
+						<strong><!--{$arrData[$key].deliv_fee|number_format}-->円</strong>
+					</p>
+					<ul class="ptInput">
+			      <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
+						<li class="last">
+						キャンペーンコード
+						<input type="text" size="15" name="campaign_code" value="<!--{$tpl_campaign_code}-->" maxlength="<!--{$smarty.const.CAMPAIGN_CODE_LEN}-->" />
+						</li>
+			      <!--{/if}-->
+					</ul>
+				</div>
+				<div class="campaignCode">
+					<div class="inner">
+						<p class="codeApp"><!--{if $tpl_input_campaign_ok_flg}-->キャンペーンコードが適用されました<!--{/if}--></p>
+						<p>
+							<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','re_calc','cart_no','<!--{$item.cart_no}-->'); return false">
+							<img src="<!--{$TPL_URLPATH}-->img/soyafarm/recalculate.gif" alt="再計算する" width="97" /></a>
+							お支払いの合計
+							<span class="price"><strong><!--{$arrData[$key].total|number_format}-->円</strong>
+							(税込)</span>
+							<br />
+							<span class="fs15 pl10 red">※別途定期割引率をお持ちの方には、ご注文後メールで折り返しご連絡いたします。</span>
+						</p>
+					</div>
+				</div>
+			</div>
 
-                <!--{if strlen($tpl_error) == 0}-->
-				<p class="cartBtn">
-					<input type="hidden" name="cartKey" value="<!--{$key}-->" />
-					<a href="javascript:void(0);" onclick="document.form<!--{$key}-->.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart_next.gif" alt="ご注文主様・お届け情報の入力" name="confirm" class="swp" /></a>
-				</p>
-				<!--{/if}-->
+			<ul class="offer red mt10">
+				<li>※ご購入金額が5,000円（税込）未満の場合は、全国一律で300円（税込）の送料が必要となります。</li>
+				<li>※但し、キャンペーン適用商品、及び 定期お届けコース商品は送料無料です。</li>
+			</ul>
+
+            <!--{if strlen($tpl_error) == 0}-->
+			<p class="cartBtn">
+				<input type="hidden" name="cartKey" value="<!--{$key}-->" />
+				<a href="javascript:void(0);" onclick="document.form<!--{$key}-->.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart_next.gif" alt="ご注文主様・お届け情報の入力" name="confirm" class="swp" /></a>
+			</p>
+			<!--{/if}-->
 
         </form>
     <!--{/foreach}-->
