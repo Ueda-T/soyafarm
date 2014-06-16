@@ -311,6 +311,7 @@ class SC_CartSession {
             $this->cartSession[$productTypeId][$max+1]['cart_no'] = $this->getNextCartID($productTypeId);
             // 2013.12.06 add 定期フラグ
             $this->cartSession[$productTypeId][$max+1]['regular_flg'] = $regular_flg;
+            $this->cartSession[$productTypeId][$max+1]['cut_rate'] = 0;
         }
     }
 
@@ -875,7 +876,7 @@ AND
     c.customer_id = ?
 EOF;
 
-		$rate = DEFAULT_CUSTOMER_TYPE_CD;
+		$code = DEFAULT_CUSTOMER_TYPE_CD;
 		// 顧客IDがある時割引率を顧客マスタより取得
 		if ($customerId) {
 			// 割引率取得
@@ -885,7 +886,7 @@ EOF;
 		}
 
 		// 割引率がない場合、今回購入内容から割引率取得
-		if (!$rate || $rate == DEFAULT_CUSTOMER_TYPE_CD) {
+		if (!$rate || $code == DEFAULT_CUSTOMER_TYPE_CD) {
 			$quantity = 0;
 			$course_cd = "";
 			foreach ($this->cartSession[$productTypeId] as $key => $item) {
