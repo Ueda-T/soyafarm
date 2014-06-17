@@ -1,24 +1,24 @@
-order deny,allow
-deny from all
-allow from 118.243.55.73
-allow from 218.228.248.250
-allow from 218.45.168.142
-allow from 192.168.24.0/24
-# rohto DM
-allow from 150.50.45.0/24
-# rohto sanda
-allow from 150.50.60.0/24
-# rohto IS
-allow from 150.50.65.0/24
-# via rohto-VPN
-allow from 192.168.1.0/24
-# call center
-allow from 61.200.23.65
-allow from 61.201.198.65
-allow from 124.32.97.42
-allow from 118.238.221.228
-allow from 118.238.237.105
-allow from 114.160.216.165
+#order deny,allow
+#deny from all
+#allow from 118.243.55.73
+#allow from 218.228.248.250
+#allow from 218.45.168.142
+#allow from 192.168.24.0/24
+## rohto DM
+#allow from 150.50.45.0/24
+## rohto sanda
+#allow from 150.50.60.0/24
+## rohto IS
+#allow from 150.50.65.0/24
+## via rohto-VPN
+#allow from 192.168.1.0/24
+## call center
+#allow from 61.200.23.65
+#allow from 61.201.198.65
+#allow from 124.32.97.42
+#allow from 118.238.221.228
+#allow from 118.238.237.105
+#allow from 114.160.216.165
 
 php_value session.gc_maxlifetime 3600
 php_value upload_max_filesize 64M 

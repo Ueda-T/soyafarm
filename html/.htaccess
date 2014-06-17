@@ -72,7 +72,7 @@ RewriteCond %{REQUEST_URI} .php$
 RewriteCond %{HTTPS} on
 RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 
-#AuthUserFile /home/rohto/.htpasswd
+#AuthUserFile /home/soyafarm/.htpasswd
 #AuthGroupFile /dev/null
 #AuthName "Secret Area"
 #AuthType Basic
