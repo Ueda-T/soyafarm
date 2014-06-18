@@ -256,7 +256,7 @@ $(document).ready(function() {
 							  <a href="javascript:void(0);" onclick="fnAddProduct('1', document.form1); return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_teiki.gif" alt="定期購入する" name="cart" id="cart" class="swp" style="margin-bottom:10px;" /></a><br />
 						  <!--{/if}-->
 						  <!--★カゴに入れる★-->
-						  <a href="javascript:void(0);" onclick="document.form1.submit();return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart.gif" alt="カートに入れる" name="cart" id="cart" class="swp" /></a>
+						  <a href="javascript:void(0);" onclick="fnAddProduct('0', document.form1);return false;"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/btn_cart.gif" alt="カートに入れる" name="cart" id="cart" class="swp" /></a>
 						</div>
 					</div>
 						<!--★販売終了日過ぎた場合★-->

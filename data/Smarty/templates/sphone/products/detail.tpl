@@ -445,7 +445,7 @@ function fnAddProduct(regular_flg, objForm) {
                                 </li>
                                 <!--{/if}-->
                                 <li class="btnCart">
-                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
+                                    <a rel="external" href="javascript:void(fnAddProduct('0', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
                                     カゴに入れる</a>
                                 <div class="attention" id="cartbtn_dynamic"></div>
                                 </li>
@@ -736,7 +736,7 @@ function fnAddProduct(regular_flg, objForm) {
                                 <div class="attention" id="cartbtn_dynamic"></div>
                                 <!--{/if}-->
                                 <li class="btnCart">
-                                    <a rel="external" href="javascript:void(document.form1.submit());"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
+                                    <a rel="external" href="javascript:void(fnAddProduct('0', document.form1));"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/icon_cart.png" alt="カゴに入れる" width="18" height="16">
                                     カゴに入れる</a>
                                 </li>
                                 </ul>
