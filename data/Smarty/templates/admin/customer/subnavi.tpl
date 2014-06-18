@@ -14,6 +14,7 @@
 <li<!--{if $tpl_subno == 'export'}--> class="on"<!--{/if}--> id="navi-mail-export"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->mail/export.php"><span>メルマガ用データ出力</span></a></li>
 <!--{/if}-->
 
+<!--{*
 <!--{if $tpl_inos_auth == $smarty.const.INOS_AUTH_ON}-->
 <ul class="level1" style="margin-top:14px;">
 <li style="padding:5px 4px;font-weight:bold;font-size:110%;">INOSシステム連携</li>
@@ -21,4 +22,5 @@
 <li<!--{if $tpl_subno == 'inos_export_customer'}--> class="on"<!--{/if}--> id="navi-inos-export-customer"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->customer/inos_export_customer.php"><span>顧客エクスポート</span></a></li>
 </ul>
 <!--{/if}-->
+*}-->
 </div>

@@ -19,6 +19,7 @@
 <li<!--{if $tpl_subno == 'promotion_search'}--> class="on"<!--{/if}--> id="navi-products-promotion-search"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->products/promotion_search.php"><span>プロモーション照会</span></a></li>
 <li<!--{if $tpl_subno == 'media_search'}--> class="on"<!--{/if}--> id="navi-products-media-search"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->products/media_search.php"><span>広告媒体照会</span></a></li>
 </ul>
+<!--{*
 <!--{if $tpl_inos_auth == $smarty.const.INOS_AUTH_ON}-->
 <ul class="level1" style="margin-top:14px;">
 <li style="padding:5px 4px;font-weight:bold;font-size:110%;">INOSシステム連携</li>
@@ -26,4 +27,5 @@
 <li<!--{if $tpl_subno == 'promotion_import'}--> class="on"<!--{/if}--> id="navi-products-promotion-import"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->products/promotion_import.php"><span>プロモーションマスタインポート</span></a></li>
 </ul>
 <!--{/if}-->
+*}-->
 </div>

@@ -21,6 +21,7 @@ class LC_Page_Admin_Customer_InosExportCustomer extends LC_Page_Admin_Ex {
      * @return void
      */
     function init() {
+	/* Batch起動のためコメントアウト
         parent::init();
 
         $this->tpl_mainpage = 'customer/inos_export_customer.tpl';
@@ -34,6 +35,7 @@ class LC_Page_Admin_Customer_InosExportCustomer extends LC_Page_Admin_Ex {
         $this->arrPageMax = $masterData->getMasterData("mtb_page_max");
 
         $this->httpCacheControl('nocache');
+	 */
 
         set_time_limit(0);
     }
@@ -45,7 +47,7 @@ class LC_Page_Admin_Customer_InosExportCustomer extends LC_Page_Admin_Ex {
      */
     function process() {
         $this->action();
-        $this->sendResponse();
+        //$this->sendResponse();
     }
 
     /**
@@ -54,103 +56,17 @@ class LC_Page_Admin_Customer_InosExportCustomer extends LC_Page_Admin_Ex {
      * @return void
      */
     function action() {
-        // パラメーター管理クラス
-        $objFormParam = new SC_FormParam_Ex();
-        // パラメーター設定
-        $this->lfInitParam($objFormParam);
-        $objFormParam->setParam($_POST);
-        $objFormParam->convParam();
-        // パラメーター読み込み
-        $this->arrForm = $objFormParam->getFormParamList();
-        // 検索ワードの引き継ぎ
-        $this->arrHidden = $objFormParam->getSearchArray();
 
         // 最終出力日時を取得
-        $last_send_date = SC_Helper_DB_Ex::sfGetLastSendDate
+        $this->last_send_date = SC_Helper_DB_Ex::sfGetLastSendDate
             (INOS_DATA_TYPE_SEND_CUSTOMER);
-        $objFormParam->setValue('last_send_date', $last_send_date);
-        $this->arrForm = $objFormParam->getFormParamList();
-
-        // 入力パラメーターチェック
-        $this->arrErr = $this->lfCheckError($objFormParam);
-        if(!SC_Utils_Ex::isBlank($this->arrErr)) {
-            return;
-        }
 
         // WHERE句
         $where = "c.send_flg = 0";
 
-        // モードによる処理切り替え
-        switch ($this->getMode()) {
-        case 'search':
-            $objFormParam->convParam();
-            $objFormParam->trimParam();
-
-            
-            // 行数の取得
-            $this->tpl_linemax = $this->getNumberOfLines($where);
-            // ページ送りの処理
-            $page_max = SC_Utils_Ex::sfGetSearchPageMax
-                ($objFormParam->getValue('search_page_max'));
-            // ページ送りの取得
-            $objNavi = new SC_PageNavi_Ex
-                ($this->arrHidden['search_pageno'],
-                 $this->tpl_linemax, $page_max,
-                 'fnNaviSearchPage',
-                 NAVI_PMAX
-             );
-            $this->arrPagenavi = $objNavi->arrPagenavi;
-
-            // 検索結果の取得
-            $this->arrResults = $this->lfSearchCustomer
-                ($where, $page_max, $objNavi->start_row);
-            break;
-        case 'csv':
-            // 出力可能なレコードがあるか？
-            $this->tpl_linemax = $this->getNumberOfLines($where);
-            if ($this->tpl_linemax < 1) {
-                $this->tpl_onload =
-                    "window.alert('既にエクスポート処理が完了しています。再度検索を行ってください。');";
-                break;
-            }
-
-            $this->doOutputCSV($where, $this->tpl_linemax);
-            exit;
-            break;
-        default:
-            break;
-        }
-    }
-
-    /**
-     * パラメーター情報の初期化
-     *
-     * @param array $objFormParam フォームパラメータークラス
-     * @return void
-     */
-    function lfInitParam(&$objFormParam) {
-        SC_Helper_Customer_Ex::sfSetSearchParam($objFormParam);
-
-        $objFormParam->addParam("最終出力日時", "last_send_date");
-
-        $objFormParam->addParam("最終出力日時", "last_send_date");
-
-        $objFormParam->addParam("表示件数", "search_page_max",
-            INT_LEN, 'n', array("MAX_LENGTH_CHECK", "NUM_CHECK"));
-
-        $objFormParam->addParam("ページ送り番号","search_pageno",
-            INT_LEN, 'n', array("MAX_LENGTH_CHECK", "NUM_CHECK"));
-    }
-
-    /**
-     * エラーチェック
-     *
-     * @param array $objFormParam フォームパラメータークラス
-     * @return array エラー配列
-     */
-    function lfCheckError(&$objFormParam) {
-        return SC_Helper_Customer_Ex::sfCheckErrorSearchParam
-            ($objFormParam);
+	// 顧客データCSV生成
+	$this->tpl_linemax = $this->getNumberOfLines($where);
+	$this->doOutputCSV($where, $this->tpl_linemax);
     }
 
     /**
@@ -252,9 +168,9 @@ __EOS;
         // CSVダウンロード実行
         $objCsv = new SC_Helper_CSV_Ex();
         $file_name_head = 'customer';
-        $res = $objCsv->sfDownloadCsvFromSql
-            ($sql, $arrval, $file_name_head, "", true);
-        if ($res) {
+        $csvFile = $objCsv->sfDownloadMakeCsvFromSql
+            ($sql, $arrval, $file_name_head, "");
+        if ($csvFile) {
             $res = INOS_ERROR_FLG_EXIST_NORMAL;
         } else {
             $res = INOS_ERROR_FLG_EXIST_ERROR;
@@ -272,6 +188,8 @@ __EOS;
         // 顧客データの送信フラグ,送信日時を更新
         $this->updateCustomerSendFlg($where, $send_date);
 
+	// エクスポートフォルダへファイルを配置する
+	$this->doSetOutputCsv($csvFile);
     }
 
     /**
@@ -298,6 +216,26 @@ where
 __EOS;
 
         $objQuery->query($sql);
+    }
+
+    /**
+     * エクスポートした顧客データを連動フォルダへ移動
+     *
+     * @param array  $filepath   CSVファイル名
+     * @return void
+     */
+    function doSetOutputCSV($csvFile) {
+
+        // 顧客情報
+	if (is_file($csvFile)) {
+	    // 受注情報をセットする
+            $fileName = sprintf(INOS_FILE_SEND_CUSTOMER, date("YmdHis"));
+            $filePath = INOS_DIR_SEND_CUSTOMER . $fileName;
+            $bkFilePath = INOS_DIR_SEND_CUSTOMER . INOS_OK_DIR . "/" . $fileName;
+	    rename($csvFile, $filePath);
+	    chmod($filePath, 0666);
+	    copy($filePath, $bkFilePath);
+	}
     }
 
 }

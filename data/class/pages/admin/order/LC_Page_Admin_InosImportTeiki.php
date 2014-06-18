@@ -11,7 +11,7 @@ define('COL_COUNT', 40);
  */
 class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
 
-    var $arrRowResult;
+//    var $arrRowResult;
 
     var $INOS_DELIV_ID_YAMATO;
     var $DELIV_ID_YAMATO;
@@ -32,12 +32,14 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
      * Page を初期化する.
      */
     function init() {
+	/*
         parent::init();
         $this->tpl_mainpage = 'order/inos_import_teiki.tpl';
         $this->tpl_mainno = 'order';
         $this->tpl_subno = 'inos_import_teiki';
         $this->tpl_maintitle = '定期関連';
         $this->tpl_subtitle = 'INOS定期情報インポート';
+	 */
         $this->csv_id = '8';
 
         // 基幹宅配便コード
@@ -104,7 +106,7 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
      */
     function process() {
         $this->action();
-        $this->sendResponse();
+        //$this->sendResponse();
     }
 
     /*
@@ -142,7 +144,7 @@ class LC_Page_Admin_InosImportTeiki extends LC_Page_Admin_Ex {
 	        $this->importCsvFile($objFormParam, $objUpFile);
             break;
 
-        case 'errcsv_download':
+        case 'regular_errcsv_download':
 	        $this->doOutputErrCSV();
             exit;
 
@@ -1001,7 +1003,7 @@ __EOS;
 	// ファイル情報取得
         $arrFile = SC_Utils_Ex::sfGetDirFile(INOS_DIR_RECV_REGULAR);
 	if (!$arrFile[0]) {
-	    $this->arrErr["csv_file"] = "取込ファイルがセットされておりません";
+	    $this->arrRowErr[] = "定期データの取込ファイルがセットされておりません";
 	    return;
 	}
 
@@ -1035,8 +1037,8 @@ __EOS;
 	system($cmd);
 
 	// 一時テーブルへのローディング
-	if (!$this->loadCsvFile($file)) {
-	    $this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
+	if (!$this->loadCsvFile($impFile)) {
+	    //$this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
 	    $arrFile[] = $impFileName;
 	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_REGULAR
 					, $arrFile, INOS_NG_DIR);
@@ -1077,7 +1079,7 @@ __EOS;
 	    (INOS_DATA_TYPE_RECV_REGULAR, $count, $r);
 
 	// 実行結果画面を表示
-	$this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
+	//$this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
 	$this->addRowCompleteMsg($count);
     }
 
@@ -1128,7 +1130,7 @@ __EOS;
                                  "個検出されました。項目数は" .
                                  $col_max_count . "個になります。");
                 // 完了画面でエラー表示
-	            $this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
+	            //$this->tpl_mainpage = 'order/inos_import_teiki_complete.tpl';
                 $errFlag = true;
                 break;
             }
@@ -1204,7 +1206,7 @@ __EOS;
      * @return void
      */
     function addRowCompleteMsg($line_max) {
-        $this->arrRowResult[] = "取込結果：". $line_max
+        $this->arrRowResult[] = "定期データ取込結果：". $line_max
                               . "件の取込が完了しました。";
     }
 
@@ -1303,6 +1305,30 @@ __EOS;
         GC_Utils_Ex::gfPrintLog('エラーメッセージ：'. $mysqli->error);
         GC_Utils_Ex::gfPrintLog('SQL：'. $sql);
         $this->arrRowErr[] = "システムエラーが発生しました。";
+    }
+
+    /**
+     * 結果情報を返す
+     *
+     * @param $arrErr  エラー内容
+     * @param $arrRes  結果内容
+     * @return 取込エラー件数
+     */
+    function getResRegularImport(&$arrErr, &$arrRes) {
+
+	// エラー内容
+	if (is_array($arrErr) && is_array($this->arrRowErr)) {
+	    $arrErr = array_merge($arrErr, $this->arrRowErr);
+	} else if (is_array($this->arrRowErr)) {
+	    $arrErr = $this->arrRowErr;
+	}
+	// 結果内容
+	if (is_array($arrRes) && is_array($this->arrRowResult)) {
+	    $arrRes = array_merge($arrRes, $this->arrRowResult);
+	} else if (is_array($this->arrRowResult)) {
+	    $arrRes = $this->arrRowResult;
+	}
+	return $this->tpl_err_count;
     }
 }
 

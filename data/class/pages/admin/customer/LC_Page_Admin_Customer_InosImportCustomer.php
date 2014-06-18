@@ -22,12 +22,14 @@ class LC_Page_Admin_Customer_InosImportCustomer extends LC_Page_Admin_Ex {
      * @return void
      */
     function init() {
+	/*
         parent::init();
         $this->tpl_mainpage = 'customer/customer_import.tpl';
         $this->tpl_mainno = 'customer';
         $this->tpl_subno = 'customer_import';
         $this->tpl_maintitle = '顧客マスタ管理';
         $this->tpl_subtitle = '顧客マスタ登録CSV';
+	 */
         $this->csv_id = '2';
 
         // 削除時用の必須チェック不要カラム
@@ -60,7 +62,7 @@ class LC_Page_Admin_Customer_InosImportCustomer extends LC_Page_Admin_Ex {
      */
     function process() {
         $this->action();
-        $this->sendResponse();
+        //$this->sendResponse();
     }
 
     /**
@@ -101,7 +103,7 @@ class LC_Page_Admin_Customer_InosImportCustomer extends LC_Page_Admin_Ex {
         case 'csv_upload':
             $this->importCsvFile($objFormParam, $objUpFile);
             break;
-        case 'errcsv_download':
+        case 'customer_errcsv_download':
             $this->doOutputErrCSV();
             exit;
             break;
@@ -724,51 +726,103 @@ __EOS;
      * 顧客情報ファイルインポート処理開始
      */
     function importCsvFile(&$objFormParam, &$objUpFile) {
-    // ファイルのアップロード
-    $file = $this->uploadCsvFile($objFormParam, $objUpFile);
-    if (empty($file)) {
-        return;
-    }
+	/*
+	// ファイルのアップロード
+	$file = $this->uploadCsvFile($objFormParam, $objUpFile);
+	if (empty($file)) {
+	    return;
+	}
+	 */
 
-    // 一時テーブルへのローディング
-    if (!$this->loadCsvFile($file)) {
-        $this->tpl_mainpage = 'customer/customer_import_complete.tpl';
-        return;
-    }
+	// ファイル情報取得
+        $arrFile = SC_Utils_Ex::sfGetDirFile(INOS_DIR_RECV_CUSTOMER);
+	if (!$arrFile[0]) {
+	    $this->arrRowErr[] = "顧客データの取込ファイルがセットされておりません";
+	    return;
+	}
 
-    $objQuery =& SC_Query_Ex::getSingletonInstance();
+	$arrNgFile = array();
+	$arrOkFile = array();
+	$arrEncFile = array();
+	// 複数ファイルを１ファイルにまとめる
+	for ($i = 0; $i < count($arrFile); $i++) {
 
-    // 一時テーブル初期処理
-    $this->prepareImport($objFormParam);
+	    // ファイルの文字コード変換
+	    $file = $this->uploadCsvFile($objFormParam, $arrFile[$i]);
+	    if (empty($file)) {
+		$arrNgFile[] = $arrFile[$i];
+		continue;
+	    }
+	    $arrOkFile[] = $arrFile[$i];
+	    $arrEncFile[] = $file;
+	}
 
-    $objQuery->begin();
+	// 文字コード変換ファイルがない場合終了
+	if (!$arrEncFile[0]) {
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_CUSTOMER
+					, $arrNgFile, INOS_NG_DIR);
+	    return;
+	}
 
-    // 顧客情報のインポート処理
-    list($count, $r) = $this->doImport();
+	// 複数ファイルを１ファイルに変換
+	$impFileName = date("YmdHis") . ".csv";
+	$impFile = INOS_DIR_RECV_CUSTOMER . $impFileName;
+	$cmd = sprintf("cat %s > %s", implode(" ", $arrEncFile), $impFile);
+	system($cmd);
 
-    // 結果取得
-    if ($r != INOS_ERROR_FLG_EXIST_NORMAL) {
-        $objQuery->rollback();
-    } else {
-        $objQuery->commit();
-    }
-    // 取込み完了したエラー件数取得
-    $err_count = $objQuery->count
-        ('dtb_customer_inos_import', 'error_flg = ?', 1);
-    // エラーデータがある場合は更新履歴情報をエラー判定に
-    if ($err_count > 0) {
-        $r = INOS_ERROR_FLG_EXIST_ERROR;
-    }
+	// 一時テーブルへのローディング
+	if (!$this->loadCsvFile($impFile)) {
+	    //$this->tpl_mainpage = 'customer/customer_import_complete.tpl';
+	    $arrFile[] = $impFileName;
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_CUSTOMER
+					, $arrFile, INOS_NG_DIR);
+	    return;
+	}
 
-    // バッチ処理履歴情報へデータ登録
-    SC_Helper_DB_Ex::sfInsertBatchHistory
-        (INOS_DATA_TYPE_RECV_CUSTOMER, $count, $r);
+	$objQuery =& SC_Query_Ex::getSingletonInstance();
 
-    // 実行結果画面を表示
-    $this->tpl_mainpage = 'customer/customer_import_complete.tpl';
-    $this->addRowCompleteMsg($count);
-    // エラー件数を表示
-    $this->tpl_err_count = $err_count;
+	// 一時テーブル初期処理
+	$this->prepareImport($objFormParam);
+
+	$objQuery->begin();
+
+	// 顧客情報のインポート処理
+	list($count, $r) = $this->doImport();
+
+	// 結果取得
+	if ($r != INOS_ERROR_FLG_EXIST_NORMAL) {
+	    $objQuery->rollback();
+	    $arrFile[] = $impFileName;
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_CUSTOMER
+					, $arrFile, INOS_NG_DIR);
+	} else {
+	    $objQuery->commit();
+	    $arrOkFile[] = $impFileName;
+	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_CUSTOMER
+					, $arrOkFile, INOS_OK_DIR);
+	    if ($arrNgFile[0]) {
+		SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_CUSTOMER
+					    , $arrNgFile, INOS_NG_DIR);
+	    }
+	}
+
+	// 取込み完了したエラー件数取得
+	$err_count = $objQuery->count
+	    ('dtb_customer_inos_import', 'error_flg = ?', 1);
+	// エラーデータがある場合は更新履歴情報をエラー判定に
+	if ($err_count > 0) {
+	    $r = INOS_ERROR_FLG_EXIST_ERROR;
+	}
+
+	// バッチ処理履歴情報へデータ登録
+	SC_Helper_DB_Ex::sfInsertBatchHistory
+	    (INOS_DATA_TYPE_RECV_CUSTOMER, $count, $r);
+
+	// 実行結果画面を表示
+	//$this->tpl_mainpage = 'customer/customer_import_complete.tpl';
+	$this->addRowCompleteMsg($count);
+	// エラー件数を表示
+	$this->tpl_err_count = $err_count;
     }
 
     /**
@@ -788,7 +842,8 @@ __EOS;
      *
      * @return void
      */
-    function uploadCsvFile(&$objFormParam, &$objUpFile) {
+    function uploadCsvFile(&$objFormParam, $fileName) {
+	/*
         // ファイルアップロードのチェック
         $objUpFile->makeTempFile('csv_file');
         $this->arrErr = $objUpFile->checkExists();
@@ -797,11 +852,15 @@ __EOS;
         }
         // 一時ファイル名の取得
         $filepath = $objUpFile->getTempFilePath('csv_file');
+	 */
+
+	// 取込ファイルパス
+        $filepath = INOS_DIR_RECV_CUSTOMER . $fileName;
 
         // CSVファイルの文字コード変換
         $enc_filepath = 
             SC_Utils_Ex::sfEncodeFile($filepath, CHAR_CODE,
-                                      CSV_TEMP_REALDIR, 'cp932');
+                                      CSV_SAVE_REALDIR, 'cp932');
 
         // 登録対象の列数
         $col_max_count = $objFormParam->getCount();
@@ -826,7 +885,7 @@ __EOS;
                                  "個検出されました。項目数は" .
                                  $col_max_count . "個になります。");
                 // 完了画面でエラー表示
-                $this->tpl_mainpage = 'customer/customer_import_complete.tpl';
+                //$this->tpl_mainpage = 'customer/customer_import_complete.tpl';
                 $errFlag = true;
                 break;
             }
@@ -984,6 +1043,30 @@ __EOS;
         GC_Utils_Ex::gfPrintLog('エラーメッセージ：'. $mysqli->error);
         GC_Utils_Ex::gfPrintLog('SQL：'. $sql);
         $this->arrRowErr[] = "システムエラーが発生しました。";
+    }
+
+    /**
+     * 結果情報を返す
+     *
+     * @param $arrErr  エラー内容
+     * @param $arrRes  結果内容
+     * @return 取込エラー件数
+     */
+    function getResCustomerImport(&$arrErr, &$arrRes) {
+
+	// エラー内容
+	if (is_array($arrErr) && is_array($this->arrRowErr)) {
+	    $arrErr = array_merge($arrErr, $this->arrRowErr);
+	} else if (is_array($this->arrRowErr)) {
+	    $arrErr = $this->arrRowErr;
+	}
+	// 結果内容
+	if (is_array($arrRes) && is_array($this->arrRowResult)) {
+	    $arrRes = array_merge($arrRes, $this->arrRowResult);
+	} else if (is_array($this->arrRowResult)) {
+	    $arrRes = $this->arrRowResult;
+	}
+	return $this->tpl_err_count;
     }
 }
 

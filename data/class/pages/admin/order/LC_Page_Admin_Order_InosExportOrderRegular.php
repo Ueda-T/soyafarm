@@ -21,6 +21,7 @@ class LC_Page_Admin_Order_InosExportOrderRegular extends LC_Page_Admin_Ex
      * @return void
      */
     function init() {
+	/* Batch起動のためコメントアウト
         parent::init();
         $this->tpl_mainpage = 'order/inos_export_order_regular.tpl';
         $this->tpl_mainno = 'order';
@@ -30,6 +31,7 @@ class LC_Page_Admin_Order_InosExportOrderRegular extends LC_Page_Admin_Ex
         $this->tpl_subtitle = '受注・定期エクスポート';
 
         $this->httpCacheControl('nocache');
+	 */
 
         set_time_limit(0);
 
@@ -42,7 +44,7 @@ class LC_Page_Admin_Order_InosExportOrderRegular extends LC_Page_Admin_Ex
      */
     function process() {
         $this->action();
-        $this->sendResponse();
+        //$this->sendResponse();
     }
 
     /**
@@ -65,40 +67,17 @@ class LC_Page_Admin_Order_InosExportOrderRegular extends LC_Page_Admin_Ex
         /* -----------------------------------------------
          * 処理を実行
          * ----------------------------------------------- */
-        switch ($this->getMode()) {
+	$arrFile = array();
+	// 受注データCSV生成
+	$orderLineMax = $this->getNumberOfLines($orderWhere);
+	$arrFile["order"] = $this->doMakeOrderCSV($orderWhere, $orderLineMax);
+	// 定期データCSV生成
+	$regularLineMax = $this->getRegularNumberOfLines();
+	$arrFile["regular"] = $this->doMakeRegularCSV($regularLineMax);
 
-            // CSVを送信する。
-            case 'csv':
+	// CSVファイルエクスポート
+	$this->doSetOutputCSV($arrFile);
 
-                // 件数取得
-                $orderLineMax = $this->getNumberOfLines($orderWhere);
-                $regularLineMax = $this->getRegularNumberOfLines();
-                if ($orderLineMax < 1 && $regularLineMax < 1) {
-                    $this->tpl_onload =
-                        "window.alert('既にエクスポート処理が完了しています。再度検索を行ってください。');";
-                    break;
-                }
-
-                $arrFile = array();
-                // 受注データCSV生成
-                $arrFile["order"] = $this->doMakeOrderCSV($orderWhere, $orderLineMax);
-                // 定期データCSV生成
-                $arrFile["regular"] = $this->doMakeRegularCSV($regularLineMax);
-
-                // CSVファイルダウンロード
-                $this->doOutputCSV($arrFile);
-                exit;
-            break;
-
-            // 検索実行
-            default:
-                // 受注件数取得
-                $this->tpl_orderCnt = $this->getNumberOfLines($orderWhere);
-                $this->tpl_orderCsvCnt = $this->getMakeOrderCSVCnt($orderWhere);
-                // 定期件数取得
-                $this->tpl_regularCnt = $this->getRegularNumberOfLines();
-                $this->tpl_regularCsvCnt = $this->getMakeRegularCSVCnt();
-        }
     }
 
     /**
@@ -599,6 +578,37 @@ __EOS;
         unlink($zippath);
         unlink($arrFile["order"]);
         unlink($arrFile["regular"]);
+    }
+
+    /**
+     * エクスポートした受注と定期データを連動フォルダへ移動
+     *
+     * @param array  $arrFile   CSVファイル名
+     * @return void
+     */
+    function doSetOutputCSV($arrFile) {
+
+        // 注文情報
+	if (is_file($arrFile["order"])) {
+	    // 受注情報をセットする
+            $fileName = sprintf(INOS_FILE_SEND_ORDER, date("YmdHis"));
+            $filePath = INOS_DIR_SEND_ORDER . $fileName;
+            $bkFilePath = INOS_DIR_SEND_ORDER . INOS_OK_DIR . "/" . $fileName;
+	    rename($arrFile["order"], $filePath);
+	    chmod($filePath, 0666);
+	    copy($filePath, $bkFilePath);
+	}
+
+        // 定期情報
+	if (is_file($arrFile["regular"])) {
+	    // 定期情報をセットする
+            $fileName = sprintf(INOS_FILE_SEND_REGULAR, date("YmdHis"));
+            $filePath = INOS_DIR_SEND_REGULAR . $fileName;
+            $bkFilePath = INOS_DIR_SEND_REGULAR . INOS_OK_DIR . "/" . $fileName;
+	    rename($arrFile["regular"], $filePath);
+	    chmod($filePath, 0666);
+	    copy($filePath, $bkFilePath);
+	}
     }
 }
 ?>

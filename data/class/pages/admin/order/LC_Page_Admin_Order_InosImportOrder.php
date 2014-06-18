@@ -7,7 +7,7 @@ require_once CLASS_EX_REALDIR . 'helper_extends/SC_Helper_CSV_Ex.php';
  */
 class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
 
-    var $arrRowResult;
+//    var $arrRowResult;
 
     var $INOS_DELIV_ID_YAMATO;
     var $DELIV_ID_YAMATO;
@@ -24,12 +24,14 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
      * @return void
      */
     function init() {
+	/*
         parent::init();
         $this->tpl_mainpage = 'order/inos_import_order.tpl';
         $this->tpl_mainno = 'order';
         $this->tpl_subno = 'inos_import_order';
         $this->tpl_maintitle = '受注関連';
         $this->tpl_subtitle = 'INOS受注情報インポート';
+	 */
         $this->csv_id = '9';
 
         // 基幹宅配便コード
@@ -86,7 +88,7 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
      */
     function process() {
         $this->action();
-        $this->sendResponse();
+        //$this->sendResponse();
     }
 
     /**
@@ -112,10 +114,6 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
         // CSV構造は更新可能なフォーマットかのフラグ取得
         $this->tpl_is_update = $objCSV->sfIsUpdateCSVFrame($arrCSVFrame);
 
-        // CSVファイルアップロード情報の初期化
-        $objUpFile = new SC_UploadFile_Ex(CSV_TEMP_REALDIR, CSV_SAVE_REALDIR);
-        $this->lfInitFile($objUpFile);
-
         // パラメーター情報の初期化
         $objFormParam = new SC_FormParam_Ex();
         $this->lfInitParam($objFormParam, $arrCSVFrame);
@@ -123,18 +121,16 @@ class LC_Page_Admin_Order_InosImportOrder extends LC_Page_Admin_Ex {
         $objFormParam->setHtmlDispNameArray();
         $this->arrTitle = $objFormParam->getHtmlDispNameArray();
 
-        switch ($this->getMode()) {
-        case 'csv_upload':
-            $this->importCsvFile($objFormParam, $objUpFile);
-            break;
-        case 'errcsv_download':
-            $this->doOutputErrCSV();
-            exit;
-            break;
+	switch($this->getMode()) {
+	    case 'csv_upload':
+		// インポートファイル取込処理
+		$this->importCsvFile($objFormParam);
+		break;
 
-        default:
-            break;
-        }
+	    case 'order_errcsv_download':
+		$this->doOutputErrCSV();
+		exit;
+	}
     }
 
     // 一時テーブルへ登録
@@ -1156,12 +1152,12 @@ __EOS;
     }
 
     // インポートファイル取込処理
-    function importCsvFile(&$objFormParam, &$objUpFile) {
+    function importCsvFile(&$objFormParam) {
 
 	// ファイル情報取得
         $arrFile = SC_Utils_Ex::sfGetDirFile(INOS_DIR_RECV_ORDER);
 	if (!$arrFile[0]) {
-	    $this->arrErr["csv_file"] = "取込ファイルがセットされておりません";
+	    $this->arrRowErr[] = "受注データの取込ファイルがセットされておりません";
 	    return;
 	}
 
@@ -1196,7 +1192,7 @@ __EOS;
 
 	// 一時テーブルへのローディング
 	if (!$this->loadCsvFile($impFile)) {
-	    $this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
+	    //$this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
 	    $arrFile[] = $impFileName;
 	    SC_Utils_Ex::sfImportFileMove(INOS_DIR_RECV_ORDER
 					, $arrFile, INOS_NG_DIR);
@@ -1239,7 +1235,7 @@ __EOS;
 	    (INOS_DATA_TYPE_RECV_ORDER, $count, $r);
 
 	// 実行結果画面を表示
-	$this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
+	//$this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
 	$this->addRowCompleteMsg($count);
 
 	// 出荷済みに更新したデータについて出荷済みメールを送信する
@@ -1255,7 +1251,7 @@ __EOS;
      * @return void
      */
     function addRowCompleteMsg($line_max) {
-        $this->arrRowResult[] = "取込結果：". $line_max
+        $this->arrRowResult[] = "受注データ取込結果：". $line_max
                               . "件の取込が完了しました。";
     }
 
@@ -1265,17 +1261,6 @@ __EOS;
      * @return void
      */
     function uploadCsvFile(&$objFormParam, $fileName) {
-	/*
-        // ファイルアップロードのチェック
-        $objUpFile->makeTempFile('csv_file');
-        $this->arrErr = $objUpFile->checkExists();
-        if (count($this->arrErr) > 0) {
-            return null;
-        }
-
-        // 一時ファイル名の取得
-        $filepath = $objUpFile->getTempFilePath('csv_file');
-	 */
 
 	// 取込ファイルパス
 	$filepath = INOS_DIR_RECV_ORDER . $fileName;
@@ -1308,7 +1293,7 @@ __EOS;
                                  "個検出されました。項目数は" .
                                  $col_max_count . "個になります。");
                 // 完了画面でエラー表示
-                $this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
+                //$this->tpl_mainpage = 'order/inos_import_order_complete.tpl';
                 $errFlag = true;
                 break;
             }
@@ -1318,16 +1303,6 @@ __EOS;
             return;
         }
         return $enc_filepath;
-    }
-
-    /**
-     * ファイル情報の初期化を行う.
-     *
-     * @return void
-     */
-    function lfInitFile(&$objUpFile) {
-        $objUpFile->addFile("CSVファイル", 'csv_file', array('csv'),
-                CSV_SIZE, true, 0, 0, false);
     }
 
     /**
@@ -1610,6 +1585,30 @@ __EOS;
 
         // 実行
         $objQuery->exec($sql);
+    }
+
+    /**
+     * 結果情報を返す
+     *
+     * @param $arrErr  エラー内容
+     * @param $arrRes  結果内容
+     * @return 取込エラー件数
+     */
+    function getResOrderImport(&$arrErr, &$arrRes) {
+
+	// エラー内容
+	if (is_array($arrErr) && is_array($this->arrRowErr)) {
+	    $arrErr = array_merge($arrErr, $this->arrRowErr);
+	} else if (is_array($this->arrRowErr)) {
+	    $arrErr = $this->arrRowErr;
+	}
+	// 結果内容
+	if (is_array($arrRes) && is_array($this->arrRowResult)) {
+	    $arrRes = array_merge($arrRes, $this->arrRowResult);
+	} else if (is_array($this->arrRowResult)) {
+	    $arrRes = $this->arrRowResult;
+	}
+	return $this->tpl_err_count;
     }
 }
 

@@ -32,10 +32,13 @@ $this->assign('keizoku_flg', $arrSubData['keizoku_flg']);
 <ul class="level1" style="margin-top:14px;">
     <li style="padding:5px 4px;font-weight:bold;font-size:110%;">INOSシステム連携</li>
     <!--{*<li<!--{if $tpl_subno == 'inos_export_order'}--> class="on"<!--{/if}--> id="navi-inos-export-order"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_export_order.php"><span>受注エクスポート</span></a></li>*}-->
+    <li<!--{if $tpl_subno == 'inos_import_order'}--> class="on"<!--{/if}--> id="navi-inos-import-order"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_import.php"><span>各種インポート</span></a></li>
+    <!--{*
     <li<!--{if $tpl_subno == 'inos_import_order'}--> class="on"<!--{/if}--> id="navi-inos-import-order"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_import_order.php"><span>受注インポート</span></a></li>
-    <!--{*<li<!--{if $tpl_subno == 'inos_export_regular'}--> class="on"<!--{/if}--> id="navi-inos-export-regular"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_export_regular.php"><span>定期エクスポート</span></a></li>*}-->
+    <li<!--{if $tpl_subno == 'inos_export_regular'}--> class="on"<!--{/if}--> id="navi-inos-export-regular"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_export_regular.php"><span>定期エクスポート</span></a></li>
     <li<!--{if $tpl_subno == 'inos_import_teiki'}--> class="on"<!--{/if}--> id="navi-inos-import-teiki"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_import_teiki.php"><span>定期インポート</span></a></li>
     <li<!--{if $tpl_subno == 'inos_export_order_regular'}--> class="on"<!--{/if}--> id="navi-inos-export-order-regular"><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->order/inos_export_order_regular.php"><span>受注・定期エクスポート</span></a></li>
+*}-->
 </ul>
 <!--{/if}-->
 </div>

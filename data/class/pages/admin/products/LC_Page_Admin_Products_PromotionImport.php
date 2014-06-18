@@ -33,12 +33,14 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
      * @return void
      */
     function init() {
+	/*
         parent::init();
         $this->tpl_mainpage = 'products/promotion_import.tpl';
         $this->tpl_mainno = 'products';
         $this->tpl_subno = 'promotion_import';
         $this->tpl_maintitle = 'プロモーションマスタ管理';
         $this->tpl_subtitle = 'プロモーションマスタ登録CSV';
+	 */
         $this->csv_id = '6';
 
         set_time_limit(0);
@@ -51,7 +53,7 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
      */
     function process() {
         $this->action();
-        $this->sendResponse();
+        //$this->sendResponse();
     }
 
     /**
@@ -132,7 +134,7 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
      * @return void
      */
     function addRowCompleteMsg($line_max) {
-        $this->arrRowResult[] = "取込結果：". $line_max
+        $this->arrRowResult[] = "プロモーション取込結果：". $line_max
                               . "件の取込が完了しました。";
     }
     /**
@@ -144,7 +146,7 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
 	// ファイル情報取得
         $arrFile = SC_Utils_Ex::sfGetDirFile(INOS_DIR_RECV_PROMOTION);
 	if (!$arrFile[0]) {
-	    $this->arrErr["csv_file"] = "取込ファイルがセットされておりません";
+	    $this->arrRowErr[] = "プロモーションデータの取込ファイルがセットされておりません";
 	    return;
 	}
 
@@ -263,15 +265,16 @@ class LC_Page_Admin_Products_PromotionImport extends LC_Page_Admin_Ex
 	    }
 	    $msg = sprintf("[%s]%d", $arrFile[$i], ($line_count - 1));
 	    // 取込完了のメッセージを表示
-	    $this->addRowCompleteMsg($msg);
+	    //$this->addRowCompleteMsg($msg);
 	    $all_count += ($line_count - 1);
 	    fclose($fp);
         }
         // 取込完了のメッセージを表示
-        $this->addRowCompleteMsg("合計：" . $all_count);
+        //$this->addRowCompleteMsg("合計：" . $all_count);
+        $this->addRowCompleteMsg($all_count);
 
         // 実行結果画面を表示
-        $this->tpl_mainpage = 'products/promotion_import_complete.tpl';
+        //$this->tpl_mainpage = 'products/promotion_import_complete.tpl';
 
 
         if ($errFlag) {
@@ -928,6 +931,29 @@ EOF;
      */
     function lfCheckErrorDetail($item, $arrErr) {
         return $arrErr;
+    }
+
+    /**
+     * 結果情報を返す
+     *
+     * @param $arrErr  エラー内容
+     * @param $arrRes  結果内容
+     * @return void
+     */
+    function getResPromotionImport(&$arrErr, &$arrRes) {
+
+	// エラー内容
+	if (is_array($arrErr) && is_array($this->arrRowErr)) {
+	    $arrErr = array_merge($arrErr, $this->arrRowErr);
+	} else if (is_array($this->arrRowErr)) {
+	    $arrErr = $this->arrRowErr;
+	}
+	// 結果内容
+	if (is_array($arrRes) && is_array($this->arrRowResult)) {
+	    $arrRes = array_merge($arrRes, $this->arrRowResult);
+	} else if (is_array($this->arrRowResult)) {
+	    $arrRes = $this->arrRowResult;
+	}
     }
 
 }

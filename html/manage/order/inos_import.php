@@ -1,7 +1,7 @@
 <?php
 
 /**
- * INOSシステム連携 受注エクスポート処理ファイル
+ * INOSシステム連携 各種インポート処理ファイル
  *
  * @package File
  * @author IQUEVE CO.,LTD.
@@ -11,12 +11,12 @@
 // {{{ requires
 require_once '../require.php';
 require_once CLASS_EX_REALDIR
-    . 'page_extends/admin/order/LC_Page_Admin_Order_InosExportOrder_Ex.php';
+    . 'page_extends/admin/order/LC_Page_Admin_Order_InosImport_Ex.php';
 
 // }}}
 // {{{ generate page
 
-$objPage = new LC_Page_Admin_Order_InosExportOrder_Ex();
+$objPage = new LC_Page_Admin_Order_InosImport_Ex();
 register_shutdown_function(array($objPage, 'destroy'));
 $objPage->init();
 $objPage->process();
