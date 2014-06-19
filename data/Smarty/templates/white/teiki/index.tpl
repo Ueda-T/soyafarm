@@ -40,15 +40,16 @@
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=604">野菜の時間ですよ</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup01.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=610">コラーゲン&amp;ペプチド</a></p></td>
+<!--{*
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup04.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609">グルコサミン&amp;ペプチド</a></p></td>
+*}-->
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup08.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=606">ペプチドアスリエータ4000</a></p></td>
-			</tr>
-			<tr>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup09.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=607">ザ・ペプチド（パウダー分包）</a></p></td>
-
+			</tr>
+			<tr>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup10.jpg" alt="" width="90" height="86" /><br />
 					<p><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=611">リポスルー</a></p></td>
 				<td><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_lineup11.jpg" alt="" width="90" height="86" /><br />
