@@ -6,7 +6,7 @@
 		<li id="img4"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_04.png" alt="大豆の栄養をたっぷりと詰め込んでいます。" /></li>
 		<li id="img5"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_mainimg_05.png" alt="健康生活のお役に立てる商品を通信販売でお届けしています。" /></li>
 		<li id="bnrProductsBox">
-			<div class="innr"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=614"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_products_614.png" /></a></div>
+			<div class="innr"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/img_top_main.png" /></a></div>
 		</li>
 	</ul>
 	<div id="soyaFamName"></div>

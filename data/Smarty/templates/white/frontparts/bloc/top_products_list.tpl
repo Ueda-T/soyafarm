@@ -99,7 +99,7 @@
 						<div class="photo"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=610"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/20140401/ph_pro01.jpg" alt="コラーゲン&amp;ペプチド" width="101" height="92"></a></div>
 					</li>
 					
-				
+<!--{*
 					<!-- product04 -->
 					<li>
 						<dl>
@@ -108,7 +108,7 @@
 						</dl>
 						<div class="photo"><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/detail.php?product_id=609"><img src="<!--{$TPL_URLPATH}-->img/soyafarm/ph_pro04.jpg" alt="グルコサミン&amp;ペプチド" width="101" height="92"></a></div>
 					</li>
-
+*}-->
 					<!-- product10 -->
 					<li>
 						<dl>
