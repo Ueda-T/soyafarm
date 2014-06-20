@@ -583,10 +583,19 @@ class LC_Page_Cart extends LC_Page_Ex {
         $objErr = new SC_CheckError_Ex($arrParams);
         $objErr->arrErr = $objFormParam->checkError();
 
+	$courseChk = 0;
+	$regularQuantity = 0;
+	$chkKey = "";
         foreach ($cartItems[1] as $key => $item) {
 
             // お届け間隔の入力チェック
             if ($item['regular_flg'] == REGULAR_PURCHASE_FLG_ON) {
+		$courseChk = $item["course_cd"];
+		$regularQuantity += $item["quantity"];
+		if (!$chkKey) {
+		    $chkKey = 'course_cd' . $item['cart_no'];
+		}
+		/*
                 $objErr->doFunc(array("お届け間隔",
                     "course_cd". $item['cart_no']),array("EXIST_CHECK"));
                 $objErr->doFunc(array("お届け間隔(月・日)",
@@ -629,8 +638,17 @@ class LC_Page_Cart extends LC_Page_Ex {
 
                     }
                 }
+		 */
             }
         }
+
+	// お届け間隔チェック
+	if ($courseChk) {
+	    if ($courseChk > $regularQuantity) {
+		$objErr->arrErr[$chkKey] = "選択されたお届け間隔に対して定期お届けコースにて購入される商品数が少ないです。";
+	    }
+	}
+
         $arrParams = $objFormParam->getHashArray();
 	if ($arrParams["use_point"]) {
 	    if($arrParams['use_point'] > $this->tpl_user_point) {
@@ -887,6 +905,7 @@ EOF;
 		}
 	    }
 	}
+	/*
 	if ($chkQuantity == 1) {
 	    // 定期間隔を1ヶ月以外除外する
 	    unset($this->arrCourseCd[3]);
@@ -895,6 +914,7 @@ EOF;
 	    // 定期間隔3ヶ月を除外する
 	    unset($this->arrCourseCd[3]);
 	}
+	 */
 	return false;
     }
 
