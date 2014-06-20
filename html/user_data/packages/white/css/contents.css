@@ -12,8 +12,23 @@ p.btn {
 /* ==============================================
 ▼TOP
 =============================================== */
-/* メインイメージ
+/* 特集バナー
 ----------------------------------------------- */
+.topSpBnrTbl {
+	width:100%;
+}
+
+.topSpBnrTbl td {
+	width:50%;
+}
+
+.topSpBnrTbl td.left {
+	text-align:left;
+}
+
+.topSpBnrTbl td.right {
+	text-align:right;
+}
 
 /* ==============================================
 ▼下層
@@ -1451,6 +1466,7 @@ img#easy {
 	margin-bottom:4px;
 }
 
-img#easy:hover {
+img#easy:hover,
+img#shipping_easy:hover {
 	cursor:pointer;
 }
