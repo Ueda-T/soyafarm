@@ -379,7 +379,7 @@ $(document).ready(function() {
 					<ul class="ptInput">
 			      <!--{if $tpl_customer_kbn != $smarty.const.CUSTOMER_KBN_EMPLOYEE}-->
 						<li class="last">
-						キャンペーンコード
+						申込番号
 						<input type="text" size="15" name="campaign_code" value="<!--{$tpl_campaign_code}-->" maxlength="<!--{$smarty.const.CAMPAIGN_CODE_LEN}-->" />
 						</li>
 			      <!--{/if}-->
@@ -387,7 +387,7 @@ $(document).ready(function() {
 				</div>
 				<div class="campaignCode">
 					<div class="inner">
-						<p class="codeApp"><!--{if $tpl_input_campaign_ok_flg}-->キャンペーンコードが適用されました<!--{/if}--></p>
+						<p class="codeApp"><!--{if $tpl_input_campaign_ok_flg}-->申込番号が適用されました<!--{/if}--></p>
 						<p>
 							<a href="?" onclick="fnFormModeSubmit('form<!--{$key}-->','re_calc','cart_no','<!--{$item.cart_no}-->'); return false">
 							<img src="<!--{$TPL_URLPATH}-->img/soyafarm/recalculate.gif" alt="再計算する" width="97" /></a>

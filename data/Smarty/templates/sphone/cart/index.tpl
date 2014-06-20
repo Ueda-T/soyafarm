@@ -463,7 +463,7 @@ $(document).ready(function() {
 
 				<tr class="bt0">
 					<td style="background-color:#FFF; padding:0 0 0 9px; font-size:0.75em; color:#464646; font-weight:bold; vertical-align:middle;">
-キャンペーンコード</td>
+申込番号</td>
 <td style="background-color:#FFF; padding:15px 9px 15px 0; font-size:1.125em; color:#F33; font-weight:bold; text-align:right">
 		<input type="text" size="15" name="campaign_code" value="<!--{$tpl_campaign_code}-->" maxlength="<!--{$smarty.const.CAMPAIGN_CODE_LEN}-->" />
 					</td>
@@ -476,7 +476,7 @@ $(document).ready(function() {
 			<!--{if $tpl_input_campaign_ok_flg}-->
 			<tr>
 				<td colspan="2" class="campaignCodeMsg">
-					<p>キャンペーンコードが適用されました</p>
+					<p>申込番号が適用されました</p>
 				</td>
 			</tr>
 			<!--{/if}-->
