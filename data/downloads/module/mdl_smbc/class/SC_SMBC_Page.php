@@ -116,11 +116,13 @@ class SC_SMBC_Page extends SC_SMBC {
         }elseif(SC_SmartphoneUserAgent::isSmartphone()){//SP
             $arrParam['version'] = MDL_SMBC_REGULAR_PAGE_LINK_PC_VERSION;
             $arrParam['shop_link'] = HTTPS_URL . "smbc/regular_complete.php";
+            $arrParam['shop_res_link'] = HTTPS_URL . "smbc/regular_complete.php";
             $arrParam['shop_error_link'] = HTTPS_URL . 'smbc/shop_error.php';
 
         }else{//PC
             $arrParam['version'] = MDL_SMBC_REGULAR_PAGE_LINK_PC_VERSION;
             $arrParam['shop_link'] = HTTPS_URL . "smbc/regular_complete.php";
+            $arrParam['shop_res_link'] = HTTPS_URL . "smbc/regular_complete.php";
             $arrParam['shop_error_link'] = HTTPS_URL . 'smbc/shop_error.php';
         }
         
@@ -197,6 +199,10 @@ class SC_SMBC_Page extends SC_SMBC {
         
         //　請求金額（変額）
         $arrParam['seikyuu_kin_hengaku'] = '0';
+
+        // リダイレクト区分
+        $arrParam['redirect_kbn'] = '1';
+        $arrParam['redirect_sec'] = '5';
 
         return $arrParam;
     }

@@ -59,6 +59,7 @@ class LC_Page_Mdl_SMBC_Shopping_Regular_Complete extends LC_Page_Ex {
         $this->objSmbcData = new SC_SMBC_Data();
         $this->arrInfo = SC_Helper_DB_Ex::sfGetBasisData();
 
+	$this->objSmbcData->printLog(print_r($_REQUEST, true));
         if(!empty($_POST['mode']) && $_POST['mode'] == 'send' && !empty($_SESSION['credit_regist'])){
             $template = MDL_SMBC_TEMPLATE_PATH . "credit_complete";
             $template .= SC_MobileUserAgent::isMobile() ? '_mobile' : '';
